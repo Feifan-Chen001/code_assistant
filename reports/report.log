@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.1)  31 DEC 2025 15:54
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.1)  1 JAN 2026 20:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -752,178 +752,61 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 \openout4 = `report.toc'.
 
 
+Overfull \hbox (306.03174pt too wide) in paragraph at lines 98--100
+\TU/lmr/m/n/10.95 libs/aiohttp/commit/cebe526b9c34dc3a3da9140409db63014bc4cf19 
+https://github.com/aio-libs/aiohttp/commit/7eecdff163ccf029fbb1ddc9de4169d4aaeb
+6597
+ []
+
+
 
 [1
 
 ]
+
+[2]
+Overfull \hbox (4.5455pt too wide) in paragraph at lines 116--118
+\TU/lmr/m/n/10.95 https://openssl-library.org/news/secadv/20250211.txt. If you 
+are building cryptography source
+ []
+
+
+
+[3]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `Consolas' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-
-[2]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 197--201
+Overfull \hbox (10.95808pt too wide) in alignment at lines 169--173
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.33217pt too wide) in alignment at lines 201--205
+Overfull \hbox (10.95808pt too wide) in alignment at lines 173--177
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.33217pt too wide) in alignment at lines 205--208
+Overfull \hbox (10.95808pt too wide) in alignment at lines 177--180
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.33217pt too wide) in alignment at lines 208--210
+Overfull \hbox (10.95808pt too wide) in alignment at lines 180--182
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.33217pt too wide) in alignment at lines 210--411
+Overfull \hbox (10.95808pt too wide) in alignment at lines 182--184
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (0.33217pt too wide) in alignment at lines 411--611
- [] [] [] [] [] 
- []
 
-[3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 611--811
- [] [] [] [] [] 
- []
+[4]
 
-[15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 811--1011
- [] [] [] [] [] 
- []
-
-[28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 1011--1211
- [] [] [] [] [] 
- []
-
-[43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 1211--1411
- [] [] [] [] [] 
- []
-
-[56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 1411--1611
- [] [] [] [] [] 
- []
-
-[68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 1611--1811
- [] [] [] [] [] 
- []
-
-[81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 1811--2011
- [] [] [] [] [] 
- []
-
-[94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105] [106]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 2011--2211
- [] [] [] [] [] 
- []
-
-[107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 2211--2411
- [] [] [] [] [] 
- []
-
-[119] [120] [121] [122] [123] [124] [125] [126] [127] [128] [129] [130]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 2411--2611
- [] [] [] [] [] 
- []
-
-[131] [132] [133] [134] [135] [136] [137] [138] [139] [140] [141] [142]
-[143] [144]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 2611--2811
- [] [] [] [] [] 
- []
-
-[145] [146] [147] [148] [149] [150] [151] [152] [153] [154] [155] [156]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 2811--3011
- [] [] [] [] [] 
- []
-
-[157] [158] [159] [160] [161] [162] [163] [164] [165] [166] [167] [168]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 3011--3211
- [] [] [] [] [] 
- []
-
-[169] [170] [171] [172] [173] [174] [175] [176] [177] [178] [179]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 3211--3411
- [] [] [] [] [] 
- []
-
-[180] [181] [182] [183] [184] [185] [186] [187] [188] [189] [190] [191]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 3411--3611
- [] [] [] [] [] 
- []
-
-[192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 3611--3811
- [] [] [] [] [] 
- []
-
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 3811--4011
- [] [] [] [] [] 
- []
-
-[216] [217] [218] [219] [220] [221] [222] [223] [224] [225] [226]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 4011--4211
- [] [] [] [] [] 
- []
-
-[227] [228] [229] [230] [231] [232] [233] [234] [235] [236] [237] [238]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 4211--4411
- [] [] [] [] [] 
- []
-
-[239] [240] [241] [242] [243] [244] [245] [246] [247] [248] [249] [250]
-Overfull \hbox (0.33217pt too wide) in alignment at lines 4411--4523
- [] [] [] [] [] 
- []
-
-[251] [252] [253] [254] [255] [256] [257] [258] [259] [260] [261] [262]
-[263] [264] [265] [266] [267] [268]
-
-[269]
-Overfull \hbox (11.12808pt too wide) in alignment at lines 4538--4542
- [] [] [] [] [] 
- []
-
-
-Overfull \hbox (11.12808pt too wide) in alignment at lines 4542--4546
- [] [] [] [] [] 
- []
-
-
-Overfull \hbox (11.12808pt too wide) in alignment at lines 4546--4549
- [] [] [] [] [] 
- []
-
-
-Overfull \hbox (11.12808pt too wide) in alignment at lines 4549--4551
- [] [] [] [] [] 
- []
-
-
-Overfull \hbox (11.12808pt too wide) in alignment at lines 4551--4592
- [] [] [] [] [] 
- []
-
-[270]
-
-[271] (./report.aux)
+[5] (./report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2022/08/05>
@@ -933,15 +816,15 @@ L3 programming layer <2022/08/05>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 142A326A0E7167DB3863950124BACC34;995.
+(rerunfilecheck)             Checksum: AEAFD64061A62054C662A45E2DE26F92;790.
  ) 
 Here is how much of TeX's memory you used:
- 17847 strings out of 473832
- 356464 string characters out of 5733159
- 2002713 words of memory out of 5000000
- 40658 multiletter control sequences out of 15000+600000
- 566374 words of font info for 99 fonts, out of 8000000 for 9000
+ 17822 strings out of 473832
+ 355011 string characters out of 5733159
+ 834627 words of memory out of 5000000
+ 40634 multiletter control sequences out of 15000+600000
+ 566366 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 74i,8n,93p,1003b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,8n,93p,1572b,577s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (271 pages).
+Output written on report.pdf (5 pages).

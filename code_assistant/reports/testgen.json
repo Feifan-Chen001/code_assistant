@@ -1,0 +1,1762 @@
+{
+  "repo": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo",
+  "output_dir": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests",
+  "written_files": 20,
+  "function_count": 200,
+  "generated": [
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\generate_pxi.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_generate_pxi.py",
+      "functions": [
+        {
+          "name": "process_tempita",
+          "args": [
+            "pxifile",
+            "outfile"
+          ],
+          "lineno": 7,
+          "doc": ""
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 16,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\generate_version.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_generate_version.py",
+      "functions": [
+        {
+          "name": "write_version_info",
+          "args": [
+            "path"
+          ],
+          "lineno": 13,
+          "doc": ""
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 32,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\setup.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_setup.py",
+      "functions": [
+        {
+          "name": "is_platform_windows",
+          "args": [],
+          "lineno": 31,
+          "doc": ""
+        },
+        {
+          "name": "is_platform_mac",
+          "args": [],
+          "lineno": 35,
+          "doc": ""
+        },
+        {
+          "name": "maybe_cythonize",
+          "args": [
+            "extensions"
+          ],
+          "lineno": 394,
+          "doc": "Render tempita templates before calling cythonize. This is skipped for\n\n* clean\n* sdist"
+        },
+        {
+          "name": "srcpath",
+          "args": [
+            "name",
+            "suffix",
+            "subdir"
+          ],
+          "lineno": 427,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\asv_bench\\benchmarks\\ctors.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_ctors.py",
+      "functions": [
+        {
+          "name": "no_change",
+          "args": [
+            "arr"
+          ],
+          "lineno": 13,
+          "doc": ""
+        },
+        {
+          "name": "list_of_str",
+          "args": [
+            "arr"
+          ],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "gen_of_str",
+          "args": [
+            "arr"
+          ],
+          "lineno": 21,
+          "doc": ""
+        },
+        {
+          "name": "arr_dict",
+          "args": [
+            "arr"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "list_of_tuples",
+          "args": [
+            "arr"
+          ],
+          "lineno": 29,
+          "doc": ""
+        },
+        {
+          "name": "gen_of_tuples",
+          "args": [
+            "arr"
+          ],
+          "lineno": 33,
+          "doc": ""
+        },
+        {
+          "name": "list_of_lists",
+          "args": [
+            "arr"
+          ],
+          "lineno": 37,
+          "doc": ""
+        },
+        {
+          "name": "list_of_tuples_with_none",
+          "args": [
+            "arr"
+          ],
+          "lineno": 41,
+          "doc": ""
+        },
+        {
+          "name": "list_of_lists_with_none",
+          "args": [
+            "arr"
+          ],
+          "lineno": 45,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\asv_bench\\benchmarks\\gil.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_gil.py",
+      "functions": [
+        {
+          "name": "run_parallel",
+          "args": [
+            "num_threads",
+            "kwargs_list"
+          ],
+          "lineno": 39,
+          "doc": "Decorator to run the same function multiple times in parallel.\n\nParameters\n----------\nnum_threads : int, optional\n    The number of times the function is run in parallel.\nkwargs_list : list of dicts, optional\n    The list of kwargs to update original\n    function kwargs on different threads.\n\nNotes\n-----\nThis decorator does not pass the return value of the decorated function.\n\nOriginal from scikit-image:\n\nhttps://github.com/scikit-image/scikit-image/pull/1519"
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\asv_bench\\benchmarks\\pandas_vb_common.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_pandas_vb_common.py",
+      "functions": [
+        {
+          "name": "setup",
+          "args": [],
+          "lineno": 56,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\asv_bench\\benchmarks\\rolling.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_rolling.py",
+      "functions": [
+        {
+          "name": "table_method_func",
+          "args": [
+            "x"
+          ],
+          "lineno": 362,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\asv_bench\\benchmarks\\sparse.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_sparse.py",
+      "functions": [
+        {
+          "name": "make_array",
+          "args": [
+            "size",
+            "dense_proportion",
+            "fill_value",
+            "dtype"
+          ],
+          "lineno": 13,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\doc\\make.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_make.py",
+      "functions": [
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 301,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\doc\\scripts\\eval_performance.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_eval_performance.py",
+      "functions": [
+        {
+          "name": "bench_with",
+          "args": [
+            "n",
+            "times",
+            "repeat",
+            "engine"
+          ],
+          "lineno": 16,
+          "doc": ""
+        },
+        {
+          "name": "bench_subset",
+          "args": [
+            "n",
+            "times",
+            "repeat",
+            "engine"
+          ],
+          "lineno": 33,
+          "doc": ""
+        },
+        {
+          "name": "bench",
+          "args": [
+            "mn",
+            "mx",
+            "num",
+            "engines",
+            "verbose"
+          ],
+          "lineno": 47,
+          "doc": ""
+        },
+        {
+          "name": "plot_perf",
+          "args": [
+            "df",
+            "engines",
+            "title",
+            "filename"
+          ],
+          "lineno": 67,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\doc\\source\\conf.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_conf.py",
+      "functions": [
+        {
+          "name": "linkcode_resolve",
+          "args": [
+            "domain",
+            "info"
+          ],
+          "lineno": 646,
+          "doc": "Determine the URL corresponding to Python object"
+        },
+        {
+          "name": "remove_flags_docstring",
+          "args": [
+            "app",
+            "what",
+            "name",
+            "obj",
+            "options",
+            "lines"
+          ],
+          "lineno": 708,
+          "doc": ""
+        },
+        {
+          "name": "process_class_docstrings",
+          "args": [
+            "app",
+            "what",
+            "name",
+            "obj",
+            "options",
+            "lines"
+          ],
+          "lineno": 713,
+          "doc": "For those classes for which we use ::\n\n:template: autosummary/class_without_autosummary.rst\n\nthe documented attributes/methods have to be listed in the class\ndocstring. However, if one of those lists is empty, we use 'None',\nwhich then generates warnings in sphinx / ugly html output.\nThis \"autodoc-process-docstring\" event connector removes that part\nfrom the processed docstring."
+        },
+        {
+          "name": "process_business_alias_docstrings",
+          "args": [
+            "app",
+            "what",
+            "name",
+            "obj",
+            "options",
+            "lines"
+          ],
+          "lineno": 765,
+          "doc": "Starting with sphinx 3.4, the \"autodoc-process-docstring\" event also\ngets called for alias classes. This results in numpydoc adding the\nmethods/attributes to the docstring, which we don't want (+ this\ncauses warnings with sphinx)."
+        },
+        {
+          "name": "rstjinja",
+          "args": [
+            "app",
+            "docname",
+            "source"
+          ],
+          "lineno": 788,
+          "doc": "Render our pages as a jinja template for fancy templating goodness."
+        },
+        {
+          "name": "setup",
+          "args": [
+            "app"
+          ],
+          "lineno": 801,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\doc\\sphinxext\\announce.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_announce.py",
+      "functions": [
+        {
+          "name": "get_authors",
+          "args": [
+            "revision_range"
+          ],
+          "lineno": 59,
+          "doc": ""
+        },
+        {
+          "name": "get_pull_requests",
+          "args": [
+            "repo",
+            "revision_range"
+          ],
+          "lineno": 111,
+          "doc": ""
+        },
+        {
+          "name": "build_components",
+          "args": [
+            "revision_range",
+            "heading"
+          ],
+          "lineno": 136,
+          "doc": ""
+        },
+        {
+          "name": "build_string",
+          "args": [
+            "revision_range",
+            "heading"
+          ],
+          "lineno": 147,
+          "doc": ""
+        },
+        {
+          "name": "main",
+          "args": [
+            "revision_range"
+          ],
+          "lineno": 164,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\doc\\sphinxext\\contributors.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_contributors.py",
+      "functions": [
+        {
+          "name": "setup",
+          "args": [
+            "app"
+          ],
+          "lineno": 55,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\pandas\\conftest.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_conftest.py",
+      "functions": [
+        {
+          "name": "pytest_addoption",
+          "args": [
+            "parser"
+          ],
+          "lineno": 104,
+          "doc": ""
+        },
+        {
+          "name": "ignore_doctest_warning",
+          "args": [
+            "item",
+            "path",
+            "message"
+          ],
+          "lineno": 112,
+          "doc": "Ignore doctest warning.\n\nParameters\n----------\nitem : pytest.Item\n    pytest test item.\npath : str\n    Module path to Python object, e.g. \"pandas.DataFrame.append\". A\n    warning will be filtered when item.name ends with in given path. So it is\n    sufficient to specify e.g. \"DataFrame.append\".\nmessage : str\n    Message to be filtered."
+        },
+        {
+          "name": "pytest_collection_modifyitems",
+          "args": [
+            "items",
+            "config"
+          ],
+          "lineno": 130,
+          "doc": ""
+        },
+        {
+          "name": "add_doctest_imports",
+          "args": [
+            "doctest_namespace"
+          ],
+          "lineno": 236,
+          "doc": "Make `np` and `pd` names available for doctests."
+        },
+        {
+          "name": "configure_tests",
+          "args": [],
+          "lineno": 245,
+          "doc": "Configure settings for all tests and test modules."
+        },
+        {
+          "name": "axis",
+          "args": [
+            "request"
+          ],
+          "lineno": 256,
+          "doc": "Fixture for returning the axis numbers of a DataFrame."
+        },
+        {
+          "name": "observed",
+          "args": [
+            "request"
+          ],
+          "lineno": 264,
+          "doc": "Pass in the observed keyword to groupby for [True, False]\nThis indicates whether categoricals should return values for\nvalues which are not in the grouper [False / None], or only values which\nappear in the grouper [True]. [None] is supported for future compatibility\nif we decide to change the default (and would need to warn if this\nparameter is not passed)."
+        },
+        {
+          "name": "ordered",
+          "args": [
+            "request"
+          ],
+          "lineno": 277,
+          "doc": "Boolean 'ordered' parameter for Categorical."
+        },
+        {
+          "name": "dropna",
+          "args": [
+            "request"
+          ],
+          "lineno": 285,
+          "doc": "Boolean 'dropna' parameter."
+        },
+        {
+          "name": "sort",
+          "args": [
+            "request"
+          ],
+          "lineno": 293,
+          "doc": "Boolean 'sort' parameter."
+        },
+        {
+          "name": "skipna",
+          "args": [
+            "request"
+          ],
+          "lineno": 301,
+          "doc": "Boolean 'skipna' parameter."
+        },
+        {
+          "name": "keep",
+          "args": [
+            "request"
+          ],
+          "lineno": 309,
+          "doc": "Valid values for the 'keep' parameter used in\n.duplicated or .drop_duplicates"
+        },
+        {
+          "name": "inclusive_endpoints_fixture",
+          "args": [
+            "request"
+          ],
+          "lineno": 318,
+          "doc": "Fixture for trying all interval 'inclusive' parameters."
+        },
+        {
+          "name": "closed",
+          "args": [
+            "request"
+          ],
+          "lineno": 326,
+          "doc": "Fixture for trying all interval closed parameters."
+        },
+        {
+          "name": "other_closed",
+          "args": [
+            "request"
+          ],
+          "lineno": 334,
+          "doc": "Secondary closed fixture to allow parametrizing over all pairs of closed."
+        },
+        {
+          "name": "compression",
+          "args": [
+            "request"
+          ],
+          "lineno": 352,
+          "doc": "Fixture for trying common compression types in compression tests."
+        },
+        {
+          "name": "compression_only",
+          "args": [
+            "request"
+          ],
+          "lineno": 369,
+          "doc": "Fixture for trying common compression types in compression tests excluding\nuncompressed case."
+        },
+        {
+          "name": "writable",
+          "args": [
+            "request"
+          ],
+          "lineno": 378,
+          "doc": "Fixture that an array is writable."
+        },
+        {
+          "name": "join_type",
+          "args": [
+            "request"
+          ],
+          "lineno": 386,
+          "doc": "Fixture for trying all types of join operations."
+        },
+        {
+          "name": "nselect_method",
+          "args": [
+            "request"
+          ],
+          "lineno": 394,
+          "doc": "Fixture for trying all nselect methods."
+        },
+        {
+          "name": "na_action",
+          "args": [
+            "request"
+          ],
+          "lineno": 402,
+          "doc": "Fixture for 'na_action' argument in map."
+        },
+        {
+          "name": "ascending",
+          "args": [
+            "request"
+          ],
+          "lineno": 410,
+          "doc": "Fixture for 'na_action' argument in sort_values/sort_index/rank."
+        },
+        {
+          "name": "rank_method",
+          "args": [
+            "request"
+          ],
+          "lineno": 418,
+          "doc": "Fixture for 'rank' argument in rank."
+        },
+        {
+          "name": "as_index",
+          "args": [
+            "request"
+          ],
+          "lineno": 426,
+          "doc": "Fixture for 'as_index' argument in groupby."
+        },
+        {
+          "name": "cache",
+          "args": [
+            "request"
+          ],
+          "lineno": 434,
+          "doc": "Fixture for 'cache' argument in to_datetime."
+        },
+        {
+          "name": "parallel",
+          "args": [
+            "request"
+          ],
+          "lineno": 442,
+          "doc": "Fixture for parallel keyword argument for numba.jit."
+        },
+        {
+          "name": "nogil",
+          "args": [
+            "request"
+          ],
+          "lineno": 454,
+          "doc": "Fixture for nogil keyword argument for numba.jit."
+        },
+        {
+          "name": "nopython",
+          "args": [
+            "request"
+          ],
+          "lineno": 462,
+          "doc": "Fixture for nopython keyword argument for numba.jit."
+        },
+        {
+          "name": "nulls_fixture",
+          "args": [
+            "request"
+          ],
+          "lineno": 473,
+          "doc": "Fixture for each null type in pandas."
+        },
+        {
+          "name": "unique_nulls_fixture",
+          "args": [
+            "request"
+          ],
+          "lineno": 484,
+          "doc": "Fixture for each null type in pandas, each null type exactly once."
+        },
+        {
+          "name": "np_nat_fixture",
+          "args": [
+            "request"
+          ],
+          "lineno": 496,
+          "doc": "Fixture for each NaT type in numpy."
+        },
+        {
+          "name": "frame_or_series",
+          "args": [
+            "request"
+          ],
+          "lineno": 513,
+          "doc": "Fixture to parametrize over DataFrame and Series."
+        },
+        {
+          "name": "index_or_series",
+          "args": [
+            "request"
+          ],
+          "lineno": 521,
+          "doc": "Fixture to parametrize over Index and Series, made necessary by a mypy\nbug, giving an error:\n\nList item 0 has incompatible type \"Type[Series]\"; expected \"Type[PandasObject]\"\n\nSee GH#29725"
+        },
+        {
+          "name": "index_or_series_or_array",
+          "args": [
+            "request"
+          ],
+          "lineno": 534,
+          "doc": "Fixture to parametrize over Index, Series, and ExtensionArray"
+        },
+        {
+          "name": "box_with_array",
+          "args": [
+            "request"
+          ],
+          "lineno": 542,
+          "doc": "Fixture to test behavior for Index, Series, DataFrame, and pandas Array\nclasses"
+        },
+        {
+          "name": "dict_subclass",
+          "args": [],
+          "lineno": 554,
+          "doc": "Fixture for a dictionary subclass."
+        },
+        {
+          "name": "non_dict_mapping_subclass",
+          "args": [],
+          "lineno": 567,
+          "doc": "Fixture for a non-mapping dictionary subclass."
+        },
+        {
+          "name": "multiindex_year_month_day_dataframe_random_data",
+          "args": [],
+          "lineno": 592,
+          "doc": "DataFrame with 3 level MultiIndex (year, month, day) covering\nfirst 100 business days from 2000-01-01 with random data"
+        },
+        {
+          "name": "lexsorted_two_level_string_multiindex",
+          "args": [],
+          "lineno": 610,
+          "doc": "2-level MultiIndex, lexsorted, with string names."
+        },
+        {
+          "name": "multiindex_dataframe_random_data",
+          "args": [
+            "lexsorted_two_level_string_multiindex"
+          ],
+          "lineno": 622,
+          "doc": "DataFrame with 2 level MultiIndex with random data"
+        },
+        {
+          "name": "index",
+          "args": [
+            "request"
+          ],
+          "lineno": 714,
+          "doc": "Fixture for many \"simple\" kinds of indices.\n\nThese indices are unlikely to cover corner cases, e.g.\n    - no names\n    - no NaTs/NaNs\n    - no values near implementation bounds\n    - ..."
+        },
+        {
+          "name": "index_flat",
+          "args": [
+            "request"
+          ],
+          "lineno": 733,
+          "doc": "index fixture, but excluding MultiIndex cases."
+        },
+        {
+          "name": "index_with_missing",
+          "args": [
+            "request"
+          ],
+          "lineno": 752,
+          "doc": "Fixture for indices with missing values.\n\nInteger-dtype and empty cases are excluded because they cannot hold missing\nvalues.\n\nMultiIndex is excluded because isna() is not defined for MultiIndex."
+        },
+        {
+          "name": "string_series",
+          "args": [],
+          "lineno": 779,
+          "doc": "Fixture for Series of floats with Index of unique strings"
+        },
+        {
+          "name": "object_series",
+          "args": [],
+          "lineno": 791,
+          "doc": "Fixture for Series of dtype object with Index of unique strings"
+        },
+        {
+          "name": "datetime_series",
+          "args": [],
+          "lineno": 801,
+          "doc": "Fixture for Series of floats with DatetimeIndex"
+        },
+        {
+          "name": "series_with_simple_index",
+          "args": [
+            "index"
+          ],
+          "lineno": 826,
+          "doc": "Fixture for tests on series with changing types of indices."
+        },
+        {
+          "name": "index_or_series_obj",
+          "args": [
+            "request"
+          ],
+          "lineno": 845,
+          "doc": "Fixture for tests on indexes, series and series with a narrow dtype\ncopy to avoid mutation, e.g. setting .name"
+        },
+        {
+          "name": "index_or_series_memory_obj",
+          "args": [
+            "request"
+          ],
+          "lineno": 867,
+          "doc": "Fixture for tests on indexes, series, series with a narrow dtype and\nseries with empty objects type\ncopy to avoid mutation, e.g. setting .name"
+        },
+        {
+          "name": "int_frame",
+          "args": [],
+          "lineno": 880,
+          "doc": "Fixture for DataFrame of ints with index of unique strings\n\nColumns are ['A', 'B', 'C', 'D']"
+        },
+        {
+          "name": "float_frame",
+          "args": [],
+          "lineno": 894,
+          "doc": "Fixture for DataFrame of floats with index of unique strings\n\nColumns are ['A', 'B', 'C', 'D']."
+        },
+        {
+          "name": "rand_series_with_duplicate_datetimeindex",
+          "args": [],
+          "lineno": 908,
+          "doc": "Fixture for Series with a DatetimeIndex that has duplicates."
+        },
+        {
+          "name": "ea_scalar_and_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 944,
+          "doc": "Fixture that tests each scalar and datetime type."
+        },
+        {
+          "name": "all_arithmetic_operators",
+          "args": [
+            "request"
+          ],
+          "lineno": 957,
+          "doc": "Fixture for dunder names for common arithmetic operations."
+        },
+        {
+          "name": "all_binary_operators",
+          "args": [
+            "request"
+          ],
+          "lineno": 994,
+          "doc": "Fixture for operator and roperator arithmetic, comparison, and logical ops."
+        },
+        {
+          "name": "all_arithmetic_functions",
+          "args": [
+            "request"
+          ],
+          "lineno": 1019,
+          "doc": "Fixture for operator and roperator arithmetic functions.\n\nNotes\n-----\nThis includes divmod and rdivmod, whereas all_arithmetic_operators\ndoes not."
+        },
+        {
+          "name": "all_numeric_reductions",
+          "args": [
+            "request"
+          ],
+          "lineno": 1048,
+          "doc": "Fixture for numeric reduction names."
+        },
+        {
+          "name": "all_boolean_reductions",
+          "args": [
+            "request"
+          ],
+          "lineno": 1059,
+          "doc": "Fixture for boolean reduction names."
+        },
+        {
+          "name": "all_reductions",
+          "args": [
+            "request"
+          ],
+          "lineno": 1070,
+          "doc": "Fixture for all (boolean + numeric) reduction names."
+        },
+        {
+          "name": "comparison_op",
+          "args": [
+            "request"
+          ],
+          "lineno": 1087,
+          "doc": "Fixture for operator module comparison functions."
+        },
+        {
+          "name": "compare_operators_no_eq_ne",
+          "args": [
+            "request"
+          ],
+          "lineno": 1095,
+          "doc": "Fixture for dunder names for compare operations except == and !=\n\n* >=\n* >\n* <\n* <="
+        },
+        {
+          "name": "all_logical_operators",
+          "args": [
+            "request"
+          ],
+          "lineno": 1110,
+          "doc": "Fixture for dunder names for common logical operations\n\n* |\n* &\n* ^"
+        },
+        {
+          "name": "all_numeric_accumulations",
+          "args": [
+            "request"
+          ],
+          "lineno": 1125,
+          "doc": "Fixture for numeric accumulation names"
+        },
+        {
+          "name": "strict_data_files",
+          "args": [
+            "pytestconfig"
+          ],
+          "lineno": 1136,
+          "doc": "Returns the configuration for the test setting `--no-strict-data-files`."
+        },
+        {
+          "name": "datapath",
+          "args": [
+            "strict_data_files"
+          ],
+          "lineno": 1144,
+          "doc": "Get the path to a data file.\n\nParameters\n----------\npath : str\n    Path to the file, relative to ``pandas/tests/``\n\nReturns\n-------\npath including ``pandas/tests``.\n\nRaises\n------\nValueError\n    If the path doesn't exist and the --no-strict-data-files option is not set."
+        },
+        {
+          "name": "tz_naive_fixture",
+          "args": [
+            "request"
+          ],
+          "lineno": 1212,
+          "doc": "Fixture for trying timezones including default (None): {0}"
+        },
+        {
+          "name": "tz_aware_fixture",
+          "args": [
+            "request"
+          ],
+          "lineno": 1221,
+          "doc": "Fixture for trying explicit timezones: {0}"
+        },
+        {
+          "name": "utc_fixture",
+          "args": [
+            "request"
+          ],
+          "lineno": 1235,
+          "doc": "Fixture to provide variants of UTC timezone strings and tzinfo objects."
+        },
+        {
+          "name": "unit",
+          "args": [
+            "request"
+          ],
+          "lineno": 1246,
+          "doc": "datetime64 units we support."
+        },
+        {
+          "name": "string_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1260,
+          "doc": "Parametrized fixture for string dtypes.\n\n* str\n* 'str'\n* 'U'"
+        },
+        {
+          "name": "string_dtype_no_object",
+          "args": [
+            "request"
+          ],
+          "lineno": 1285,
+          "doc": "Parametrized fixture for string dtypes.\n* 'string[python]' (NA variant)\n* 'string[pyarrow]' (NA variant)\n* 'str' (NaN variant, with pyarrow)\n* 'str' (NaN variant, without pyarrow)"
+        },
+        {
+          "name": "nullable_string_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1305,
+          "doc": "Parametrized fixture for string dtypes.\n\n* 'string[python]'\n* 'string[pyarrow]'"
+        },
+        {
+          "name": "pyarrow_string_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1321,
+          "doc": "Parametrized fixture for string dtypes backed by Pyarrow.\n\n* 'str[pyarrow]'\n* 'string[pyarrow]'"
+        },
+        {
+          "name": "string_storage",
+          "args": [
+            "request"
+          ],
+          "lineno": 1337,
+          "doc": "Parametrized fixture for pd.options.mode.string_storage.\n\n* 'python'\n* 'pyarrow'"
+        },
+        {
+          "name": "string_dtype_arguments",
+          "args": [
+            "request"
+          ],
+          "lineno": 1361,
+          "doc": "Parametrized fixture for StringDtype storage and na_value.\n\n* 'python' + pd.NA\n* 'pyarrow' + pd.NA\n* 'pyarrow' + np.nan"
+        },
+        {
+          "name": "dtype_backend",
+          "args": [
+            "request"
+          ],
+          "lineno": 1378,
+          "doc": "Parametrized fixture for pd.options.mode.string_storage.\n\n* 'python'\n* 'pyarrow'"
+        },
+        {
+          "name": "bytes_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1394,
+          "doc": "Parametrized fixture for bytes dtypes.\n\n* bytes\n* 'bytes'"
+        },
+        {
+          "name": "object_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1405,
+          "doc": "Parametrized fixture for object dtypes.\n\n* object\n* 'object'"
+        },
+        {
+          "name": "any_string_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1431,
+          "doc": "Parametrized fixture for string dtypes.\n* 'object'\n* 'string[python]' (NA variant)\n* 'string[pyarrow]' (NA variant)\n* 'str' (NaN variant, with pyarrow)\n* 'str' (NaN variant, without pyarrow)"
+        },
+        {
+          "name": "datetime64_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1453,
+          "doc": "Parametrized fixture for datetime64 dtypes.\n\n* 'datetime64[ns]'\n* 'M8[ns]'"
+        },
+        {
+          "name": "timedelta64_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1464,
+          "doc": "Parametrized fixture for timedelta64 dtypes.\n\n* 'timedelta64[ns]'\n* 'm8[ns]'"
+        },
+        {
+          "name": "fixed_now_ts",
+          "args": [],
+          "lineno": 1475,
+          "doc": "Fixture emits fixed Timestamp.now()"
+        },
+        {
+          "name": "float_numpy_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1485,
+          "doc": "Parameterized fixture for float dtypes.\n\n* float\n* 'float32'\n* 'float64'"
+        },
+        {
+          "name": "float_ea_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1497,
+          "doc": "Parameterized fixture for float dtypes.\n\n* 'Float32'\n* 'Float64'"
+        },
+        {
+          "name": "any_float_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1508,
+          "doc": "Parameterized fixture for float dtypes.\n\n* float\n* 'float32'\n* 'float64'\n* 'Float32'\n* 'Float64'"
+        },
+        {
+          "name": "complex_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1522,
+          "doc": "Parameterized fixture for complex dtypes.\n\n* complex\n* 'complex64'\n* 'complex128'"
+        },
+        {
+          "name": "complex_or_float_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1534,
+          "doc": "Parameterized fixture for complex and numpy float dtypes.\n\n* complex\n* 'complex64'\n* 'complex128'\n* float\n* 'float32'\n* 'float64'"
+        },
+        {
+          "name": "any_signed_int_numpy_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1549,
+          "doc": "Parameterized fixture for signed integer dtypes.\n\n* int\n* 'int8'\n* 'int16'\n* 'int32'\n* 'int64'"
+        },
+        {
+          "name": "any_unsigned_int_numpy_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1563,
+          "doc": "Parameterized fixture for unsigned integer dtypes.\n\n* 'uint8'\n* 'uint16'\n* 'uint32'\n* 'uint64'"
+        },
+        {
+          "name": "any_int_numpy_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1576,
+          "doc": "Parameterized fixture for any integer dtype.\n\n* int\n* 'int8'\n* 'uint8'\n* 'int16'\n* 'uint16'\n* 'int32'\n* 'uint32'\n* 'int64'\n* 'uint64'"
+        },
+        {
+          "name": "any_int_ea_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1594,
+          "doc": "Parameterized fixture for any nullable integer dtype.\n\n* 'UInt8'\n* 'Int8'\n* 'UInt16'\n* 'Int16'\n* 'UInt32'\n* 'Int32'\n* 'UInt64'\n* 'Int64'"
+        },
+        {
+          "name": "any_int_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1611,
+          "doc": "Parameterized fixture for any nullable integer dtype.\n\n* int\n* 'int8'\n* 'uint8'\n* 'int16'\n* 'uint16'\n* 'int32'\n* 'uint32'\n* 'int64'\n* 'uint64'\n* 'UInt8'\n* 'Int8'\n* 'UInt16'\n* 'Int16'\n* 'UInt32'\n* 'Int32'\n* 'UInt64'\n* 'Int64'"
+        },
+        {
+          "name": "any_numeric_ea_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1637,
+          "doc": "Parameterized fixture for any nullable integer dtype and\nany float ea dtypes.\n\n* 'UInt8'\n* 'Int8'\n* 'UInt16'\n* 'Int16'\n* 'UInt32'\n* 'Int32'\n* 'UInt64'\n* 'Int64'\n* 'Float32'\n* 'Float64'"
+        },
+        {
+          "name": "any_numeric_ea_and_arrow_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1664,
+          "doc": "Parameterized fixture for any nullable integer dtype and\nany float ea dtypes.\n\n* 'UInt8'\n* 'Int8'\n* 'UInt16'\n* 'Int16'\n* 'UInt32'\n* 'Int32'\n* 'UInt64'\n* 'Int64'\n* 'Float32'\n* 'Float64'\n* 'uint8[pyarrow]'\n* 'int8[pyarrow]'\n* 'uint16[pyarrow]'\n* 'int16[pyarrow]'\n* 'uint32[pyarrow]'\n* 'int32[pyarrow]'\n* 'uint64[pyarrow]'\n* 'int64[pyarrow]'\n* 'float32[pyarrow]'\n* 'float64[pyarrow]'"
+        },
+        {
+          "name": "any_signed_int_ea_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1694,
+          "doc": "Parameterized fixture for any signed nullable integer dtype.\n\n* 'Int8'\n* 'Int16'\n* 'Int32'\n* 'Int64'"
+        },
+        {
+          "name": "any_real_numpy_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1707,
+          "doc": "Parameterized fixture for any (purely) real numeric dtype.\n\n* int\n* 'int8'\n* 'uint8'\n* 'int16'\n* 'uint16'\n* 'int32'\n* 'uint32'\n* 'int64'\n* 'uint64'\n* float\n* 'float32'\n* 'float64'"
+        },
+        {
+          "name": "any_real_numeric_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1728,
+          "doc": "Parameterized fixture for any (purely) real numeric dtype.\n\n* int\n* 'int8'\n* 'uint8'\n* 'int16'\n* 'uint16'\n* 'int32'\n* 'uint32'\n* 'int64'\n* 'uint64'\n* float\n* 'float32'\n* 'float64'\n\nand associated ea dtypes."
+        },
+        {
+          "name": "any_numpy_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1751,
+          "doc": "Parameterized fixture for all numpy dtypes.\n\n* bool\n* 'bool'\n* int\n* 'int8'\n* 'uint8'\n* 'int16'\n* 'uint16'\n* 'int32'\n* 'uint32'\n* 'int64'\n* 'uint64'\n* float\n* 'float32'\n* 'float64'\n* complex\n* 'complex64'\n* 'complex128'\n* str\n* 'str'\n* 'U'\n* bytes\n* 'bytes'\n* 'datetime64[ns]'\n* 'M8[ns]'\n* 'timedelta64[ns]'\n* 'm8[ns]'\n* object\n* 'object'"
+        },
+        {
+          "name": "any_real_nullable_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1788,
+          "doc": "Parameterized fixture for all real dtypes that can hold NA.\n\n* float\n* 'float32'\n* 'float64'\n* 'Float32'\n* 'Float64'\n* 'UInt8'\n* 'UInt16'\n* 'UInt32'\n* 'UInt64'\n* 'Int8'\n* 'Int16'\n* 'Int32'\n* 'Int64'\n* 'uint8[pyarrow]'\n* 'uint16[pyarrow]'\n* 'uint32[pyarrow]'\n* 'uint64[pyarrow]'\n* 'int8[pyarrow]'\n* 'int16[pyarrow]'\n* 'int32[pyarrow]'\n* 'int64[pyarrow]'\n* 'float[pyarrow]'\n* 'double[pyarrow]'"
+        },
+        {
+          "name": "any_numeric_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1820,
+          "doc": "Parameterized fixture for all numeric dtypes.\n\n* int\n* 'int8'\n* 'uint8'\n* 'int16'\n* 'uint16'\n* 'int32'\n* 'uint32'\n* 'int64'\n* 'uint64'\n* float\n* 'float32'\n* 'float64'\n* complex\n* 'complex64'\n* 'complex128'\n* 'UInt8'\n* 'Int8'\n* 'UInt16'\n* 'Int16'\n* 'UInt32'\n* 'Int32'\n* 'UInt64'\n* 'Int64'\n* 'Float32'\n* 'Float64'"
+        },
+        {
+          "name": "any_skipna_inferred_dtype",
+          "args": [
+            "request"
+          ],
+          "lineno": 1887,
+          "doc": "Fixture for all inferred dtypes from _libs.lib.infer_dtype\n\nThe covered (inferred) types are:\n* 'string'\n* 'empty'\n* 'bytes'\n* 'mixed'\n* 'mixed-integer'\n* 'mixed-integer-float'\n* 'floating'\n* 'integer'\n* 'decimal'\n* 'boolean'\n* 'datetime64'\n* 'datetime'\n* 'date'\n* 'timedelta'\n* 'time'\n* 'period'\n* 'interval'\n\nReturns\n-------\ninferred_dtype : str\n    The string for the inferred dtype from _libs.lib.infer_dtype\nvalues : np.ndarray\n    An array of object dtype that will be inferred to have\n    `inferred_dtype`\n\nExamples\n--------\n>>> from pandas._libs import lib\n>>>\n>>> def test_something(any_skipna_inferred_dtype):\n...     inferred_dtype, values = any_skipna_inferred_dtype\n...     # will pass\n...     assert lib.infer_dtype(values, skipna=True) == inferred_dtype"
+        },
+        {
+          "name": "ip",
+          "args": [],
+          "lineno": 1938,
+          "doc": "Get an instance of IPython.InteractiveShell.\n\nWill raise a skip if IPython is not installed."
+        },
+        {
+          "name": "mpl_cleanup",
+          "args": [],
+          "lineno": 1957,
+          "doc": "Ensure Matplotlib is cleaned up around a test.\n\nBefore a test is run:\n\n1) Set the backend to \"template\" to avoid requiring a GUI.\n\nAfter a test is run:\n\n1) Reset units registry\n2) Reset rc_context\n3) Close all figures\n\nSee matplotlib/testing/decorators.py#L24."
+        },
+        {
+          "name": "tick_classes",
+          "args": [
+            "request"
+          ],
+          "lineno": 1996,
+          "doc": "Fixture for Tick based datetime offsets available for a time series."
+        },
+        {
+          "name": "sort_by_key",
+          "args": [
+            "request"
+          ],
+          "lineno": 2004,
+          "doc": "Simple fixture for testing keys in sorting methods.\nTests None (no key) and the identity key."
+        },
+        {
+          "name": "names",
+          "args": [
+            "request"
+          ],
+          "lineno": 2024,
+          "doc": "A 3-tuple of names, the first two for operands, the last for a result."
+        },
+        {
+          "name": "indexer_sli",
+          "args": [
+            "request"
+          ],
+          "lineno": 2032,
+          "doc": "Parametrize over __setitem__, loc.__setitem__, iloc.__setitem__"
+        },
+        {
+          "name": "indexer_li",
+          "args": [
+            "request"
+          ],
+          "lineno": 2040,
+          "doc": "Parametrize over loc.__getitem__, iloc.__getitem__"
+        },
+        {
+          "name": "indexer_si",
+          "args": [
+            "request"
+          ],
+          "lineno": 2048,
+          "doc": "Parametrize over __setitem__, iloc.__setitem__"
+        },
+        {
+          "name": "indexer_sl",
+          "args": [
+            "request"
+          ],
+          "lineno": 2056,
+          "doc": "Parametrize over __setitem__, loc.__setitem__"
+        },
+        {
+          "name": "indexer_al",
+          "args": [
+            "request"
+          ],
+          "lineno": 2064,
+          "doc": "Parametrize over at.__setitem__, loc.__setitem__"
+        },
+        {
+          "name": "indexer_ial",
+          "args": [
+            "request"
+          ],
+          "lineno": 2072,
+          "doc": "Parametrize over iat.__setitem__, iloc.__setitem__"
+        },
+        {
+          "name": "performance_warning",
+          "args": [
+            "request"
+          ],
+          "lineno": 2080,
+          "doc": "Fixture to check if performance warnings are enabled. Either produces\n``PerformanceWarning`` if they are enabled, otherwise ``False``."
+        },
+        {
+          "name": "using_infer_string",
+          "args": [],
+          "lineno": 2090,
+          "doc": "Fixture to check if infer string option is enabled."
+        },
+        {
+          "name": "using_python_scalars",
+          "args": [],
+          "lineno": 2098,
+          "doc": ""
+        },
+        {
+          "name": "warsaw",
+          "args": [
+            "request"
+          ],
+          "lineno": 2108,
+          "doc": "tzinfo for Europe/Warsaw using pytz, dateutil, or zoneinfo."
+        },
+        {
+          "name": "temp_file",
+          "args": [
+            "tmp_path"
+          ],
+          "lineno": 2116,
+          "doc": "Generate a unique file for testing use. See link for removal policy.\nhttps://docs.pytest.org/en/7.1.x/how-to/tmp_path.html#the-default-base-temporary-directory"
+        },
+        {
+          "name": "monkeysession",
+          "args": [],
+          "lineno": 2127,
+          "doc": ""
+        },
+        {
+          "name": "using_nan_is_na",
+          "args": [
+            "request"
+          ],
+          "lineno": 2133,
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\pandas\\_version.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test__version.py",
+      "functions": [
+        {
+          "name": "get_keywords",
+          "args": [],
+          "lineno": 22,
+          "doc": "Get the keywords needed to look up the version information."
+        },
+        {
+          "name": "get_config",
+          "args": [],
+          "lineno": 39,
+          "doc": "Create, populate and return the VersioneerConfig() object."
+        },
+        {
+          "name": "register_vcs_handler",
+          "args": [
+            "vcs",
+            "method"
+          ],
+          "lineno": 61,
+          "doc": "Create decorator to mark a method as the handler of a VCS."
+        },
+        {
+          "name": "run_command",
+          "args": [
+            "commands",
+            "args",
+            "cwd",
+            "verbose",
+            "hide_stderr",
+            "env"
+          ],
+          "lineno": 74,
+          "doc": "Call the given command(s)."
+        },
+        {
+          "name": "versions_from_parentdir",
+          "args": [
+            "parentdir_prefix",
+            "root",
+            "verbose"
+          ],
+          "lineno": 120,
+          "doc": "Try to determine the version from the parent directory name.\n\nSource tarballs conventionally unpack into a directory that includes both\nthe project name and a version string. We will also support searching up\ntwo directory levels for an appropriately named parent directory"
+        },
+        {
+          "name": "git_get_keywords",
+          "args": [
+            "versionfile_abs"
+          ],
+          "lineno": 151,
+          "doc": "Extract version information from the given file."
+        },
+        {
+          "name": "git_versions_from_keywords",
+          "args": [
+            "keywords",
+            "tag_prefix",
+            "verbose"
+          ],
+          "lineno": 179,
+          "doc": "Get version information from git keywords."
+        },
+        {
+          "name": "git_pieces_from_vcs",
+          "args": [
+            "tag_prefix",
+            "root",
+            "verbose",
+            "runner"
+          ],
+          "lineno": 250,
+          "doc": "Get version from 'git describe' in the root of the source tree.\n\nThis only gets called if the git-archive 'subst' keywords were *not*\nexpanded, and _version.py hasn't already been rewritten with a short\nversion string, meaning we're inside a checked out source tree."
+        },
+        {
+          "name": "plus_or_dot",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 389,
+          "doc": "Return a + if we don't already have one, else return a ."
+        },
+        {
+          "name": "render_pep440",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 396,
+          "doc": "Build up version string, with post-release \"local version identifier\".\n\nOur goal: TAG[+DISTANCE.gHEX[.dirty]] . Note that if you\nget a tagged build and then dirty it, you'll get TAG+0.gHEX.dirty\n\nExceptions:\n1: no tags. git_describe was just HEX. 0+untagged.DISTANCE.gHEX[.dirty]"
+        },
+        {
+          "name": "render_pep440_branch",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 420,
+          "doc": "TAG[[.dev0]+DISTANCE.gHEX[.dirty]] .\n\nThe \".dev0\" means not master branch. Note that .dev0 sorts backwards\n(a feature branch will appear \"older\" than the master branch).\n\nExceptions:\n1: no tags. 0[.dev0]+untagged.DISTANCE.gHEX[.dirty]"
+        },
+        {
+          "name": "pep440_split_post",
+          "args": [
+            "ver"
+          ],
+          "lineno": 449,
+          "doc": "Split pep440 version string at the post-release segment.\n\nReturns the release segments before the post-release and the\npost-release version number (or -1 if no post-release segment is present)."
+        },
+        {
+          "name": "render_pep440_pre",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 459,
+          "doc": "TAG[.postN.devDISTANCE] -- No -dirty.\n\nExceptions:\n1: no tags. 0.post0.devDISTANCE"
+        },
+        {
+          "name": "render_pep440_post",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 483,
+          "doc": "TAG[.postDISTANCE[.dev0]+gHEX] .\n\nThe \".dev0\" means dirty. Note that .dev0 sorts backwards\n(a dirty tree will appear \"older\" than the corresponding clean one),\nbut you shouldn't be releasing software with -dirty anyways.\n\nExceptions:\n1: no tags. 0.postDISTANCE[.dev0]"
+        },
+        {
+          "name": "render_pep440_post_branch",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 510,
+          "doc": "TAG[.postDISTANCE[.dev0]+gHEX[.dirty]] .\n\nThe \".dev0\" means not master branch.\n\nExceptions:\n1: no tags. 0.postDISTANCE[.dev0]+gHEX[.dirty]"
+        },
+        {
+          "name": "render_pep440_old",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 539,
+          "doc": "TAG[.postDISTANCE[.dev0]] .\n\nThe \".dev0\" means dirty.\n\nExceptions:\n1: no tags. 0.postDISTANCE[.dev0]"
+        },
+        {
+          "name": "render_git_describe",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 561,
+          "doc": "TAG[-DISTANCE-gHEX][-dirty].\n\nLike 'git describe --tags --dirty --always'.\n\nExceptions:\n1: no tags. HEX[-dirty]  (note: no 'g' prefix)"
+        },
+        {
+          "name": "render_git_describe_long",
+          "args": [
+            "pieces"
+          ],
+          "lineno": 581,
+          "doc": "TAG-DISTANCE-gHEX[-dirty].\n\nLike 'git describe --tags --dirty --always --long'.\nThe distance/hash is unconditional.\n\nExceptions:\n1: no tags. HEX[-dirty]  (note: no 'g' prefix)"
+        },
+        {
+          "name": "render",
+          "args": [
+            "pieces",
+            "style"
+          ],
+          "lineno": 601,
+          "doc": "Render the given version pieces into the requested style."
+        },
+        {
+          "name": "get_versions",
+          "args": [],
+          "lineno": 643,
+          "doc": "Get version information or return default if unable to do so."
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\pandas\\api\\internals.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_internals.py",
+      "functions": [
+        {
+          "name": "create_dataframe_from_blocks",
+          "args": [
+            "blocks",
+            "index",
+            "columns"
+          ],
+          "lineno": 13,
+          "doc": "Low-level function to create a DataFrame from arrays as they are\nrepresenting the block structure of the resulting DataFrame.\n\nAttention: this is an advanced, low-level function that should only be\nused if you know that the below-mentioned assumptions are guaranteed.\nIf passing data that do not follow those assumptions, subsequent\nsubsequent operations on the resulting DataFrame might lead to strange\nerrors.\nFor almost all use cases, you should use the standard pd.DataFrame(..)\nconstructor instead. If you are planning to use this function, let us\nknow by opening an issue at https://github.com/pandas-dev/pandas/issues.\n\nAssumptions:\n\n- The block arrays are either a 2D numpy array or a pandas ExtensionArray\n- In case of a numpy array, it is assumed to already be in the expected\n  shape for Blocks (2D, (cols, rows), i.e. transposed compared to the\n  DataFrame columns).\n- All arrays are taken as is (no type inference) and expected to have the\n  correct size.\n- The placement arrays have the correct length (equalling the number of\n  columns that its equivalent block array represents), and all placement\n  arrays together form a complete set of 0 to n_columns - 1.\n\nParameters\n----------\nblocks : list of tuples of (block_array, block_placement)\n    This should be a list of tuples existing of (block_array, block_placement),\n    where:\n\n    - block_array is a 2D numpy array or a 1D ExtensionArray, following the\n      requirements listed above.\n    - block_placement is a 1D integer numpy array\nindex : Index\n    The Index object for the `index` of the resulting DataFrame.\ncolumns : Index\n    The Index object for the `columns` of the resulting DataFrame.\n\nReturns\n-------\nDataFrame"
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\pandas\\compat\\pickle_compat.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_pickle_compat.py",
+      "functions": [
+        {
+          "name": "loads",
+          "args": [
+            "bytes_object"
+          ],
+          "lineno": 117,
+          "doc": "Analogous to pickle._loads."
+        },
+        {
+          "name": "patch_pickle",
+          "args": [],
+          "lineno": 134,
+          "doc": "Temporarily patch pickle to use our unpickler."
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\pandas\\compat\\_optional.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test__optional.py",
+      "functions": [
+        {
+          "name": "get_version",
+          "args": [
+            "module"
+          ],
+          "lineno": 76,
+          "doc": ""
+        },
+        {
+          "name": "import_optional_dependency",
+          "args": [
+            "name",
+            "extra",
+            "min_version"
+          ],
+          "lineno": 88,
+          "doc": ""
+        },
+        {
+          "name": "import_optional_dependency",
+          "args": [
+            "name",
+            "extra",
+            "min_version"
+          ],
+          "lineno": 98,
+          "doc": ""
+        },
+        {
+          "name": "import_optional_dependency",
+          "args": [
+            "name",
+            "extra",
+            "min_version"
+          ],
+          "lineno": 107,
+          "doc": "Import an optional dependency.\n\nBy default, if a dependency is missing an ImportError with a nice\nmessage will be raised. If a dependency is present, but too old,\nwe raise.\n\nParameters\n----------\nname : str\n    The module name.\nextra : str\n    Additional text to include in the ImportError message.\nerrors : str {'raise', 'warn', 'ignore'}\n    What to do when a dependency is not found or its version is too old.\n\n    * raise : Raise an ImportError\n    * warn : Only applicable when a module's version is to old.\n      Warns that the version is too old and returns None\n    * ignore: If the module is not installed, return None, otherwise,\n      return the module, even if the version is too old.\n      It's expected that users validate the version locally when\n      using ``errors=\"ignore\"`` (see. ``io/html.py``)\nmin_version : str, default None\n    Specify a minimum version that is different from the global pandas\n    minimum version required.\nReturns\n-------\nmaybe_module : Optional[ModuleType]\n    The imported module, when found and the version is correct.\n    None is returned when the package is not found and `errors`\n    is False, or when the package's version is too old and `errors`\n    is ``'warn'`` or ``'ignore'``."
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\pandas\\compat\\__init__.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test___init__.py",
+      "functions": [
+        {
+          "name": "set_function_name",
+          "args": [
+            "f",
+            "name",
+            "cls"
+          ],
+          "lineno": 45,
+          "doc": "Bind the name/qualname attributes of the function."
+        },
+        {
+          "name": "is_platform_little_endian",
+          "args": [],
+          "lineno": 55,
+          "doc": "Checking if the running platform is little endian.\n\nReturns\n-------\nbool\n    True if the running platform is little endian."
+        },
+        {
+          "name": "is_platform_windows",
+          "args": [],
+          "lineno": 67,
+          "doc": "Checking if the running platform is windows.\n\nReturns\n-------\nbool\n    True if the running platform is windows."
+        },
+        {
+          "name": "is_platform_linux",
+          "args": [],
+          "lineno": 79,
+          "doc": "Checking if the running platform is linux.\n\nReturns\n-------\nbool\n    True if the running platform is linux."
+        },
+        {
+          "name": "is_platform_mac",
+          "args": [],
+          "lineno": 91,
+          "doc": "Checking if the running platform is mac.\n\nReturns\n-------\nbool\n    True if the running platform is mac."
+        },
+        {
+          "name": "is_platform_arm",
+          "args": [],
+          "lineno": 103,
+          "doc": "Checking if the running platform use ARM architecture.\n\nReturns\n-------\nbool\n    True if the running platform uses ARM architecture."
+        },
+        {
+          "name": "is_platform_power",
+          "args": [],
+          "lineno": 117,
+          "doc": "Checking if the running platform use Power architecture.\n\nReturns\n-------\nbool\n    True if the running platform uses ARM architecture."
+        },
+        {
+          "name": "is_platform_riscv64",
+          "args": [],
+          "lineno": 129,
+          "doc": "Checking if the running platform use riscv64 architecture.\n\nReturns\n-------\nbool\n    True if the running platform uses riscv64 architecture."
+        },
+        {
+          "name": "is_ci_environment",
+          "args": [],
+          "lineno": 141,
+          "doc": "Checking if running in a continuous integration environment by checking\nthe PANDAS_CI environment variable.\n\nReturns\n-------\nbool\n    True if the running in a continuous integration environment."
+        }
+      ]
+    },
+    {
+      "source": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\my_repo\\pandas\\pandas\\compat\\numpy\\function.py",
+      "test_file": "D:\\陈飞帆\\大学\\数据挖掘\\大作业\\CodeAssistant\\generated_tests\\test_function.py",
+      "functions": [
+        {
+          "name": "process_skipna",
+          "args": [
+            "skipna",
+            "args"
+          ],
+          "lineno": 105,
+          "doc": ""
+        },
+        {
+          "name": "validate_argmin_with_skipna",
+          "args": [
+            "skipna",
+            "args",
+            "kwargs"
+          ],
+          "lineno": 113,
+          "doc": "If 'Series.argmin' is called via the 'numpy' library, the third parameter\nin its signature is 'out', which takes either an ndarray or 'None', so\ncheck if the 'skipna' parameter is either an instance of ndarray or is\nNone, since 'skipna' itself should be a boolean"
+        },
+        {
+          "name": "validate_argmax_with_skipna",
+          "args": [
+            "skipna",
+            "args",
+            "kwargs"
+          ],
+          "lineno": 125,
+          "doc": "If 'Series.argmax' is called via the 'numpy' library, the third parameter\nin its signature is 'out', which takes either an ndarray or 'None', so\ncheck if the 'skipna' parameter is either an instance of ndarray or is\nNone, since 'skipna' itself should be a boolean"
+        },
+        {
+          "name": "validate_argsort_with_ascending",
+          "args": [
+            "ascending",
+            "args",
+            "kwargs"
+          ],
+          "lineno": 160,
+          "doc": "If 'Categorical.argsort' is called via the 'numpy' library, the first\nparameter in its signature is 'axis', which takes either an integer or\n'None', so check if the 'ascending' parameter has either integer type or is\nNone, since 'ascending' itself should be a boolean"
+        },
+        {
+          "name": "validate_clip_with_axis",
+          "args": [
+            "axis",
+            "args",
+            "kwargs"
+          ],
+          "lineno": 183,
+          "doc": ""
+        },
+        {
+          "name": "validate_clip_with_axis",
+          "args": [
+            "axis",
+            "args",
+            "kwargs"
+          ],
+          "lineno": 187,
+          "doc": ""
+        },
+        {
+          "name": "validate_clip_with_axis",
+          "args": [
+            "axis",
+            "args",
+            "kwargs"
+          ],
+          "lineno": 190,
+          "doc": "If 'NDFrame.clip' is called via the numpy library, the third parameter in\nits signature is 'out', which can takes an ndarray, so check if the 'axis'\nparameter is an instance of ndarray, since 'axis' itself should either be\nan integer or None"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "\n=================================== ERRORS ====================================\n_______________________ ERROR collecting pandas/pandas ________________________\nC:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1126: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:241: in _call_with_frames_removed\n    ???\n<frozen importlib._bootstrap>:1204: in _gcd_import\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n<frozen importlib._bootstrap_external>:940: in exec_module\n    ???\n<frozen importlib._bootstrap>:241: in _call_with_frames_removed\n    ???\npandas\\pandas\\__init__.py:44: in <module>\n    import pandas.core.config_init  # pyright: ignore[reportUnusedImport] # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npandas\\pandas\\core\\config_init.py:31: in <module>\n    from pandas.errors import Pandas4Warning\npandas\\pandas\\errors\\__init__.py:12: in <module>\n    from pandas._libs.tslibs import (\npandas\\pandas\\_libs\\__init__.py:16: in <module>\n    import pandas._libs.pandas_parser  # isort: skip # type: ignore[reportUnusedImport]\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ModuleNotFoundError: No module named 'pandas._libs.pandas_parser'\n______ ERROR collecting pandas/scripts/tests/test_validate_docstrings.py ______\nImportError while importing test module 'D:\\�·ɷ�\\��ѧ\\�����ھ�\\����ҵ\\CodeAssistant\\my_repo\\pandas\\scripts\\tests\\test_validate_docstrings.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npandas\\scripts\\tests\\test_validate_docstrings.py:6: in <module>\n    from scripts import validate_docstrings\npandas\\scripts\\validate_docstrings.py:30: in <module>\n    import matplotlib\nE   ModuleNotFoundError: No module named 'matplotlib'\n____________ ERROR collecting pandas/web/tests/test_pandas_web.py _____________\nImportError while importing test module 'D:\\�·ɷ�\\��ѧ\\�����ھ�\\����ҵ\\CodeAssistant\\my_repo\\pandas\\web\\tests\\test_pandas_web.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npandas\\web\\tests\\test_pandas_web.py:9: in <module>\n    from web.pandas_web import Preprocessors\npandas\\web\\pandas_web.py:42: in <module>\n    import feedparser\nE   ModuleNotFoundError: No module named 'feedparser'\n__________________ ERROR collecting tests/test_math_utils.py __________________\nImportError while importing test module 'D:\\�·ɷ�\\��ѧ\\�����ھ�\\����ҵ\\CodeAssistant\\my_repo\\tests\\test_math_utils.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests\\test_math_utils.py:2: in <module>\n    from mypkg.math_utils import add, div\nE   ModuleNotFoundError: No module named 'mypkg'\n============================== warnings summary ===============================\n..\\.venv\\Lib\\site-packages\\_pytest\\cacheprovider.py:475\n  D:\\�·ɷ�\\��ѧ\\�����ھ�\\����ҵ\\CodeAssistant\\.venv\\Lib\\site-packages\\_pytest\\cacheprovider.py:475: PytestCacheWarning: could not create cache path D:\\�·ɷ�\\��ѧ\\�����ھ�\\����ҵ\\CodeAssistant\\my_repo\\.pytest_cache\\v\\cache\\nodeids: [WinError 5] �ܾ����ʡ�: 'D:\\\\�·ɷ�\\\\��ѧ\\\\�����ھ�\\\\����ҵ\\\\CodeAssistant\\\\my_repo\\\\pytest-cache-files-uludy90a' -> 'D:\\\\�·ɷ�\\\\��ѧ\\\\�����ھ�\\\\����ҵ\\\\CodeAssistant\\\\my_repo\\\\.pytest_cache'\n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nERROR pandas/pandas - ModuleNotFoundError: No module named 'pandas._libs.pand...\nERROR pandas/scripts/tests/test_validate_docstrings.py\nERROR pandas/web/tests/test_pandas_web.py\nERROR tests/test_math_utils.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!\n1 warning, 4 errors in 5.64s\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q"
+      ]
+    },
+    "report": {
+      "stdout": "Name                                                         Stmts   Miss  Cover   Missing\n------------------------------------------------------------------------------------------\npandas\\pandas\\__init__.py                                       36     25    31%   46-238\npandas\\pandas\\_config\\__init__.py                               14      6    57%   34-35, 39-40, 44-45\npandas\\pandas\\_config\\config.py                                276    162    41%   128-140, 187-191, 269-288, 332-341, 385-398, 402-403, 416-425, 428-439, 442, 500-518, 558, 560, 571, 573, 580, 586, 638-643, 657-665, 669-673, 684-689, 700, 708-712, 723-746, 751-773, 850, 871, 875, 881-894, 911-919, 944-946\npandas\\pandas\\_config\\dates.py                                   7      0   100%\npandas\\pandas\\_config\\display.py                                24      7    71%   27-28, 32-38, 42\npandas\\pandas\\_libs\\__init__.py                                  5      3    40%   17-19\npandas\\pandas\\_typing.py                                       152      0   100%\npandas\\pandas\\compat\\__init__.py                                30     12    60%   49-52, 64, 76, 88, 100, 112, 126, 138, 151\npandas\\pandas\\compat\\_constants.py                              15      0   100%\npandas\\pandas\\compat\\_optional.py                               44     33    25%   77-84, 148-191\npandas\\pandas\\compat\\numpy\\__init__.py                          24      6    75%   18, 37-42\npandas\\pandas\\compat\\pyarrow.py                                 27     11    59%   22-32\npandas\\pandas\\core\\__init__.py                                   0      0   100%\npandas\\pandas\\core\\config_init.py                              203    196     3%   35-915\npandas\\pandas\\errors\\__init__.py                                78     73     6%   18-1034\npandas\\pandas\\util\\__init__.py                                  19     17    11%   3-25, 29\npandas\\pandas\\util\\_exceptions.py                               50     38    24%   23-34, 43-63, 87-101\npandas\\pandas\\util\\version\\__init__.py                         201     80    60%   24, 27, 30, 33, 36, 39, 42, 45, 53, 56, 59, 62, 65, 68, 71, 74, 108, 139, 146, 151-154, 157-160, 164, 169-172, 175-178, 225, 250, 253-278, 290, 294, 302-305, 309, 317, 326, 330, 334, 338, 342, 346, 355-373, 377-379, 389, 418, 424, 431, 438, 451\npandas\\scripts\\__init__.py                                       0      0   100%\npandas\\scripts\\check_for_inconsistent_pandas_namespace.py       62     44    29%   45-46, 49-54, 57-59, 63-83, 89-117, 121-135, 139\npandas\\scripts\\check_test_naming.py                             65     50    23%   31-35, 39-41, 50, 56, 70, 80-138, 142-156\npandas\\scripts\\generate_pip_deps_from_conda.py                  63     51    19%   48-66, 92-126, 130-154\npandas\\scripts\\sort_whatsnew_note.py                            34     25    26%   44-62, 66-78, 82\npandas\\scripts\\tests\\__init__.py                                 0      0   100%\npandas\\scripts\\tests\\conftest.py                                 2      0   100%\npandas\\scripts\\tests\\test_check_test_naming.py                   8      4    50%   37-40\npandas\\scripts\\tests\\test_inconsistent_namespace_check.py       24      8    67%   38-41, 48, 53-57\npandas\\scripts\\tests\\test_sort_whatsnew_note.py                  6      4    33%   5-30\npandas\\scripts\\tests\\test_validate_docstrings.py                92     88     4%   10-530\npandas\\scripts\\tests\\test_validate_exception_location.py        23     11    52%   32, 38-45, 51-54, 58-59\npandas\\scripts\\tests\\test_validate_min_versions_in_sync.py      20     12    40%   47-58\npandas\\scripts\\tests\\test_validate_unwanted_patterns.py         39     21    46%   56-60, 225-229, 257-259, 296-298, 315-332\npandas\\scripts\\validate_docstrings.py                          218    206     6%   31-536\npandas\\scripts\\validate_exception_location.py                   47     32    32%   43-47, 52-54, 57-70, 76-88, 92-101, 105\npandas\\scripts\\validate_min_versions_in_sync.py                196    163    17%   55-75, 79-84, 88-100, 106-126, 132-146, 152-179, 184-190, 196-227, 232-249, 253-281, 285\npandas\\scripts\\validate_unwanted_patterns.py                   124    105    15%   88-95, 115-147, 164-177, 207-286, 310-340, 363-391, 430-442, 446-473\npandas\\web\\pandas_web.py                                       225    210     7%   43-506\npandas\\web\\tests\\test_pandas_web.py                             30     26    13%   12-88\ntests\\test_math_utils.py                                         9      7    22%   4-12\n------------------------------------------------------------------------------------------\nTOTAL                                                         2492   1736    30%\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}
