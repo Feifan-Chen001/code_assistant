@@ -12,6 +12,7 @@ from typing import Any, Dict, List, Optional
 from urllib.parse import urlparse
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 from src.core.config import load_config
 from src.core.config_validator import validate_config, CodeAssistantConfig
@@ -51,6 +52,7 @@ def _inject_css() -> None:
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap");
 
+
 :root {{
   --bg: #f7f7f8;
   --panel: #ffffff;
@@ -77,60 +79,11 @@ def _inject_css() -> None:
   --sidebar-glow-2: radial-gradient(320px 320px at 0% 0%, rgba(255, 235, 59, 0.22) 0%, transparent 50%);
 }}
 
-@media (prefers-color-scheme: dark) {{
-  :root {{
-    --bg: #0b0f14;
-    --panel: #0f172a;
-    --ink: #e2e8f0;
-    --muted: #94a3b8;
-    --accent: #10b981;
-    --accent-strong: #059669;
-    --accent-soft: #34d399;
-    --accent-glow: rgba(16, 185, 129, 0.35);
-    --border: #1f2937;
-    --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-    --sidebar-bg: #0c1422;
-    --input-bg: #0b1220;
-    --input-border: #233146;
-    --code-bg: #0b1220;
-    --code-border: #233146;
-    --hero-overlay: rgba(11, 18, 32, 0.6);
-    --hero-text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-    --hero-subtext-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-    --app-glow-1: radial-gradient(1000px 500px at 10% 0%, rgba(16, 185, 129, 0.18) 0%, transparent 55%);
-    --app-glow-2: radial-gradient(900px 450px at 90% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 55%);
-    --app-glow-3: radial-gradient(700px 350px at 50% 100%, rgba(234, 179, 8, 0.12) 0%, transparent 50%);
-    --sidebar-glow-1: radial-gradient(420px 420px at 0% 70%, rgba(16, 185, 129, 0.18) 0%, transparent 60%);
-    --sidebar-glow-2: radial-gradient(320px 320px at 0% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
-  }}
+html, body {{
+  color-scheme: light;
 }}
 
-html[data-theme="dark"],
-body[data-theme="dark"] {{
-  --bg: #0b0f14;
-  --panel: #0f172a;
-  --ink: #e2e8f0;
-  --muted: #94a3b8;
-  --accent: #10b981;
-  --accent-strong: #059669;
-  --accent-soft: #34d399;
-  --accent-glow: rgba(16, 185, 129, 0.35);
-  --border: #1f2937;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-  --sidebar-bg: #0c1422;
-  --input-bg: #0b1220;
-  --input-border: #233146;
-  --code-bg: #0b1220;
-  --code-border: #233146;
-  --hero-overlay: rgba(11, 18, 32, 0.6);
-  --hero-text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  --hero-subtext-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  --app-glow-1: radial-gradient(1000px 500px at 10% 0%, rgba(16, 185, 129, 0.18) 0%, transparent 55%);
-  --app-glow-2: radial-gradient(900px 450px at 90% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 55%);
-  --app-glow-3: radial-gradient(700px 350px at 50% 100%, rgba(234, 179, 8, 0.12) 0%, transparent 50%);
-  --sidebar-glow-1: radial-gradient(420px 420px at 0% 70%, rgba(16, 185, 129, 0.18) 0%, transparent 60%);
-  --sidebar-glow-2: radial-gradient(320px 320px at 0% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
-}}
+
 
 .stApp {{
   background: var(--app-glow-1), var(--app-glow-2), var(--app-glow-3), var(--bg);
@@ -274,6 +227,35 @@ code, pre {{
 </style>
 """,
         unsafe_allow_html=True,
+    )
+
+
+def _hide_theme_picker() -> None:
+    components.html(
+        """
+<script>
+(function () {
+  function hideThemeRow() {
+    const labels = window.parent.document.querySelectorAll("label");
+    labels.forEach((label) => {
+      const text = (label.textContent || "").replace(/\s+/g, " ").trim();
+      if (text === "Choose app theme" || text === "??????") {
+        const row = label.parentElement;
+        if (row) {
+          row.style.display = "none";
+        }
+      }
+    });
+  }
+
+  const observer = new MutationObserver(hideThemeRow);
+  observer.observe(window.parent.document.body, { childList: true, subtree: true });
+  hideThemeRow();
+})();
+</script>
+""",
+        height=0,
+        width=0,
     )
 
 
@@ -826,6 +808,7 @@ def _llm_generate_recommendations(report_text: str, cfg: Dict[str, Any]) -> Dict
 def main() -> None:
     st.set_page_config(page_title="代码助手", layout="wide")
     _inject_css()
+    _hide_theme_picker()
 
     st.markdown(
         """
@@ -850,92 +833,198 @@ def main() -> None:
         st.markdown("## 📚 可用规则文档")
         
         # DS 基础规则
-        with st.expander("🎯 Data Science Basic Rules (7 个)", expanded=True):
+        with st.expander("🎯 Data Science Basic Rules (11 个)", expanded=True):
             st.markdown("""
             #### DS_RANDOM_SEED
-            **严重性**: Medium  
-            **描述**: 检测使用随机性但未设置种子  
+            **严重性**: High  
+            **说明**: 检测随机数使用但未显式设置 seed，可能导致结果不可复现。  
             **示例**:
             ```python
-            # ❌ 错误
+            # bad
             import random
             x = random.random()
-            
-            # ✅ 正确
+
+            # good
             import random
             random.seed(42)
             x = random.random()
             ```
-            
+
             #### DS_SKLEARN_RANDOM_STATE
-            **严重性**: Medium  
-            **描述**: sklearn 随机组件缺少 random_state 参数  
+            **严重性**: High  
+            **说明**: sklearn 的随机组件未设置 `random_state`。  
             **示例**:
             ```python
-            # ❌ 错误
+            # bad
             clf = RandomForestClassifier(n_estimators=100)
-            
-            # ✅ 正确
+
+            # good
             clf = RandomForestClassifier(n_estimators=100, random_state=42)
             ```
-            
-            #### DS_LEAKAGE_FIT_BEFORE_SPLIT
-            **严重性**: High  
-            **描述**: fit_transform 在 train_test_split 之前可能导致数据泄漏  
+
+            #### DS_TORCH_SEED
+            **严重性**: Medium  
+            **说明**: 使用 PyTorch 随机数但未设置 `torch.manual_seed`。  
             **示例**:
             ```python
-            # ❌ 错误
+            # bad
+            import torch
+            x = torch.rand(3)
+
+            # good
+            import torch
+            torch.manual_seed(42)
+            x = torch.rand(3)
+            ```
+
+            #### DS_TF_SEED
+            **严重性**: Medium  
+            **说明**: 使用 TensorFlow 随机数但未设置 `tf.random.set_seed`。  
+            **示例**:
+            ```python
+            # bad
+            import tensorflow as tf
+            x = tf.random.uniform([3])
+
+            # good
+            import tensorflow as tf
+            tf.random.set_seed(42)
+            x = tf.random.uniform([3])
+            ```
+
+            #### DS_LEAKAGE_FIT_BEFORE_SPLIT
+            **严重性**: High  
+            **说明**: 在 `train_test_split` 之前调用 `fit_transform`，可能造成数据泄漏。  
+            **示例**:
+            ```python
+            # bad
             scaler = StandardScaler()
             X_scaled = scaler.fit_transform(X)
-            X_train, X_test = train_test_split(X_scaled)
-            
-            # ✅ 正确
-            X_train, X_test = train_test_split(X)
+            X_train, X_test, y_train, y_test = train_test_split(X_scaled, y)
+
+            # good
+            X_train, X_test, y_train, y_test = train_test_split(X, y)
             scaler = StandardScaler()
             X_train = scaler.fit_transform(X_train)
             X_test = scaler.transform(X_test)
             ```
-            
+
             #### DS_PIPELINE_SUGGEST
             **严重性**: Medium  
-            **描述**: 缩放器未在 Pipeline 中使用  
-            
+            **说明**: 预处理与模型分离 fit/transform，建议使用 Pipeline。  
+            **示例**:
+            ```python
+            # bad
+            scaler = StandardScaler()
+            X = scaler.fit_transform(X)
+            clf.fit(X, y)
+
+            # good
+            pipe = make_pipeline(StandardScaler(), LogisticRegression())
+            pipe.fit(X, y)
+            ```
+
+            #### DS_PANDAS_ITERROWS
+            **严重性**: Medium  
+            **说明**: `iterrows()` 逐行遍历性能低。  
+            **示例**:
+            ```python
+            # bad
+            for _, row in df.iterrows():
+                total += row["value"]
+
+            # good
+            total = df["value"].sum()
+            ```
+
+            #### DS_PANDAS_APPLY_AXIS1
+            **严重性**: Medium  
+            **说明**: `apply(axis=1)` 行级 apply 性能较差。  
+            **示例**:
+            ```python
+            # bad
+            df["z"] = df.apply(lambda r: r["x"] + r["y"], axis=1)
+
+            # good
+            df["z"] = df["x"] + df["y"]
+            ```
+
+            #### DS_PANDAS_SETTINGWITHCOPY
+            **严重性**: High  
+            **说明**: `SettingWithCopy` 可能导致修改丢失或意外写入。  
+            **示例**:
+            ```python
+            # bad
+            df[df.a > 0]["b"] = 1
+
+            # good
+            df.loc[df.a > 0, "b"] = 1
+            ```
+
             #### DS_MODEL_PICKLE_UNSAFE
             **严重性**: High  
-            **描述**: 使用 pickle 序列化模型不安全  
-            **建议**: 使用 joblib.dump() 或 ONNX 导出
-            
+            **说明**: 直接反序列化未验证的 pickle 可能带来安全风险。  
+            **示例**:
+            ```python
+            # bad
+            import pickle
+            model = pickle.load(open("model.pkl", "rb"))
+
+            # good
+            # 仅从可信来源加载，或使用更安全的格式/签名校验
+            ```
+
             #### DS_HYPERPARAMS_HARDCODED
             **严重性**: Low  
-            **描述**: 模型超参数硬编码  
-            **建议**: 使用 GridSearchCV 或配置文件
-            
-            #### DS_PANDAS_ITERROWS / DS_PANDAS_APPLY_AXIS1
-            **严重性**: Low  
-            **描述**: pandas 低效操作  
-            **建议**: 使用向量化操作
+            **说明**: 超参数硬编码，降低可复现性与可调参性。  
+            **示例**:
+            ```python
+            # bad
+            clf = RandomForestClassifier(n_estimators=200, max_depth=8)
+
+            # good
+            params = {"n_estimators": 200, "max_depth": 8}
+            clf = RandomForestClassifier(**params)
+            ```
             """)
         
         # DS 高级规则
-        with st.expander("🚀 Data Science Advanced Rules (5 个)", expanded=True):
+        with st.expander("🚀 Data Science Advanced Rules (7 个)", expanded=True):
             st.markdown("""
             #### DS_FEATURE_SELECTION_NO_NESTED_CV
             **严重性**: Medium  
-            **描述**: 特征选择后未使用嵌套交叉验证可能导致过拟合  
-            
+            **说明**: 特征选择未嵌套在交叉验证中，可能引入泄漏。  
+            **建议**: 使用 Pipeline + 交叉验证或嵌套 CV。
+
             #### DS_IMBALANCE_NOT_IN_PIPELINE
             **严重性**: High  
-            **描述**: 采样方法（SMOTE）未在 Pipeline 中可能导致数据泄漏  
-            
+            **说明**: 处理不平衡（如 SMOTE）未放入 Pipeline，可能在 CV 中泄漏。  
+            **建议**: 使用 `imblearn.pipeline.Pipeline` 组合采样与模型。
+
             #### DS_IMBALANCE_UNHANDLED
             **严重性**: Low  
-            **描述**: 模型训练未处理数据不平衡  
-            **建议**: 使用 class_weight、SMOTE 或分层 CV
-            
-            #### DS_EVALUATION_INCOMPLETE
+            **说明**: 检测到类别不平衡但未进行处理。  
+            **建议**: class_weight/重采样/阈值调节等。
+
+            #### DS_CV_NOT_STRATIFIED
+            **严重性**: Medium  
+            **说明**: 分类任务使用非分层 CV（如 KFold/ShuffleSplit）。  
+            **建议**: 使用 StratifiedKFold/StratifiedShuffleSplit。
+
+            #### DS_NO_VALIDATION_SPLIT
             **严重性**: Low  
-            **描述**: 评估指标不足  
-            **建议**: 使用多个指标（accuracy, precision, recall, F1, ROC-AUC）
+            **说明**: 未进行 train/valid 划分或未提供 validation_split/validation_data。  
+            **建议**: 保留验证集用于调参与早停。
+
+            #### DS_EVAL_ON_TRAIN
+            **严重性**: Medium  
+            **说明**: 在训练集上评估指标，结果易过拟合。  
+            **建议**: 在验证集或测试集上评估。
+
+            #### DS_EVALUATION_INCOMPLETE
+            **严重性**: Medium  
+            **说明**: 评价指标不完整，仅有单一指标。  
+            **建议**: 补充 Precision/Recall/F1/AUC 等。
             """)
         
         # 插件规则

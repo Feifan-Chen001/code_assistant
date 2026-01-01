@@ -25,10 +25,46 @@ SKLEARN_RANDOM_CALLS = {
     "BaggingRegressor",
     "KMeans",
     "MiniBatchKMeans",
+    "HistGradientBoostingClassifier",
+    "HistGradientBoostingRegressor",
+    "XGBClassifier",
+    "XGBRegressor",
+    "LGBMClassifier",
+    "LGBMRegressor",
+    "CatBoostClassifier",
+    "CatBoostRegressor",
 }
 
-SCALER_CLASSES = {"StandardScaler", "OneHotEncoder"}
+
+SCALER_CLASSES = {
+    "StandardScaler",
+    "MinMaxScaler",
+    "RobustScaler",
+    "MaxAbsScaler",
+    "Normalizer",
+    "PowerTransformer",
+    "QuantileTransformer",
+    "OneHotEncoder",
+    "OrdinalEncoder",
+    "SimpleImputer",
+    "KNNImputer",
+    "IterativeImputer",
+}
+
 PIPELINE_CALLS = {"Pipeline", "make_pipeline"}
+
+TORCH_RANDOM_CALLS = {"rand", "randn", "randint", "randperm", "normal", "uniform", "bernoulli"}
+TORCH_SEED_CALLS = {"manual_seed", "manual_seed_all"}
+
+TF_RANDOM_CALLS = {
+    "uniform",
+    "normal",
+    "truncated_normal",
+    "shuffle",
+    "gamma",
+    "poisson",
+}
+TF_SEED_CALLS = {"set_seed", "set_random_seed"}
 
 # ML 模型类
 ML_MODELS = {
@@ -40,8 +76,10 @@ ML_MODELS = {
     "AdaBoostClassifier", "AdaBoostRegressor",
     "XGBClassifier", "XGBRegressor",
     "LGBMClassifier", "LGBMRegressor",
+    "CatBoostClassifier", "CatBoostRegressor",
     "KMeans", "DBSCAN", "AgglomerativeClustering",
 }
+
 
 # 模型序列化函数
 MODEL_SERIALIZATION = {"pickle", "dill"}
@@ -115,6 +153,10 @@ def _has_kw(node: ast.Call, name: str) -> bool:
     return any(kw.arg == name for kw in node.keywords if kw.arg is not None)
 
 
+
+def _has_any_kw(node: ast.Call, names: Set[str]) -> bool:
+    return any(kw.arg in names for kw in node.keywords if kw.arg is not None)
+
 def _is_chained_subscript(node: ast.AST) -> bool:
     return isinstance(node, ast.Subscript) and isinstance(node.value, ast.Subscript)
 
@@ -128,9 +170,20 @@ class _DSVisitor(ast.NodeVisitor):
         self.random_module_aliases: Set[str] = set()
         self.random_func_aliases: Set[str] = set()
         self.numpy_random_func_aliases: Set[str] = set()
+        self.torch_aliases: Set[str] = set()
+        self.torch_random_func_aliases: Set[str] = set()
+        self.torch_seed_func_aliases: Set[str] = set()
+        self.tf_aliases: Set[str] = set()
+        self.tf_random_aliases: Set[str] = set()
+        self.tf_random_func_aliases: Set[str] = set()
+        self.tf_seed_func_aliases: Set[str] = set()
 
         self.has_seed = False
+        self.torch_seeded = False
+        self.tf_seeded = False
         self.random_usage_lines: List[int] = []
+        self.torch_random_lines: List[int] = []
+        self.tf_random_lines: List[int] = []
         self.train_test_split_lines: List[int] = []
         self.fit_transform_lines: List[int] = []
 
@@ -168,6 +221,12 @@ class _DSVisitor(ast.NodeVisitor):
                 self.numpy_random_aliases.add(asname)
             if name == "random":
                 self.random_module_aliases.add(asname)
+            if name == "torch":
+                self.torch_aliases.add(asname)
+            if name == "tensorflow":
+                self.tf_aliases.add(asname)
+            if name == "tensorflow.random":
+                self.tf_random_aliases.add(asname)
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node: ast.ImportFrom):
@@ -182,6 +241,22 @@ class _DSVisitor(ast.NodeVisitor):
                 self.numpy_random_func_aliases.add(asname)
             if mod == "random":
                 self.random_func_aliases.add(asname)
+            if mod == "torch":
+                if name in TORCH_RANDOM_CALLS:
+                    self.torch_random_func_aliases.add(asname)
+                if name in TORCH_SEED_CALLS:
+                    self.torch_seed_func_aliases.add(asname)
+            if mod == "tensorflow":
+                if name == "random":
+                    self.tf_random_aliases.add(asname)
+            if mod == "tensorflow.random":
+                if name in TF_RANDOM_CALLS:
+                    self.tf_random_func_aliases.add(asname)
+                if name in TF_SEED_CALLS:
+                    self.tf_seed_func_aliases.add(asname)
+            if mod == "tensorflow.compat.v1":
+                if name in TF_SEED_CALLS:
+                    self.tf_seed_func_aliases.add(asname)
             # 捕获 pickle 导入
             if mod == "pickle" or name in {"pickle", "dill"}:
                 self.pickle_imports.add(asname)
@@ -251,7 +326,7 @@ class _DSVisitor(ast.NodeVisitor):
         if name == "fit_transform":
             self.fit_transform_lines.append(getattr(node, "lineno", 0))
 
-        if name in SKLEARN_RANDOM_CALLS and not _has_kw(node, "random_state"):
+        if name in SKLEARN_RANDOM_CALLS and not _has_any_kw(node, {"random_state", "random_seed", "seed"}):
             self._add(
                 "DS_SKLEARN_RANDOM_STATE",
                 "medium",
@@ -292,6 +367,18 @@ class _DSVisitor(ast.NodeVisitor):
                     node,
                 )
 
+        if self._is_torch_seed_call(chain, name):
+            self.torch_seeded = True
+
+        if self._is_torch_random_usage(chain, name):
+            self.torch_random_lines.append(getattr(node, "lineno", 0))
+
+        if self._is_tf_seed_call(chain, name):
+            self.tf_seeded = True
+
+        if self._is_tf_random_usage(chain, name):
+            self.tf_random_lines.append(getattr(node, "lineno", 0))
+
         if self._is_seed_call(chain, name, node):
             self.has_seed = True
 
@@ -327,6 +414,42 @@ class _DSVisitor(ast.NodeVisitor):
             return True
         return False
 
+    def _is_torch_seed_call(self, chain: str, name: str) -> bool:
+        if name in self.torch_seed_func_aliases:
+            return True
+        if name in TORCH_SEED_CALLS and self.torch_aliases:
+            return True
+        if any(chain.startswith(f"{a}.") for a in self.torch_aliases) and any(chain.endswith(f".{n}") for n in TORCH_SEED_CALLS):
+            return True
+        return False
+
+    def _is_torch_random_usage(self, chain: str, name: str) -> bool:
+        if name in self.torch_random_func_aliases:
+            return True
+        if name in TORCH_RANDOM_CALLS and any(chain.startswith(f"{a}.") for a in self.torch_aliases):
+            return True
+        if any(chain.startswith(f"{a}.random.") for a in self.torch_aliases) and name in TORCH_RANDOM_CALLS:
+            return True
+        return False
+
+    def _is_tf_seed_call(self, chain: str, name: str) -> bool:
+        if name in self.tf_seed_func_aliases:
+            return True
+        if name in TF_SEED_CALLS and self.tf_aliases:
+            return True
+        if any(chain.startswith(f"{a}.") for a in self.tf_aliases) and any(chain.endswith(f".{n}") for n in TF_SEED_CALLS):
+            return True
+        return False
+
+    def _is_tf_random_usage(self, chain: str, name: str) -> bool:
+        if name in self.tf_random_func_aliases:
+            return True
+        if name in TF_RANDOM_CALLS and any(chain.startswith(f"{a}.random.") for a in self.tf_aliases):
+            return True
+        if name in TF_RANDOM_CALLS and any(chain.startswith(f"{a}.") for a in self.tf_random_aliases):
+            return True
+        return False
+
     def _has_numeric_hyperparams(self, call_node: ast.Call) -> bool:
         """检查模型是否有数值型超参数硬编码"""
         for kw in call_node.keywords:
@@ -341,6 +464,24 @@ class _DSVisitor(ast.NodeVisitor):
                 "DS_RANDOM_SEED",
                 "medium",
                 "Randomness detected without an explicit seed.",
+                _DummyNode(line),
+            )
+
+        if self.torch_random_lines and not self.torch_seeded:
+            line = min(self.torch_random_lines) if self.torch_random_lines else None
+            self._add(
+                "DS_TORCH_SEED",
+                "medium",
+                "PyTorch randomness detected without torch.manual_seed().",
+                _DummyNode(line),
+            )
+
+        if self.tf_random_lines and not self.tf_seeded:
+            line = min(self.tf_random_lines) if self.tf_random_lines else None
+            self._add(
+                "DS_TF_SEED",
+                "medium",
+                "TensorFlow randomness detected without tf.random.set_seed().",
                 _DummyNode(line),
             )
 
