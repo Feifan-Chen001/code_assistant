@@ -30,6 +30,25 @@ SKLEARN_RANDOM_CALLS = {
 SCALER_CLASSES = {"StandardScaler", "OneHotEncoder"}
 PIPELINE_CALLS = {"Pipeline", "make_pipeline"}
 
+# ML 模型类
+ML_MODELS = {
+    "LogisticRegression", "LinearRegression", "Ridge", "Lasso", "ElasticNet",
+    "SVC", "SVR", "KNeighborsClassifier", "KNeighborsRegressor",
+    "DecisionTreeClassifier", "DecisionTreeRegressor",
+    "RandomForestClassifier", "RandomForestRegressor",
+    "GradientBoostingClassifier", "GradientBoostingRegressor",
+    "AdaBoostClassifier", "AdaBoostRegressor",
+    "XGBClassifier", "XGBRegressor",
+    "LGBMClassifier", "LGBMRegressor",
+    "KMeans", "DBSCAN", "AgglomerativeClustering",
+}
+
+# 模型序列化函数
+MODEL_SERIALIZATION = {"pickle", "dill"}
+
+# 特征相关操作
+SCALING_METHODS = {"fit", "fit_transform", "transform"}
+
 RANDOM_FUNC_NAMES = {
     "random",
     "randint",
@@ -118,6 +137,13 @@ class _DSVisitor(ast.NodeVisitor):
         self.pipeline_used = False
         self.scaler_vars: Set[str] = set()
         self.scaler_usage_nodes: Dict[str, ast.Call] = {}
+        
+        # 新增跟踪变量
+        self.model_vars: Dict[str, str] = {}  # 变量名 -> 模型名称
+        self.pickle_imports: Set[str] = set()  # pickle 相关导入
+        self.hardcoded_hyperparams: List[tuple] = []  # (变量名, 行号)
+        self.sklearn_module_aliases: Set[str] = set()  # sklearn 模块别名
+        self.scaling_without_pipeline: List[str] = []  # 单独使用的缩放器
 
     def _add(self, rule: str, severity: str, message: str, node: Optional[ast.AST]):
         self.findings.append(
@@ -156,6 +182,12 @@ class _DSVisitor(ast.NodeVisitor):
                 self.numpy_random_func_aliases.add(asname)
             if mod == "random":
                 self.random_func_aliases.add(asname)
+            # 捕获 pickle 导入
+            if mod == "pickle" or name in {"pickle", "dill"}:
+                self.pickle_imports.add(asname)
+            # 捕获 sklearn 导入
+            if "sklearn" in mod:
+                self.sklearn_module_aliases.add(asname)
         self.generic_visit(node)
 
     def visit_Assign(self, node: ast.Assign):
@@ -172,6 +204,14 @@ class _DSVisitor(ast.NodeVisitor):
             if name in SCALER_CLASSES:
                 for t in node.targets:
                     self.scaler_vars.update(_assigned_names(t))
+            # 检测模型创建
+            if name in ML_MODELS:
+                for t in node.targets:
+                    for var_name in _assigned_names(t):
+                        self.model_vars[var_name] = name
+                        # 检查模型超参数是否硬编码
+                        if self._has_numeric_hyperparams(node.value):
+                            self.hardcoded_hyperparams.append((var_name, node.lineno))
         self.generic_visit(node)
 
     def visit_AnnAssign(self, node: ast.AnnAssign):
@@ -218,6 +258,18 @@ class _DSVisitor(ast.NodeVisitor):
                 "Stochastic sklearn component without random_state may be non-reproducible.",
                 node,
             )
+
+        # 检测 pickle.dump 序列化模型
+        if name == "dump" and any(chain.startswith(f"{a}.") for a in self.pickle_imports):
+            if node.args:
+                first_arg = _call_name(node.args[0]) if isinstance(node.args[0], ast.Name) else ""
+                if first_arg in self.model_vars:
+                    self._add(
+                        "DS_MODEL_PICKLE_UNSAFE",
+                        "high",
+                        f"Pickling ML model '{first_arg}' is unsafe; consider joblib.dump() or ONNX export.",
+                        node,
+                    )
 
         if isinstance(node.func, ast.Attribute) and isinstance(node.func.value, ast.Name):
             var = node.func.value.id
@@ -275,6 +327,13 @@ class _DSVisitor(ast.NodeVisitor):
             return True
         return False
 
+    def _has_numeric_hyperparams(self, call_node: ast.Call) -> bool:
+        """检查模型是否有数值型超参数硬编码"""
+        for kw in call_node.keywords:
+            if isinstance(kw.value, (ast.Constant, ast.Num)):
+                return True
+        return False
+
     def finalize(self) -> List[ReviewFinding]:
         if self.random_usage_lines and not self.has_seed:
             line = min(self.random_usage_lines) if self.random_usage_lines else None
@@ -303,6 +362,16 @@ class _DSVisitor(ast.NodeVisitor):
                     "medium",
                     f"{var} used without Pipeline; consider sklearn.pipeline.Pipeline.",
                     node,
+                )
+
+        # 新增：检查硬编码的超参数
+        if self.hardcoded_hyperparams:
+            for var_name, line in self.hardcoded_hyperparams:
+                self._add(
+                    "DS_HYPERPARAMS_HARDCODED",
+                    "low",
+                    f"Model '{var_name}' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+                    _DummyNode(line),
                 )
 
         return self.findings
