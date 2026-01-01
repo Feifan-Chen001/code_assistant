@@ -28,16 +28,16 @@ rules:
   
   # 随机性和可复现性
   DS_RANDOM_SEED:
-    severity: "high"
+    severity: "medium"
     description: "缺少 random_state 参数导致不可复现"
     category: "reproducibility"
-    impact: "无法复现实验结果"
+    impact: "影响实验可复现性，但不影响结果正确性"
   
   DS_SKLEARN_RANDOM_STATE:
-    severity: "high"
+    severity: "medium"
     description: "sklearn 模型缺少 random_state"
     category: "reproducibility"
-    impact: "机器学习模型结果不可复现"
+    impact: "机器学习模型结果不可复现，但不影响模型有效性"
   
   # ========== 数据处理规则 (Data Processing Rules) ==========
   
@@ -48,36 +48,36 @@ rules:
     impact: "可能意外修改原始数据集"
   
   DS_PANDAS_ITERROWS:
-    severity: "medium"
+    severity: "low"
     description: "使用 iterrows() - 性能低下"
     category: "performance"
-    impact: "大数据集上性能严重下降"
+    impact: "性能问题，建议使用向量化操作"
   
   DS_PANDAS_APPLY_AXIS1:
-    severity: "medium"
+    severity: "low"
     description: "使用 apply(axis=1) - 性能低下"
     category: "performance"
-    impact: "行级操作性能不佳"
+    impact: "性能问题，建议使用向量化操作"
   
   # ========== 模型构建规则 (Model Building Rules) ==========
   
   DS_MODEL_PICKLE_UNSAFE:
-    severity: "high"
+    severity: "medium"
     description: "使用不安全的 pickle 序列化模型"
     category: "security"
-    impact: "安全风险，可能执行恶意代码"
+    impact: "存在安全风险和兼容性问题，建议使用 joblib 或 ONNX"
   
   DS_PIPELINE_SUGGEST:
-    severity: "medium"
+    severity: "low"
     description: "建议使用 Pipeline 整理预处理流程"
     category: "best_practice"
-    impact: "代码可维护性和复现性较差"
+    impact: "最佳实践建议，提高代码可维护性"
   
   DS_HYPERPARAMS_HARDCODED:
-    severity: "medium"
+    severity: "low"
     description: "超参数硬编码 - 不利于调优"
     category: "best_practice"
-    impact: "难以进行超参数搜索和优化"
+    impact: "影响代码可维护性，建议使用配置文件或 GridSearchCV"
   
   # ========== 通用代码质量规则 (General Code Quality Rules) ==========
   
