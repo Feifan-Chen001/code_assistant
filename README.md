@@ -74,11 +74,11 @@
 ##### 🎯 基础规则（7项）
 | 规则 ID | 严重性 | 检测内容 |
 |---------|--------|----------|
-| `DS_RANDOM_SEED` | MEDIUM | 缺少随机种子设置（影响可复现性） |
-| `DS_SKLEARN_RANDOM_STATE` | MEDIUM | sklearn 模型缺少 random_state |
-| `DS_LEAKAGE_FIT_BEFORE_SPLIT` | HIGH | 数据泄露（在划分前拟合预处理器） |
-| `DS_PIPELINE_SUGGEST` | LOW | 缩放器未在 Pipeline 中使用 |
-| `DS_MODEL_PICKLE_UNSAFE` | MEDIUM | 使用 pickle 序列化模型（安全与兼容性） |
+| `DS_RANDOM_SEED` | HIGH | 使用随机性但未设置种子 |
+| `DS_SKLEARN_RANDOM_STATE` | HIGH | sklearn 模型缺少 random_state |
+| `DS_LEAKAGE_FIT_BEFORE_SPLIT` | HIGH | fit_transform 在 train_test_split 之前 |
+| `DS_PIPELINE_SUGGEST` | MEDIUM | 缩放器未在 Pipeline 中使用 |
+| `DS_MODEL_PICKLE_UNSAFE` | HIGH | 使用 pickle 序列化模型 |
 | `DS_HYPERPARAMS_HARDCODED` | LOW | 模型超参数硬编码 |
 | `DS_PANDAS_PERFORMANCE` | LOW | pandas 低效操作（iterrows/apply） |
 
@@ -89,7 +89,7 @@
 | `DS_IMBALANCE_NOT_IN_PIPELINE` | HIGH | SMOTE 等采样方法未在 Pipeline 中 |
 | `DS_IMBALANCE_UNHANDLED` | LOW | 未处理数据不平衡 |
 | `DS_EVALUATION_INCOMPLETE` | LOW | 评估指标不足 |
-| `DS_TEST_SET_REUSE` | HIGH | 测试集被重复使用 |
+| `DS_TEST_SET_REUSE` | MEDIUM | 测试集被重复使用 |
 
 ##### 🔌 插件规则（4项）
 - `PY_MUTABLE_DEFAULT_ARG`：可变默认参数陷阱
@@ -347,19 +347,16 @@ coverage:
 
 ```yaml
 rules:
-  # HIGH - 导致错误结果或严重安全问题
-  DS_LEAKAGE_FIT_BEFORE_SPLIT: "high"       # 导致无效结论（数据泄漏）
+  DS_RANDOM_SEED: "high"                    # 影响复现性
+  DS_SKLEARN_RANDOM_STATE: "high"           # 影响复现性
+  DS_LEAKAGE_FIT_BEFORE_SPLIT: "high"       # 导致无效结论
   DS_IMBALANCE_NOT_IN_PIPELINE: "high"      # 数据泄漏风险
-  DS_TEST_SET_REUSE: "high"                 # 测试集重复使用导致过拟合
+  DS_MODEL_PICKLE_UNSAFE: "high"            # 安全风险
   
-  # MEDIUM - 影响可复现性、兼容性或有安全隐患
-  DS_RANDOM_SEED: "medium"                  # 影响可复现性（不影响正确性）
-  DS_SKLEARN_RANDOM_STATE: "medium"         # 影响可复现性
-  DS_MODEL_PICKLE_UNSAFE: "medium"          # 安全风险和兼容性问题
+  DS_PIPELINE_SUGGEST: "medium"             # 最佳实践
   DS_FEATURE_SELECTION_NO_NESTED_CV: "medium"
+  DS_TEST_SET_REUSE: "medium"
   
-  # LOW - 最佳实践建议和性能优化
-  DS_PIPELINE_SUGGEST: "low"                # 最佳实践建议
   DS_HYPERPARAMS_HARDCODED: "low"           # 可维护性
   DS_PANDAS_PERFORMANCE: "low"              # 性能优化
   DS_IMBALANCE_UNHANDLED: "low"
@@ -372,45 +369,17 @@ rules:
 
 ### 规则详解
 
-#### 🔴 HIGH - 导致错误结果或严重安全问题
-
-##### DS_LEAKAGE_FIT_BEFORE_SPLIT
-**问题**：在数据拆分前进行 fit_transform，导致测试集信息泄漏，评估结果无效
-
-**错误示例**：
-```python
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-
-# ❌ 错误：在拆分前 fit（数据泄漏）
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-X_train, X_test = train_test_split(X_scaled, y)
-```
-
-**正确示例**：
-```python
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-
-# ✅ 正确：先拆分再 fit
-X_train, X_test, y_train, y_test = train_test_split(X, y)
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)  # 只 transform，不 fit
-```
-
-#### 🟡 MEDIUM - 影响可复现性、兼容性或有安全隐患
+#### 🔴 HIGH - 影响结果正确性
 
 ##### DS_RANDOM_SEED
-**问题**：使用随机性但未设置种子，导致结果不可复现（但不影响正确性）
+**问题**：使用随机性但未设置种子，导致结果不可复现
 
 **错误示例**：
 ```python
 import random
 import numpy as np
 
-# ❌ 未设置种子（结果每次不同）
+# ❌ 未设置种子
 data = np.random.randn(100)
 sample = random.sample(range(100), 10)
 ```
@@ -428,24 +397,33 @@ data = np.random.randn(100)
 sample = random.sample(range(100), 10)
 ```
 
-##### DS_MODEL_PICKLE_UNSAFE
-**问题**：使用 pickle 序列化模型，存在安全风险和跨版本兼容性问题
+##### DS_LEAKAGE_FIT_BEFORE_SPLIT
+**问题**：在数据拆分前进行 fit_transform，导致测试集信息泄漏
 
-**推荐方案**：
+**错误示例**：
 ```python
-# ✅ 使用模型专用的保存方法
-import joblib
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-
-# 使用 joblib（比 pickle 更高效安全）
-joblib.dump(model, 'model.joblib')
-loaded_model = joblib.load('model.joblib')
+# ❌ 错误：在拆分前 fit
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+X_train, X_test = train_test_split(X_scaled, y)
 ```
 
-#### 🟢 LOW - 最佳实践建议和性能优化
+**正确示例**：
+```python
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+
+# ✅ 正确：先拆分再 fit
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)  # 只 transform，不 fit
+```
+
+#### 🟡 MEDIUM - 影响最佳实践
 
 ##### DS_PIPELINE_SUGGEST
 **问题**：未使用 Pipeline 封装预处理和模型，容易出错
@@ -466,8 +444,10 @@ pipeline.fit(X_train, y_train)
 predictions = pipeline.predict(X_test)
 ```
 
+#### 🟢 LOW - 性能优化
+
 ##### DS_PANDAS_PERFORMANCE
-**问题**：使用低效的 pandas 操作（性能优化建议）
+**问题**：使用低效的 pandas 操作
 
 **错误示例**：
 ```python
@@ -620,25 +600,15 @@ class NoPrintRule(RulePlugin):
 
 **A**: 已修复。现在会从最新的 Markdown 报告重新生成 PDF。
 
-### Q3: 严重级别分类标准？
+### Q3: 严重级别不合理？
 
-**A**: 我们使用三级分类：
-- **HIGH**：导致错误结果（数据泄漏）或严重安全问题
-- **MEDIUM**：影响可复现性、兼容性或有安全隐患（但不致命）
-- **LOW**：最佳实践建议和性能优化
-
-例如：random seed 是 MEDIUM（影响可复现性但不影响正确性），数据泄漏是 HIGH（导致无效结论）
-
-### Q4: 如何自定义严重级别？
-
-**A**: 编辑 `severity_config.yaml`：
+**A**: 可以编辑 `severity_config.yaml` 自定义规则的严重级别：
 ```yaml
 rules:
-  DS_RANDOM_SEED: "medium"  # 改为你需要的级别
-  DS_LEAKAGE_FIT_BEFORE_SPLIT: "high"
+  DS_RANDOM_SEED: "high"  # 改为你需要的级别
 ```
 
-### Q5: 如何添加自定义排除规则？
+### Q4: 如何添加自定义排除规则？
 
 **A**: 编辑 `config.yaml`：
 ```yaml

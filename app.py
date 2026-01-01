@@ -1,8 +1,11 @@
-﻿from __future__ import annotations
+from __future__ import annotations
+
 import base64
 import io
 import json
+import re
 import textwrap
+import zipfile
 from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -12,14 +15,15 @@ import streamlit as st
 
 from src.core.config import load_config
 from src.core.config_validator import validate_config, CodeAssistantConfig
+from src.core.llm_client import llm_chat, build_llm_config
+from src.core.logger import setup_logger
 from src.core.orchestrator import Orchestrator
 from src.core.subproc import run_cmd
-from src.core.logger import setup_logger
+from src.features.review.notebook import extract_code_cells
 from src.features.review.rule_plugin import get_registry
-from src.reporting.report_builder import build_markdown_report
-from src.reporting.pdf_builder import build_pdf_report
 from src.reporting.latex_builder import build_latex_report
-
+from src.reporting.pdf_builder import build_pdf_report
+from src.reporting.report_builder import build_markdown_report
 
 def _inject_css() -> None:
     # 加载背景图片并转换为 base64
@@ -34,7 +38,7 @@ def _inject_css() -> None:
     # 根据是否有图片生成不同的背景样式
     if bg_image_base64:
         hero_background = f"""
-  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
+  background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
               url('data:image/png;base64,{bg_image_base64}') center/cover no-repeat;
 """
     else:
@@ -54,16 +58,82 @@ def _inject_css() -> None:
   --muted: #64748b;
   --accent: #10a37f;
   --accent-strong: #0c8b6b;
+  --accent-soft: #22c28f;
+  --accent-glow: rgba(16, 163, 127, 0.2);
   --border: #e2e8f0;
   --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --sidebar-bg: #fafafa;
+  --input-bg: #ffffff;
+  --input-border: #dbe3ee;
+  --code-bg: #f1f5f9;
+  --code-border: #e2e8f0;
+  --hero-overlay: rgba(255, 255, 255, 0.3);
+  --hero-text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  --hero-subtext-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  --app-glow-1: radial-gradient(1000px 500px at 10% 0%, rgba(16, 163, 127, 0.18) 0%, transparent 55%);
+  --app-glow-2: radial-gradient(900px 450px at 90% 0%, rgba(52, 211, 153, 0.18) 0%, transparent 55%);
+  --app-glow-3: radial-gradient(700px 350px at 50% 100%, rgba(26, 188, 156, 0.14) 0%, transparent 50%);
+  --sidebar-glow-1: radial-gradient(420px 420px at 0% 70%, rgba(255, 220, 120, 0.28) 0%, transparent 60%);
+  --sidebar-glow-2: radial-gradient(320px 320px at 0% 0%, rgba(255, 235, 59, 0.22) 0%, transparent 50%);
+}}
+
+@media (prefers-color-scheme: dark) {{
+  :root {{
+    --bg: #0b0f14;
+    --panel: #0f172a;
+    --ink: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #10b981;
+    --accent-strong: #059669;
+    --accent-soft: #34d399;
+    --accent-glow: rgba(16, 185, 129, 0.35);
+    --border: #1f2937;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    --sidebar-bg: #0c1422;
+    --input-bg: #0b1220;
+    --input-border: #233146;
+    --code-bg: #0b1220;
+    --code-border: #233146;
+    --hero-overlay: rgba(11, 18, 32, 0.6);
+    --hero-text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --hero-subtext-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    --app-glow-1: radial-gradient(1000px 500px at 10% 0%, rgba(16, 185, 129, 0.18) 0%, transparent 55%);
+    --app-glow-2: radial-gradient(900px 450px at 90% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 55%);
+    --app-glow-3: radial-gradient(700px 350px at 50% 100%, rgba(234, 179, 8, 0.12) 0%, transparent 50%);
+    --sidebar-glow-1: radial-gradient(420px 420px at 0% 70%, rgba(16, 185, 129, 0.18) 0%, transparent 60%);
+    --sidebar-glow-2: radial-gradient(320px 320px at 0% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
+  }}
+}}
+
+html[data-theme="dark"],
+body[data-theme="dark"] {{
+  --bg: #0b0f14;
+  --panel: #0f172a;
+  --ink: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #10b981;
+  --accent-strong: #059669;
+  --accent-soft: #34d399;
+  --accent-glow: rgba(16, 185, 129, 0.35);
+  --border: #1f2937;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --sidebar-bg: #0c1422;
+  --input-bg: #0b1220;
+  --input-border: #233146;
+  --code-bg: #0b1220;
+  --code-border: #233146;
+  --hero-overlay: rgba(11, 18, 32, 0.6);
+  --hero-text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --hero-subtext-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --app-glow-1: radial-gradient(1000px 500px at 10% 0%, rgba(16, 185, 129, 0.18) 0%, transparent 55%);
+  --app-glow-2: radial-gradient(900px 450px at 90% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 55%);
+  --app-glow-3: radial-gradient(700px 350px at 50% 100%, rgba(234, 179, 8, 0.12) 0%, transparent 50%);
+  --sidebar-glow-1: radial-gradient(420px 420px at 0% 70%, rgba(16, 185, 129, 0.18) 0%, transparent 60%);
+  --sidebar-glow-2: radial-gradient(320px 320px at 0% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
 }}
 
 .stApp {{
-  background:
-    radial-gradient(1000px 500px at 10% 0%, rgba(16, 163, 127, 0.2) 0%, transparent 50%),
-    radial-gradient(800px 400px at 90% 0%, rgba(52, 211, 153, 0.2) 0%, transparent 45%),
-    radial-gradient(600px 300px at 50% 100%, rgba(26, 188, 156, 0.2) 0%, transparent 40%),
-    #ffffff;
+  background: var(--app-glow-1), var(--app-glow-2), var(--app-glow-3), var(--bg);
   color: var(--ink);
   font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
 }}
@@ -76,10 +146,7 @@ div.block-container {{
 }}
 
 section[data-testid="stSidebar"] {{
-  background:
-    radial-gradient(400px 400px at 0% 70%, rgba(255, 220, 120, 0.25) 0%, transparent 60%),
-    radial-gradient(300px 300px at 0% 0%, rgba(255, 235, 59, 0.20) 0%, transparent 50%),
-    #fafafa;
+  background: var(--sidebar-glow-1), var(--sidebar-glow-2), var(--sidebar-bg);
   border-right: 1px solid var(--border);
 }}
 
@@ -91,18 +158,25 @@ section[data-testid="stSidebar"] span {{
   color: var(--ink);
 }}
 
-section[data-testid="stSidebar"] .stTextInput input {{
-  background: #ffffff;
-  border: 1px solid var(--border);
+section[data-testid="stSidebar"] .stTextInput input,
+section[data-testid="stSidebar"] .stTextArea textarea {{
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--ink);
   border-radius: 12px;
   padding: 0.55rem 0.75rem;
+}}
+
+section[data-testid="stSidebar"] .stTextInput input::placeholder,
+section[data-testid="stSidebar"] .stTextArea textarea::placeholder {{
+  color: var(--muted);
 }}
 
 .stButton button {{
   width: 100%;
   border-radius: 999px;
   border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--accent), #22c28f);
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
   color: #ffffff;
   font-weight: 600;
   padding: 0.6rem 1.2rem;
@@ -111,15 +185,15 @@ section[data-testid="stSidebar"] .stTextInput input {{
 
 .stButton button:hover {{
   transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(16, 163, 127, 0.2);
-  background: linear-gradient(135deg, var(--accent-strong), #1aa37a);
+  box-shadow: 0 10px 22px var(--accent-glow);
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
 }}
 
 .stDownloadButton button {{
   width: 100%;
   border-radius: 999px;
   border: 1px solid transparent;
-  background: linear-gradient(135deg, var(--accent), #22c28f) !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft)) !important;
   color: #ffffff !important;
   font-weight: 600;
   padding: 0.6rem 1.2rem;
@@ -128,8 +202,8 @@ section[data-testid="stSidebar"] .stTextInput input {{
 
 .stDownloadButton button:hover {{
   transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(16, 163, 127, 0.2);
-  background: linear-gradient(135deg, var(--accent-strong), #1aa37a) !important;
+  box-shadow: 0 10px 22px var(--accent-glow);
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent)) !important;
 }}
 
 h1, h2, h3 {{
@@ -150,7 +224,7 @@ h1, h2, h3 {{
   font-weight: 700;
   position: relative;
   z-index: 1;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  text-shadow: var(--hero-text-shadow);
 }}
 
 .hero-subtitle {{
@@ -159,7 +233,7 @@ h1, h2, h3 {{
   font-size: 1rem;
   position: relative;
   z-index: 1;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: var(--hero-subtext-shadow);
 }}
 
 div[data-testid="column"] > div {{
@@ -188,6 +262,9 @@ div[data-testid="stMetric"] {{
 
 code, pre {{
   font-family: "JetBrains Mono", "Fira Code", monospace;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 10px;
 }}
 
 @keyframes rise {{
@@ -378,7 +455,12 @@ def _compile_latex(tex_path: Path) -> Optional[Path]:
         cwd=str(tex_path.parent),
     )
     if res["ok"] and pdf_path.exists():
-        return pdf_path
+        res2 = run_cmd(
+            ["xelatex", "-interaction=nonstopmode", "-halt-on-error", tex_path.name],
+            cwd=str(tex_path.parent),
+        )
+        if pdf_path.exists():
+            return pdf_path
     res = run_cmd(["tectonic", tex_path.name], cwd=str(tex_path.parent))
     if res["ok"] and pdf_path.exists():
         return pdf_path
@@ -477,6 +559,269 @@ def _show_findings_table(rows) -> None:
         return
     st.dataframe(rows, width="stretch")
 
+def _truncate_text(text: str, limit: int = 12000) -> str:
+    text = text or ""
+    if len(text) <= limit:
+        return text
+    return text[:limit] + "\n...[truncated]..."
+
+
+def _extract_json_block(text: str) -> Optional[Dict[str, Any]]:
+    if not text:
+        return None
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end <= start:
+        return None
+    try:
+        return json.loads(text[start : end + 1])
+    except Exception:
+        return None
+
+
+def _normalize_plan(raw: Any) -> List[Dict[str, str]]:
+    plan: List[Dict[str, str]] = []
+    if isinstance(raw, dict):
+        raw = raw.get("plan") or raw.get("steps") or raw.get("changes") or []
+    if isinstance(raw, list):
+        for idx, item in enumerate(raw, start=1):
+            if isinstance(item, str):
+                plan.append({"id": str(idx), "file": "", "summary": item})
+            elif isinstance(item, dict):
+                summary = (
+                    item.get("summary")
+                    or item.get("change")
+                    or item.get("desc")
+                    or item.get("title")
+                    or ""
+                )
+                file = item.get("file") or item.get("path") or ""
+                plan.append({"id": str(item.get("id", idx)), "file": str(file), "summary": str(summary)})
+    return plan
+
+
+def _fallback_plan(text: str) -> List[Dict[str, str]]:
+    lines: List[str] = []
+    for raw in (text or "").splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        if line[0].isdigit() or line.startswith("-"):
+            line = line.lstrip("- ")
+            line = line.lstrip("0123456789.")
+            line = line.strip()
+        if line:
+            lines.append(line)
+    return [{"id": str(i + 1), "file": "", "summary": line} for i, line in enumerate(lines[:10])]
+
+
+def _normalize_recommendations(raw: Any) -> List[Dict[str, str]]:
+    items: List[Dict[str, str]] = []
+    if isinstance(raw, dict):
+        raw = raw.get("projects") or raw.get("recommendations") or raw.get("items") or []
+    if isinstance(raw, list):
+        for item in raw:
+            if not isinstance(item, dict):
+                continue
+            name = str(item.get("name") or "").strip()
+            url = str(item.get("url") or "").strip()
+            why = str(item.get("why") or item.get("pros") or item.get("summary") or "").strip()
+            if name or url or why:
+                items.append({"name": name, "url": url, "why": why})
+    return items
+
+
+def _format_file_context(files: List[Dict[str, str]]) -> str:
+    blocks: List[str] = []
+    for item in files:
+        path = item.get("path") or ""
+        content = item.get("content") or ""
+        blocks.append(f"FILE: {path}\n```python\n{content}\n```")
+    return "\n\n".join(blocks)
+
+
+def _collect_context_files(
+    repo_root: Path,
+    review: Optional[Dict[str, Any]],
+    max_files: int = 6,
+    max_chars: int = 4000,
+) -> List[Dict[str, str]]:
+    if not review:
+        return []
+    findings = review.get("findings", []) or []
+    seen: set[Path] = set()
+    out: List[Dict[str, str]] = []
+    for finding in findings:
+        file_path = finding.get("file")
+        if not file_path:
+            continue
+        file_path = str(file_path).split("#", 1)[0]
+        p = Path(file_path)
+        if not p.is_absolute():
+            p = repo_root / file_path
+        try:
+            p = p.resolve()
+        except Exception:
+            continue
+        if repo_root not in p.parents and p != repo_root:
+            continue
+        if not p.exists() or p in seen:
+            continue
+        if p.suffix == ".ipynb":
+            cells = extract_code_cells(p)
+            content = "\n\n".join([f"# cell {idx}\n{code}" for idx, code in cells])
+        else:
+            content = p.read_text(encoding="utf-8", errors="ignore")
+        content = content.strip()
+        if not content:
+            continue
+        if len(content) > max_chars:
+            content = content[:max_chars] + "\n...[truncated]..."
+        rel = str(p.relative_to(repo_root)).replace("\\", "/")
+        out.append({"path": rel, "content": content})
+        seen.add(p)
+        if len(out) >= max_files:
+            break
+    return out
+
+
+def _llm_ready(cfg: Dict[str, Any]) -> tuple[bool, str]:
+    llm_cfg = build_llm_config(cfg)
+    if not llm_cfg.get("api_key") and not llm_cfg.get("allow_empty_key"):
+        env_name = llm_cfg.get("api_key_env") or "OPENAI_API_KEY"
+        return False, f"Missing API key. Set {env_name} or llm.api_key."
+    return True, ""
+
+
+def _apply_llm_changes(
+    repo_root: Path,
+    files: List[Dict[str, Any]],
+    allow_new: bool = False,
+) -> tuple[List[Path], List[str]]:
+    allowed_exts = {".py", ".md", ".yaml", ".yml", ".txt", ".json", ".toml", ".ini", ".cfg", ".ipynb"}
+    changed: List[Path] = []
+    skipped: List[str] = []
+    for item in files:
+        path_val = str(item.get("path") or "").strip()
+        content = item.get("content")
+        if not path_val or content is None:
+            skipped.append(path_val or "<empty>")
+            continue
+        p = Path(path_val)
+        if p.is_absolute():
+            try:
+                rel = p.relative_to(repo_root)
+            except Exception:
+                skipped.append(path_val)
+                continue
+        else:
+            rel = p
+        target = (repo_root / rel).resolve()
+        if repo_root not in target.parents and target != repo_root:
+            skipped.append(path_val)
+            continue
+        if target.suffix not in allowed_exts:
+            skipped.append(path_val)
+            continue
+        if not target.exists() and not allow_new:
+            skipped.append(path_val)
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        new_text = str(content)
+        if target.exists():
+            try:
+                old_text = target.read_text(encoding="utf-8", errors="ignore")
+                if old_text == new_text:
+                    continue
+            except Exception:
+                pass
+        target.write_text(new_text, encoding="utf-8")
+        changed.append(target)
+    return changed, skipped
+
+
+def _build_changes_zip(files: List[Path], repo_root: Path) -> bytes:
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for path in files:
+            try:
+                arc = str(path.relative_to(repo_root)).replace("\\", "/")
+                data = path.read_text(encoding="utf-8", errors="ignore")
+                zf.writestr(arc, data)
+            except Exception:
+                continue
+    return buf.getvalue()
+
+def _llm_generate_plan(report_text: str, files_context: str, cfg: Dict[str, Any]) -> Dict[str, Any]:
+    system_msg = (
+        "You are a senior Python engineer. Using the report and file context, "
+        "propose a minimal fix plan. Only refer to the provided files. "
+        "Return strict JSON: {\"plan\":[{\"id\":1,\"file\":\"path\",\"summary\":\"...\"}],\"notes\":\"...\"}."
+    )
+    user_msg = f"REPORT:\n{report_text}\n\nFILES:\n{files_context}\n"
+    res = llm_chat([
+        {"role": "system", "content": system_msg},
+        {"role": "user", "content": user_msg},
+    ], cfg)
+    if not res.get("ok"):
+        return {"ok": False, "error": res.get("error") or "LLM error"}
+    raw = res.get("text", "")
+    data = _extract_json_block(raw)
+    plan = _normalize_plan(data) if data else []
+    if not plan:
+        plan = _fallback_plan(raw)
+    return {"ok": True, "plan": plan, "raw": raw}
+
+
+def _llm_generate_changes(
+    report_text: str,
+    plan: List[Dict[str, str]],
+    files_context: str,
+    cfg: Dict[str, Any],
+) -> Dict[str, Any]:
+    plan_json = json.dumps(plan, ensure_ascii=True, indent=2)
+    system_msg = (
+        "You are a senior Python engineer. Apply the plan using the provided files. "
+        "Return strict JSON: {\"files\":[{\"path\":\"path\",\"content\":\"<full file text>\"}],\"notes\":\"...\"}. "
+        "Only include files you change; keep everything else untouched."
+    )
+    user_msg = (
+        f"PLAN:\n{plan_json}\n\nREPORT:\n{report_text}\n\nFILES:\n{files_context}\n"
+    )
+    res = llm_chat([
+        {"role": "system", "content": system_msg},
+        {"role": "user", "content": user_msg},
+    ], cfg)
+    if not res.get("ok"):
+        return {"ok": False, "error": res.get("error") or "LLM error"}
+    raw = res.get("text", "")
+    data = _extract_json_block(raw)
+    files = []
+    if isinstance(data, dict):
+        files = data.get("files") or data.get("changes") or []
+    if not isinstance(files, list):
+        files = []
+    return {"ok": True, "files": files, "raw": raw}
+
+
+def _llm_generate_recommendations(report_text: str, cfg: Dict[str, Any]) -> Dict[str, Any]:
+    system_msg = (
+        "You are a software advisor. Based on the report, recommend 3-5 relevant projects. "
+        "Return strict JSON: {\"projects\":[{\"name\":\"...\",\"url\":\"https://...\",\"why\":\"...\"}]}."
+    )
+    user_msg = f"REPORT:\n{report_text}\n"
+    res = llm_chat([
+        {"role": "system", "content": system_msg},
+        {"role": "user", "content": user_msg},
+    ], cfg)
+    if not res.get("ok"):
+        return {"ok": False, "error": res.get("error") or "LLM error"}
+    raw = res.get("text", "")
+    data = _extract_json_block(raw)
+    recs = _normalize_recommendations(data) if data else []
+    if not recs:
+        recs = _normalize_recommendations(_extract_json_block(raw) or {})
+    return {"ok": True, "projects": recs, "raw": raw}
 
 def main() -> None:
     st.set_page_config(page_title="代码助手", layout="wide")
@@ -788,7 +1133,45 @@ class CodeAssistantConfig(BaseModel):
     except ValueError as e:
         st.sidebar.error(f"❌ 配置验证失败: {str(e)[:100]}")
         st.stop()
-    
+    llm_cfg = cfg.get("llm", {})
+    with st.sidebar:
+        st.markdown("---")
+        st.markdown("### LLM Settings")
+        llm_enabled = st.checkbox("Enable LLM actions", value=bool(llm_cfg.get("enabled", True)))
+        llm_model = st.text_input("Model", value=str(llm_cfg.get("model", "gpt-4o-mini")))
+        llm_base_url = st.text_input(
+            "Base URL",
+            value=str(llm_cfg.get("base_url", "https://api.openai.com/v1")),
+        )
+        llm_api_key_env = st.text_input(
+            "API key env",
+            value=str(llm_cfg.get("api_key_env", "OPENAI_API_KEY")),
+        )
+        llm_api_key = st.text_input("API key (optional)", type="password", value="")
+        llm_temperature = st.slider(
+            "Temperature",
+            min_value=0.0,
+            max_value=1.0,
+            value=float(llm_cfg.get("temperature", 0.2)),
+            step=0.1,
+        )
+        llm_max_tokens = st.number_input(
+            "Max tokens",
+            min_value=256,
+            max_value=8192,
+            value=int(llm_cfg.get("max_tokens", 1200)),
+            step=128,
+        )
+
+    cfg.setdefault("llm", {})
+    cfg["llm"]["enabled"] = llm_enabled
+    cfg["llm"]["model"] = llm_model
+    cfg["llm"]["base_url"] = llm_base_url
+    cfg["llm"]["api_key_env"] = llm_api_key_env
+    cfg["llm"]["temperature"] = llm_temperature
+    cfg["llm"]["max_tokens"] = llm_max_tokens
+    if llm_api_key:
+        cfg["llm"]["api_key"] = llm_api_key
     # 应用 GUI 设置到配置
     cfg.setdefault("review", {})
     cfg["review"]["enable_ds_rules"] = enable_ds_basic
@@ -836,6 +1219,11 @@ class CodeAssistantConfig(BaseModel):
     state.setdefault("last_report_path", None)
     state.setdefault("last_report_pdf", None)
     state.setdefault("batch_results", [])
+    state.setdefault("last_repo_path", None)
+    state.setdefault("llm_plan", None)
+    state.setdefault("llm_plan_source", None)
+    state.setdefault("llm_changes", None)
+    state.setdefault("llm_recommendations", None)
 
     repo_jobs: List[Dict[str, str]] = []
     if run_review or run_testgen or run_all:
@@ -905,6 +1293,7 @@ class CodeAssistantConfig(BaseModel):
                 st.success(f"✅ [{job['name']}] 报告已保存：{report_path}")
 
             if not batch_mode:
+                state['last_repo_path'] = job['path']
                 if review is not None:
                     state["last_review"] = review
                 if testgen is not None:
@@ -1071,6 +1460,9 @@ class CodeAssistantConfig(BaseModel):
         col1.metric("📝 生成文件数", testgen.get("written_files", 0))
         col2.metric("📂 输出目录", testgen.get("output_dir", "N/A"))
         col3.metric("✅ 状态", "完成" if testgen.get("written_files", 0) > 0 else "无")
+        out_dir_val = str(testgen.get("output_dir", "N/A"))
+        copy_key = f"testgen_outdir_copy_{active_item['name']}" if batch_mode and active_item else "testgen_outdir_copy"
+        st.text_input("Output dir (copyable)", value=out_dir_val, key=copy_key)
         
         # 详细信息（折叠）
         with st.expander("📋 查看详细信息", expanded=False):
@@ -1078,9 +1470,9 @@ class CodeAssistantConfig(BaseModel):
 
     # 报告下载和预览
     st.markdown("---")
-    report_title = "### 📄 综合报告"
+    report_title = "### Report"
     if batch_mode and active_item:
-        report_title = f"### 📄 综合报告（{active_item['name']}）"
+        report_title = f"### Report ({active_item['name']})"
     st.markdown(report_title)
 
     rp = None
@@ -1093,95 +1485,185 @@ class CodeAssistantConfig(BaseModel):
 
     if not rp:
         if active_review or active_testgen:
-            st.info("📝 报告尚未生成，点击下方按钮创建综合报告。")
-            button_label = "🔨 为选定的仓库生成报告" if batch_mode else "🔨 生成综合报告"
-            
-            # 居中的按钮
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                if st.button(button_label, key="build_report", use_container_width=True):
-                    with st.spinner("正在生成报告..."):
-                        report_path, pdf_path = _write_report(active_out_dir, active_review, active_testgen)
-                        if batch_mode and active_item:
-                            active_item["report_path"] = str(report_path)
-                            active_item["pdf_path"] = str(pdf_path) if pdf_path else None
-                        else:
-                            state["last_report_path"] = str(report_path)
-                            state["last_report_pdf"] = str(pdf_path) if pdf_path else None
-                        rp = report_path
-                    st.success("✅ 报告生成成功！")
-                    st.rerun()
+            button_label = "Build report for selected repo" if batch_mode else "Build report from latest run"
+            if st.button(button_label, key="build_report"):
+                report_path, pdf_path = _write_report(active_out_dir, active_review, active_testgen)
+                if batch_mode and active_item:
+                    active_item["report_path"] = str(report_path)
+                    active_item["pdf_path"] = str(pdf_path) if pdf_path else None
+                else:
+                    state["last_report_path"] = str(report_path)
+                    state["last_report_pdf"] = str(pdf_path) if pdf_path else None
+                rp = report_path
         else:
-            st.warning("⚠️ 请先运行审查或测试生成以获取数据。")
-            st.caption("💡 提示：点击上方的「开始审查」、「生成测试」或「全部运行」按钮。")
+            st.info("Run Review/TestGen/All to generate a report.")
 
     if rp and rp.exists():
         source_state = {} if batch_mode else state
         review_src, testgen_src = _load_report_sources(active_out_dir, source_state)
-        
-        # 始终从最新的 .md 报告文件生成 PDF（确保预览最新内容）
-        md_text = rp.read_text(encoding="utf-8")
-        pdf_bytes = None
-        pdf_path = None
-        
-        # 尝试从 LaTeX 编译生成 PDF（高质量）
-        tex_path = rp.with_suffix(".tex")
-        if not tex_path.exists():
-            tex_path.write_text(build_latex_report(review_src, testgen_src), encoding="utf-8")
-        compiled = _compile_latex(tex_path)
-        if compiled:
-            pdf_path = compiled
-            pdf_bytes = compiled.read_bytes()
+        if batch_mode and active_item:
+            pdf_path = active_item.get("pdf_path")
         else:
-            # 降级到 reportlab 生成 PDF
-            pdf_bytes = _make_pdf_bytes(review_src, testgen_src, md_text)
-            if pdf_bytes:
-                pdf_path = rp.with_suffix(".pdf")
-                pdf_path.write_bytes(pdf_bytes)
-        
-        # 显示下载按钮和 PDF 预览
+            pdf_path = state.get("last_report_pdf")
+        pdf_bytes = None
+        if pdf_path and Path(pdf_path).exists():
+            pdf_bytes = Path(pdf_path).read_bytes()
+        else:
+            md_text = rp.read_text(encoding="utf-8")
+            tex_path = rp.with_suffix(".tex")
+            if not tex_path.exists():
+                tex_path.write_text(build_latex_report(review_src, testgen_src), encoding="utf-8")
+            compiled = _compile_latex(tex_path)
+            if compiled:
+                pdf_path = compiled
+                pdf_bytes = compiled.read_bytes()
+                if batch_mode and active_item:
+                    active_item["pdf_path"] = str(pdf_path)
+                else:
+                    state["last_report_pdf"] = str(pdf_path)
+            else:
+                pdf_bytes = _make_pdf_bytes(review_src, testgen_src, md_text)
+                if pdf_bytes:
+                    pdf_path = rp.with_suffix(".pdf")
+                    pdf_path.write_bytes(pdf_bytes)
+                    if batch_mode and active_item:
+                        active_item["pdf_path"] = str(pdf_path)
+                    else:
+                        state["last_report_pdf"] = str(pdf_path)
         if pdf_bytes:
+            btn_col, info_col = st.columns([1, 3], gap="large")
             file_prefix = f"{active_item['name']}_" if batch_mode and active_item else ""
-            
-            # 下载按钮区域 - 美化设计
-            st.markdown("---")
-            st.markdown("### 📥 报告下载")
-            st.caption("💾 可下载 PDF 或 Markdown 格式的完整报告")
-            
-            col1, col2, col3 = st.columns([1, 1, 2], gap="medium")
-            with col1:
+            with btn_col:
                 st.download_button(
-                    "📄 下载 PDF",
+                    "Download report.pdf",
                     data=pdf_bytes,
                     file_name=f"{file_prefix}report.pdf",
                     mime="application/pdf",
-                    use_container_width=True
                 )
-            with col2:
                 st.download_button(
-                    "📝 下载 Markdown",
+                    "Download report.md",
                     data=rp.read_bytes(),
                     file_name=f"{file_prefix}report.md",
-                    use_container_width=True
                 )
-            with col3:
-                st.info("💡 提示：PDF 格式更适合打印和分享")
-            
-            # PDF 预览区域 - 美化设计
-            st.markdown("---")
-            st.markdown("### 👁️ PDF 预览")
-            st.caption("📖 最新生成的报告内容（实时更新）")
-            
-            # 添加预览容器
-            with st.container():
-                _render_pdf_preview(pdf_bytes)
+            with info_col:
+                st.caption("PDF preview")
+            _render_pdf_preview(pdf_bytes)
         else:
-            st.warning("⚠️ PDF 预览不可用")
-            st.caption("请确保已安装 reportlab 或 xelatex/tectonic 以生成 PDF 报告。")
+            st.info("PDF preview unavailable. Install reportlab to enable PDF export.")
+
+        st.markdown("---")
+        st.markdown("### LLM Actions")
+        llm_cfg = cfg.get("llm", {})
+        if not llm_cfg.get("enabled", True):
+            st.info("LLM actions are disabled. Enable them in the LLM settings.")
+        else:
+            ready, reason = _llm_ready(cfg)
+            if not ready:
+                st.warning(f"LLM not configured: {reason}")
+            else:
+                repo_root = None
+                if review_src and review_src.get("repo"):
+                    repo_root = Path(review_src.get("repo"))
+                elif testgen_src and testgen_src.get("repo"):
+                    repo_root = Path(testgen_src.get("repo"))
+                elif batch_mode and active_item:
+                    repo_root = Path(active_item.get("path", ""))
+                elif state.get("last_repo_path"):
+                    repo_root = Path(state.get("last_repo_path"))
+
+                if not repo_root or not repo_root.exists():
+                    st.warning("Repo path not found for LLM actions.")
+                else:
+                    repo_key = str(repo_root)
+                    meta = state.get("llm_plan_source") or {}
+                    if isinstance(meta, dict) and meta.get("repo") != repo_key:
+                        state["llm_plan"] = None
+                        state["llm_changes"] = None
+
+                    report_text = _truncate_text(build_markdown_report(review_src, testgen_src), 12000)
+                    files_ctx = _collect_context_files(repo_root, review_src)
+                    ctx_text = _format_file_context(files_ctx) if files_ctx else ""
+                    if not ctx_text:
+                        st.caption("No file context extracted from the report; LLM output may be limited.")
+
+                    plan_col, rec_col = st.columns(2, gap="medium")
+                    with plan_col:
+                        if st.button("Generate fix plan", key="llm_plan_btn"):
+                            plan_res = _llm_generate_plan(report_text, ctx_text, cfg)
+                            if plan_res.get("ok"):
+                                state["llm_plan"] = plan_res.get("plan")
+                                state["llm_plan_source"] = {"repo": repo_key, "raw": plan_res.get("raw", "")}
+                                state["llm_changes"] = None
+                                st.success("Plan generated.")
+                            else:
+                                st.error(plan_res.get("error") or "LLM plan failed.")
+                    with rec_col:
+                        if st.button("Get recommendations", key="llm_rec_btn"):
+                            rec_res = _llm_generate_recommendations(report_text, cfg)
+                            if rec_res.get("ok"):
+                                state["llm_recommendations"] = rec_res.get("projects")
+                                st.success("Recommendations ready.")
+                            else:
+                                st.error(rec_res.get("error") or "LLM recommendations failed.")
+
+                    plan = state.get("llm_plan") or []
+                    if plan:
+                        st.markdown("#### Proposed changes")
+                        for item in plan:
+                            file_part = f" ({item.get('file')})" if item.get("file") else ""
+                            st.markdown(f"- {item.get('summary')}{file_part}")
+
+                        if st.button("Apply changes", key="llm_apply_btn"):
+                            apply_res = _llm_generate_changes(report_text, plan, ctx_text, cfg)
+                            if apply_res.get("ok"):
+                                changed, skipped = _apply_llm_changes(
+                                    repo_root,
+                                    apply_res.get("files") or [],
+                                    allow_new=bool(llm_cfg.get("allow_new_files", False)),
+                                )
+                                state["llm_changes"] = {
+                                    "changed": [str(p) for p in changed],
+                                    "skipped": skipped,
+                                }
+                                if changed:
+                                    zip_bytes = _build_changes_zip(changed, repo_root)
+                                    st.download_button(
+                                        "Download modified files",
+                                        data=zip_bytes,
+                                        file_name="llm_changes.zip",
+                                    )
+                                    st.success(f"Applied changes to {len(changed)} files.")
+                                if skipped:
+                                    st.warning(f"Skipped {len(skipped)} file entries.")
+                            else:
+                                st.error(apply_res.get("error") or "LLM apply failed.")
+
+                    recs = state.get("llm_recommendations") or []
+                    if recs:
+                        st.markdown("#### Recommendations")
+                        for rec in recs:
+                            name = rec.get("name") or "(no name)"
+                            url = rec.get("url") or ""
+                            why = rec.get("why") or ""
+                            if url:
+                                st.markdown(f"- [{name}]({url}) - {why}")
+                            else:
+                                st.markdown(f"- {name} - {why}")
 
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-assistant:
+﻿assistant:
   max_files: 2000
   include_globs:
     - "**/*.py"
@@ -30,3 +30,12 @@ testgen:
 coverage:
   enable: true
   pytest_args: ["-q"]
+llm:
+  provider: "openai"
+  model: "gpt-4o-mini"
+  api_key_env: "OPENAI_API_KEY"
+  base_url: "https://api.openai.com/v1"
+  temperature: 0.2
+  max_tokens: 1200
+  timeout: 60
+  allow_empty_key: false
