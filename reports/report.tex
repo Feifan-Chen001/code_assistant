@@ -74,112 +74,112 @@
 
 \subsection{概览}
 \begin{itemize}
-  \item 问题总数：251
-  \item 高/中/低：25 / 124 / 102
+  \item 问题总数：250
+  \item 高/中/低：149 / 101 / 0
   \item 工具数：2
-  \item DS 规则命中总数：226
+  \item DS 规则命中总数：225
 \end{itemize}
 
 \subsection{严重性分布}
 \begin{itemize}
-  \item medium：124
-  \item low：102
-  \item high：25
+  \item high：149
+  \item medium：101
 \end{itemize}
 
 \subsection{工具分布}
 \begin{itemize}
-  \item ds-rule：226
+  \item ds-rule：225
   \item ast-rule：25
 \end{itemize}
 
 \subsection{DS 规则分布}
 \begin{itemize}
-  \item DS\_PANDAS\_APPLY\_AXIS1：86
+  \item DS\_PANDAS\_APPLY\_AXIS1：84
   \item DS\_PANDAS\_SETTINGWITHCOPY：82
   \item DS\_RANDOM\_SEED：42
   \item DS\_PANDAS\_ITERROWS：16
+  \item DS\_HYPERPARAMS\_HARDCODED：1
 \end{itemize}
 
 \subsection{Top 20 问题}
 \begin{enumerate}
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/algorithms.py:40} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/arithmetic.py:51} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/array.py:122} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/attrs_caching.py:14} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/boolean.py:9} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/categoricals.py:75} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/ctors.py:79} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/dtypes.py:85} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/eval.py:16} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/frame_ctor.py:33} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/frame_methods.py:43} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/gil.py:95} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/groupby.py:96} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/hash_functions.py:83} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/indexing.py:42} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/inference.py:27} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/join_merge.py:31} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/libs.py:65} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/multiindex_object.py:78} \\
   说明：Randomness detected without an explicit seed.
 
-  \item \textbf{[medium] ds-rule DS\_RANDOM\_SEED} \\
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
   位置：\codepath{pandas/asv_bench/benchmarks/plotting.py:42} \\
   说明：Randomness detected without an explicit seed.
 

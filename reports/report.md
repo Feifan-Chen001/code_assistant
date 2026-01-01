@@ -6,59 +6,59 @@
 
 | 指标 | 值 |
 | --- | --- |
-| 问题总数 | 251 |
-| 高/中/低 | 25/124/102 |
+| 问题总数 | 250 |
+| 高/中/低 | 149/101/0 |
 | 工具数 | 2 |
-| DS 规则数 | 226 |
+| DS 规则数 | 225 |
 
 ### 严重性分布
 
 | 严重性 | 数量 |
 | --- | --- |
-| medium | 124 |
-| low | 102 |
-| high | 25 |
+| high | 149 |
+| medium | 101 |
 
 ### 工具分布
 
 | 工具 | 数量 |
 | --- | --- |
-| ds-rule | 226 |
+| ds-rule | 225 |
 | ast-rule | 25 |
 
 ### DS 规则分布
 
 | 规则 | 数量 |
 | --- | --- |
-| DS_PANDAS_APPLY_AXIS1 | 86 |
+| DS_PANDAS_APPLY_AXIS1 | 84 |
 | DS_PANDAS_SETTINGWITHCOPY | 82 |
 | DS_RANDOM_SEED | 42 |
 | DS_PANDAS_ITERROWS | 16 |
+| DS_HYPERPARAMS_HARDCODED | 1 |
 
 ### Top 20 问题
 
 | 严重性 | 工具 | 规则 | 位置 | 说明 |
 | --- | --- | --- | --- | --- |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/algorithms.py:40 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/arithmetic.py:51 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/array.py:122 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/attrs_caching.py:14 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/boolean.py:9 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/categoricals.py:75 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/ctors.py:79 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/dtypes.py:85 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/eval.py:16 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/frame_ctor.py:33 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/frame_methods.py:43 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/gil.py:95 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/groupby.py:96 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/hash_functions.py:83 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/indexing.py:42 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/inference.py:27 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/join_merge.py:31 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/libs.py:65 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/multiindex_object.py:78 | Randomness detected without an explicit seed. |
-| medium | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/plotting.py:42 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/algorithms.py:40 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/arithmetic.py:51 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/array.py:122 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/attrs_caching.py:14 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/boolean.py:9 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/categoricals.py:75 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/ctors.py:79 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/dtypes.py:85 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/eval.py:16 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/frame_ctor.py:33 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/frame_methods.py:43 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/gil.py:95 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/groupby.py:96 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/hash_functions.py:83 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/indexing.py:42 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/inference.py:27 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/join_merge.py:31 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/libs.py:65 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/multiindex_object.py:78 | Randomness detected without an explicit seed. |
+| high | ds-rule | DS_RANDOM_SEED | pandas/asv_bench/benchmarks/plotting.py:42 | Randomness detected without an explicit seed. |
 
 ### 复杂度摘要（Radon）
 

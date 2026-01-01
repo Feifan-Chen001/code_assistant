@@ -4,7 +4,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/algorithms.py",
       "line": 40,
@@ -14,7 +14,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/arithmetic.py",
       "line": 51,
@@ -24,7 +24,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/array.py",
       "line": 122,
@@ -34,7 +34,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/attrs_caching.py",
       "line": 14,
@@ -44,7 +44,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/boolean.py",
       "line": 9,
@@ -54,7 +54,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/categoricals.py",
       "line": 75,
@@ -64,7 +64,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/ctors.py",
       "line": 79,
@@ -74,7 +74,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/dtypes.py",
       "line": 85,
@@ -84,7 +84,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/eval.py",
       "line": 16,
@@ -94,7 +94,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/frame_ctor.py",
       "line": 33,
@@ -104,7 +104,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/frame_methods.py",
       "line": 43,
@@ -114,7 +114,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/gil.py",
       "line": 95,
@@ -124,7 +124,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/groupby.py",
       "line": 96,
@@ -134,7 +134,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/hash_functions.py",
       "line": 83,
@@ -144,7 +144,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/indexing.py",
       "line": 42,
@@ -154,7 +154,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/inference.py",
       "line": 27,
@@ -164,7 +164,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/join_merge.py",
       "line": 31,
@@ -174,7 +174,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/libs.py",
       "line": 65,
@@ -184,7 +184,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/multiindex_object.py",
       "line": 78,
@@ -194,7 +194,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/plotting.py",
       "line": 42,
@@ -204,7 +204,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/reindex.py",
       "line": 16,
@@ -214,7 +214,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/replace.py",
       "line": 13,
@@ -224,7 +224,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/reshape.py",
       "line": 23,
@@ -234,7 +234,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/rolling.py",
       "line": 32,
@@ -244,7 +244,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/series_methods.py",
       "line": 48,
@@ -254,7 +254,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/sparse.py",
       "line": 16,
@@ -264,7 +264,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/stat_ops.py",
       "line": 13,
@@ -274,7 +274,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/strftime.py",
       "line": 19,
@@ -284,7 +284,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/strings.py",
       "line": 179,
@@ -294,7 +294,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/timeseries.py",
       "line": 94,
@@ -304,7 +304,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/algos/isin.py",
       "line": 35,
@@ -314,7 +314,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/io/excel.py",
       "line": 25,
@@ -324,7 +324,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/io/hdf.py",
       "line": 19,
@@ -334,7 +334,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/io/json.py",
       "line": 30,
@@ -344,7 +344,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/io/pickle.py",
       "line": 19,
@@ -354,7 +354,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/io/sql.py",
       "line": 30,
@@ -364,7 +364,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/io/stata.py",
       "line": 22,
@@ -374,7 +374,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/io/style.py",
       "line": 15,
@@ -384,7 +384,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/tslibs/fields.py",
       "line": 20,
@@ -394,7 +394,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/tslibs/resolution.py",
       "line": 48,
@@ -404,7 +404,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/tslibs/tslib.py",
       "line": 65,
@@ -414,7 +414,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_RANDOM_SEED",
-      "severity": "medium",
+      "severity": "high",
       "message": "Randomness detected without an explicit seed.",
       "file": "pandas/asv_bench/benchmarks/tslibs/tz_convert.py",
       "line": 37,
@@ -423,28 +423,8 @@
     },
     {
       "tool": "ds-rule",
-      "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
-      "message": "pandas.apply(axis=1) is slow; consider vectorization.",
-      "file": "pandas/doc/source/user_guide/style.ipynb#cell-44",
-      "line": 1,
-      "col": 0,
-      "extra": {}
-    },
-    {
-      "tool": "ds-rule",
-      "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
-      "message": "pandas.apply(axis=1) is slow; consider vectorization.",
-      "file": "pandas/doc/source/user_guide/style.ipynb#cell-84",
-      "line": 4,
-      "col": 4,
-      "extra": {}
-    },
-    {
-      "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/_version.py",
       "line": 68,
@@ -454,7 +434,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/frame.py",
       "line": 15101,
@@ -474,7 +454,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/computation/scope.py",
       "line": 39,
@@ -484,7 +464,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/internals/managers.py",
       "line": 1897,
@@ -494,7 +474,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/ops/docstrings.py",
       "line": 422,
@@ -504,7 +484,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/ops/docstrings.py",
       "line": 423,
@@ -514,7 +494,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/ops/docstrings.py",
       "line": 426,
@@ -524,7 +504,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/reshape/merge.py",
       "line": 2679,
@@ -534,7 +514,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/window/common.py",
       "line": 60,
@@ -544,7 +524,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/core/window/common.py",
       "line": 62,
@@ -554,7 +534,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/io/stata.py",
       "line": 1506,
@@ -564,7 +544,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/io/stata.py",
       "line": 1534,
@@ -574,7 +554,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/io/stata.py",
       "line": 3284,
@@ -584,7 +564,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/io/excel/_base.py",
       "line": 907,
@@ -594,7 +574,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/io/formats/html.py",
       "line": 541,
@@ -604,7 +584,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/io/formats/style.py",
       "line": 2514,
@@ -614,7 +594,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 602,
@@ -624,7 +604,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 603,
@@ -634,7 +614,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 604,
@@ -644,7 +624,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 705,
@@ -654,7 +634,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 811,
@@ -664,7 +644,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 828,
@@ -674,7 +654,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 838,
@@ -684,7 +664,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 887,
@@ -694,7 +674,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 909,
@@ -704,7 +684,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 910,
@@ -714,7 +694,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/plotting/_matplotlib/converter.py",
       "line": 911,
@@ -723,8 +703,18 @@
     },
     {
       "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "pandas/pandas/tests/test_downstream.py",
+      "line": 152,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 68,
@@ -734,7 +724,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 161,
@@ -744,7 +734,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 185,
@@ -754,7 +744,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 205,
@@ -764,7 +754,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 213,
@@ -774,7 +764,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 222,
@@ -784,7 +774,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 224,
@@ -794,7 +784,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 229,
@@ -804,7 +794,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 231,
@@ -814,7 +804,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 267,
@@ -824,7 +814,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 283,
@@ -834,7 +824,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 291,
@@ -844,7 +834,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 322,
@@ -854,7 +844,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 328,
@@ -864,7 +854,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 388,
@@ -874,7 +864,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 404,
@@ -884,7 +874,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 408,
@@ -894,7 +884,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 477,
@@ -904,7 +894,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 489,
@@ -914,7 +904,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 501,
@@ -924,7 +914,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 523,
@@ -934,7 +924,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 536,
@@ -944,7 +934,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 588,
@@ -954,7 +944,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 599,
@@ -964,7 +954,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 616,
@@ -974,7 +964,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 627,
@@ -984,7 +974,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 723,
@@ -994,7 +984,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 745,
@@ -1004,7 +994,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 836,
@@ -1014,7 +1004,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 844,
@@ -1024,7 +1014,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 862,
@@ -1034,7 +1024,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 870,
@@ -1044,7 +1034,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 878,
@@ -1054,7 +1044,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 988,
@@ -1064,7 +1054,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1006,
@@ -1074,7 +1064,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1018,
@@ -1084,7 +1074,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1022,
@@ -1094,7 +1084,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1032,
@@ -1104,7 +1094,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1056,
@@ -1114,7 +1104,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1069,
@@ -1124,7 +1114,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1078,
@@ -1134,7 +1124,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1086,
@@ -1144,7 +1134,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1096,
@@ -1154,7 +1144,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1106,
@@ -1164,7 +1154,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1124,
@@ -1174,7 +1164,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1129,
@@ -1184,7 +1174,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1152,
@@ -1194,7 +1184,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1159,
@@ -1204,7 +1194,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1179,
@@ -1214,7 +1204,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1196,
@@ -1224,7 +1214,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1211,
@@ -1234,7 +1224,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1215,
@@ -1244,7 +1234,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1591,
@@ -1254,7 +1244,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1636,
@@ -1264,7 +1254,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1672,
@@ -1274,7 +1264,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1753,
@@ -1284,7 +1274,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1797,
@@ -1294,7 +1284,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_frame_apply.py",
       "line": 1800,
@@ -1304,7 +1294,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_invalid_arg.py",
       "line": 38,
@@ -1314,7 +1304,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_invalid_arg.py",
       "line": 142,
@@ -1324,7 +1314,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_invalid_arg.py",
       "line": 209,
@@ -1334,7 +1324,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_invalid_arg.py",
       "line": 303,
@@ -1344,7 +1334,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_numba.py",
       "line": 59,
@@ -1354,7 +1344,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_numba.py",
       "line": 60,
@@ -1364,7 +1354,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_numba.py",
       "line": 88,
@@ -1374,7 +1364,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/apply/test_numba.py",
       "line": 89,
@@ -1384,7 +1374,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/arithmetic/test_numeric.py",
       "line": 483,
@@ -1394,7 +1384,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/arrays/integer/test_function.py",
       "line": 99,
@@ -1404,7 +1394,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/arrays/integer/test_function.py",
       "line": 100,
@@ -1454,7 +1444,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/copy_view/test_chained_assignment_deprecation.py",
       "line": 24,
@@ -1464,7 +1454,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/copy_view/test_chained_assignment_deprecation.py",
       "line": 36,
@@ -1474,7 +1464,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/copy_view/test_methods.py",
       "line": 1250,
@@ -1484,7 +1474,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/copy_view/test_methods.py",
       "line": 1543,
@@ -1494,7 +1484,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/copy_view/test_methods.py",
       "line": 1552,
@@ -1504,7 +1494,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/frame/test_block_internals.py",
       "line": 318,
@@ -1514,7 +1504,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_cumulative.py",
       "line": 64,
@@ -1524,7 +1514,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_iteration.py",
       "line": 46,
@@ -1534,7 +1524,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_iteration.py",
       "line": 50,
@@ -1544,7 +1534,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_iteration.py",
       "line": 62,
@@ -1554,7 +1544,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_iteration.py",
       "line": 85,
@@ -1564,7 +1554,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_iteration.py",
       "line": 156,
@@ -1594,7 +1584,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_reductions.py",
       "line": 139,
@@ -1604,7 +1594,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_reductions.py",
       "line": 157,
@@ -1614,7 +1604,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_reductions.py",
       "line": 1300,
@@ -1624,7 +1614,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_reductions.py",
       "line": 1307,
@@ -1634,7 +1624,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_stack_unstack.py",
       "line": 922,
@@ -1644,7 +1634,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_stack_unstack.py",
       "line": 923,
@@ -1654,7 +1644,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_stack_unstack.py",
       "line": 1070,
@@ -1664,7 +1654,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_subclass.py",
       "line": 210,
@@ -1674,7 +1664,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_subclass.py",
       "line": 550,
@@ -1684,7 +1674,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_subclass.py",
       "line": 562,
@@ -1694,7 +1684,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_subclass.py",
       "line": 568,
@@ -1704,7 +1694,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_subclass.py",
       "line": 572,
@@ -1714,7 +1704,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/test_subclass.py",
       "line": 578,
@@ -1724,7 +1714,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/frame/indexing/test_setitem.py",
       "line": 1328,
@@ -1734,7 +1724,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/indexing/test_where.py",
       "line": 1039,
@@ -1744,7 +1734,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/frame/methods/test_iterrows.py",
       "line": 15,
@@ -1774,7 +1764,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/groupby/test_apply.py",
       "line": 276,
@@ -1814,7 +1804,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexes/multi/test_duplicates.py",
       "line": 216,
@@ -1834,7 +1824,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexes/multi/test_integrity.py",
       "line": 223,
@@ -1844,7 +1834,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexes/multi/test_integrity.py",
       "line": 228,
@@ -1894,7 +1884,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 50,
@@ -1904,7 +1894,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 60,
@@ -1914,7 +1904,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 63,
@@ -1924,7 +1914,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 69,
@@ -1934,7 +1924,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 126,
@@ -1944,7 +1934,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 128,
@@ -1954,7 +1944,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 142,
@@ -1964,7 +1954,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 144,
@@ -1974,7 +1964,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 158,
@@ -1984,7 +1974,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 172,
@@ -1994,7 +1984,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 182,
@@ -2004,7 +1994,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 237,
@@ -2014,7 +2004,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 254,
@@ -2024,7 +2014,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 256,
@@ -2034,7 +2024,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 261,
@@ -2044,7 +2034,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 271,
@@ -2054,7 +2044,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_chaining_and_caching.py",
       "line": 286,
@@ -2064,7 +2054,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/test_loc.py",
       "line": 2972,
@@ -2074,7 +2064,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/indexing/test_scalar.py",
       "line": 209,
@@ -2084,7 +2074,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/multiindex/test_setitem.py",
       "line": 525,
@@ -2094,7 +2084,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/indexing/multiindex/test_setitem.py",
       "line": 533,
@@ -2104,7 +2094,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/io/test_sql.py",
       "line": 4199,
@@ -2114,7 +2104,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1006,
@@ -2124,7 +2114,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1007,
@@ -2134,7 +2124,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1008,
@@ -2144,7 +2134,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1009,
@@ -2154,7 +2144,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1010,
@@ -2164,7 +2154,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1011,
@@ -2174,7 +2164,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1011,
@@ -2184,7 +2174,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1012,
@@ -2194,7 +2184,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1012,
@@ -2204,7 +2194,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1013,
@@ -2214,7 +2204,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1013,
@@ -2224,7 +2214,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1013,
@@ -2234,7 +2224,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1014,
@@ -2244,7 +2234,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/test_stata.py",
       "line": 1014,
@@ -2254,7 +2244,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/formats/test_to_string.py",
       "line": 600,
@@ -2264,7 +2254,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/json/test_json_table_schema.py",
       "line": 75,
@@ -2274,7 +2264,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/json/test_json_table_schema.py",
       "line": 123,
@@ -2284,7 +2274,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/json/test_json_table_schema.py",
       "line": 128,
@@ -2294,7 +2284,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/io/json/test_json_table_schema.py",
       "line": 132,
@@ -2304,7 +2294,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/plotting/test_misc.py",
       "line": 557,
@@ -2314,7 +2304,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/plotting/test_misc.py",
       "line": 558,
@@ -2324,7 +2314,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/plotting/test_misc.py",
       "line": 582,
@@ -2334,7 +2324,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/plotting/test_misc.py",
       "line": 583,
@@ -2344,7 +2334,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/plotting/test_misc.py",
       "line": 608,
@@ -2354,7 +2344,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/plotting/test_misc.py",
       "line": 630,
@@ -2364,7 +2354,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/pandas/tests/plotting/test_misc.py",
       "line": 632,
@@ -2374,7 +2364,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_ITERROWS",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.iterrows() is slow; consider vectorization.",
       "file": "pandas/pandas/tests/reshape/test_pivot.py",
       "line": 544,
@@ -2464,7 +2454,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/series/methods/test_explode.py",
       "line": 71,
@@ -2474,7 +2464,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_APPLY_AXIS1",
-      "severity": "low",
+      "severity": "medium",
       "message": "pandas.apply(axis=1) is slow; consider vectorization.",
       "file": "pandas/pandas/tests/strings/test_strings.py",
       "line": 772,
@@ -2484,7 +2474,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/web/pandas_web.py",
       "line": 86,
@@ -2494,7 +2484,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/web/pandas_web.py",
       "line": 157,
@@ -2504,7 +2494,7 @@
     {
       "tool": "ds-rule",
       "rule": "DS_PANDAS_SETTINGWITHCOPY",
-      "severity": "medium",
+      "severity": "high",
       "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
       "file": "pandas/web/pandas_web.py",
       "line": 199,
@@ -2521,6 +2511,6 @@
     "mypy": null
   },
   "stats": {
-    "total_findings": 251
+    "total_findings": 250
   }
 }
