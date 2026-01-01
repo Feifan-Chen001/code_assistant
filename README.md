@@ -705,8 +705,8 @@ CodeAssistant/
 
 如有问题或建议，欢迎通过以下方式联系：
 
-- **Issues**：[GitHub Issues](https://github.com/your-repo/issues)
-- **Email**：your-email@example.com
+- **Issues**：[GitHub Issues](https://https://github.com/Feifan-Chen001/code_assistant/issues)
+- **Email**：cff-yyds@sjtu.edu.cn
 
 ---
 
