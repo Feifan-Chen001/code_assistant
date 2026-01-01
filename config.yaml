@@ -17,6 +17,7 @@ review:
   enable_pip_audit: true
   enable_radon: true
   enable_ds_rules: true
+  enable_ds_rules_advanced: true
   enable_notebook: true
   ruff_args: ["check", "--format", "json"]
   mypy_args: ["--show-error-codes", "--no-error-summary"]

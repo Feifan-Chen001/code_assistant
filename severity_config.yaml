@@ -1,0 +1,278 @@
+# 严重级别配置 (Severity Level Configuration)
+# 此文件定义代码审查中各项规则的严重级别
+# This file defines severity levels for code review rules
+
+# 严重级别说明 (Severity Levels):
+# - high:   严重问题，影响模型有效性、安全性或数据完整性
+# - medium: 中等问题，可能导致性能下降或代码质量问题
+# - low:    低级问题，最佳实践建议或代码风格问题
+
+default_severity: "medium"  # 未配置规则的默认级别
+
+rules:
+  # ========== 数据科学关键规则 (Data Science Critical Rules) ==========
+  # 这些规则涉及数据泄露、随机性和模型复现性
+  
+  # 数据泄露相关
+  DS_LEAKAGE_FIT_BEFORE_SPLIT:
+    severity: "high"
+    description: "在数据分割前拟合模型 - 导致数据泄露"
+    category: "data_leakage"
+    impact: "严重破坏模型验证的有效性"
+  
+  DS_DATA_LEAKAGE:
+    severity: "high"
+    description: "检测到潜在的数据泄露"
+    category: "data_leakage"
+    impact: "模型性能严重高估"
+  
+  # 随机性和可复现性
+  DS_RANDOM_SEED:
+    severity: "high"
+    description: "缺少 random_state 参数导致不可复现"
+    category: "reproducibility"
+    impact: "无法复现实验结果"
+  
+  DS_SKLEARN_RANDOM_STATE:
+    severity: "high"
+    description: "sklearn 模型缺少 random_state"
+    category: "reproducibility"
+    impact: "机器学习模型结果不可复现"
+  
+  # ========== 数据处理规则 (Data Processing Rules) ==========
+  
+  DS_PANDAS_SETTINGWITHCOPY:
+    severity: "high"
+    description: "pandas SettingWithCopyWarning - 可能修改原始数据"
+    category: "data_integrity"
+    impact: "可能意外修改原始数据集"
+  
+  DS_PANDAS_ITERROWS:
+    severity: "medium"
+    description: "使用 iterrows() - 性能低下"
+    category: "performance"
+    impact: "大数据集上性能严重下降"
+  
+  DS_PANDAS_APPLY_AXIS1:
+    severity: "medium"
+    description: "使用 apply(axis=1) - 性能低下"
+    category: "performance"
+    impact: "行级操作性能不佳"
+  
+  # ========== 模型构建规则 (Model Building Rules) ==========
+  
+  DS_MODEL_PICKLE_UNSAFE:
+    severity: "high"
+    description: "使用不安全的 pickle 序列化模型"
+    category: "security"
+    impact: "安全风险，可能执行恶意代码"
+  
+  DS_PIPELINE_SUGGEST:
+    severity: "medium"
+    description: "建议使用 Pipeline 整理预处理流程"
+    category: "best_practice"
+    impact: "代码可维护性和复现性较差"
+  
+  DS_HYPERPARAMS_HARDCODED:
+    severity: "medium"
+    description: "超参数硬编码 - 不利于调优"
+    category: "best_practice"
+    impact: "难以进行超参数搜索和优化"
+  
+  # ========== 通用代码质量规则 (General Code Quality Rules) ==========
+  
+  # AST 规则
+  AST_HARDCODED_PASSWORD:
+    severity: "high"
+    description: "代码中硬编码密码"
+    category: "security"
+    impact: "严重安全风险"
+  
+  AST_UNUSED_IMPORT:
+    severity: "low"
+    description: "未使用的导入"
+    category: "code_quality"
+    impact: "代码冗余"
+  
+  AST_BROAD_EXCEPTION:
+    severity: "medium"
+    description: "过于宽泛的异常捕获"
+    category: "code_quality"
+    impact: "难以调试，隐藏错误"
+  
+  AST_BARE_EXCEPT:
+    severity: "medium"
+    description: "裸露的 except 语句"
+    category: "code_quality"
+    impact: "会捕获系统异常如 KeyboardInterrupt"
+  
+  # Ruff 规则 (静态分析)
+  E:
+    severity: "medium"
+    description: "Ruff E 类错误 - 代码风格"
+    category: "style"
+    impact: "代码可读性问题"
+  
+  W:
+    severity: "low"
+    description: "Ruff W 类警告 - 代码警告"
+    category: "style"
+    impact: "次要代码问题"
+  
+  F:
+    severity: "high"
+    description: "Ruff F 类错误 - Pyflakes 错误"
+    category: "code_quality"
+    impact: "可能的运行时错误"
+  
+  C:
+    severity: "medium"
+    description: "Ruff C 类错误 - McCabe 复杂度"
+    category: "complexity"
+    impact: "函数过于复杂"
+  
+  # Bandit 规则 (安全检查)
+  B201:
+    severity: "high"
+    description: "使用 flask debug=True"
+    category: "security"
+    impact: "严重的安全漏洞"
+  
+  B301:
+    severity: "high"
+    description: "pickle 反序列化"
+    category: "security"
+    impact: "远程代码执行风险"
+  
+  B302:
+    severity: "high"
+    description: "使用 marshal"
+    category: "security"
+    impact: "安全风险"
+  
+  B303:
+    severity: "high"
+    description: "使用 md5"
+    category: "security"
+    impact: "密码学不安全"
+  
+  B304:
+    severity: "high"
+    description: "使用 crypt"
+    category: "security"
+    impact: "密码学不安全"
+  
+  B305:
+    severity: "medium"
+    description: "使用 tempfile"
+    category: "security"
+    impact: "可能的安全问题"
+  
+  B306:
+    severity: "medium"
+    description: "临时文件 - mktemp"
+    category: "security"
+    impact: "竞态条件风险"
+  
+  B401:
+    severity: "medium"
+    description: "导入 telnetlib"
+    category: "security"
+    impact: "不安全的网络协议"
+  
+  B402:
+    severity: "medium"
+    description: "导入 ftplib"
+    category: "security"
+    impact: "明文传输风险"
+  
+  B404:
+    severity: "low"
+    description: "导入 subprocess"
+    category: "code_quality"
+    impact: "需要谨慎使用"
+  
+  B603:
+    severity: "medium"
+    description: "subprocess 不使用 shell=False"
+    category: "security"
+    impact: "命令注入风险"
+  
+  B607:
+    severity: "medium"
+    description: "subprocess 路径未指定"
+    category: "security"
+    impact: "命令欺骗风险"
+
+  # Pip-audit (依赖安全)
+  pip_audit_vulnerability:
+    severity: "high"
+    description: "依赖包存在已知安全漏洞"
+    category: "security"
+    impact: "严重的安全风险"
+
+  # 复杂度规则
+  complexity_high:
+    severity: "medium"
+    description: "函数复杂度过高"
+    category: "complexity"
+    impact: "代码难以维护和测试"
+
+  # ========== 高级数据科学规则 (Advanced DS Rules) ==========
+  
+  ADVANCED_DATA_LEAKAGE:
+    severity: "high"
+    description: "检测到高级数据泄露模式"
+    category: "data_leakage"
+    impact: "模型性能评估无效"
+  
+  ADVANCED_RANDOM_STATE:
+    severity: "high"
+    description: "高级随机状态检查"
+    category: "reproducibility"
+    impact: "实验不可复现"
+
+# 规则优先级 (Rule Priority)
+# 用于报告排序，较高优先级的问题应首先修复
+priority_mapping:
+  high: 1      # 最高优先级
+  medium: 2
+  low: 3       # 最低优先级
+
+# 分组配置 (Grouping Configuration)
+categories:
+  data_leakage:
+    display_name: "数据泄露 / Data Leakage"
+    order: 1
+  
+  reproducibility:
+    display_name: "可复现性 / Reproducibility"
+    order: 2
+  
+  security:
+    display_name: "安全问题 / Security Issues"
+    order: 3
+  
+  data_integrity:
+    display_name: "数据完整性 / Data Integrity"
+    order: 4
+  
+  performance:
+    display_name: "性能 / Performance"
+    order: 5
+  
+  code_quality:
+    display_name: "代码质量 / Code Quality"
+    order: 6
+  
+  best_practice:
+    display_name: "最佳实践 / Best Practices"
+    order: 7
+  
+  style:
+    display_name: "代码风格 / Code Style"
+    order: 8
+  
+  complexity:
+    display_name: "复杂度 / Complexity"
+    order: 9
