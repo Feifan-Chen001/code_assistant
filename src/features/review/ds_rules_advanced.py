@@ -30,6 +30,16 @@ CV_METHODS = {
     "cross_val_score", "cross_validate", "cross_val_predict"
 }
 
+# Classifier models (heuristic)
+CLASSIFIER_MODELS = {
+    "LogisticRegression", "SVC", "LinearSVC",
+    "DecisionTreeClassifier", "RandomForestClassifier",
+    "GradientBoostingClassifier", "AdaBoostClassifier",
+    "KNeighborsClassifier", "XGBClassifier", "LGBMClassifier",
+    "CatBoostClassifier",
+}
+
+
 
 def scan_file_advanced_ds(path: Path, repo_root: Path) -> List[ReviewFinding]:
     """扫描单个文件的高级 DS 规则"""
@@ -46,7 +56,8 @@ def scan_source_advanced_ds(source: str, rel_path: str) -> List[ReviewFinding]:
     # 快速检查：如果源代码不包含任何 ML 库，直接返回空
     ml_keywords = {
         "sklearn", "pandas", "numpy", "cv_", "Pipeline", "SMOTE", "cross_val",
-        "StratifiedKFold", "SelectKBest", "feature_selection", "imbalance_learn"
+        "StratifiedKFold", "SelectKBest", "feature_selection", "imbalance_learn",
+        "xgboost", "lightgbm", "catboost", "tensorflow", "torch", "keras",
     }
     has_ml_imports = any(kw in source for kw in ml_keywords)
     if not has_ml_imports:
@@ -82,6 +93,11 @@ class _AdvancedDSVisitor(ast.NodeVisitor):
         self.stratified_cv_used = False
         self.imbalance_handler_used = False
         self.has_fit_method = False
+        self.train_test_split_used = False
+        self.non_stratified_cv_used = False
+        self.classifier_used = False
+        self.has_validation_data = False
+        self.eval_on_train_lines: List[int] = []
         
         # 规则4：特征缩放不一致
         self.scaled_features: Set[str] = set()
@@ -124,10 +140,26 @@ class _AdvancedDSVisitor(ast.NodeVisitor):
             parts.append(cur.id)
         return ".".join(reversed(parts))
 
+    def _arg_names(self, node: ast.Call) -> List[str]:
+        names: List[str] = []
+        for arg in node.args:
+            if isinstance(arg, ast.Name):
+                names.append(arg.id.lower())
+        for kw in node.keywords:
+            if isinstance(kw.value, ast.Name):
+                names.append(kw.value.id.lower())
+        return names
+
     def visit_Call(self, node: ast.Call):
         """访问函数调用节点"""
         name = self._call_name(node.func)
         chain = self._attr_chain(node.func)
+
+        if name == "train_test_split":
+            self.train_test_split_used = True
+
+        if name in CLASSIFIER_MODELS or name.endswith("Classifier"):
+            self.classifier_used = True
 
         # 检测特征选择
         if name in FEATURE_SELECTION_METHODS:
@@ -141,6 +173,8 @@ class _AdvancedDSVisitor(ast.NodeVisitor):
         # 检测 CV 方法
         if name in CV_METHODS:
             self.cv_used = True
+            if name in {"KFold", "ShuffleSplit", "LeaveOneOut"}:
+                self.non_stratified_cv_used = True
             # 检查是否使用了分层 CV
             if name.startswith("Stratified"):
                 self.stratified_cv_used = True
@@ -154,6 +188,9 @@ class _AdvancedDSVisitor(ast.NodeVisitor):
                     "roc_auc_score", "confusion_matrix", "classification_report",
                     "mean_squared_error", "mean_absolute_error", "r2_score"}:
             self.evaluation_metrics.add(name)
+            arg_names = self._arg_names(node)
+            if any("train" in n for n in arg_names) and any("pred" in n for n in arg_names):
+                self.eval_on_train_lines.append(node.lineno)
 
         # 检测 class_weight
         if self._has_kw(node, "class_weight"):
@@ -162,6 +199,8 @@ class _AdvancedDSVisitor(ast.NodeVisitor):
         # 检测 fit 方法调用（标记模型训练）
         if isinstance(node.func, ast.Attribute) and node.func.attr == "fit":
             self.has_fit_method = True
+            if self._has_kw(node, "validation_data") or self._has_kw(node, "validation_split"):
+                self.has_validation_data = True
 
         self.generic_visit(node)
 
@@ -210,6 +249,30 @@ class _AdvancedDSVisitor(ast.NodeVisitor):
             )
 
         # 规则4：评估指标不足
+        if self.classifier_used and self.non_stratified_cv_used and not self.stratified_cv_used:
+            self._add(
+                "DS_CV_NOT_STRATIFIED",
+                "medium",
+                "Classifier with non-stratified CV detected; consider StratifiedKFold.",
+                _DummyNode(1),
+            )
+
+        if self.has_fit_method and not self.train_test_split_used and not self.cv_used and not self.has_validation_data:
+            self._add(
+                "DS_NO_VALIDATION_SPLIT",
+                "low",
+                "Model training detected without train/test split or cross-validation.",
+                _DummyNode(1),
+            )
+
+        if self.eval_on_train_lines:
+            self._add(
+                "DS_EVAL_ON_TRAIN",
+                "medium",
+                "Metrics computed on training data may overestimate performance.",
+                _DummyNode(min(self.eval_on_train_lines)),
+            )
+
         if self.has_fit_method and len(self.evaluation_metrics) < 2:
             msg = (
                 "Limited evaluation metrics detected; "
