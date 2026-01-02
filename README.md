@@ -1,324 +1,329 @@
 # CodeAssistant 智能代码助手（数据科学专项）
 
-一个面向数据科学/机器学习项目的“代码审查 + 自动测例生成 + 报告输出”一体化工具。支持 Python 仓库与 Notebook 扫描，内置数据科学专项规则（复现性/泄漏/Pipeline/性能坑），提供可视化看板与批量实验 CLI。
+面向数据科学/机器学习项目的“代码审查 + 自动测例生成 + 报告输出”一体化工具。支持 Python 仓库与 Notebook 扫描，内置 DS 专项规则与插件规则，提供 Streamlit GUI、批处理 CLI、PDF/LaTeX 报告与可选 LLM 辅助。
 
-## 数据科学专项规则（DS Rules）
-规则基于 **AST + 启发式**，面向数据科学/ML 项目给出可执行提示。
-
-### 1) 复现性
-- **随机数未设 seed**：`random` / `numpy.random` 调用但未见 `seed`
-- **sklearn 随机组件缺 `random_state`**：如 `train_test_split`、`KFold`、`RandomForest`、`KMeans`
-- **PyTorch 随机数未设 seed**：检测 `torch.rand/torch.randn` 但未 `torch.manual_seed`
-- **TensorFlow 随机数未设 seed**：检测 `tf.random.*` 但未 `tf.random.set_seed`
-
-### 2) 数据泄漏启发式
-- **`train_test_split` 之前出现 `fit_transform`**：提示可能有数据泄漏
-
-### 3) Pipeline 建议
-- **独立 `fit/transform` 但未使用 Pipeline**：`StandardScaler/MinMaxScaler/OneHotEncoder/Imputer` 等
-
-### 4) 高级 ML 规则（Advanced）
-- **特征选择未嵌套 CV**：`DS_FEATURE_SELECTION_NO_NESTED_CV`
-- **SMOTE 未入 Pipeline**：`DS_IMBALANCE_NOT_IN_PIPELINE`
-- **类别不平衡未处理**：`DS_IMBALANCE_UNHANDLED`
-- **分类任务 CV 未分层**：`DS_CV_NOT_STRATIFIED`
-- **无验证集或未设置 validation_split**：`DS_NO_VALIDATION_SPLIT`
-- **在训练集上评估**：`DS_EVAL_ON_TRAIN`
-- **评价指标不完整**：`DS_EVALUATION_INCOMPLETE`
-
-### 5) pandas 性能与坑位
-- `iterrows` 逐行遍历
-- `apply(axis=1)` 行级 apply
-- `SettingWithCopy`（如 `df[df.a > 0]["b"] = ...`）
+## ✨ 功能概览
+- 代码审查：AST 规则 + DS 规则 + Ruff/Bandit/pip-audit/Radon/Mypy
+- 数据科学规则：复现性、数据泄漏、Pipeline 建议、pandas 性能坑、进阶 ML 评估
+- Notebook 支持：扫描 `.ipynb` code cell，并定位到 `file.ipynb#cell-idx`
+- 测试生成：从函数签名生成 pytest/Hypothesis 模板（`.py/.ipynb`）
+- 覆盖率评估：自动运行 `coverage run -m pytest` + `coverage report -m`
+- 报告输出：`report.md` / `report.tex` / `report.pdf`（UI 预览+下载）
+- LLM 辅助：修复计划、应用修改、项目推荐
+- 批处理：多仓库实验批量运行
 
 ---
 
-## Notebook 支持 支持 ?? 支持
-- 自动读取 `.ipynb` 的 code cell
-- 每个 code cell 作为“虚拟文件”扫描并标注为：
-  - `notebook.ipynb#cell-1`
-  - `notebook.ipynb#cell-2`
-- 行号为 **cell 内部行号**，便于定位
+## 🚀 快速开始
 
----
+### 依赖要求
+- Python 3.8+（建议 3.10/3.11）
+- Git（用于克隆 GitHub 仓库）
+- 可选：TeX Live / MiKTeX（提供 `xelatex`），或 `tectonic`
 
-## 覆盖率评估
-TestGen 阶段会自动执行：
-- `coverage run -m pytest`
-- `coverage report -m`
-
-覆盖率摘要会写入 `report.md` / `report.tex` / `report.pdf`。
-
----
-
-## 报告与产物
-### Review
-- `review.json`：全部问题与原始信息（包含工具原始输出片段）
-
-### TestGen
-- `testgen.json`：生成测试的摘要与索引
-- `generated_tests/`：生成的测试文件
-
-### Report
-- `report.md`：最终 Markdown 报告，包含统计汇总/Top 20/覆盖率等
-- `report.tex`：LaTeX 版本（更接近 `main.tex` 排版）
-- `report.pdf`：GUI 可预览/下载的 PDF
-  - 优先使用 `xelatex` 编译
-  - `xelatex` 不可用时使用 `tectonic`
-  - 若均不可用，则回退为 `reportlab` 简版 PDF
-
----
-
-## 批处理（多仓库实验）
-适用于批量实验或论文统计。
-
-### 1) 准备仓库列表
-创建 `repos.txt`：
-```text
-# one repo path per line
-D:/code/repo1
-D:/code/repo2
-```
-
-### 2) 执行批量
+### 安装依赖
 ```bash
-python -m src.cli batch --mode all --repos repos.txt --out reports_batch
+pip install -r requirements.txt
 ```
 
-输出结构示例：
+### 启动 UI
+```bash
+streamlit run app.py
 ```
-reports_batch/
-  repo1/
-    review.json
-    testgen.json
-    report.md
-  repo2/
-    review.json
-    testgen.json
-    report.md
+Windows 可用：`start_gui.bat`
+
+### CLI 示例
+```bash
+python -m src.cli review --repo <path> --out reports
+python -m src.cli testgen --repo <path> --out generated_tests
+python -m src.cli all --repo <path> --out reports
+python -m src.cli batch --repos repos.txt --mode all --out reports_batch
 ```
 
 ---
 
-## 可视化界面说明
-GUI 采用 ChatGPT 风格布局：左侧工作区 + 右侧执行与结果看板。
+## 🧭 输入与输出
 
-- **Actions**：一键运行 Review / TestGen / All
-- **Review Board**：
-  - 总问题数
-  - DS 规则问题数
-  - 工具来源数
-  - 严重性/工具/DS 分布图
-- **Test Generation**：展示测试统计与覆盖率摘要
-- **Report**：预览与下载 `report.pdf`，保留 `report.md` 作为原始文本
-- **LLM Actions**：生成修复计划/应用修改/项目推荐（需配置 API Key）
-- **Batch results**：多仓库运行时显示汇总，并可切换查看某个仓库的 Review/TestGen/Report
+### 仓库输入（UI 与 CLI 通用）
+- 本地路径：`D:/code/my_repo`
+- GitHub URL：`https://github.com/user/repo`
+- 多行输入：每行一个仓库
+- 目录展开：若输入目录包含多个子仓库，会自动展开（依据 `.git`/`pyproject.toml`/`setup.py`/`requirements.txt`）
 
-## LLM 智能辅助
-用于在报告生成后进行智能修复与推荐。
+### GitHub 缓存
+- URL 会被 clone 到缓存目录（默认 `Git_repo/owner__repo`）
+- 缓存存在时直接复用
 
-使用步骤：
-1. 侧边栏 LLM Settings 中配置 Base URL / Model / API Key（或设置环境变量）。
-2. 运行 Review/TestGen/All 生成报告。
-3. 在报告区域点击：Generate fix plan / Apply changes / Get recommendations。
+### 输出结构
+- 单仓库：
+  - `reports/`：`review.json` / `testgen.json` / `report.md` / `report.tex` / `report.pdf`
+  - `generated_tests/`：生成的测试文件
+- 批处理：
+  - `reports_batch/<repo_name>/...`
+
+---
+
+## 🖥️ UI 使用说明
+
+### 侧边栏
+- 配置文件路径（默认 `config.yaml`）
+- 仓库路径或 GitHub 链接（多行）
+- GitHub 缓存目录（默认 `Git_repo`）
+- 输出目录（默认 `reports`）
+- DS 规则开关 / 插件规则开关 / 工具开关 / 日志配置
+
+### Review 看板
+- 指标卡：问题总数、DS 规则、插件规则、其它工具
+- 规则详情：DS 规则类型与严重性、插件规则分类概览
+- 总览图表：严重性分布、工具分布
+- Top 20 问题表：按严重性与工具排序
+
+### TestGen 看板
+- 生成文件数、覆盖函数数、输出目录
+- 覆盖率摘要（如启用 coverage）
+
+### Report 看板
+- `report.pdf` 预览与下载
+- `report.md` 下载
+
+### LLM Actions
+- Generate fix plan：生成修复计划
+- Apply changes：应用修改并打包下载
+- Get recommendations：推荐相关优质项目
+
+---
+
+## ⚙️ 配置说明（config.yaml）
+
+```yaml
+assistant:
+  max_files: 2000
+  include_globs:
+    - "**/*.py"
+    - "**/*.ipynb"
+  exclude_globs:
+    - "**/.venv/**"
+    - "**/venv/**"
+    - "**/__pycache__/**"
+    - "**/build/**"
+    - "**/dist/**"
+    - "**/.git/**"
+    - "**/.mypy_cache/**"
+    - "**/.pytest_cache/**"
+    - "**/.coverage"
+review:
+  enable_ruff: true
+  enable_mypy: true
+  enable_bandit: true
+  enable_pip_audit: true
+  enable_radon: true
+  enable_ds_rules: true
+  enable_ds_rules_advanced: true
+  enable_notebook: true
+  # optional: force_enable_advanced_ds: true
+
+testgen:
+  output_dir: "generated_tests"
+  use_hypothesis: true
+  max_functions: 200
+coverage:
+  enable: true
+  pytest_args: ["-q"]
+llm:
+  provider: "openai"
+  model: "gpt-4o-mini"
+  api_key_env: "OPENAI_API_KEY"
+  base_url: "https://api.openai.com/v1"
+  temperature: 0.2
+  max_tokens: 1200
+  timeout: 60
+  allow_empty_key: false
+  # optional: allow_new_files: true
+```
 
 说明：
-- Apply Changes 仅在你确认后写回文件，并提供修改文件打包下载。
-- 推荐结果基于当前报告与代码上下文，用于对比最佳实践。
+- Streamlit 模式为性能默认禁用高级 DS 规则；如需启用，可在 `config.yaml` 添加 `review.force_enable_advanced_ds: true`。
+- `severity_config.yaml` 可用于规则严重性映射。
 
 ---
 
-## 目录结构与函数索引（逐文件/逐函数）
-> 说明：此处只覆盖 **本项目源码与入口文件**。`my_repo/`、`Git_repo/` 为外部样例仓库缓存；`reports/`、`generated_tests/` 为运行时产物，不在函数索引范围。
+## 📊 数据科学专项规则（DS Rules）
 
-### 根目录（入口与配置）
+### 1) 复现性
+- 随机数未设 seed（`random` / `numpy.random`）
+- sklearn 组件缺 `random_state`
+- PyTorch 随机数未设 `torch.manual_seed`
+- TensorFlow 随机数未设 `tf.random.set_seed`
+
+### 2) 数据泄漏启发式
+- `train_test_split` 之前出现 `fit_transform`
+
+### 3) Pipeline 建议
+- 独立 `fit/transform` 但未使用 `Pipeline`
+
+### 4) 高级 ML 规则（Advanced）
+- 特征选择未嵌套 CV
+- SMOTE 未入 Pipeline
+- 类别不平衡未处理
+- CV 未分层
+- 无验证集或未设置 validation_split
+- 在训练集上评估
+- 评价指标不完整
+
+### 5) pandas 性能与坑位
+- `iterrows`
+- `apply(axis=1)`
+- `SettingWithCopy`
+
+---
+
+## 📓 Notebook 支持
+- Review：提取 code cell 作为“虚拟文件”扫描（`notebook.ipynb#cell-idx`）
+- TestGen：将 notebook 代码写入 `generated_tests/_notebooks/nb_<slug>.py`
+
+---
+
+## 📄 报告与产物
+- `report.md`：Markdown 报告
+- `report.tex`：LaTeX 报告
+- `report.pdf`：优先 `xelatex`（双跑修复目录），其次 `tectonic`，最后回退 reportlab
+
+---
+
+## 🤖 LLM 智能辅助
+- 生成修复计划
+- 应用修改并打包下载
+- 推荐相关优质项目
+
+配置方式：在 `config.yaml` 中配置 `llm`，或设置环境变量（默认 `OPENAI_API_KEY`）。
+
+---
+
+## 🧩 目录结构与函数索引（逐文件/逐函数）
+说明：仅覆盖本项目源码与入口文件。`my_repo/`、`Git_repo/` 为外部样例仓库缓存；`reports/`、`generated_tests/` 为运行时产物。
+
+### 根目录
 #### `app.py`（Streamlit GUI 入口）
-- `main() -> None`：应用入口；使用方式：`streamlit run app.py`
-- `_inject_css() -> None`：注入 ChatGPT 风格 CSS；由 `main()` 自动调用
-- `_ensure_dirs(out_dir: str) -> None`：确保输出目录存在；在运行 Review/TestGen/报告前调用
-- `_parse_repo_inputs(text: str) -> List[str]`：解析多行仓库输入（忽略空行和注释行）
-- `_is_repo_root(path: Path) -> bool`：判断目录是否像一个仓库（.git/pyproject/setup/requirements 等标记）
-- `_expand_local_repos(path: Path) -> List[Path]`：当输入目录含多个仓库时自动展开
-- `_unique_name(name: str, used: Dict[str, int]) -> str`：批量输出时生成不重复的仓库名
-- `_is_github_url(value: str) -> bool`：判断输入是否为 GitHub URL；用于 UI 的仓库输入框
-- `_github_slug(url: str) -> Optional[str]`：解析 GitHub URL 为 `owner__repo` 缓存名；由 `_resolve_repo_input()` 调用
-- `_resolve_repo_input(repo_input: str, cache_dir: str) -> Optional[str]`：处理单个本地路径或 GitHub URL；必要时 clone 到缓存目录
-- `_prepare_cfg(cfg: Dict[str, Any], test_out: Optional[Path]) -> Dict[str, Any]`：为批量模式调整 testgen 输出目录
-- `_resolve_repo_inputs(repo_text: str, cache_dir: str) -> List[Dict[str, str]]`：解析多行输入并展开为仓库列表
-- `_markdown_to_text(md_text: str) -> str`：将 Markdown 简化为纯文本；用于 PDF fallback
-- `_build_pdf_from_markdown(md_text: str) -> Optional[bytes]`：用 reportlab 输出简版 PDF；当 LaTeX 无法编译时调用
-- `_render_pdf_preview(pdf_bytes: bytes) -> None`：在 UI 中嵌入 PDF 预览 iframe
-- **XeLaTeX**（TeX Live / MiKTeX）以获得最佳排版
-- Python 依赖列表（含 `streamlit`、`ruff`、`bandit`、`pip-audit`、`radon`、`reportlab` 等）
-- Python 依赖列表（含 `streamlit`、`ruff`、`bandit`、`pip-audit`、`radon`、`reportlab` 等）
-- `_load_report_sources(out_dir: str, state)`：从 session 或 `review.json` / `testgen.json` 读取数据
-- `_make_pdf_bytes(review, testgen, md_text: str) -> Optional[bytes]`：优先使用 `pdf_builder` 生成 PDF
-- `_write_report(out_dir: str, review, testgen) -> (Path, Optional[Path])`：生成 `report.md` / `report.tex` / `report.pdf`
-- `_existing_report_path(out_dir: str, state) -> Optional[Path]`：定位最近一次报告文件
-- `_plot_counts(values: List[str], title: str) -> None`：用 Plotly 绘制分布；不可用时降级为文本条形图
-- `_show_findings_table(rows) -> None`：使用 pandas DataFrame 渲染；不可用时用 JSON
+- `main()`：应用入口
+- `_inject_css()`：注入 UI CSS 与背景
+- `_hide_theme_picker()`：隐藏 Streamlit 主题切换入口
+- `_ensure_dirs(out_dir)`：创建输出目录
+- `_parse_repo_inputs(text)`：解析多行仓库输入
+- `_is_repo_root(path)`：判断是否为仓库根
+- `_expand_local_repos(path)`：展开多仓库目录
+- `_unique_name(name, used)`：批量唯一命名
+- `_is_github_url(value)`：判断 GitHub URL
+- `_github_slug(url)`：生成缓存目录名
+- `_resolve_repo_input(repo_input, cache_dir)`：解析本地路径或克隆 URL
+- `_prepare_cfg(cfg, test_out)`：批量模式覆盖 test 输出目录
+- `_resolve_repo_inputs(repo_text, cache_dir)`：解析多仓库输入
+- `_markdown_to_text(md_text)`：Markdown -> 纯文本
+- `_build_pdf_from_markdown(md_text)`：reportlab PDF 回退
+- `_render_pdf_preview(pdf_bytes)`：UI 内嵌 PDF 预览
+- `_compile_latex(tex_path)`：调用 xelatex / tectonic
+- `_load_report_sources(out_dir, state)`：从 session 或磁盘读取报告源
+- `_make_pdf_bytes(review, testgen, md_text)`：生成 PDF 二进制
+- `_write_report(out_dir, review, testgen)`：写出 md/tex/pdf
+- `_existing_report_path(out_dir, state)`：定位最近报告路径
+- `_plotly_go()`：安全导入 plotly（规避 pandas 影子模块）
+- `_plot_counts(values, title)`：绘制分布图（支持原始值或 `(label, count)`）
+- `_show_findings_table(rows)`：DataFrame/JSON 展示
+- `_truncate_text(text, limit)`：截断长文本
+- `_extract_json_block(text)`：从 LLM 输出中提取 JSON
+- `_normalize_plan(raw)` / `_fallback_plan()`：修复计划规范化
+- `_normalize_recommendations(raw)`：推荐结果规范化
+- `_format_file_context(files)`：整理上下文片段
+- `_collect_context_files(repo_root, review_src)`：提取与发现相关的文件片段
+- `_llm_ready(cfg)`：校验 LLM 配置
+- `_apply_llm_changes(repo_root, files, allow_new)`：应用 LLM 修改
+- `_build_changes_zip(changed, repo_root)`：打包修改文件
+- `_llm_generate_plan(...)` / `_llm_generate_changes(...)` / `_llm_generate_recommendations(...)`
 
 #### `config.yaml`
-- 统一配置入口；被 `load_config()` 读取后传入 `Orchestrator`
+- 默认运行配置
+
+#### `severity_config.yaml`
+- 规则严重性映射表
 
 #### `requirements.txt`
-- Python 依赖列表（含 `streamlit`、`ruff`、`bandit`、`pip-audit`、`radon`、`reportlab` 等）
+- Python 依赖列表
+
+#### `.streamlit/config.toml`
+- UI 主题（固定 light）
+
+#### `start_gui.bat`
+- Windows 启动脚本（基于 `.venv`）
+
+### `src/cli.py`
+- `_load_repo_list(path)`：读取仓库清单
+- `_prepare_cfg(cfg, test_out)`：覆盖 test 输出目录
+- `main()`：CLI 入口
+
+### `src/core/config.py`
+- `load_config(path, validate=True)`
+- `load_config_strict(path)`
+
+### `src/core/config_validator.py`
+- `AssistantConfig` / `ReviewConfig` / `TestGenConfig` / `CoverageConfig` / `CodeAssistantConfig`
+- `validate_config(cfg)`
+
+### `src/core/fs.py`
+- `iter_files(repo_path, include_globs, exclude_globs, max_files)`
+
+### `src/core/llm_client.py`
+- `build_llm_config(cfg)`
+- `_extract_text(payload)`
+- `llm_chat(messages, cfg)`
+
+### `src/core/logger.py`
+- `setup_logger()` / `get_logger()`
+- `PerformanceLogger` / `ColoredFormatter` / `StructuredFormatter`
+
+### `src/core/orchestrator.py`
+- `Orchestrator`：`_file_list()` / `run_review()` / `run_testgen()`
+
+### `src/core/subproc.py`
+- `run_cmd(cmd, cwd=None, timeout=1800)`
+
+### `src/features/review/`
+- `types.py`：`ReviewFinding`
+- `ast_rules.py`：`scan_file_ast`, `scan_source_ast`
+- `ds_rules.py`：`scan_file_ds`, `scan_source_ds` 及若干辅助函数
+- `ds_rules_advanced.py`：`scan_file_advanced_ds`, `scan_source_advanced_ds`
+- `builtin_rules.py`：内置规则类与 `register_builtin_rules()`
+- `rule_plugin.py`：规则注册与分类
+- `notebook.py`：`extract_code_cells()`
+- `parsers.py`：`parse_ruff_json`, `parse_bandit_json`, `parse_pip_audit_json`
+- `review_runner.py`：`run_review_pipeline` 等
+
+### `src/features/testgen/`
+- `ast_extract.py`：`extract_public_functions`, `extract_public_functions_from_source`
+- `templates.py`：`make_test_module`, `PYTEST_HEADER`, `HYPOTHESIS_HEADER`
+- `coverage_runner.py`：`run_coverage`
+- `testgen_runner.py`：`run_testgen_pipeline` 与 notebook 处理
+
+### `src/reporting/`
+- `report_builder.py`：`build_markdown_report` 与表格辅助函数
+- `latex_builder.py`：`build_latex_report` 与表格解析
+- `pdf_builder.py`：reportlab PDF 回退与字体注册
 
 ---
 
-### `src/`（核心代码）
-#### `src/cli.py`（命令行入口）
-- `_load_repo_list(path: str)`：读取多仓库列表文件（忽略空行与注释）
-- `_prepare_cfg(cfg, test_out: Optional[Path])`：为 CLI 批处理覆盖 test 输出目录
-- `main()`：CLI 入口；通过 `python -m src.cli ...` 调用
+## 🧰 常见问题
 
-#### `src/core/config.py`
-- `load_config(path: str) -> Dict[str, Any]`：加载 YAML 配置；被 UI/CLI/Orchestrator 调用
+### 图表显示为 #
+Plotly 失败会降级为文本条形图。请确认 Streamlit 运行环境中安装了 `plotly`，并避免仓库里有 `pandas.py` 等同名影子模块。
 
-#### `src/core/fs.py`
-- `iter_files(repo_path, include_globs, exclude_globs, max_files) -> List[Path]`：按 glob 规则扫描文件；用于 Review/TestGen 的文件列表构建
+### 同一仓库有时 0 个问题
+多因输入路径错误、扫描文件为空、或工具在 UI 中被关闭。
 
-#### `src/core/subproc.py`
-- `run_cmd(cmd, cwd=None, timeout=1800) -> Dict[str, Any]`：统一子进程执行入口；返回 `ok/returncode/stdout/stderr`
-
-#### `src/core/orchestrator.py`
-- `class Orchestrator`：调度 Review/TestGen 两条流水线
-  - `__init__(cfg)`：保存配置
-  - `_file_list(repo_path)`：调用 `iter_files()` 按配置生成扫描文件清单
-  - `run_review(repo_path)`：调用 `run_review_pipeline()`
-  - `run_testgen(repo_path)`：调用 `run_testgen_pipeline()`
+### PDF 中文显示异常
+请安装中文字体并使用 `xelatex` 编译；无法编译时会回退到 reportlab 简版 PDF。
 
 ---
 
-### `src/features/review/`（代码审查）
-#### `types.py`
-- `class ReviewFinding(BaseModel)`：统一发现对象（tool/rule/severity/message/file/line/col/extra）
-
-#### `ast_rules.py`
-- `scan_file_ast(path, repo_root)`：扫描单文件 AST，检测 `eval/exec` 与裸 `except`
-- `scan_source_ast(source, rel_path)`：扫描字符串源码（用于 Notebook code cell）
-
-#### `ds_rules.py`（数据科学专项规则）
-- `scan_file_ds(path, repo_root)`：读取文件并调用 `scan_source_ds()`
-- `scan_source_ds(source, rel_path)`：对源码执行 DS 规则扫描，返回 ReviewFinding 列表
-- `_call_name(node)`：提取调用名（Name/Attribute）
-- `_attr_chain(node)`：提取完整属性链（如 `np.random.rand`）
-- `_assigned_names(target)`：解析赋值目标名集合
-- `_has_kw(call, name)`：判断调用是否包含关键字参数
-- `_is_chained_subscript(node)`：检测链式索引（SettingWithCopy 风险）
-- `_is_apply_axis1(call)`：检测 `apply(axis=1)` 场景
-- `class _DSVisitor(ast.NodeVisitor)`：核心 DS 规则遍历器
-  - `__init__(rel_path)`：初始化别名、随机性、pipeline 统计等状态
-  - `_add(rule, severity, message, node)`：统一生成 ReviewFinding
-  - `visit_Import/visit_ImportFrom`：记录 numpy/random 的导入别名
-  - `visit_Assign/visit_AnnAssign/visit_AugAssign`：检测 SettingWithCopy 与 scaler 变量
-  - `visit_Call`：检测随机性、random_state、fit_transform、iterrows、apply(axis=1)、pipeline
-  - `_is_seed_call(chain, name, node)`：判断是否显式设置了随机种子
-  - `_is_random_usage(chain, name)`：判断是否出现随机调用
-  - `finalize()`：生成汇总类规则（如随机未设种子、fit_transform 在分割前等）
-- `class _DummyNode`：内部占位，用于补充行号
-
-#### `notebook.py`
-- `extract_code_cells(path)`：解析 `.ipynb`，返回 `(cell_index, code)` 列表
-
-#### `parsers.py`
-- `parse_ruff_json(stdout)`：解析 ruff JSON 输出为 ReviewFinding
-- `parse_bandit_json(stdout)`：解析 bandit JSON 输出为 ReviewFinding
-- `parse_pip_audit_json(stdout)`：解析 pip-audit JSON 输出为 ReviewFinding（兼容多种格式）
-
-#### `review_runner.py`
-- `run_review_pipeline(repo_path, files, cfg)`：审查主流程；整合 AST/DS/ruff/bandit/pip-audit/radon/mypy
-
----
-
-### `src/features/testgen/`（测试生成）
-#### `ast_extract.py`
-- `extract_public_functions(path)`：提取模块中非下划线开头的函数签名与 docstring
-
-#### `templates.py`
-- `make_test_module(module_rel, funcs, use_hypothesis)`：生成 pytest 测试模板文本
-- `PYTEST_HEADER` / `HYPOTHESIS_HEADER`：模板头部
-
-#### `coverage_runner.py`
-- `run_coverage(repo_path, pytest_args)`：执行 `coverage run -m pytest` 与 `coverage report -m`
-
-#### `testgen_runner.py`
-- `run_testgen_pipeline(repo_path, files, cfg)`：主流程；生成测试文件 + 可选覆盖率报告
-
----
-
-### `src/reporting/`（报告生成）
-#### `report_builder.py`（Markdown）
-- `build_markdown_report(review, testgen)`：生成 `report.md`
-- `_truncate(text, limit)`：摘要截断
-- `_md_table(headers, rows)`：生成 Markdown 表格
-- `_counter_rows(counter)`：统计输出转表格
-- `_format_loc(finding)`：格式化定位信息
-
-#### `latex_builder.py`（LaTeX）
-- `build_latex_report(review, testgen)`：生成 `report.tex`
-- `_latex_preamble()`：LaTeX 预置字体/表格/标题样式
-- `latex_escape(text)`：LaTeX 特殊字符转义
-- `latex_path(path)`：路径转 `\codepath{}` 格式
-- `format_loc(finding)`：格式化定位
-- `parse_radon_rows(stdout)`：解析 Radon CC 输出为表格行
-- `parse_coverage_rows(stdout)`：解析 coverage 输出为表格行
-
-#### `pdf_builder.py`（ReportLab fallback）
-- `build_pdf_report(review, testgen)`：生成 PDF 二进制（若 LaTeX 不可用）
-- `_make_table(rows, font_name, col_widths, header)`：统一表格样式
-- `_counter_rows(label, counter)`：统计表格行
-- `_format_loc(finding)`：定位格式化
-- `_truncate(text, limit)`：摘要截断
-- `_escape(text)`：HTML 转义用于 Paragraph
-- `_para(text, style)`：生成 ReportLab Paragraph
-- `_register_cjk_font(pdfmetrics, TTFont)`：尝试注册中文字体（Windows/macOS/Linux）
-
----
-
-## 常见问题
-### 1) pandas 报错（比如 `pandas` 缺 `__version__`）
-- 可能被项目中的 `pandas.py` 影子模块覆盖
-- 重新安装：`pip install -U pandas`
-- UI 已支持降级渲染，避免崩溃
-
-### 2) PDF 报告中文显示异常
-- 依赖系统中文字体（Windows 通常为 `Microsoft YaHei` / `SimSun`）
-- 若系统缺失中文字体，请安装后重启再生成报告
-- **XeLaTeX**（TeX Live / MiKTeX）以获得最佳排版
-- Python 依赖列表（含 `streamlit`、`ruff`、`bandit`、`pip-audit`、`radon`、`reportlab` 等）
-- Python 依赖列表（含 `streamlit`、`ruff`、`bandit`、`pip-audit`、`radon`、`reportlab` 等）
-
-### 3) pip-audit 输出解析异常
-- 某些版本输出格式不一致
-- 已做解析兼容，如仍有问题可关闭：
-  ```yaml
-  review:
-    enable_pip_audit: false
-  ```
-
-### 4) ruff 参数报错
-- 你的 ruff 版本可能不支持 `--format json`
-- 可在 `config.yaml` 中调整 `ruff_args`
-
----
-
-## 扩展与二次开发
-### 添加新的 DS 规则
-- 入口：`src/features/review/ds_rules.py`
-- 规则输出使用 `ReviewFinding`
-- 将你的规则归类为新 `rule` 名称
-
-### Notebook 扫描
-- 入口：`src/features/review/notebook.py`
-- 支持扩展更多 cell 元数据
-
-### UI 调整
-- 入口：`app.py`
-- 通过 `_inject_css()` 自定义主题与布局
-
-
-
-
-
-
+## 🛠️ 扩展与二次开发
+- DS 规则：`src/features/review/ds_rules.py`
+- 插件规则：`src/features/review/rule_plugin.py`
+- UI 调整：`app.py` 中的 `_inject_css()` 与布局块
+- 报告排版：`src/reporting/latex_builder.py`

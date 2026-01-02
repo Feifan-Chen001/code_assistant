@@ -532,24 +532,59 @@ def _existing_report_path(out_dir: str, state) -> Optional[Path]:
     return None
 
 
-def _plot_counts(values: List[str], title: str) -> None:
-    values = [v for v in values if v is not None]
-    if not values:
-        st.info("没有数据可显示。")
-        return
-    counts = Counter(values)
-    items = sorted(counts.items(), key=lambda kv: (-kv[1], str(kv[0])))
-    x = [k for k, _ in items]
-    y = [v for _, v in items]
+def _plotly_go():
     try:
         import plotly.graph_objects as go
-
-        fig = go.Figure(data=[go.Bar(x=x, y=y)])
-        fig.update_layout(title=title, yaxis_title="Count")
-        st.plotly_chart(fig, width="stretch")
-        return
+    except Exception as exc:
+        return None, exc
+    try:
+        from plotly._plotly_utils import basevalidators
+        pd = getattr(basevalidators, "pd", None)
+        if pd is not None and (
+            getattr(pd, "Series", None) is None
+            or getattr(pd, "Index", None) is None
+            or getattr(pd, "__version__", None) is None
+        ):
+            basevalidators.pd = None
     except Exception:
         pass
+    return go, None
+
+
+def _plot_counts(values: List[Any], title: str) -> None:
+    values = [v for v in values if v is not None]
+    if not values:
+        st.info("\u6ca1\u6709\u6570\u636e\u53ef\u663e\u793a\u3002")
+        return
+    if isinstance(values[0], (list, tuple)) and len(values[0]) == 2:
+        items = []
+        for item in values:
+            if not isinstance(item, (list, tuple)) or len(item) != 2:
+                continue
+            label, count = item
+            try:
+                count_val = int(count)
+            except Exception:
+                count_val = 0
+            items.append((label, count_val))
+        items = sorted(items, key=lambda kv: (-kv[1], str(kv[0])))
+    else:
+        counts = Counter(values)
+        items = sorted(counts.items(), key=lambda kv: (-kv[1], str(kv[0])))
+    if not items:
+        st.info("\u6ca1\u6709\u6570\u636e\u53ef\u663e\u793a\u3002")
+        return
+    x = [k for k, _ in items]
+    y = [v for _, v in items]
+    go, _ = _plotly_go()
+    if go is not None:
+        try:
+            fig = go.Figure(data=[go.Bar(x=x, y=y)])
+            fig.update_layout(title=title, yaxis_title="Count")
+            st.plotly_chart(fig, width="stretch")
+            return
+        except Exception:
+            pass
     st.markdown(f"**{title}**")
     max_count = max(y) if y else 0
     lines = []
@@ -558,7 +593,6 @@ def _plot_counts(values: List[str], title: str) -> None:
         bar = "#" * bar_len
         lines.append(f"{k}: {bar} ({v})")
     st.text("\n".join(lines))
-
 
 def _show_findings_table(rows) -> None:
     try:
@@ -1540,7 +1574,7 @@ class CodeAssistantConfig(BaseModel):
             # 总览图表 - 使用分隔线和更好的布局
             st.markdown("---")
             st.markdown("#### 📊 数据可视化")
-            chart_cols = st.columns(3, gap="large")
+            chart_cols = st.columns(2, gap="large")
             
             with chart_cols[0]:
                 st.markdown("**🎨 严重性分布**")
@@ -1552,13 +1586,6 @@ class CodeAssistantConfig(BaseModel):
                 tools = [f["tool"] for f in findings]
                 _plot_counts(tools, "")
             
-            with chart_cols[2]:
-                st.markdown("**📁 问题文件 Top 10**")
-                # 文件分布
-                files = [f.get("file", "unknown") for f in findings]
-                file_counts = Counter(files).most_common(10)
-                _plot_counts(file_counts, "")
-
             # 详细问题列表
             st.markdown("---")
             st.markdown("#### 🔍 详细问题列表（Top 20）")
@@ -1771,7 +1798,6 @@ class CodeAssistantConfig(BaseModel):
 
 if __name__ == "__main__":
     main()
-
 
 
 

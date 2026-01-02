@@ -2,32 +2,6 @@
   "repo": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo",
   "findings": [
     {
-      "tool": "bandit",
-      "rule": "B101",
-      "severity": "low",
-      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
-      "file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py",
-      "line": 5,
-      "col": null,
-      "extra": {
-        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
-        "confidence": "HIGH"
-      }
-    },
-    {
-      "tool": "bandit",
-      "rule": "B101",
-      "severity": "low",
-      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
-      "file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py",
-      "line": 8,
-      "col": null,
-      "extra": {
-        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
-        "confidence": "HIGH"
-      }
-    },
-    {
       "tool": "pip-audit",
       "rule": "VULN",
       "severity": "high",
@@ -195,8 +169,8 @@
           "5.0.7"
         ],
         "aliases": [
-          "CVE-2024-39329",
-          "GHSA-x7q2-wr7g-xqmf"
+          "GHSA-x7q2-wr7g-xqmf",
+          "CVE-2024-39329"
         ]
       }
     },
@@ -214,8 +188,8 @@
           "5.0.7"
         ],
         "aliases": [
-          "CVE-2024-38875",
-          "GHSA-qg2p-9jwr-mmqf"
+          "GHSA-qg2p-9jwr-mmqf",
+          "CVE-2024-38875"
         ]
       }
     },
@@ -233,8 +207,8 @@
           "5.0.7"
         ],
         "aliases": [
-          "CVE-2024-39614",
-          "GHSA-f6f8-9mx6-9mx2"
+          "GHSA-f6f8-9mx6-9mx2",
+          "CVE-2024-39614"
         ]
       }
     },
@@ -329,8 +303,8 @@
           "5.1.7"
         ],
         "aliases": [
-          "CVE-2025-26699",
-          "GHSA-p3fp-8748-vqfq"
+          "GHSA-p3fp-8748-vqfq",
+          "CVE-2025-26699"
         ]
       }
     },
@@ -349,8 +323,8 @@
           "5.1.1"
         ],
         "aliases": [
-          "GHSA-5hgc-2vfp-mqvc",
-          "CVE-2024-45230"
+          "CVE-2024-45230",
+          "GHSA-5hgc-2vfp-mqvc"
         ]
       }
     },
@@ -369,8 +343,8 @@
           "5.1.4"
         ],
         "aliases": [
-          "GHSA-m9g8-fxxm-xg86",
-          "CVE-2024-53908"
+          "CVE-2024-53908",
+          "GHSA-m9g8-fxxm-xg86"
         ]
       }
     },
@@ -428,8 +402,8 @@
           "5.1.8"
         ],
         "aliases": [
-          "GHSA-wqfg-m96j-85vm",
-          "CVE-2025-27556"
+          "CVE-2025-27556",
+          "GHSA-wqfg-m96j-85vm"
         ]
       }
     },
@@ -695,8 +669,8 @@
           "2.11.2"
         ],
         "aliases": [
-          "GHSA-h56g-gq9v-vc8r",
-          "CVE-2023-49080"
+          "CVE-2023-49080",
+          "GHSA-h56g-gq9v-vc8r"
         ]
       }
     },
@@ -713,8 +687,8 @@
           "2.14.1"
         ],
         "aliases": [
-          "CVE-2024-35178",
-          "GHSA-hrw6-wg82-cm62"
+          "GHSA-hrw6-wg82-cm62",
+          "CVE-2024-35178"
         ]
       }
     },
@@ -863,8 +837,8 @@
           "78.1.1"
         ],
         "aliases": [
-          "GHSA-5rjg-fvgr-3xxf",
-          "CVE-2025-47273"
+          "CVE-2025-47273",
+          "GHSA-5rjg-fvgr-3xxf"
         ]
       }
     },
@@ -1091,16 +1065,16 @@
   "tool_raw": {
     "complexity_radon": {
       "ok": true,
-      "stdout": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py\n    F 4:0 test_add - A (2)\n    F 7:0 test_div - A (2)\n    F 10:0 test_div_zero - A (1)\n\n3 blocks (classes, functions, methods) analyzed.\nAverage complexity: A (1.6666666666666667)\n",
+      "stdout": "",
       "stderr": ""
     },
     "mypy": {
       "ok": false,
-      "stdout": "tests\\test_math_utils.py:2: error: Cannot find implementation or library stub for module named \"mypkg.math_utils\"  [import-not-found]\ntests\\test_math_utils.py:2: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports\n",
-      "stderr": ""
+      "stdout": "",
+      "stderr": "There are no .py[i] files in directory 'D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo'\n"
     }
   },
   "stats": {
-    "total_findings": 62
+    "total_findings": 60
   }
 }

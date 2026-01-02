@@ -1,8 +1,8 @@
 {
   "repo": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo",
   "output_dir": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests",
-  "written_files": 4,
-  "function_count": 7,
+  "written_files": 3,
+  "function_count": 4,
   "generated": [
     {
       "source": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\pandas_exercises\\03_Grouping\\Occupation\\Exercises_with_solutions.ipynb",
@@ -56,37 +56,13 @@
         }
       ],
       "notebook_module": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\_notebooks\\nb_pandas_exercises_06_Stats_Wind_Stats_Exercises_with_solutions.py"
-    },
-    {
-      "source": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py",
-      "test_file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\test_test_math_utils.py",
-      "functions": [
-        {
-          "name": "test_add",
-          "args": [],
-          "lineno": 4,
-          "doc": ""
-        },
-        {
-          "name": "test_div",
-          "args": [],
-          "lineno": 7,
-          "doc": ""
-        },
-        {
-          "name": "test_div_zero",
-          "args": [],
-          "lineno": 10,
-          "doc": ""
-        }
-      ]
     }
   ],
   "coverage": {
     "ok": false,
     "pytest": {
-      "stdout": "\n=================================== ERRORS ====================================\n__________________ ERROR collecting tests/test_math_utils.py __________________\nImportError while importing test module 'D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nD:\\Anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests\\test_math_utils.py:2: in <module>\n    from mypkg.math_utils import add, div\nE   ModuleNotFoundError: No module named 'mypkg'\n=========================== short test summary info ===========================\nERROR tests/test_math_utils.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.87s\n",
-      "stderr": "",
+      "stdout": "\nno tests ran in 0.49s\n",
+      "stderr": "D:\\Anaconda\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
       "cmd": [
         "coverage",
         "run",
@@ -96,7 +72,7 @@
       ]
     },
     "report": {
-      "stdout": "Name                       Stmts   Miss  Cover   Missing\n--------------------------------------------------------\ntests\\test_math_utils.py       9      7    22%   4-12\n--------------------------------------------------------\nTOTAL                          9      7    22%\n",
+      "stdout": "No data to report.\n",
       "stderr": "",
       "cmd": [
         "coverage",

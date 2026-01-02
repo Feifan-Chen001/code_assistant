@@ -10,6 +10,9 @@
     - "**/build/**"
     - "**/dist/**"
     - "**/.git/**"
+    - "**/.mypy_cache/**"
+    - "**/.pytest_cache/**"
+    - "**/.coverage"
 review:
   enable_ruff: true
   enable_mypy: true
