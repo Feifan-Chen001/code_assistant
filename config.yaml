@@ -12,7 +12,7 @@
     - "**/.git/**"
 review:
   enable_ruff: true
-  enable_mypy: false
+  enable_mypy: true
   enable_bandit: true
   enable_pip_audit: true
   enable_radon: true
@@ -39,3 +39,4 @@ llm:
   max_tokens: 1200
   timeout: 60
   allow_empty_key: false
+

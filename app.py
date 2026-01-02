@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import base64
 import io
@@ -159,6 +159,36 @@ section[data-testid="stSidebar"] .stTextArea textarea::placeholder {{
   background: linear-gradient(135deg, var(--accent-strong), var(--accent)) !important;
 }}
 
+
+
+div[data-testid="stSegmentedControl"] {{
+  margin-bottom: 0.75rem;
+}}
+
+div[data-testid="stSegmentedControl"] div[role="radiogroup"] {{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem;
+  box-shadow: var(--shadow);
+}}
+
+div[data-testid="stSegmentedControl"] button[role="radio"] {{
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+}}
+
+div[data-testid="stSegmentedControl"] button[role="radio"]:hover {{
+  background: rgba(16, 163, 127, 0.12);
+  color: var(--ink);
+}}
+
+div[data-testid="stSegmentedControl"] button[role="radio"][aria-checked="true"] {{
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: #ffffff;
+  box-shadow: 0 8px 18px var(--accent-glow);
+}}
 h1, h2, h3 {{
   letter-spacing: -0.02em;
 }}
@@ -821,15 +851,15 @@ def main() -> None:
     )
     
     # 添加页面选择器
-    page = st.radio(
-        "导航",
-        ["🏠 主工作区", "📚 规则文档", "⚙️ 配置管理"],
-        horizontal=True,
-        label_visibility="collapsed"
-    )
-    
+    nav_options = ["主工作区", "规则文档", "配置管理"]
+    segmented = getattr(st, "segmented_control", None)
+    if segmented:
+        page = segmented("导航", nav_options, default=nav_options[0], label_visibility="collapsed")
+    else:
+        page = st.radio("导航", nav_options, horizontal=True, label_visibility="collapsed")
+
     # 规则文档页面
-    if page == "📚 规则文档":
+    if page == "规则文档":
         st.markdown("## 📚 可用规则文档")
         
         # DS 基础规则
@@ -1079,7 +1109,7 @@ def main() -> None:
         return
     
     # 配置页面
-    if page == "⚙️ 配置管理":
+    if page == "配置管理":
         st.markdown("## ⚙️ 配置管理")
         
         col1, col2 = st.columns(2)
@@ -1192,7 +1222,7 @@ class CodeAssistantConfig(BaseModel):
             enable_ruff = st.checkbox("启用 Ruff", value=True, help="快速 Python Linter")
             enable_bandit = st.checkbox("启用 Bandit", value=True, help="安全漏洞扫描")
             enable_radon = st.checkbox("启用 Radon", value=True, help="代码复杂度分析")
-            enable_mypy = st.checkbox("启用 MyPy", value=False, help="静态类型检查")
+            enable_mypy = st.checkbox("启用 MyPy", value=True, help="静态类型检查")
         
         # 日志配置
         with st.expander("📋 日志设置", expanded=False):
@@ -1742,6 +1772,7 @@ class CodeAssistantConfig(BaseModel):
 
 if __name__ == "__main__":
     main()
+
 
 
 
