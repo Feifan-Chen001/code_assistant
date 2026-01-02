@@ -1,6 +1,32 @@
 {
-  "repo": "D:\\code\\PythonWithPycharm\\DataMining\\CodeAssistant-v2\\my_repo\\pandas_exercises",
+  "repo": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo",
   "findings": [
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py",
+      "line": 5,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py",
+      "line": 8,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
     {
       "tool": "pip-audit",
       "rule": "VULN",
@@ -99,8 +125,8 @@
           "42.0.4"
         ],
         "aliases": [
-          "CVE-2024-26130",
-          "GHSA-6vqw-3v5j-54x4"
+          "GHSA-6vqw-3v5j-54x4",
+          "CVE-2024-26130"
         ]
       }
     },
@@ -150,8 +176,8 @@
           "5.0.7"
         ],
         "aliases": [
-          "CVE-2024-39330",
-          "GHSA-9jmf-237g-qf46"
+          "GHSA-9jmf-237g-qf46",
+          "CVE-2024-39330"
         ]
       }
     },
@@ -169,8 +195,8 @@
           "5.0.7"
         ],
         "aliases": [
-          "GHSA-x7q2-wr7g-xqmf",
-          "CVE-2024-39329"
+          "CVE-2024-39329",
+          "GHSA-x7q2-wr7g-xqmf"
         ]
       }
     },
@@ -188,8 +214,8 @@
           "5.0.7"
         ],
         "aliases": [
-          "GHSA-qg2p-9jwr-mmqf",
-          "CVE-2024-38875"
+          "CVE-2024-38875",
+          "GHSA-qg2p-9jwr-mmqf"
         ]
       }
     },
@@ -226,8 +252,8 @@
           "5.0.8"
         ],
         "aliases": [
-          "GHSA-r836-hh6v-rg5g",
-          "CVE-2024-41991"
+          "CVE-2024-41991",
+          "GHSA-r836-hh6v-rg5g"
         ]
       }
     },
@@ -245,8 +271,8 @@
           "5.0.8"
         ],
         "aliases": [
-          "CVE-2024-42005",
-          "GHSA-pv4p-cwwg-4rph"
+          "GHSA-pv4p-cwwg-4rph",
+          "CVE-2024-42005"
         ]
       }
     },
@@ -283,8 +309,8 @@
           "5.0.8"
         ],
         "aliases": [
-          "GHSA-jh75-99hh-qvx9",
-          "CVE-2024-41989"
+          "CVE-2024-41989",
+          "GHSA-jh75-99hh-qvx9"
         ]
       }
     },
@@ -323,8 +349,8 @@
           "5.1.1"
         ],
         "aliases": [
-          "CVE-2024-45230",
-          "GHSA-5hgc-2vfp-mqvc"
+          "GHSA-5hgc-2vfp-mqvc",
+          "CVE-2024-45230"
         ]
       }
     },
@@ -383,8 +409,8 @@
           "5.1.5"
         ],
         "aliases": [
-          "CVE-2024-56374",
-          "GHSA-qcgg-j2x8-h9g8"
+          "GHSA-qcgg-j2x8-h9g8",
+          "CVE-2024-56374"
         ]
       }
     },
@@ -837,8 +863,8 @@
           "78.1.1"
         ],
         "aliases": [
-          "CVE-2025-47273",
-          "GHSA-5rjg-fvgr-3xxf"
+          "GHSA-5rjg-fvgr-3xxf",
+          "CVE-2025-47273"
         ]
       }
     },
@@ -1065,12 +1091,16 @@
   "tool_raw": {
     "complexity_radon": {
       "ok": true,
-      "stdout": "",
+      "stdout": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\tests\\test_math_utils.py\n    F 4:0 test_add - A (2)\n    F 7:0 test_div - A (2)\n    F 10:0 test_div_zero - A (1)\n\n3 blocks (classes, functions, methods) analyzed.\nAverage complexity: A (1.6666666666666667)\n",
       "stderr": ""
     },
-    "mypy": null
+    "mypy": {
+      "ok": false,
+      "stdout": "tests\\test_math_utils.py:2: error: Cannot find implementation or library stub for module named \"mypkg.math_utils\"  [import-not-found]\ntests\\test_math_utils.py:2: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports\n",
+      "stderr": ""
+    }
   },
   "stats": {
-    "total_findings": 60
+    "total_findings": 62
   }
 }

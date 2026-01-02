@@ -1650,22 +1650,21 @@ class CodeAssistantConfig(BaseModel):
                     else:
                         state["last_report_pdf"] = str(pdf_path)
         if pdf_bytes:
-            btn_col, info_col = st.columns([1, 3], gap="large")
             file_prefix = f"{active_item['name']}_" if batch_mode and active_item else ""
-            with btn_col:
+            dl_col1, dl_col2 = st.columns(2)
+            with dl_col1:
                 st.download_button(
                     "Download report.pdf",
                     data=pdf_bytes,
                     file_name=f"{file_prefix}report.pdf",
                     mime="application/pdf",
                 )
+            with dl_col2:
                 st.download_button(
                     "Download report.md",
                     data=rp.read_bytes(),
                     file_name=f"{file_prefix}report.md",
                 )
-            with info_col:
-                st.caption("PDF preview")
             _render_pdf_preview(pdf_bytes)
         else:
             st.info("PDF preview unavailable. Install reportlab to enable PDF export.")

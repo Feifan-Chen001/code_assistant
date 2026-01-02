@@ -74,24 +74,34 @@
 
 \subsection{概览}
 \begin{itemize}
-  \item 问题总数：60
-  \item 高/中/低：60 / 0 / 0
-  \item 工具数：1
+  \item 问题总数：62
+  \item 高/中/低：60 / 0 / 2
+  \item 工具数：2
   \item DS 规则命中总数：0
 \end{itemize}
 
 \subsection{严重性分布}
 \begin{itemize}
   \item high：60
+  \item low：2
 \end{itemize}
 
 \subsection{工具分布}
 \begin{itemize}
   \item pip-audit：60
+  \item bandit：2
 \end{itemize}
 
 \subsection{Top 20 问题}
 \begin{enumerate}
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code/PythonWithPycharm/DataMining/code_assistant/my_repo/tests/test_math_utils.py:5} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code/PythonWithPycharm/DataMining/code_assistant/my_repo/tests/test_math_utils.py:8} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
   \item \textbf{[high] pip-audit VULN} \\
   说明：None None -> CVE-2024-27306 \#\#\# Summary  A XSS vulnerability exists on index pages for static file handling.  \#\#\# Details  When using `web.static(..., show\_index=True)`, the resulting index pages do not escape file names.  If users can upload files with arbitrary filenames to the static directory, the server is vulnerable to XSS attacks.  \#\#\# Workaround  We have always recommended using a reverse proxy server (e.g. nginx) for serving static files. Users following the recommendation are unaffected.  Other users can disable `show\_index` if unable to upgrade.  -----  Patch: https://github.com/aio-libs/aiohttp/pull/8319/files
 
@@ -146,21 +156,43 @@
   \item \textbf{[high] pip-audit VULN} \\
   说明：None None -> PYSEC-2024-102 An issue was discovered in Django 5.1 before 5.1.1, 5.0 before 5.0.9, and 4.2 before 4.2.16. The urlize() and urlizetrunc() template filters are subject to a potential denial-of-service attack via very large inputs with a specific sequence of characters.
 
-  \item \textbf{[high] pip-audit VULN} \\
-  说明：None None -> PYSEC-2024-157 An issue was discovered in Django 5.1 before 5.1.4, 5.0 before 5.0.10, and 4.2 before 4.2.17. Direct usage of the django.db.models.fields.json.HasKey lookup, when an Oracle database is used, is subject to SQL injection if untrusted data is used as an lhs value. (Applications that use the jsonfield.has\_key lookup via \_\_ are unaffected.)
-
-  \item \textbf{[high] pip-audit VULN} \\
-  说明：None None -> PYSEC-2024-156 An issue was discovered in Django 5.1 before 5.1.4, 5.0 before 5.0.10, and 4.2 before 4.2.17. The strip\_tags() method and striptags template filter are subject to a potential denial-of-service attack via certain inputs containing large sequences of nested incomplete HTML entities.
-
 \end{enumerate}
+
+\subsection{复杂度摘要}
+\begin{itemize}
+  \item 来源：Radon Cyclomatic Complexity（CC）
+  \item 说明：等级通常为 A（简单）到 F（复杂），括号内为复杂度分数
+\end{itemize}
+
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{6.6cm} L{1.1cm} T{5.2cm} L{0.9cm} r}
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endfirsthead
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{D:/code/PythonWithPycharm/DataMining/code_assistant/my_repo/tests/test_math_utils.py} & F & \codepath{test_add} & A & 2 \\
+\codepath{D:/code/PythonWithPycharm/DataMining/code_assistant/my_repo/tests/test_math_utils.py} & F & \codepath{test_div} & A & 2 \\
+\codepath{D:/code/PythonWithPycharm/DataMining/code_assistant/my_repo/tests/test_math_utils.py} & F & \codepath{test_div_zero} & A & 1 \\
+\end{longtable}
+\normalsize
 
 \section{测试生成（TestGen）}
 
 \subsection{指标}
 \begin{itemize}
-  \item 写入测试文件数：3
-  \item 覆盖函数数：4
-  \item 输出目录：\codepath{D:/code/PythonWithPycharm/DataMining/CodeAssistant-v2/generated_tests}
+  \item 写入测试文件数：4
+  \item 覆盖函数数：7
+  \item 输出目录：\codepath{D:/code/PythonWithPycharm/DataMining/code_assistant/generated_tests}
 \end{itemize}
 
 \subsection{覆盖率报告}
@@ -180,7 +212,8 @@ Name & Stmts & Miss & Cover & Missing \\
 \endfoot
 \bottomrule
 \endlastfoot
-\codepath{N/A} & 0 & 0 & 0\% &  \\
+\codepath{tests/test_math_utils.py} & 9 & 7 & 22\% & \codepath{4-12} \\
+\textbf{TOTAL} & 9 & 7 & 22\% &  \\
 \end{longtable}
 \normalsize
 
