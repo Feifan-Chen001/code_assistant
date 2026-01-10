@@ -1,0 +1,37 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\realpython__python-guide",
+  "output_dir": "D:\\code_assistant\\Git_repo\\realpython__python-guide\\reports\\realpython__python-guide\\generated_tests",
+  "written_files": 0,
+  "function_count": 0,
+  "generated": [],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --source --omit D:\\code_assistant\\Git_repo\\realpython__python-guide\\reports\\realpython__python-guide\\generated_tests/** --omit D:\\code_assistant\\Git_repo\\realpython__python-guide\\reports\\realpython__python-guide\\generated_tests/* D:\\code_assistant\\Git_repo\\realpython__python-guide\\reports\\realpython__python-guide\\generated_tests\n  inifile: None\n  rootdir: D:\\code_assistant\\Git_repo\\realpython__python-guide\n\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\realpython__python-guide",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\realpython__python-guide\\reports\\realpython__python-guide\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\realpython__python-guide\\reports\\realpython__python-guide\\generated_tests/*",
+        "D:\\code_assistant\\Git_repo\\realpython__python-guide\\reports\\realpython__python-guide\\generated_tests"
+      ]
+    },
+    "report": {
+      "stdout": "No data to report.\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}

@@ -9,7 +9,8 @@ class AssistantConfig(BaseModel):
     max_files: int = Field(2000, ge=1, le=100000, description="最大扫描文件数")
     include_globs: List[str] = Field(default=["**/*.py", "**/*.ipynb"], description="包含的文件 glob 模式")
     exclude_globs: List[str] = Field(
-        default=["**/.venv/**", "**/venv/**", "**/__pycache__/**", "**/build/**"],
+        default=["**/.venv/**", "**/venv/**", "**/__pycache__/**", "**/build/**",
+                 "**/dist/**", "**/.git/**", "**/generated_tests/**", "**/reports/**"],
         description="排除的文件 glob 模式"
     )
 
@@ -36,11 +37,13 @@ class ReviewConfig(BaseModel):
     mypy_args: List[str] = Field(["--show-error-codes", "--no-error-summary"], description="mypy 命令行参数")
     bandit_args: List[str] = Field(["-r", "-f", "json"], description="bandit 命令行参数")
     pip_audit_args: List[str] = Field(["-f", "json"], description="pip-audit 命令行参数")
+    tool_excludes: Optional[List[str]] = Field(None, description="extra excludes for external tools")
+    pip_audit_requirements: Optional[List[str]] = Field(None, description="pip-audit requirements files")
 
 
 class TestGenConfig(BaseModel):
     """测试生成配置"""
-    output_dir: str = Field("generated_tests", description="测试输出目录")
+    output_dir: str = Field("../generated_tests", description="test output directory")
     use_hypothesis: bool = Field(True, description="使用 Hypothesis 属性测试")
     max_functions: int = Field(200, ge=1, description="最多处理函数数")
 

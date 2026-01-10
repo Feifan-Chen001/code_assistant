@@ -1,0 +1,220 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[11pt,a4paper]{article}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{booktabs}
+\newcolumntype{T}[1]{>{\ttfamily\raggedright\arraybackslash}p{#1}}
+\newcommand{\codepath}[1]{\path{#1}}
+
+% ===== 中文与字体（支持UTF-8和中文路径） =====
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\setmonofont{Consolas}
+\setCJKmonofont{SimSun}
+\usepackage{fontspec}
+
+% ===== 页面与排版 =====
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{microtype}
+
+% ===== 数学/符号 =====
+\usepackage{amsmath,amssymb}
+
+% ===== 链接 =====
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+% ===== 表格 =====
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% ===== 代码块 =====
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  frame=single,
+  framerule=0.3pt,
+  rulecolor=\color{black!25},
+  xleftmargin=1.2em,
+  xrightmargin=0.6em,
+  aboveskip=0.8em,
+  belowskip=0.8em
+}
+
+% ===== 标题格式 =====
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CodeAssistant 报告}}\\[4pt]
+{\normalsize （由自动审查与测试生成系统输出）}
+\end{center}
+
+\vspace{0.5em}
+\tableofcontents
+\vspace{0.8em}
+\hrule
+\vspace{1.2em}
+
+\section{代码审查（Review）}
+
+\subsection{概览}
+\begin{itemize}
+  \item 问题总数：28
+  \item 高/中/低：28 / 0 / 0
+  \item 工具数：1
+  \item DS 规则命中总数：0
+\end{itemize}
+
+\subsection{严重性分布}
+\begin{itemize}
+  \item high：28
+\end{itemize}
+
+\subsection{工具分布}
+\begin{itemize}
+  \item pip-audit：28
+\end{itemize}
+
+\subsection{Top 20 问题}
+\begin{enumerate}
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2021-421 Babel.Locale in Babel before 2.9.1 allows attackers to load arbitrary locale .dat files (containing serialized Python objects) via directory traversal, leading to code execution.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2022-42986 Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi 2022.12.07 removes root certificates from "TrustCor" from the root store. These are in the process of being removed from Mozilla's trust store. TrustCor's root certificates are being removed pursuant to an investigation prompted by media reporting that TrustCor's ownership also operated a business that produced spyware. Conclusions of Mozilla's investigation can be found in the linked google group discussion.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2023-135 Certifi 2023.07.22 removes root certificates from "e-Tugra" from the root store. These are in the process of being removed from Mozilla's trust store. e-Tugra's root certificates are being removed pursuant to an investigation prompted by reporting of security issues in their systems.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2024-60 A vulnerability was identified in the kjd/idna library, specifically within the `idna.encode()` function, affecting version 3.6. The issue arises from the function's handling of crafted input strings, which can lead to quadratic complexity and consequently, a denial of service condition. This vulnerability is triggered by a crafted input that causes the `idna.encode()` function to process the input with considerable computational load, significantly increasing the processing time in a quadratic manner relative to the input size.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2021-66 This affects the package jinja2 from 0.0.0 and before 2.11.3. The ReDoS vulnerability is mainly due to the `\_punctuation\_re regex` operator and its use of multiple wildcards. The last wildcard is the most exploitable as it searches for trailing punctuation. This issue can be mitigated by Markdown to format user content instead of the urlize filter, or by implementing request timeouts and limiting process memory.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2019-217 In Pallets Jinja before 2.10.1, str.format\_map allows a sandbox escape.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> CVE-2024-22195 The `xmlattr` filter in affected versions of Jinja accepts keys containing spaces. XML/HTML attributes cannot contain spaces, as each would then be interpreted as a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. Note that accepting keys as user input is not common or a particularly intended use case of the `xmlattr` filter, and an application doing so should already be verifying what keys are provided regardless of this fix.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> CVE-2024-34064 The `xmlattr` filter in affected versions of Jinja accepts keys containing non-attribute characters. XML/HTML attributes cannot contain spaces, `/`, `>`, or `=`, as each would then be interpreted as starting a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. The fix for the previous GHSA-h5c8-rqwp-cp95 CVE-2024-22195 only addressed spaces but not other characters.  Accepting keys as user input is now explicitly considered an unintended use case of the `xmlattr` filter, and code that does so without otherwise validating the input should be flagged as insecure, regardless of Jinja version. Accepting \_values\_ as user input continues to be safe.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> CVE-2024-56326 An oversight in how the Jinja sandboxed environment detects calls to `str.format` allows an attacker that controls the content of a template to execute arbitrary Python code.  To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.  Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to store a reference to a malicious string's `format` method, then pass that to a filter that calls it. No such filters are built-in to Jinja, but could be present through custom filters in an application. After the fix, such indirect calls are also handled by the sandbox.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> CVE-2025-27516 An oversight in how the Jinja sandboxed environment interacts with the `|attr` filter allows an attacker that controls the content of a template to execute arbitrary Python code.  To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.  Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to use the `|attr` filter to get a reference to a string's plain format method, bypassing the sandbox. After the fix, the `|attr` filter no longer bypasses the environment's attribute lookup.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2021-140 An infinite loop in SMLLexer in Pygments versions 1.5 to 2.7.3 may lead to denial of service when performing syntax highlighting of a Standard ML (SML) source file, as demonstrated by input that only contains the "exception" keyword.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2021-141 In pygments 1.1+, fixed in 2.7.4, the lexers used to parse programming languages rely heavily on regular expressions. Some of the regular expressions have exponential or cubic worst-case complexity and are vulnerable to ReDoS. By crafting malicious input, an attacker can cause a denial of service.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2023-117 A ReDoS issue was discovered in pygments/lexers/smithy.py in pygments through 2.15.0 via SmithyLexer.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2018-28 The Requests package before 2.20.0 for Python sends an HTTP Authorization header to an http URI upon receiving a same-hostname https-to-http redirect, which makes it easier for remote attackers to discover credentials by sniffing the network.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2023-74 Requests is a HTTP library. Since Requests 2.3.0, Requests has been leaking Proxy-Authorization headers to destination servers when redirected to an HTTPS endpoint. This is a product of how we use `rebuild\_proxies` to reattach the `Proxy-Authorization` header to requests. For HTTP connections sent through the tunnel, the proxy will identify the header in the request itself and remove it prior to forwarding to the destination server. However when sent over HTTPS, the `Proxy-Authorization` header must be sent in the CONNECT request as the proxy has no visibility into the tunneled request. This results in Requests forwarding proxy credentials to the destination server unintentionally, allowing a malicious actor to potentially exfiltrate sensitive information. This issue has been patched in version 2.31.0.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> CVE-2024-35195 When making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same origin will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool.  \#\#\# Remediation Any of these options can be used to remediate the current issue, we highly recommend upgrading as the preferred mitigation.  * Upgrade to `requests>=2.32.0`. * For `requests<2.32.0`, avoid setting `verify=False` for the first request to a host while using a Requests Session. * For `requests<2.32.0`, call `close()` on `Session` objects to clear existing connections if `verify=False` is used.  \#\#\# Related Links * https://github.com/psf/requests/pull/6655
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> CVE-2024-47081 \#\#\# Impact  Due to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs.  \#\#\# Workarounds For older versions of Requests, use of the .netrc file can be disabled with `trust\_env=False` on your Requests Session ([docs](https://requests.readthedocs.io/en/latest/api/\#requests.Session.trust\_env)).  \#\#\# References https://github.com/psf/requests/pull/6965 https://seclists.org/fulldisclosure/2025/Jun/2
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2021-108 An issue was discovered in urllib3 before 1.26.5. When provided with a URL containing many @ characters in the authority component, the authority regular expression exhibits catastrophic backtracking, causing a denial of service if a URL were passed as a parameter or redirected to via an HTTP redirect.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2019-133 The urllib3 library before 1.24.2 for Python mishandles certain cases where the desired set of CA certificates is different from the OS store of CA certificates, which results in SSL connections succeeding in situations where a verification failure is the correct outcome. This is related to use of the ssl\_context, ca\_certs, or ca\_certs\_dir argument.
+
+  \item \textbf{[high] pip-audit VULN} \\
+  说明：None None -> PYSEC-2019-132 In the urllib3 library through 1.24.1 for Python, CRLF injection is possible if the attacker controls the request parameter.
+
+\end{enumerate}
+
+\subsection{复杂度摘要}
+\begin{itemize}
+  \item 来源：Radon Cyclomatic Complexity（CC）
+  \item 说明：等级通常为 A（简单）到 F（复杂），括号内为复杂度分数
+\end{itemize}
+
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{6.6cm} L{1.1cm} T{5.2cm} L{0.9cm} r}
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endfirsthead
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/test\_issues.py} & F & process\_list & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/test\_issues.py} & F & append\_to\_list & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/test\_issues.py} & F & add\_to\_dict & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/test\_issues.py} & F & increment\_counter & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/test\_issues.py} & F & read\_file\_bad & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/test\_issues.py} & F & read\_file\_good & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/docs/\_themes/flask\_theme\_support.py} & C & FlaskyStyle & A & 1 \\
+\end{longtable}
+\normalsize
+
+\section{测试生成（TestGen）}
+
+\subsection{指标}
+\begin{itemize}
+  \item 写入测试文件数：0
+  \item 覆盖函数数：0
+  \item 输出目录：\codepath{D:/code\_assistant/Git\_repo/realpython\_\_python-guide/reports/realpython\_\_python-guide/generated\_tests}
+\end{itemize}
+
+\subsection{覆盖率报告}
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{7.2cm} r r r T{5.2cm}}
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endfirsthead
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{N/A} & 0 & 0 & 0\% &  \\
+\end{longtable}
+\normalsize
+
+\end{document}

@@ -1,0 +1,805 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\pallets__flask",
+  "output_dir": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests",
+  "written_files": 18,
+  "function_count": 80,
+  "generated": [
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\docs\\conf.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_docs_conf_254a2da7.py",
+      "functions": [
+        {
+          "name": "github_link",
+          "args": [
+            "name",
+            "rawtext",
+            "text",
+            "lineno",
+            "inliner",
+            "options",
+            "content"
+          ],
+          "lineno": 72,
+          "doc": ""
+        },
+        {
+          "name": "setup",
+          "args": [
+            "app"
+          ],
+          "lineno": 100,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\docs\\conf.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\celery\\src\\task_app\\tasks.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_celery_src_task_app_tasks_83221c59.py",
+      "functions": [
+        {
+          "name": "add",
+          "args": [
+            "a",
+            "b"
+          ],
+          "lineno": 8,
+          "doc": ""
+        },
+        {
+          "name": "block",
+          "args": [],
+          "lineno": 13,
+          "doc": ""
+        },
+        {
+          "name": "process",
+          "args": [
+            "self",
+            "total"
+          ],
+          "lineno": 18,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\celery\\src\\task_app\\tasks.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\celery\\src\\task_app\\views.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_celery_src_task_app_views_3bedbdfe.py",
+      "functions": [
+        {
+          "name": "result",
+          "args": [
+            "id"
+          ],
+          "lineno": 11,
+          "doc": ""
+        },
+        {
+          "name": "add",
+          "args": [],
+          "lineno": 22,
+          "doc": ""
+        },
+        {
+          "name": "block",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        },
+        {
+          "name": "process",
+          "args": [],
+          "lineno": 36,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\celery\\src\\task_app\\views.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\celery\\src\\task_app\\__init__.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_celery_src_task_app___init_528d6bb3.py",
+      "functions": [
+        {
+          "name": "create_app",
+          "args": [],
+          "lineno": 7,
+          "doc": ""
+        },
+        {
+          "name": "celery_init_app",
+          "args": [
+            "app"
+          ],
+          "lineno": 29,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\celery\\src\\task_app\\__init__.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\javascript\\js_example\\views.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_javascript_js_example_views_eb3a8d7d.py",
+      "functions": [
+        {
+          "name": "index",
+          "args": [
+            "js"
+          ],
+          "lineno": 10,
+          "doc": ""
+        },
+        {
+          "name": "add",
+          "args": [],
+          "lineno": 15,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\javascript\\js_example\\views.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\auth.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_tutorial_flaskr_auth_77fe82c0.py",
+      "functions": [
+        {
+          "name": "login_required",
+          "args": [
+            "view"
+          ],
+          "lineno": 19,
+          "doc": "View decorator that redirects anonymous users to the login page."
+        },
+        {
+          "name": "load_logged_in_user",
+          "args": [],
+          "lineno": 33,
+          "doc": "If a user id is stored in the session, load the user object from\nthe database into ``g.user``."
+        },
+        {
+          "name": "register",
+          "args": [],
+          "lineno": 47,
+          "doc": "Register a new user.\n\nValidates that the username is not already taken. Hashes the\npassword for security."
+        },
+        {
+          "name": "login",
+          "args": [],
+          "lineno": 85,
+          "doc": "Log in a registered user by adding the user id to the session."
+        },
+        {
+          "name": "logout",
+          "args": [],
+          "lineno": 113,
+          "doc": "Clear the current session, including the stored user id."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\auth.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\blog.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_tutorial_flaskr_blog_eac5c75f.py",
+      "functions": [
+        {
+          "name": "index",
+          "args": [],
+          "lineno": 17,
+          "doc": "Show all the posts, most recent first."
+        },
+        {
+          "name": "get_post",
+          "args": [
+            "id",
+            "check_author"
+          ],
+          "lineno": 28,
+          "doc": "Get a post and its author by id.\n\nChecks that the id exists and optionally that the current user is\nthe author.\n\n:param id: id of post to get\n:param check_author: require the current user to be the author\n:return: the post with author information\n:raise 404: if a post with the given id doesn't exist\n:raise 403: if the current user isn't the author"
+        },
+        {
+          "name": "create",
+          "args": [],
+          "lineno": 62,
+          "doc": "Create a new post for the current user."
+        },
+        {
+          "name": "update",
+          "args": [
+            "id"
+          ],
+          "lineno": 88,
+          "doc": "Update a post if the current user is the author."
+        },
+        {
+          "name": "delete",
+          "args": [
+            "id"
+          ],
+          "lineno": 115,
+          "doc": "Delete a post.\n\nEnsures that the post exists and that the logged in user is the\nauthor of the post."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\blog.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\db.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_tutorial_flaskr_db_282e88ee.py",
+      "functions": [
+        {
+          "name": "get_db",
+          "args": [],
+          "lineno": 9,
+          "doc": "Connect to the application's configured database. The connection\nis unique for each request and will be reused if this is called\nagain."
+        },
+        {
+          "name": "close_db",
+          "args": [
+            "e"
+          ],
+          "lineno": 23,
+          "doc": "If this request connected to the database, close the\nconnection."
+        },
+        {
+          "name": "init_db",
+          "args": [],
+          "lineno": 33,
+          "doc": "Clear existing data and create new tables."
+        },
+        {
+          "name": "init_db_command",
+          "args": [],
+          "lineno": 42,
+          "doc": "Clear existing data and create new tables."
+        },
+        {
+          "name": "init_app",
+          "args": [
+            "app"
+          ],
+          "lineno": 51,
+          "doc": "Register database functions with the Flask app. This is called by\nthe application factory."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\db.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\__init__.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_examples_tutorial_flaskr___init_fff75601.py",
+      "functions": [
+        {
+          "name": "create_app",
+          "args": [
+            "test_config"
+          ],
+          "lineno": 6,
+          "doc": "Create and configure an instance of the Flask application."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\examples\\tutorial\\flaskr\\__init__.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\app.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_app_a0402e78.py",
+      "functions": [
+        {
+          "name": "remove_ctx",
+          "args": [
+            "f"
+          ],
+          "lineno": 84,
+          "doc": ""
+        },
+        {
+          "name": "add_ctx",
+          "args": [
+            "f"
+          ],
+          "lineno": 96,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\app.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\cli.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_cli_8f64bc05.py",
+      "functions": [
+        {
+          "name": "find_best_app",
+          "args": [
+            "module"
+          ],
+          "lineno": 41,
+          "doc": "Given a module instance this tries to find the best possible\napplication in the module or raises an exception."
+        },
+        {
+          "name": "find_app_by_string",
+          "args": [
+            "module",
+            "app_name"
+          ],
+          "lineno": 120,
+          "doc": "Check if the given string is a variable name or a function. Call\na function to get the app instance, or return the variable directly."
+        },
+        {
+          "name": "prepare_import",
+          "args": [
+            "path"
+          ],
+          "lineno": 200,
+          "doc": "Given a filename this will try to calculate the python path, add it\nto the search path and return the actual module name that is expected."
+        },
+        {
+          "name": "locate_app",
+          "args": [
+            "module_name",
+            "app_name",
+            "raise_if_not_found"
+          ],
+          "lineno": 230,
+          "doc": ""
+        },
+        {
+          "name": "locate_app",
+          "args": [
+            "module_name",
+            "app_name",
+            "raise_if_not_found"
+          ],
+          "lineno": 236,
+          "doc": ""
+        },
+        {
+          "name": "locate_app",
+          "args": [
+            "module_name",
+            "app_name",
+            "raise_if_not_found"
+          ],
+          "lineno": 241,
+          "doc": ""
+        },
+        {
+          "name": "get_version",
+          "args": [
+            "ctx",
+            "param",
+            "value"
+          ],
+          "lineno": 267,
+          "doc": ""
+        },
+        {
+          "name": "with_appcontext",
+          "args": [
+            "f"
+          ],
+          "lineno": 380,
+          "doc": "Wraps a callback so that it's guaranteed to be executed with the\nscript's application context.\n\nCustom commands (and their options) registered under ``app.cli`` or\n``blueprint.cli`` will always have an app context available, this\ndecorator is not required in that case.\n\n.. versionchanged:: 2.2\n    The app context is active for subcommands as well as the\n    decorated callback. The app context is always available to\n    ``app.cli`` command and parameter callbacks."
+        },
+        {
+          "name": "load_dotenv",
+          "args": [
+            "path",
+            "load_defaults"
+          ],
+          "lineno": 698,
+          "doc": "Load \"dotenv\" files to set environment variables. A given path takes\nprecedence over ``.env``, which takes precedence over ``.flaskenv``. After\nloading and combining these files, values are only set if the key is not\nalready set in ``os.environ``.\n\nThis is a no-op if `python-dotenv`_ is not installed.\n\n.. _python-dotenv: https://github.com/theskumar/python-dotenv#readme\n\n:param path: Load the file at this location.\n:param load_defaults: Search for and load the default ``.flaskenv`` and\n    ``.env`` files.\n:return: ``True`` if at least one env var was loaded.\n\n.. versionchanged:: 3.1\n    Added the ``load_defaults`` parameter. A given path takes precedence\n    over default files.\n\n.. versionchanged:: 2.0\n    The current directory is not changed to the location of the\n    loaded file.\n\n.. versionchanged:: 2.0\n    When loading the env files, set the default encoding to UTF-8.\n\n.. versionchanged:: 1.1.0\n    Returns ``False`` when python-dotenv is not installed, or when\n    the given path isn't a file.\n\n.. versionadded:: 1.0"
+        },
+        {
+          "name": "show_server_banner",
+          "args": [
+            "debug",
+            "app_import_path"
+          ],
+          "lineno": 766,
+          "doc": "Show extra startup messages the first time the server is run,\nignoring the reloader."
+        },
+        {
+          "name": "run_command",
+          "args": [
+            "info",
+            "host",
+            "port",
+            "reload",
+            "debugger",
+            "with_threads",
+            "cert",
+            "extra_files",
+            "exclude_patterns"
+          ],
+          "lineno": 935,
+          "doc": "Run a local development server.\n\nThis server is for development purposes only. It does not provide\nthe stability, security, or performance of production WSGI servers.\n\nThe reloader and debugger are enabled by default with the '--debug'\noption."
+        },
+        {
+          "name": "shell_command",
+          "args": [],
+          "lineno": 1001,
+          "doc": "Run an interactive Python shell in the context of a given\nFlask application.  The application will populate the default\nnamespace of this shell according to its configuration.\n\nThis is useful for executing small snippets of management code\nwithout having to manually configure the application."
+        },
+        {
+          "name": "routes_command",
+          "args": [
+            "sort",
+            "all_methods"
+          ],
+          "lineno": 1061,
+          "doc": "Show all registered routes with endpoints and methods."
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 1122,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\cli.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\ctx.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_ctx_187dbac4.py",
+      "functions": [
+        {
+          "name": "after_this_request",
+          "args": [
+            "f"
+          ],
+          "lineno": 117,
+          "doc": "Decorate a function to run after the current request. The behavior is the\nsame as :meth:`.Flask.after_request`, except it only applies to the current\nrequest, rather than every request. Therefore, it must be used within a\nrequest context, rather than during setup.\n\n.. code-block:: python\n\n    @app.route(\"/\")\n    def index():\n        @after_this_request\n        def add_header(response):\n            response.headers[\"X-Foo\"] = \"Parachute\"\n            return response\n\n        return \"Hello, World!\"\n\n.. versionadded:: 0.9"
+        },
+        {
+          "name": "copy_current_request_context",
+          "args": [
+            "f"
+          ],
+          "lineno": 153,
+          "doc": "Decorate a function to run inside the current request context. This can\nbe used when starting a background task, otherwise it will not see the app\nand request objects that were active in the parent.\n\n.. warning::\n\n    Due to the following caveats, it is often safer (and simpler) to pass\n    the data you need when starting the task, rather than using this and\n    relying on the context objects.\n\nIn order to avoid execution switching partially though reading data, either\nread the request body (access ``form``, ``json``, ``data``, etc) before\nstarting the task, or use a lock. This can be an issue when using threading,\nbut shouldn't be an issue when using greenlet/gevent or asyncio.\n\nIf the task will access ``session``, be sure to do so in the parent as well\nso that the ``Vary: cookie`` header will be set. Modifying ``session`` in\nthe task should be avoided, as it may execute after the response cookie has\nalready been written.\n\n.. code-block:: python\n\n    import gevent\n    from flask import copy_current_request_context\n\n    @app.route('/')\n    def index():\n        @copy_current_request_context\n        def do_some_work():\n            # do some work here, it can access flask.request or\n            # flask.session like you would otherwise in the view function.\n            ...\n        gevent.spawn(do_some_work)\n        return 'Regular response'\n\n.. versionadded:: 0.10"
+        },
+        {
+          "name": "has_request_context",
+          "args": [],
+          "lineno": 208,
+          "doc": "Test if an app context is active and if it has request information.\n\n.. code-block:: python\n\n    from flask import has_request_context, request\n\n    if has_request_context():\n        remote_addr = request.remote_addr\n\nIf a request context is active, the :data:`.request` and :data:`.session`\ncontext proxies will available and ``True``, otherwise ``False``. You can\nuse that to test the data you use, rather than using this function.\n\n.. code-block:: python\n\n    from flask import request\n\n    if request:\n        remote_addr = request.remote_addr\n\n.. versionadded:: 0.7"
+        },
+        {
+          "name": "has_app_context",
+          "args": [],
+          "lineno": 234,
+          "doc": "Test if an app context is active. Unlike :func:`has_request_context`\nthis can be true outside a request, such as in a CLI command.\n\n.. code-block:: python\n\n    from flask import has_app_context, g\n\n    if has_app_context():\n        g.cached_data = ...\n\nIf an app context is active, the :data:`.g` and :data:`.current_app` context\nproxies will available and ``True``, otherwise ``False``. You can use that\nto test the data you use, rather than using this function.\n\n    from flask import g\n\n    if g:\n        g.cached_data = ...\n\n.. versionadded:: 0.9"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\ctx.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\debughelpers.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_debughelpers_edcb58ff.py",
+      "functions": [
+        {
+          "name": "attach_enctype_error_multidict",
+          "args": [
+            "request"
+          ],
+          "lineno": 81,
+          "doc": "Patch ``request.files.__getitem__`` to raise a descriptive error\nabout ``enctype=multipart/form-data``.\n\n:param request: The request to patch.\n:meta private:"
+        },
+        {
+          "name": "explain_template_loading_attempts",
+          "args": [
+            "app",
+            "template",
+            "attempts"
+          ],
+          "lineno": 124,
+          "doc": "This should help developers understand what failed"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\debughelpers.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\helpers.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_helpers_91186963.py",
+      "functions": [
+        {
+          "name": "get_debug_flag",
+          "args": [],
+          "lineno": 27,
+          "doc": "Get whether debug mode should be enabled for the app, indicated by the\n:envvar:`FLASK_DEBUG` environment variable. The default is ``False``."
+        },
+        {
+          "name": "get_load_dotenv",
+          "args": [
+            "default"
+          ],
+          "lineno": 35,
+          "doc": "Get whether the user has disabled loading default dotenv files by\nsetting :envvar:`FLASK_SKIP_DOTENV`. The default is ``True``, load\nthe files.\n\n:param default: What to return if the env var isn't set."
+        },
+        {
+          "name": "stream_with_context",
+          "args": [
+            "generator_or_function"
+          ],
+          "lineno": 51,
+          "doc": ""
+        },
+        {
+          "name": "stream_with_context",
+          "args": [
+            "generator_or_function"
+          ],
+          "lineno": 57,
+          "doc": ""
+        },
+        {
+          "name": "stream_with_context",
+          "args": [
+            "generator_or_function"
+          ],
+          "lineno": 62,
+          "doc": "Wrap a response generator function so that it runs inside the current\nrequest context. This keeps :data:`.request`, :data:`.session`, and :data:`.g`\navailable, even though at the point the generator runs the request context\nwill typically have ended.\n\nUse it as a decorator on a generator function:\n\n.. code-block:: python\n\n    from flask import stream_with_context, request, Response\n\n    @app.get(\"/stream\")\n    def streamed_response():\n        @stream_with_context\n        def generate():\n            yield \"Hello \"\n            yield request.args[\"name\"]\n            yield \"!\"\n\n        return Response(generate())\n\nOr use it as a wrapper around a created generator:\n\n.. code-block:: python\n\n    from flask import stream_with_context, request, Response\n\n    @app.get(\"/stream\")\n    def streamed_response():\n        def generate():\n            yield \"Hello \"\n            yield request.args[\"name\"]\n            yield \"!\"\n\n        return Response(stream_with_context(generate()))\n\n.. versionadded:: 0.9"
+        },
+        {
+          "name": "make_response",
+          "args": [],
+          "lineno": 138,
+          "doc": "Sometimes it is necessary to set additional headers in a view.  Because\nviews do not have to return response objects but can return a value that\nis converted into a response object by Flask itself, it becomes tricky to\nadd headers to it.  This function can be called instead of using a return\nand you will get a response object which you can use to attach headers.\n\nIf view looked like this and you want to add a new header::\n\n    def index():\n        return render_template('index.html', foo=42)\n\nYou can now do something like this::\n\n    def index():\n        response = make_response(render_template('index.html', foo=42))\n        response.headers['X-Parachutes'] = 'parachutes are cool'\n        return response\n\nThis function accepts the very same arguments you can return from a\nview function.  This for example creates a response with a 404 error\ncode::\n\n    response = make_response(render_template('not_found.html'), 404)\n\nThe other use case of this function is to force the return value of a\nview function into a response which is helpful with view\ndecorators::\n\n    response = make_response(view_function())\n    response.headers['X-Parachutes'] = 'parachutes are cool'\n\nInternally this function does the following things:\n\n-   if no arguments are passed, it creates a new response argument\n-   if one argument is passed, :meth:`flask.Flask.make_response`\n    is invoked with it.\n-   if more than one argument is passed, the arguments are passed\n    to the :meth:`flask.Flask.make_response` function as tuple.\n\n.. versionadded:: 0.6"
+        },
+        {
+          "name": "url_for",
+          "args": [
+            "endpoint"
+          ],
+          "lineno": 187,
+          "doc": "Generate a URL to the given endpoint with the given values.\n\nThis requires an active request or application context, and calls\n:meth:`current_app.url_for() <flask.Flask.url_for>`. See that method\nfor full documentation.\n\n:param endpoint: The endpoint name associated with the URL to\n    generate. If this starts with a ``.``, the current blueprint\n    name (if any) will be used.\n:param _anchor: If given, append this as ``#anchor`` to the URL.\n:param _method: If given, generate the URL associated with this\n    method for the endpoint.\n:param _scheme: If given, the URL will have this scheme if it is\n    external.\n:param _external: If given, prefer the URL to be internal (False) or\n    require it to be external (True). External URLs include the\n    scheme and domain. When not in an active request, URLs are\n    external by default.\n:param values: Values to use for the variable parts of the URL rule.\n    Unknown keys are appended as query string arguments, like\n    ``?a=b&c=d``.\n\n.. versionchanged:: 2.2\n    Calls ``current_app.url_for``, allowing an app to override the\n    behavior.\n\n.. versionchanged:: 0.10\n   The ``_scheme`` parameter was added.\n\n.. versionchanged:: 0.9\n   The ``_anchor`` and ``_method`` parameters were added.\n\n.. versionchanged:: 0.9\n   Calls ``app.handle_url_build_error`` on build errors."
+        },
+        {
+          "name": "redirect",
+          "args": [
+            "location",
+            "code",
+            "Response"
+          ],
+          "lineno": 241,
+          "doc": "Create a redirect response object.\n\nIf :data:`~flask.current_app` is available, it will use its\n:meth:`~flask.Flask.redirect` method, otherwise it will use\n:func:`werkzeug.utils.redirect`.\n\n:param location: The URL to redirect to.\n:param code: The status code for the redirect.\n:param Response: The response class to use. Not used when\n    ``current_app`` is active, which uses ``app.response_class``.\n\n.. versionadded:: 2.2\n    Calls ``current_app.redirect`` if available instead of always\n    using Werkzeug's default ``redirect``."
+        },
+        {
+          "name": "abort",
+          "args": [
+            "code"
+          ],
+          "lineno": 265,
+          "doc": "Raise an :exc:`~werkzeug.exceptions.HTTPException` for the given\nstatus code.\n\nIf :data:`~flask.current_app` is available, it will call its\n:attr:`~flask.Flask.aborter` object, otherwise it will use\n:func:`werkzeug.exceptions.abort`.\n\n:param code: The status code for the exception, which must be\n    registered in ``app.aborter``.\n:param args: Passed to the exception.\n:param kwargs: Passed to the exception.\n\n.. versionadded:: 2.2\n    Calls ``current_app.aborter`` if available instead of always\n    using Werkzeug's default ``abort``."
+        },
+        {
+          "name": "get_template_attribute",
+          "args": [
+            "template_name",
+            "attribute"
+          ],
+          "lineno": 288,
+          "doc": "Loads a macro (or variable) a template exports.  This can be used to\ninvoke a macro from within Python code.  If you for example have a\ntemplate named :file:`_cider.html` with the following contents:\n\n.. sourcecode:: html+jinja\n\n   {% macro hello(name) %}Hello {{ name }}!{% endmacro %}\n\nYou can access this from Python code like this::\n\n    hello = get_template_attribute('_cider.html', 'hello')\n    return hello('World')\n\n.. versionadded:: 0.2\n\n:param template_name: the name of the template\n:param attribute: the name of the variable of macro to access"
+        },
+        {
+          "name": "flash",
+          "args": [
+            "message",
+            "category"
+          ],
+          "lineno": 310,
+          "doc": "Flashes a message to the next request.  In order to remove the\nflashed message from the session and to display it to the user,\nthe template has to call :func:`get_flashed_messages`.\n\n.. versionchanged:: 0.3\n   `category` parameter added.\n\n:param message: the message to be flashed.\n:param category: the category for the message.  The following values\n                 are recommended: ``'message'`` for any kind of message,\n                 ``'error'`` for errors, ``'info'`` for information\n                 messages and ``'warning'`` for warnings.  However any\n                 kind of string can be used as category."
+        },
+        {
+          "name": "get_flashed_messages",
+          "args": [
+            "with_categories",
+            "category_filter"
+          ],
+          "lineno": 344,
+          "doc": "Pulls all flashed messages from the session and returns them.\nFurther calls in the same request to the function will return\nthe same messages.  By default just the messages are returned,\nbut when `with_categories` is set to ``True``, the return value will\nbe a list of tuples in the form ``(category, message)`` instead.\n\nFilter the flashed messages to one or more categories by providing those\ncategories in `category_filter`.  This allows rendering categories in\nseparate html blocks.  The `with_categories` and `category_filter`\narguments are distinct:\n\n* `with_categories` controls whether categories are returned with message\n  text (``True`` gives a tuple, where ``False`` gives just the message text).\n* `category_filter` filters the messages down to only those matching the\n  provided categories.\n\nSee :doc:`/patterns/flashing` for examples.\n\n.. versionchanged:: 0.3\n   `with_categories` parameter added.\n\n.. versionchanged:: 0.9\n    `category_filter` parameter added.\n\n:param with_categories: set to ``True`` to also receive categories.\n:param category_filter: filter of categories to limit return values.  Only\n                        categories in the list will be returned."
+        },
+        {
+          "name": "send_file",
+          "args": [
+            "path_or_file",
+            "mimetype",
+            "as_attachment",
+            "download_name",
+            "conditional",
+            "etag",
+            "last_modified",
+            "max_age"
+          ],
+          "lineno": 401,
+          "doc": "Send the contents of a file to the client.\n\nThe first argument can be a file path or a file-like object. Paths\nare preferred in most cases because Werkzeug can manage the file and\nget extra information from the path. Passing a file-like object\nrequires that the file is opened in binary mode, and is mostly\nuseful when building a file in memory with :class:`io.BytesIO`.\n\nNever pass file paths provided by a user. The path is assumed to be\ntrusted, so a user could craft a path to access a file you didn't\nintend. Use :func:`send_from_directory` to safely serve\nuser-requested paths from within a directory.\n\nIf the WSGI server sets a ``file_wrapper`` in ``environ``, it is\nused, otherwise Werkzeug's built-in wrapper is used. Alternatively,\nif the HTTP server supports ``X-Sendfile``, configuring Flask with\n``USE_X_SENDFILE = True`` will tell the server to send the given\npath, which is much more efficient than reading it in Python.\n\n:param path_or_file: The path to the file to send, relative to the\n    current working directory if a relative path is given.\n    Alternatively, a file-like object opened in binary mode. Make\n    sure the file pointer is seeked to the start of the data.\n:param mimetype: The MIME type to send for the file. If not\n    provided, it will try to detect it from the file name.\n:param as_attachment: Indicate to a browser that it should offer to\n    save the file instead of displaying it.\n:param download_name: The default name browsers will use when saving\n    the file. Defaults to the passed file name.\n:param conditional: Enable conditional and range responses based on\n    request headers. Requires passing a file path and ``environ``.\n:param etag: Calculate an ETag for the file, which requires passing\n    a file path. Can also be a string to use instead.\n:param last_modified: The last modified time to send for the file,\n    in seconds. If not provided, it will try to detect it from the\n    file path.\n:param max_age: How long the client should cache the file, in\n    seconds. If set, ``Cache-Control`` will be ``public``, otherwise\n    it will be ``no-cache`` to prefer conditional caching.\n\n.. versionchanged:: 2.0\n    ``download_name`` replaces the ``attachment_filename``\n    parameter. If ``as_attachment=False``, it is passed with\n    ``Content-Disposition: inline`` instead.\n\n.. versionchanged:: 2.0\n    ``max_age`` replaces the ``cache_timeout`` parameter.\n    ``conditional`` is enabled and ``max_age`` is not set by\n    default.\n\n.. versionchanged:: 2.0\n    ``etag`` replaces the ``add_etags`` parameter. It can be a\n    string to use instead of generating one.\n\n.. versionchanged:: 2.0\n    Passing a file-like object that inherits from\n    :class:`~io.TextIOBase` will raise a :exc:`ValueError` rather\n    than sending an empty file.\n\n.. versionadded:: 2.0\n    Moved the implementation to Werkzeug. This is now a wrapper to\n    pass some Flask-specific arguments.\n\n.. versionchanged:: 1.1\n    ``filename`` may be a :class:`~os.PathLike` object.\n\n.. versionchanged:: 1.1\n    Passing a :class:`~io.BytesIO` object supports range requests.\n\n.. versionchanged:: 1.0.3\n    Filenames are encoded with ASCII instead of Latin-1 for broader\n    compatibility with WSGI servers.\n\n.. versionchanged:: 1.0\n    UTF-8 filenames as specified in :rfc:`2231` are supported.\n\n.. versionchanged:: 0.12\n    The filename is no longer automatically inferred from file\n    objects. If you want to use automatic MIME and etag support,\n    pass a filename via ``filename_or_fp`` or\n    ``attachment_filename``.\n\n.. versionchanged:: 0.12\n    ``attachment_filename`` is preferred over ``filename`` for MIME\n    detection.\n\n.. versionchanged:: 0.9\n    ``cache_timeout`` defaults to\n    :meth:`Flask.get_send_file_max_age`.\n\n.. versionchanged:: 0.7\n    MIME guessing and etag support for file-like objects was\n    removed because it was unreliable. Pass a filename if you are\n    able to, otherwise attach an etag yourself.\n\n.. versionchanged:: 0.5\n    The ``add_etags``, ``cache_timeout`` and ``conditional``\n    parameters were added. The default behavior is to add etags.\n\n.. versionadded:: 0.2"
+        },
+        {
+          "name": "send_from_directory",
+          "args": [
+            "directory",
+            "path"
+          ],
+          "lineno": 527,
+          "doc": "Send a file from within a directory using :func:`send_file`.\n\n.. code-block:: python\n\n    @app.route(\"/uploads/<path:name>\")\n    def download_file(name):\n        return send_from_directory(\n            app.config['UPLOAD_FOLDER'], name, as_attachment=True\n        )\n\nThis is a secure way to serve files from a folder, such as static\nfiles or uploads. Uses :func:`~werkzeug.security.safe_join` to\nensure the path coming from the client is not maliciously crafted to\npoint outside the specified directory.\n\nIf the final path does not point to an existing regular file,\nraises a 404 :exc:`~werkzeug.exceptions.NotFound` error.\n\n:param directory: The directory that ``path`` must be located under,\n    relative to the current application's root path. This *must not*\n    be a value provided by the client, otherwise it becomes insecure.\n:param path: The path to the file to send, relative to\n    ``directory``.\n:param kwargs: Arguments to pass to :func:`send_file`.\n\n.. versionchanged:: 2.0\n    ``path`` replaces the ``filename`` parameter.\n\n.. versionadded:: 2.0\n    Moved the implementation to Werkzeug. This is now a wrapper to\n    pass some Flask-specific arguments.\n\n.. versionadded:: 0.5"
+        },
+        {
+          "name": "get_root_path",
+          "args": [
+            "import_name"
+          ],
+          "lineno": 571,
+          "doc": "Find the root path of a package, or the path that contains a\nmodule. If it cannot be found, returns the current working\ndirectory.\n\nNot to be confused with the value returned by :func:`find_package`.\n\n:meta private:"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\helpers.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\logging.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_logging_4c066685.py",
+      "functions": [
+        {
+          "name": "wsgi_errors_stream",
+          "args": [],
+          "lineno": 16,
+          "doc": "Find the most appropriate error stream for the application. If a request\nis active, log to ``wsgi.errors``, otherwise use ``sys.stderr``.\n\nIf you configure your own :class:`logging.StreamHandler`, you may want to\nuse this for the stream. If you are using file or dict configuration and\ncan't import this directly, you can refer to it as\n``ext://flask.logging.wsgi_errors_stream``."
+        },
+        {
+          "name": "has_level_handler",
+          "args": [
+            "logger"
+          ],
+          "lineno": 31,
+          "doc": "Check if there is a handler in the logging chain that will handle the\ngiven logger's :meth:`effective level <~logging.Logger.getEffectiveLevel>`."
+        },
+        {
+          "name": "create_logger",
+          "args": [
+            "app"
+          ],
+          "lineno": 58,
+          "doc": "Get the Flask app's logger and configure it if needed.\n\nThe logger name will be the same as\n:attr:`app.import_name <flask.Flask.name>`.\n\nWhen :attr:`~flask.Flask.debug` is enabled, set the logger level to\n:data:`logging.DEBUG` if it is not set.\n\nIf there is no handler for the logger's effective level, add a\n:class:`~logging.StreamHandler` for\n:func:`~flask.logging.wsgi_errors_stream` with a basic format."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\logging.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\templating.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_templating_61f1eb03.py",
+      "functions": [
+        {
+          "name": "render_template",
+          "args": [
+            "template_name_or_list"
+          ],
+          "lineno": 135,
+          "doc": "Render a template by name with the given context.\n\n:param template_name_or_list: The name of the template to render. If\n    a list is given, the first name to exist will be rendered.\n:param context: The variables to make available in the template."
+        },
+        {
+          "name": "render_template_string",
+          "args": [
+            "source"
+          ],
+          "lineno": 150,
+          "doc": "Render a template from the given source string with the given\ncontext.\n\n:param source: The source code of the template to render.\n:param context: The variables to make available in the template."
+        },
+        {
+          "name": "stream_template",
+          "args": [
+            "template_name_or_list"
+          ],
+          "lineno": 180,
+          "doc": "Render a template by name with the given context as a stream.\nThis returns an iterator of strings, which can be used as a\nstreaming response from a view.\n\n:param template_name_or_list: The name of the template to render. If\n    a list is given, the first name to exist will be rendered.\n:param context: The variables to make available in the template.\n\n.. versionadded:: 2.2"
+        },
+        {
+          "name": "stream_template_string",
+          "args": [
+            "source"
+          ],
+          "lineno": 199,
+          "doc": "Render a template from the given source string with the given\ncontext as a stream. This returns an iterator of strings, which can\nbe used as a streaming response from a view.\n\n:param source: The source code of the template to render.\n:param context: The variables to make available in the template.\n\n.. versionadded:: 2.2"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\templating.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\json\\__init__.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_json___init_6405bca7.py",
+      "functions": [
+        {
+          "name": "dumps",
+          "args": [
+            "obj"
+          ],
+          "lineno": 13,
+          "doc": "Serialize data as JSON.\n\nIf :data:`~flask.current_app` is available, it will use its\n:meth:`app.json.dumps() <flask.json.provider.JSONProvider.dumps>`\nmethod, otherwise it will use :func:`json.dumps`.\n\n:param obj: The data to serialize.\n:param kwargs: Arguments passed to the ``dumps`` implementation.\n\n.. versionchanged:: 2.3\n    The ``app`` parameter was removed.\n\n.. versionchanged:: 2.2\n    Calls ``current_app.json.dumps``, allowing an app to override\n    the behavior.\n\n.. versionchanged:: 2.0.2\n    :class:`decimal.Decimal` is supported by converting to a string.\n\n.. versionchanged:: 2.0\n    ``encoding`` will be removed in Flask 2.1.\n\n.. versionchanged:: 1.0.3\n    ``app`` can be passed directly, rather than requiring an app\n    context for configuration."
+        },
+        {
+          "name": "dump",
+          "args": [
+            "obj",
+            "fp"
+          ],
+          "lineno": 47,
+          "doc": "Serialize data as JSON and write to a file.\n\nIf :data:`~flask.current_app` is available, it will use its\n:meth:`app.json.dump() <flask.json.provider.JSONProvider.dump>`\nmethod, otherwise it will use :func:`json.dump`.\n\n:param obj: The data to serialize.\n:param fp: A file opened for writing text. Should use the UTF-8\n    encoding to be valid JSON.\n:param kwargs: Arguments passed to the ``dump`` implementation.\n\n.. versionchanged:: 2.3\n    The ``app`` parameter was removed.\n\n.. versionchanged:: 2.2\n    Calls ``current_app.json.dump``, allowing an app to override\n    the behavior.\n\n.. versionchanged:: 2.0\n    Writing to a binary file, and the ``encoding`` argument, will be\n    removed in Flask 2.1."
+        },
+        {
+          "name": "loads",
+          "args": [
+            "s"
+          ],
+          "lineno": 77,
+          "doc": "Deserialize data as JSON.\n\nIf :data:`~flask.current_app` is available, it will use its\n:meth:`app.json.loads() <flask.json.provider.JSONProvider.loads>`\nmethod, otherwise it will use :func:`json.loads`.\n\n:param s: Text or UTF-8 bytes.\n:param kwargs: Arguments passed to the ``loads`` implementation.\n\n.. versionchanged:: 2.3\n    The ``app`` parameter was removed.\n\n.. versionchanged:: 2.2\n    Calls ``current_app.json.loads``, allowing an app to override\n    the behavior.\n\n.. versionchanged:: 2.0\n    ``encoding`` will be removed in Flask 2.1. The data must be a\n    string or UTF-8 bytes.\n\n.. versionchanged:: 1.0.3\n    ``app`` can be passed directly, rather than requiring an app\n    context for configuration."
+        },
+        {
+          "name": "load",
+          "args": [
+            "fp"
+          ],
+          "lineno": 108,
+          "doc": "Deserialize data as JSON read from a file.\n\nIf :data:`~flask.current_app` is available, it will use its\n:meth:`app.json.load() <flask.json.provider.JSONProvider.load>`\nmethod, otherwise it will use :func:`json.load`.\n\n:param fp: A file opened for reading text or UTF-8 bytes.\n:param kwargs: Arguments passed to the ``load`` implementation.\n\n.. versionchanged:: 2.3\n    The ``app`` parameter was removed.\n\n.. versionchanged:: 2.2\n    Calls ``current_app.json.load``, allowing an app to override\n    the behavior.\n\n.. versionchanged:: 2.2\n    The ``app`` parameter will be removed in Flask 2.3.\n\n.. versionchanged:: 2.0\n    ``encoding`` will be removed in Flask 2.1. The file must be text\n    mode, or binary mode with UTF-8 bytes."
+        },
+        {
+          "name": "jsonify",
+          "args": [],
+          "lineno": 138,
+          "doc": "Serialize the given arguments as JSON, and return a\n:class:`~flask.Response` object with the ``application/json``\nmimetype. A dict or list returned from a view will be converted to a\nJSON response automatically without needing to call this.\n\nThis requires an active app context, and calls\n:meth:`app.json.response() <flask.json.provider.JSONProvider.response>`.\n\nIn debug mode, the output is formatted with indentation to make it\neasier to read. This may also be controlled by the provider.\n\nEither positional or keyword arguments can be given, not both.\nIf no arguments are given, ``None`` is serialized.\n\n:param args: A single value to serialize, or multiple values to\n    treat as a list to serialize.\n:param kwargs: Treat as a dict to serialize.\n\n.. versionchanged:: 2.2\n    Calls ``current_app.json.response``, allowing an app to override\n    the behavior.\n\n.. versionchanged:: 2.0.2\n    :class:`decimal.Decimal` is supported by converting to a string.\n\n.. versionchanged:: 0.11\n    Added support for serializing top-level arrays. This was a\n    security risk in ancient browsers. See :ref:`security-json`.\n\n.. versionadded:: 0.2"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\json\\__init__.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\sansio\\scaffold.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\\test_src_flask_sansio_scaffold_7b2b4347.py",
+      "functions": [
+        {
+          "name": "setupmethod",
+          "args": [
+            "f"
+          ],
+          "lineno": 42,
+          "doc": ""
+        },
+        {
+          "name": "find_package",
+          "args": [
+            "import_name"
+          ],
+          "lineno": 754,
+          "doc": "Find the prefix that a package is installed under, and the path\nthat it would be imported from.\n\nThe prefix is the directory containing the standard directory\nhierarchy (lib, bin, etc.). If the package is not installed to the\nsystem (:attr:`sys.prefix`) or a virtualenv (``site-packages``),\n``None`` is returned.\n\nThe path is the entry in :attr:`sys.path` that contains the package\nfor import. If the package is not installed, it's assumed that the\npackage was imported from the current working directory."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\pallets__flask\\src\\flask\\sansio\\scaffold.py"
+    }
+  ],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --source --omit D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests/** --omit D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests/* --omit D:\\code_assistant\\Git_repo\\pallets__flask\\tests/** D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests\n  inifile: D:\\code_assistant\\Git_repo\\pallets__flask\\pyproject.toml\n  rootdir: D:\\code_assistant\\Git_repo\\pallets__flask\n\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\inorout.py:497: CoverageWarning: Module flask was never imported. (module-not-imported); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-module-not-imported\n  self.warn(f\"Module {pkg} was never imported.\", slug=\"module-not-imported\")\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\pallets__flask\\src",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests/*",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\pallets__flask\\tests/**",
+        "D:\\code_assistant\\Git_repo\\pallets__flask\\reports\\pallets__flask\\generated_tests"
+      ]
+    },
+    "report": {
+      "stdout": "Name                               Stmts   Miss  Cover   Missing\n----------------------------------------------------------------\ntests\\conftest.py                     72     72     0%   1-129\ntests\\test_appctx.py                 142    142     0%   1-210\ntests\\test_async.py                  100    100     0%   1-145\ntests\\test_basic.py                 1317   1317     0%   1-1944\ntests\\test_blueprints.py             750    750     0%   1-1127\ntests\\test_cli.py                    429    429     0%   3-702\ntests\\test_config.py                 166    166     0%   1-250\ntests\\test_converters.py              29     29     0%   1-42\ntests\\test_helpers.py                237    237     0%   1-383\ntests\\test_instance_config.py         56     56     0%   1-109\ntests\\test_json.py                   173    173     0%   1-346\ntests\\test_json_tag.py                50     50     0%   1-86\ntests\\test_logging.py                 69     69     0%   1-98\ntests\\test_regression.py              21     21     0%   1-30\ntests\\test_reqctx.py                 216    216     0%   1-326\ntests\\test_request.py                 50     50     0%   1-70\ntests\\test_session_interface.py       17     17     0%   1-28\ntests\\test_signals.py                126    126     0%   1-181\ntests\\test_subclassing.py             15     15     0%   1-21\ntests\\test_templating.py             339    339     0%   1-532\ntests\\test_testing.py                266    266     0%   1-385\ntests\\test_user_error_handler.py     203    203     0%   1-295\ntests\\test_views.py                  177    177     0%   1-260\n----------------------------------------------------------------\nTOTAL                               5020   5020     0%\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}

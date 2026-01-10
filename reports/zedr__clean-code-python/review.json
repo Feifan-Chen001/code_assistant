@@ -1,0 +1,19 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\zedr__clean-code-python",
+  "findings": [],
+  "tool_raw": {
+    "complexity_radon": {
+      "ok": true,
+      "stdout": "D:\\code_assistant\\Git_repo\\zedr__clean-code-python\\conftest.py\n    M 63:4 ReadmeItem.runtest - B (6)\n    C 28:0 ReadmeFile - A (3)\n    C 50:0 ReadmeItem - A (3)\n    F 22:0 pytest_collect_file - A (2)\n    M 31:4 ReadmeFile.collect - A (2)\n    F 17:0 fake_print - A (1)\n    F 40:0 _with_patched_sleep - A (1)\n    C 13:0 MyPyValidationError - A (1)\n    M 59:4 ReadmeItem.__init__ - A (1)\n    M 80:4 ReadmeItem.repr_failure - A (1)\n    M 87:4 ReadmeItem.reportinfo - A (1)\n\n11 blocks (classes, functions, methods) analyzed.\nAverage complexity: A (2.0)\n",
+      "stderr": ""
+    },
+    "mypy": {
+      "ok": false,
+      "stdout": "",
+      "stderr": "There are no .py[i] files in directory 'D:\\code_assistant\\Git_repo\\zedr__clean-code-python'\n"
+    }
+  },
+  "stats": {
+    "total_findings": 0
+  }
+}

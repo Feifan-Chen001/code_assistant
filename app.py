@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import base64
 import io
@@ -69,7 +69,7 @@ def _inject_css() -> None:
   --input-border: #dbe3ee;
   --code-bg: #f1f5f9;
   --code-border: #e2e8f0;
-  --hero-overlay: rgba(255, 255, 255, 0.3);
+  --hero-overlay: rgba(0, 0, 0, 0);
   --hero-text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
   --hero-subtext-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
   --app-glow-1: radial-gradient(1000px 500px at 10% 0%, rgba(16, 163, 127, 0.18) 0%, transparent 55%);
@@ -208,6 +208,7 @@ h1, h2, h3 {{
   position: relative;
   z-index: 1;
   text-shadow: var(--hero-text-shadow);
+  color: black;
 }}
 
 .hero-subtitle {{
@@ -461,21 +462,41 @@ def _render_pdf_preview(pdf_bytes: bytes) -> None:
 
 
 def _compile_latex(tex_path: Path) -> Optional[Path]:
+    """编译 LaTeX 为 PDF"""
+    if not tex_path.exists():
+        st.warning(f"LaTeX 文件不存在: {tex_path}")
+        return None
+    
     pdf_path = tex_path.with_suffix(".pdf")
+    
+    # 尝试 xelatex（支持中文）
     res = run_cmd(
         ["xelatex", "-interaction=nonstopmode", "-halt-on-error", tex_path.name],
         cwd=str(tex_path.parent),
     )
-    if res["ok"] and pdf_path.exists():
+    if res["ok"]:
+        # 运行第二次以确保引用正确
         res2 = run_cmd(
             ["xelatex", "-interaction=nonstopmode", "-halt-on-error", tex_path.name],
             cwd=str(tex_path.parent),
         )
         if pdf_path.exists():
+            st.success("✅ 使用 xelatex 编译成功")
             return pdf_path
+        else:
+            st.warning(f"xelatex 编译失败或未生成 PDF")
+    else:
+        st.warning(f"xelatex 不可用或编译失败: {res.get('stderr', res.get('stdout', ''))[:200]}")
+    
+    # 回退到 tectonic
     res = run_cmd(["tectonic", tex_path.name], cwd=str(tex_path.parent))
     if res["ok"] and pdf_path.exists():
+        st.success("✅ 使用 tectonic 编译成功")
         return pdf_path
+    else:
+        st.warning(f"tectonic 不可用或编译失败: {res.get('stderr', res.get('stdout', ''))[:200]}")
+    
+    st.info("💡 LaTeX 编译失败，将使用 reportlab 生成 PDF 报告")
     return None
 
 
@@ -506,19 +527,34 @@ def _make_pdf_bytes(review, testgen, md_text: str) -> Optional[bytes]:
 
 def _write_report(out_dir: str, review, testgen) -> tuple[Path, Optional[Path]]:
     _ensure_dirs(out_dir)
+    
+    # 生成 Markdown 报告
     md = build_markdown_report(review, testgen)
     report_path = Path(out_dir) / "report.md"
     report_path.write_text(md, encoding="utf-8")
+    
+    # 生成 LaTeX 报告
     tex_path = Path(out_dir) / "report.tex"
     tex_path.write_text(build_latex_report(review, testgen), encoding="utf-8")
-    pdf_path = _compile_latex(tex_path)
+    
+    # 尝试编译 LaTeX
+    with st.spinner("📝 编译 LaTeX 报告..."):
+        pdf_path = _compile_latex(tex_path)
+    
     if pdf_path:
+        st.success("✅ 报告生成成功（LaTeX + PDF）")
         return report_path, pdf_path
+    
+    # 回退到 reportlab 生成 PDF
+    st.info("📋 尝试使用备选方案生成 PDF...")
     pdf_bytes = _make_pdf_bytes(review, testgen, md)
     if pdf_bytes:
         fallback_path = Path(out_dir) / "report.pdf"
         fallback_path.write_bytes(pdf_bytes)
+        st.success("✅ 报告生成成功（使用 reportlab）")
         return report_path, fallback_path
+    
+    st.warning("⚠️ 只生成了 Markdown 报告，PDF 生成失败")
     return report_path, None
 
 
@@ -885,12 +921,23 @@ def main() -> None:
     )
     
     # 添加页面选择器
-    nav_options = ["主工作区", "规则文档", "配置管理"]
+    nav_options = ["主工作区", "规则文档", "诊断工具", "配置管理"]
+    
+    # 使用 session_state 保持页面状态
+    if "current_page" not in st.session_state:
+        st.session_state.current_page = nav_options[0]
+    
     segmented = getattr(st, "segmented_control", None)
     if segmented:
-        page = segmented("导航", nav_options, default=nav_options[0], label_visibility="collapsed")
+        page = segmented("导航", nav_options, default=st.session_state.current_page, 
+                        label_visibility="collapsed", key="nav_selector")
     else:
-        page = st.radio("导航", nav_options, horizontal=True, label_visibility="collapsed")
+        page = st.radio("导航", nav_options, horizontal=True, 
+                       label_visibility="collapsed", key="nav_selector",
+                       index=nav_options.index(st.session_state.current_page))
+    
+    # 更新当前页面
+    st.session_state.current_page = page
 
     # 规则文档页面
     if page == "规则文档":
@@ -1142,6 +1189,193 @@ def main() -> None:
         st.info("💡 提示: 这些规则可在侧边栏的 Advanced Settings 中启用/禁用")
         return
     
+    # 诊断工具页面
+    if page == "诊断工具":
+        st.markdown("## 🔧 诊断工具")
+        
+        st.markdown("### LaTeX 环境检查")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            if st.button("检查 xelatex", key="check_xelatex"):
+                res = run_cmd(["xelatex", "--version"])
+                if res["ok"]:
+                    st.success("✅ xelatex 可用")
+                    st.code(res["stdout"][:500])
+                else:
+                    st.error("❌ xelatex 不可用")
+                    st.error(f"错误: {res.get('stderr', res.get('stdout', '未知错误'))[:200]}")
+                    with st.expander("📖 如何安装 xelatex?"):
+                        st.markdown("""
+### Windows 用户 - 安装 TeX Live（推荐）
+
+1. **下载 TeX Live**
+   - 访问 https://www.tug.org/texlive/acquire-netinstall.html
+   - 下载 `install-tl-windows.exe`
+
+2. **运行安装程序**
+   - 双击 `install-tl-windows.exe`
+   - 选择"完全安装"或至少勾选"中文支持"
+   - 安装位置选择默认（如 `C:\\texlive\\2024`）
+   - 安装完成后重启电脑
+
+3. **验证安装**
+   - 打开 PowerShell，运行：`xelatex --version`
+   - 应该看到版本信息
+
+### 或者 - 安装 MiKTeX（更轻量）
+
+1. **下载 MiKTeX**
+   - 访问 https://miktex.org/download
+   - 下载 Windows Installer
+
+2. **运行安装程序**
+   - 双击安装文件
+   - 选择"完全安装"
+   - 安装完成后重启电脑
+
+3. **验证安装**
+   - 打开 PowerShell，运行：`xelatex --version`
+                        """)
+        
+        with col2:
+            if st.button("检查 tectonic", key="check_tectonic"):
+                res = run_cmd(["tectonic", "--version"])
+                if res["ok"]:
+                    st.success("✅ tectonic 可用")
+                    st.code(res["stdout"][:500])
+                else:
+                    st.error("❌ tectonic 不可用")
+                    st.error(f"错误: {res.get('stderr', res.get('stdout', '未知错误'))[:200]}")
+                    with st.expander("📖 如何安装 tectonic?"):
+                        st.markdown("""
+### 安装 Tectonic（轻量级备选方案）
+
+Tectonic 是一个更小巧的 LaTeX 编译器，自动下载所需依赖。
+
+**需要先安装 Rust（如果未安装）：**
+1. 访问 https://rustup.rs/
+2. 下载并运行安装程序
+3. 按照提示完成安装
+4. 重启 PowerShell
+
+**然后安装 Tectonic：**
+```powershell
+cargo install tectonic
+```
+
+**验证安装：**
+```powershell
+tectonic --version
+```
+                        """)
+        
+        st.markdown("---")
+        
+        st.markdown("### 🔍 PATH 诊断")
+        
+        if st.button("检查系统 PATH", key="check_path"):
+            import os
+            path_var = os.environ.get("PATH", "")
+            path_entries = path_var.split(";")
+            
+            st.markdown("**系统 PATH 变量中的目录：**")
+            for i, entry in enumerate(path_entries, 1):
+                st.code(entry)
+            
+            st.markdown("**可能包含 LaTeX 的目录：**")
+            likely_dirs = []
+            for entry in path_entries:
+                if any(x in entry.lower() for x in ["texlive", "miktex", "tex", "bin"]):
+                    likely_dirs.append(entry)
+            
+            if likely_dirs:
+                st.success("找到可能的 LaTeX 目录：")
+                for d in likely_dirs:
+                    st.code(d)
+            else:
+                st.warning("未在 PATH 中找到 TeX 相关目录")
+                st.info("💡 如果已安装 TeX Live 或 MiKTeX，请重启计算机以刷新 PATH")
+        
+        st.markdown("---")
+        
+        st.markdown("### Python 环境检查")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            if st.button("检查 reportlab", key="check_reportlab"):
+                try:
+                    import reportlab
+                    st.success("✅ reportlab 已安装")
+                    st.write(f"版本: {reportlab.Version}")
+                    st.info("💡 reportlab 可作为 LaTeX 编译失败时的备选方案")
+                except ImportError:
+                    st.error("❌ reportlab 未安装")
+                    st.info("运行: `pip install reportlab`")
+        
+        with col2:
+            if st.button("检查 pandas", key="check_pandas"):
+                try:
+                    import pandas
+                    st.success("✅ pandas 已安装")
+                    st.write(f"版本: {pandas.__version__}")
+                except ImportError:
+                    st.error("❌ pandas 未安装")
+        
+        st.markdown("---")
+        st.markdown("### 测试 LaTeX 编译")
+        
+        if st.button("生成测试 LaTeX 报告", key="test_latex"):
+            test_dir = Path("test_latex_output")
+            test_dir.mkdir(exist_ok=True)
+            
+            test_tex = test_dir / "test.tex"
+            test_tex.write_text(r"""
+\documentclass[11pt]{article}
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+
+\begin{document}
+\section{测试}
+这是一个 LaTeX 编译测试。
+\end{document}
+""")
+            
+            with st.spinner("正在编译测试文件..."):
+                pdf = _compile_latex(test_tex)
+            
+            if pdf and pdf.exists():
+                st.success(f"✅ 编译成功！输出: {pdf}")
+            else:
+                st.error("❌ 编译失败")
+        
+        st.markdown("---")
+        
+        st.markdown("### 解决方案总结")
+        
+        st.info("""
+如果 xelatex 和 tectonic 都不可用，有以下选项：
+
+**✅ 推荐方案：**
+1. 安装 TeX Live（完整功能，支持中文）
+   - 或安装 MiKTeX（Windows 专属，更轻量）
+   
+2. 重启计算机以刷新 PATH 环境变量
+
+3. 验证安装：运行诊断工具中的"检查 xelatex"
+
+**⏱️ 临时方案：**
+- 生成的 Markdown 报告 (.md) 可以用文本编辑器打开
+- reportlab 会自动生成 PDF（虽然格式不如 LaTeX 精美）
+
+**🔧 替代方案：**
+- 安装轻量级的 Tectonic（需要 Rust 环境）
+        """)
+        
+        return
+    
     # 配置页面
     if page == "配置管理":
         st.markdown("## ⚙️ 配置管理")
@@ -1347,6 +1581,45 @@ class CodeAssistantConfig(BaseModel):
         )
         st.session_state['logger_configured'] = True
     
+    # 初始化 session state
+    state = st.session_state
+    state.setdefault("last_review", None)
+    state.setdefault("last_testgen", None)
+    state.setdefault("last_report_path", None)
+    state.setdefault("last_report_pdf", None)
+    state.setdefault("batch_results", [])
+    state.setdefault("last_repo_path", None)
+    state.setdefault("llm_plan", None)
+    state.setdefault("llm_plan_source", None)
+    state.setdefault("llm_changes", None)
+    state.setdefault("llm_recommendations", None)
+    
+    # 显示历史运行记录摘要
+    has_history = (state.get("last_review") is not None or 
+                   state.get("last_testgen") is not None or 
+                   state.get("batch_results"))
+    
+    if has_history:
+        with st.expander("📋 最近的运行记录", expanded=False):
+            if state.get("batch_results"):
+                st.markdown(f"**批量处理**: {len(state['batch_results'])} 个仓库")
+                for item in state["batch_results"]:
+                    review_count = item.get("review_count", "N/A")
+                    test_count = item.get("testgen_written", "N/A")
+                    st.caption(f"- {item['name']}: {review_count} 个问题, {test_count} 个测试")
+            elif state.get("last_repo_path"):
+                st.markdown(f"**仓库**: {state['last_repo_path']}")
+                if state.get("last_review"):
+                    findings_count = len(state["last_review"].get("findings", []))
+                    st.caption(f"✓ 审查完成: {findings_count} 个问题")
+                if state.get("last_testgen"):
+                    test_files = state["last_testgen"].get("written_files", 0)
+                    st.caption(f"✓ 测试生成: {test_files} 个文件")
+                if state.get("last_report_path"):
+                    st.caption(f"✓ 报告已生成")
+            
+            st.info("💡 下滑查看完整的审查结果和报告")
+    
     st.markdown("---")
     st.markdown("### 🚀 执行操作")
     col_a, col_b, col_c = st.columns(3, gap="medium")
@@ -1365,18 +1638,6 @@ class CodeAssistantConfig(BaseModel):
         run_all = st.button("全部运行", type="primary", use_container_width=True, help="一键执行审查、测试生成和报告生成")
 
     st.divider()
-
-    state = st.session_state
-    state.setdefault("last_review", None)
-    state.setdefault("last_testgen", None)
-    state.setdefault("last_report_path", None)
-    state.setdefault("last_report_pdf", None)
-    state.setdefault("batch_results", [])
-    state.setdefault("last_repo_path", None)
-    state.setdefault("llm_plan", None)
-    state.setdefault("llm_plan_source", None)
-    state.setdefault("llm_changes", None)
-    state.setdefault("llm_recommendations", None)
 
     repo_jobs: List[Dict[str, str]] = []
     if run_review or run_testgen or run_all:
@@ -1503,7 +1764,8 @@ class CodeAssistantConfig(BaseModel):
         active_item = next((i for i in batch_results if i["name"] == active_name), None)
         if active_item:
             active_out_dir = active_item["out_dir"]
-            active_review, active_testgen = _load_report_sources(active_out_dir, {})
+            # 传入state以便能加载最新的结果
+            active_review, active_testgen = _load_report_sources(active_out_dir, state)
 
     review = active_review
     if review:

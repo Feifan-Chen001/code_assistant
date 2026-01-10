@@ -1,0 +1,100 @@
+{
+  "round1_github": {
+    "ruff": {
+      "tool": "Ruff",
+      "status": "success",
+      "time": 2.451087236404419,
+      "issues_found": 0,
+      "checks": 0
+    },
+    "pylint": {
+      "tool": "Pylint",
+      "status": "success",
+      "time": 7.200340032577515,
+      "issues_found": 102,
+      "checks": 12
+    },
+    "bandit": {
+      "tool": "Bandit",
+      "status": "success",
+      "time": 0.5919888019561768,
+      "issues_found": 0
+    },
+    "codeassistant": {
+      "tool": "CodeAssistant",
+      "status": "success",
+      "time": 10.986835479736328,
+      "issues_found": 39,
+      "by_tool": {},
+      "by_severity": {}
+    },
+    "testgen": {
+      "tool": "TestGen",
+      "status": "success",
+      "time": 0.06806564331054688,
+      "written_files": 18,
+      "function_count": 49
+    },
+    "reportgen": {
+      "tool": "ReportGen",
+      "status": "success",
+      "time": 11.977645635604858,
+      "time_total": 11.977645635604858,
+      "md_time": 0.0,
+      "tex_time": 0.03105759620666504,
+      "pdf_time": 0.289642333984375,
+      "md_size": 11130,
+      "tex_size": 447512,
+      "pdf_size": 55392
+    }
+  },
+  "round2_datascience": {
+    "ruff": {
+      "tool": "Ruff",
+      "status": "success",
+      "time": 0.52671217918396,
+      "issues_found": 11,
+      "checks": 1
+    },
+    "pylint": {
+      "tool": "Pylint",
+      "status": "success",
+      "time": 0.7709074020385742,
+      "issues_found": 11,
+      "checks": 1
+    },
+    "bandit": {
+      "tool": "Bandit",
+      "status": "success",
+      "time": 0.431093692779541,
+      "issues_found": 0
+    },
+    "codeassistant": {
+      "tool": "CodeAssistant",
+      "status": "success",
+      "time": 0.6983678340911865,
+      "issues_found": 16,
+      "by_tool": {},
+      "by_severity": {}
+    },
+    "testgen": {
+      "tool": "TestGen",
+      "status": "success",
+      "time": 0.006438493728637695,
+      "written_files": 0,
+      "function_count": 0
+    },
+    "reportgen": {
+      "tool": "ReportGen",
+      "status": "success",
+      "time": 0.828911304473877,
+      "time_total": 0.828911304473877,
+      "md_time": 0.0,
+      "tex_time": 0.0013659000396728516,
+      "pdf_time": 0.13604283332824707,
+      "md_size": 5052,
+      "tex_size": 6191,
+      "pdf_size": 54076
+    }
+  }
+}

@@ -1,0 +1,1426 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python",
+  "output_dir": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests",
+  "written_files": 93,
+  "function_count": 200,
+  "generated": [
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\audio_filters\\butterworth_filter.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_audio_filters_butterworth_filter_f5c5343f.py",
+      "functions": [
+        {
+          "name": "make_lowpass",
+          "args": [
+            "frequency",
+            "samplerate",
+            "q_factor"
+          ],
+          "lineno": 13,
+          "doc": "Creates a low-pass filter\n\n>>> filter = make_lowpass(1000, 48000)\n>>> filter.a_coeffs + filter.b_coeffs  # doctest: +NORMALIZE_WHITESPACE\n[1.0922959556412573, -1.9828897227476208, 0.9077040443587427, 0.004277569313094809,\n 0.008555138626189618, 0.004277569313094809]"
+        },
+        {
+          "name": "make_highpass",
+          "args": [
+            "frequency",
+            "samplerate",
+            "q_factor"
+          ],
+          "lineno": 43,
+          "doc": "Creates a high-pass filter\n\n>>> filter = make_highpass(1000, 48000)\n>>> filter.a_coeffs + filter.b_coeffs  # doctest: +NORMALIZE_WHITESPACE\n[1.0922959556412573, -1.9828897227476208, 0.9077040443587427, 0.9957224306869052,\n -1.9914448613738105, 0.9957224306869052]"
+        },
+        {
+          "name": "make_bandpass",
+          "args": [
+            "frequency",
+            "samplerate",
+            "q_factor"
+          ],
+          "lineno": 73,
+          "doc": "Creates a band-pass filter\n\n>>> filter = make_bandpass(1000, 48000)\n>>> filter.a_coeffs + filter.b_coeffs  # doctest: +NORMALIZE_WHITESPACE\n[1.0922959556412573, -1.9828897227476208, 0.9077040443587427, 0.06526309611002579,\n 0, -0.06526309611002579]"
+        },
+        {
+          "name": "make_allpass",
+          "args": [
+            "frequency",
+            "samplerate",
+            "q_factor"
+          ],
+          "lineno": 104,
+          "doc": "Creates an all-pass filter\n\n>>> filter = make_allpass(1000, 48000)\n>>> filter.a_coeffs + filter.b_coeffs  # doctest: +NORMALIZE_WHITESPACE\n[1.0922959556412573, -1.9828897227476208, 0.9077040443587427, 0.9077040443587427,\n -1.9828897227476208, 1.0922959556412573]"
+        },
+        {
+          "name": "make_peak",
+          "args": [
+            "frequency",
+            "samplerate",
+            "gain_db",
+            "q_factor"
+          ],
+          "lineno": 131,
+          "doc": "Creates a peak filter\n\n>>> filter = make_peak(1000, 48000, 6)\n>>> filter.a_coeffs + filter.b_coeffs  # doctest: +NORMALIZE_WHITESPACE\n[1.0653405327119334, -1.9828897227476208, 0.9346594672880666, 1.1303715025601122,\n -1.9828897227476208, 0.8696284974398878]"
+        },
+        {
+          "name": "make_lowshelf",
+          "args": [
+            "frequency",
+            "samplerate",
+            "gain_db",
+            "q_factor"
+          ],
+          "lineno": 163,
+          "doc": "Creates a low-shelf filter\n\n>>> filter = make_lowshelf(1000, 48000, 6)\n>>> filter.a_coeffs + filter.b_coeffs  # doctest: +NORMALIZE_WHITESPACE\n[3.0409336710888786, -5.608870992220748, 2.602157875636628, 3.139954022810743,\n -5.591841778072785, 2.5201667380627257]"
+        },
+        {
+          "name": "make_highshelf",
+          "args": [
+            "frequency",
+            "samplerate",
+            "gain_db",
+            "q_factor"
+          ],
+          "lineno": 200,
+          "doc": "Creates a high-shelf filter\n\n>>> filter = make_highshelf(1000, 48000, 6)\n>>> filter.a_coeffs + filter.b_coeffs  # doctest: +NORMALIZE_WHITESPACE\n[2.2229172136088806, -3.9587208137297303, 1.7841414181566304, 4.295432981120543,\n -7.922740859457287, 3.6756456963725253]"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\audio_filters\\butterworth_filter.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\audio_filters\\show_response.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_audio_filters_show_response_66ec0e8d.py",
+      "functions": [
+        {
+          "name": "get_bounds",
+          "args": [
+            "fft_results",
+            "samplerate"
+          ],
+          "lineno": 22,
+          "doc": "Get bounds for printing fft results\n\n>>> import numpy\n>>> array = numpy.linspace(-20.0, 20.0, 1000)\n>>> get_bounds(array, 1000)\n(-20, 20)"
+        },
+        {
+          "name": "show_frequency_response",
+          "args": [
+            "filter_type",
+            "samplerate"
+          ],
+          "lineno": 38,
+          "doc": "Show frequency response of a filter\n\n>>> from audio_filters.iir_filter import IIRFilter\n>>> filt = IIRFilter(4)\n>>> show_frequency_response(filt, 48000)"
+        },
+        {
+          "name": "show_phase_response",
+          "args": [
+            "filter_type",
+            "samplerate"
+          ],
+          "lineno": 70,
+          "doc": "Show phase response of a filter\n\n>>> from audio_filters.iir_filter import IIRFilter\n>>> filt = IIRFilter(4)\n>>> show_phase_response(filt, 48000)"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\audio_filters\\show_response.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\all_combinations.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_all_combinations_66f26af3.py",
+      "functions": [
+        {
+          "name": "combination_lists",
+          "args": [
+            "n",
+            "k"
+          ],
+          "lineno": 13,
+          "doc": "Generates all possible combinations of k numbers out of 1 ... n using itertools.\n\n>>> combination_lists(n=4, k=2)\n[[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]"
+        },
+        {
+          "name": "generate_all_combinations",
+          "args": [
+            "n",
+            "k"
+          ],
+          "lineno": 23,
+          "doc": "Generates all possible combinations of k numbers out of 1 ... n using backtracking.\n\n>>> generate_all_combinations(n=4, k=2)\n[[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]\n>>> generate_all_combinations(n=0, k=0)\n[[]]\n>>> generate_all_combinations(n=10, k=-1)\nTraceback (most recent call last):\n    ...\nValueError: k must not be negative\n>>> generate_all_combinations(n=-1, k=10)\nTraceback (most recent call last):\n    ...\nValueError: n must not be negative\n>>> generate_all_combinations(n=5, k=4)\n[[1, 2, 3, 4], [1, 2, 3, 5], [1, 2, 4, 5], [1, 3, 4, 5], [2, 3, 4, 5]]\n>>> generate_all_combinations(n=3, k=3)\n[[1, 2, 3]]\n>>> generate_all_combinations(n=3, k=1)\n[[1], [2], [3]]\n>>> generate_all_combinations(n=1, k=0)\n[[]]\n>>> generate_all_combinations(n=1, k=1)\n[[1]]\n>>> from itertools import combinations\n>>> all(generate_all_combinations(n, k) == combination_lists(n, k)\n...     for n in range(1, 6) for k in range(1, 6))\nTrue"
+        },
+        {
+          "name": "create_all_state",
+          "args": [
+            "increment",
+            "total_number",
+            "level",
+            "current_list",
+            "total_list"
+          ],
+          "lineno": 64,
+          "doc": "Helper function to recursively build all combinations.\n\n>>> create_all_state(1, 4, 2, [], result := [])\n>>> result\n[[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]\n>>> create_all_state(1, 3, 3, [], result := [])\n>>> result\n[[1, 2, 3]]\n>>> create_all_state(2, 2, 1, [1], result := [])\n>>> result\n[[1, 2]]\n>>> create_all_state(1, 0, 0, [], result := [])\n>>> result\n[[]]\n>>> create_all_state(1, 4, 0, [1, 2], result := [])\n>>> result\n[[1, 2]]\n>>> create_all_state(5, 4, 2, [1, 2], result := [])\n>>> result\n[]"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\all_combinations.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\all_permutations.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_all_permutations_ceb00bb1.py",
+      "functions": [
+        {
+          "name": "generate_all_permutations",
+          "args": [
+            "sequence"
+          ],
+          "lineno": 12,
+          "doc": ""
+        },
+        {
+          "name": "create_state_space_tree",
+          "args": [
+            "sequence",
+            "current_sequence",
+            "index",
+            "index_used"
+          ],
+          "lineno": 16,
+          "doc": "Creates a state space tree to iterate through each branch using DFS.\nWe know that each state has exactly len(sequence) - index children.\nIt terminates when it reaches the end of the given sequence.\n\n:param sequence: The input sequence for which permutations are generated.\n:param current_sequence: The current permutation being built.\n:param index: The current index in the sequence.\n:param index_used: list to track which elements are used in permutation.\n\nExample 1:\n>>> sequence = [1, 2, 3]\n>>> current_sequence = []\n>>> index_used = [False, False, False]\n>>> create_state_space_tree(sequence, current_sequence, 0, index_used)\n[1, 2, 3]\n[1, 3, 2]\n[2, 1, 3]\n[2, 3, 1]\n[3, 1, 2]\n[3, 2, 1]\n\nExample 2:\n>>> sequence = [\"A\", \"B\", \"C\"]\n>>> current_sequence = []\n>>> index_used = [False, False, False]\n>>> create_state_space_tree(sequence, current_sequence, 0, index_used)\n['A', 'B', 'C']\n['A', 'C', 'B']\n['B', 'A', 'C']\n['B', 'C', 'A']\n['C', 'A', 'B']\n['C', 'B', 'A']\n\nExample 3:\n>>> sequence = [1]\n>>> current_sequence = []\n>>> index_used = [False]\n>>> create_state_space_tree(sequence, current_sequence, 0, index_used)\n[1]"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\all_permutations.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\all_subsequences.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_all_subsequences_dff0559d.py",
+      "functions": [
+        {
+          "name": "generate_all_subsequences",
+          "args": [
+            "sequence"
+          ],
+          "lineno": 14,
+          "doc": ""
+        },
+        {
+          "name": "create_state_space_tree",
+          "args": [
+            "sequence",
+            "current_subsequence",
+            "index"
+          ],
+          "lineno": 18,
+          "doc": "Creates a state space tree to iterate through each branch using DFS.\nWe know that each state has exactly two children.\nIt terminates when it reaches the end of the given sequence.\n\n:param sequence: The input sequence for which subsequences are generated.\n:param current_subsequence: The current subsequence being built.\n:param index: The current index in the sequence.\n\nExample:\n>>> sequence = [3, 2, 1]\n>>> current_subsequence = []\n>>> create_state_space_tree(sequence, current_subsequence, 0)\n[]\n[1]\n[2]\n[2, 1]\n[3]\n[3, 1]\n[3, 2]\n[3, 2, 1]\n\n>>> sequence = [\"A\", \"B\"]\n>>> current_subsequence = []\n>>> create_state_space_tree(sequence, current_subsequence, 0)\n[]\n['B']\n['A']\n['A', 'B']\n\n>>> sequence = []\n>>> current_subsequence = []\n>>> create_state_space_tree(sequence, current_subsequence, 0)\n[]\n\n>>> sequence = [1, 2, 3, 4]\n>>> current_subsequence = []\n>>> create_state_space_tree(sequence, current_subsequence, 0)\n[]\n[4]\n[3]\n[3, 4]\n[2]\n[2, 4]\n[2, 3]\n[2, 3, 4]\n[1]\n[1, 4]\n[1, 3]\n[1, 3, 4]\n[1, 2]\n[1, 2, 4]\n[1, 2, 3]\n[1, 2, 3, 4]"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\all_subsequences.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\coloring.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_coloring_34f3ea6e.py",
+      "functions": [
+        {
+          "name": "valid_coloring",
+          "args": [
+            "neighbours",
+            "colored_vertices",
+            "color"
+          ],
+          "lineno": 10,
+          "doc": "For each neighbour check if the coloring constraint is satisfied\nIf any of the neighbours fail the constraint return False\nIf all neighbours validate the constraint return True\n\n>>> neighbours = [0,1,0,1,0]\n>>> colored_vertices = [0, 2, 1, 2, 0]\n\n>>> color = 1\n>>> valid_coloring(neighbours, colored_vertices, color)\nTrue\n\n>>> color = 2\n>>> valid_coloring(neighbours, colored_vertices, color)\nFalse"
+        },
+        {
+          "name": "util_color",
+          "args": [
+            "graph",
+            "max_colors",
+            "colored_vertices",
+            "index"
+          ],
+          "lineno": 36,
+          "doc": "Pseudo-Code\n\nBase Case:\n1. Check if coloring is complete\n    1.1 If complete return True (meaning that we successfully colored the graph)\n\nRecursive Step:\n2. Iterates over each color:\n    Check if the current coloring is valid:\n        2.1. Color given vertex\n        2.2. Do recursive call, check if this coloring leads to a solution\n        2.4. if current coloring leads to a solution return\n        2.5. Uncolor given vertex\n\n>>> graph = [[0, 1, 0, 0, 0],\n...          [1, 0, 1, 0, 1],\n...          [0, 1, 0, 1, 0],\n...          [0, 1, 1, 0, 0],\n...          [0, 1, 0, 0, 0]]\n>>> max_colors = 3\n>>> colored_vertices = [0, 1, 0, 0, 0]\n>>> index = 3\n\n>>> util_color(graph, max_colors, colored_vertices, index)\nTrue\n\n>>> max_colors = 2\n>>> util_color(graph, max_colors, colored_vertices, index)\nFalse"
+        },
+        {
+          "name": "color",
+          "args": [
+            "graph",
+            "max_colors"
+          ],
+          "lineno": 88,
+          "doc": "Wrapper function to call subroutine called util_color\nwhich will either return True or False.\nIf True is returned colored_vertices list is filled with correct colorings\n\n>>> graph = [[0, 1, 0, 0, 0],\n...          [1, 0, 1, 0, 1],\n...          [0, 1, 0, 1, 0],\n...          [0, 1, 1, 0, 0],\n...          [0, 1, 0, 0, 0]]\n\n>>> max_colors = 3\n>>> color(graph, max_colors)\n[0, 1, 0, 2, 0]\n\n>>> max_colors = 2\n>>> color(graph, max_colors)\n[]"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\coloring.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\combination_sum.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_combination_sum_434b53cc.py",
+      "functions": [
+        {
+          "name": "backtrack",
+          "args": [
+            "candidates",
+            "path",
+            "answer",
+            "target",
+            "previous_index"
+          ],
+          "lineno": 16,
+          "doc": "A recursive function that searches for possible combinations. Backtracks in case\nof a bigger current combination value than the target value.\n\nParameters\n----------\nprevious_index: Last index from the previous search\ntarget: The value we need to obtain by summing our integers in the path list.\nanswer: A list of possible combinations\npath: Current combination\ncandidates: A list of integers we can use."
+        },
+        {
+          "name": "combination_sum",
+          "args": [
+            "candidates",
+            "target"
+          ],
+          "lineno": 41,
+          "doc": ">>> combination_sum([2, 3, 5], 8)\n[[2, 2, 2, 2], [2, 3, 3], [3, 5]]\n>>> combination_sum([2, 3, 6, 7], 7)\n[[2, 2, 3], [7]]\n>>> combination_sum([-8, 2.3, 0], 1)\nTraceback (most recent call last):\n    ...\nValueError: All elements in candidates must be non-negative\n>>> combination_sum([], 1)\nTraceback (most recent call last):\n    ...\nValueError: Candidates list should not be empty"
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 68,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\combination_sum.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\crossword_puzzle_solver.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_crossword_puzzle_solver_871763c8.py",
+      "functions": [
+        {
+          "name": "is_valid",
+          "args": [
+            "puzzle",
+            "word",
+            "row",
+            "col",
+            "vertical"
+          ],
+          "lineno": 4,
+          "doc": "Check if a word can be placed at the given position.\n\n>>> puzzle = [\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', '']\n... ]\n>>> is_valid(puzzle, 'word', 0, 0, True)\nTrue\n>>> puzzle = [\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', '']\n... ]\n>>> is_valid(puzzle, 'word', 0, 0, False)\nTrue"
+        },
+        {
+          "name": "place_word",
+          "args": [
+            "puzzle",
+            "word",
+            "row",
+            "col",
+            "vertical"
+          ],
+          "lineno": 36,
+          "doc": "Place a word at the given position.\n\n>>> puzzle = [\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', '']\n... ]\n>>> place_word(puzzle, 'word', 0, 0, True)\n>>> puzzle\n[['w', '', '', ''], ['o', '', '', ''], ['r', '', '', ''], ['d', '', '', '']]"
+        },
+        {
+          "name": "remove_word",
+          "args": [
+            "puzzle",
+            "word",
+            "row",
+            "col",
+            "vertical"
+          ],
+          "lineno": 59,
+          "doc": "Remove a word from the given position.\n\n>>> puzzle = [\n...     ['w', '', '', ''],\n...     ['o', '', '', ''],\n...     ['r', '', '', ''],\n...     ['d', '', '', '']\n... ]\n>>> remove_word(puzzle, 'word', 0, 0, True)\n>>> puzzle\n[['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']]"
+        },
+        {
+          "name": "solve_crossword",
+          "args": [
+            "puzzle",
+            "words"
+          ],
+          "lineno": 82,
+          "doc": "Solve the crossword puzzle using backtracking.\n\n>>> puzzle = [\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', '']\n... ]\n\n>>> words = ['word', 'four', 'more', 'last']\n>>> solve_crossword(puzzle, words)\nTrue\n>>> puzzle = [\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', ''],\n...     ['', '', '', '']\n... ]\n>>> words = ['word', 'four', 'more', 'paragraphs']\n>>> solve_crossword(puzzle, words)\nFalse"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\crossword_puzzle_solver.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\generate_parentheses.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_generate_parentheses_91528527.py",
+      "functions": [
+        {
+          "name": "backtrack",
+          "args": [
+            "partial",
+            "open_count",
+            "close_count",
+            "n",
+            "result"
+          ],
+          "lineno": 11,
+          "doc": "Generate valid combinations of balanced parentheses using recursion.\n\n:param partial: A string representing the current combination.\n:param open_count: An integer representing the count of open parentheses.\n:param close_count: An integer representing the count of close parentheses.\n:param n: An integer representing the total number of pairs.\n:param result: A list to store valid combinations.\n:return: None\n\nThis function uses recursion to explore all possible combinations,\nensuring that at each step, the parentheses remain balanced.\n\nExample:\n>>> result = []\n>>> backtrack(\"\", 0, 0, 2, result)\n>>> result\n['(())', '()()']"
+        },
+        {
+          "name": "generate_parenthesis",
+          "args": [
+            "n"
+          ],
+          "lineno": 48,
+          "doc": "Generate valid combinations of balanced parentheses for a given n.\n\n:param n: An integer representing the number of pairs of parentheses.\n:return: A list of strings with valid combinations.\n\nThis function uses a recursive approach to generate the combinations.\n\nTime Complexity: O(2^(2n)) - In the worst case, we have 2^(2n) combinations.\nSpace Complexity: O(n) - where 'n' is the number of pairs.\n\nExample 1:\n>>> generate_parenthesis(3)\n['((()))', '(()())', '(())()', '()(())', '()()()']\n\nExample 2:\n>>> generate_parenthesis(1)\n['()']"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\generate_parentheses.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\generate_parentheses_iterative.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_generate_parentheses_iterative_10d3f1c9.py",
+      "functions": [
+        {
+          "name": "generate_parentheses_iterative",
+          "args": [
+            "length"
+          ],
+          "lineno": 1,
+          "doc": "Generate all valid combinations of parentheses (Iterative Approach).\n\nThe algorithm works as follows:\n1. Initialize an empty list to store the combinations.\n2. Initialize a stack to keep track of partial combinations.\n3. Start with empty string and push it onstack along with the counts of '(' and ')'.\n4. While the stack is not empty:\n    a. Pop a partial combination and its open and close counts from the stack.\n    b. If the combination length is equal to 2*length, add it to the result.\n    c. If open count < length, push new combination with added '(' on stack.\n    d. If close count < open count, push new combination with added ')' on stack.\n5. Return the result containing all valid combinations.\n\nArgs:\n    length: The desired length of the parentheses combinations\n\nReturns:\n    A list of strings representing valid combinations of parentheses\n\nTime Complexity:\n    O(2^(2*length))\n\nSpace Complexity:\n    O(2^(2*length))\n\n>>> generate_parentheses_iterative(3)\n['()()()', '()(())', '(())()', '(()())', '((()))']\n>>> generate_parentheses_iterative(2)\n['()()', '(())']\n>>> generate_parentheses_iterative(1)\n['()']\n>>> generate_parentheses_iterative(0)\n['']"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\generate_parentheses_iterative.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\hamiltonian_cycle.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_hamiltonian_cycle_693ac020.py",
+      "functions": [
+        {
+          "name": "valid_connection",
+          "args": [
+            "graph",
+            "next_ver",
+            "curr_ind",
+            "path"
+          ],
+          "lineno": 11,
+          "doc": "Checks whether it is possible to add next into path by validating 2 statements\n1. There should be path between current and next vertex\n2. Next vertex should not be in path\nIf both validations succeed we return True, saying that it is possible to connect\nthis vertices, otherwise we return False\n\nCase 1:Use exact graph as in main function, with initialized values\n>>> graph = [[0, 1, 0, 1, 0],\n...          [1, 0, 1, 1, 1],\n...          [0, 1, 0, 0, 1],\n...          [1, 1, 0, 0, 1],\n...          [0, 1, 1, 1, 0]]\n>>> path = [0, -1, -1, -1, -1, 0]\n>>> curr_ind = 1\n>>> next_ver = 1\n>>> valid_connection(graph, next_ver, curr_ind, path)\nTrue\n\nCase 2: Same graph, but trying to connect to node that is already in path\n>>> path = [0, 1, 2, 4, -1, 0]\n>>> curr_ind = 4\n>>> next_ver = 1\n>>> valid_connection(graph, next_ver, curr_ind, path)\nFalse"
+        },
+        {
+          "name": "util_hamilton_cycle",
+          "args": [
+            "graph",
+            "path",
+            "curr_ind"
+          ],
+          "lineno": 49,
+          "doc": "Pseudo-Code\nBase Case:\n1. Check if we visited all of vertices\n    1.1 If last visited vertex has path to starting vertex return True either\n        return False\nRecursive Step:\n2. Iterate over each vertex\n    Check if next vertex is valid for transiting from current vertex\n        2.1 Remember next vertex as next transition\n        2.2 Do recursive call and check if going to this vertex solves problem\n        2.3 If next vertex leads to solution return True\n        2.4 Else backtrack, delete remembered vertex\n\nCase 1: Use exact graph as in main function, with initialized values\n>>> graph = [[0, 1, 0, 1, 0],\n...          [1, 0, 1, 1, 1],\n...          [0, 1, 0, 0, 1],\n...          [1, 1, 0, 0, 1],\n...          [0, 1, 1, 1, 0]]\n>>> path = [0, -1, -1, -1, -1, 0]\n>>> curr_ind = 1\n>>> util_hamilton_cycle(graph, path, curr_ind)\nTrue\n>>> path\n[0, 1, 2, 4, 3, 0]\n\nCase 2: Use exact graph as in previous case, but in the properties taken from\n    middle of calculation\n>>> graph = [[0, 1, 0, 1, 0],\n...          [1, 0, 1, 1, 1],\n...          [0, 1, 0, 0, 1],\n...          [1, 1, 0, 0, 1],\n...          [0, 1, 1, 1, 0]]\n>>> path = [0, 1, 2, -1, -1, 0]\n>>> curr_ind = 3\n>>> util_hamilton_cycle(graph, path, curr_ind)\nTrue\n>>> path\n[0, 1, 2, 4, 3, 0]"
+        },
+        {
+          "name": "hamilton_cycle",
+          "args": [
+            "graph",
+            "start_index"
+          ],
+          "lineno": 110,
+          "doc": "Wrapper function to call subroutine called util_hamilton_cycle,\nwhich will either return array of vertices indicating hamiltonian cycle\nor an empty list indicating that hamiltonian cycle was not found.\nCase 1:\nFollowing graph consists of 5 edges.\nIf we look closely, we can see that there are multiple Hamiltonian cycles.\nFor example one result is when we iterate like:\n(0)->(1)->(2)->(4)->(3)->(0)\n\n(0)---(1)---(2)\n |   /   \\   |\n |  /     \\  |\n | /       \\ |\n |/         \\|\n(3)---------(4)\n>>> graph = [[0, 1, 0, 1, 0],\n...          [1, 0, 1, 1, 1],\n...          [0, 1, 0, 0, 1],\n...          [1, 1, 0, 0, 1],\n...          [0, 1, 1, 1, 0]]\n>>> hamilton_cycle(graph)\n[0, 1, 2, 4, 3, 0]\n\nCase 2:\nSame Graph as it was in Case 1, changed starting index from default to 3\n\n(0)---(1)---(2)\n |   /   \\   |\n |  /     \\  |\n | /       \\ |\n |/         \\|\n(3)---------(4)\n>>> graph = [[0, 1, 0, 1, 0],\n...          [1, 0, 1, 1, 1],\n...          [0, 1, 0, 0, 1],\n...          [1, 1, 0, 0, 1],\n...          [0, 1, 1, 1, 0]]\n>>> hamilton_cycle(graph, 3)\n[3, 0, 1, 2, 4, 3]\n\nCase 3:\nFollowing Graph is exactly what it was before, but edge 3-4 is removed.\nResult is that there is no Hamiltonian Cycle anymore.\n\n(0)---(1)---(2)\n |   /   \\   |\n |  /     \\  |\n | /       \\ |\n |/         \\|\n(3)         (4)\n>>> graph = [[0, 1, 0, 1, 0],\n...          [1, 0, 1, 1, 1],\n...          [0, 1, 0, 0, 1],\n...          [1, 1, 0, 0, 0],\n...          [0, 1, 1, 0, 0]]\n>>> hamilton_cycle(graph,4)\n[]"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\hamiltonian_cycle.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\knight_tour.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_knight_tour_aae31182.py",
+      "functions": [
+        {
+          "name": "get_valid_pos",
+          "args": [
+            "position",
+            "n"
+          ],
+          "lineno": 6,
+          "doc": "Find all the valid positions a knight can move to from the current position.\n\n>>> get_valid_pos((1, 3), 4)\n[(2, 1), (0, 1), (3, 2)]"
+        },
+        {
+          "name": "is_complete",
+          "args": [
+            "board"
+          ],
+          "lineno": 35,
+          "doc": "Check if the board (matrix) has been completely filled with non-zero values.\n\n>>> is_complete([[1]])\nTrue\n\n>>> is_complete([[1, 2], [3, 0]])\nFalse"
+        },
+        {
+          "name": "open_knight_tour_helper",
+          "args": [
+            "board",
+            "pos",
+            "curr"
+          ],
+          "lineno": 49,
+          "doc": "Helper function to solve knight tour problem."
+        },
+        {
+          "name": "open_knight_tour",
+          "args": [
+            "n"
+          ],
+          "lineno": 71,
+          "doc": "Find the solution for the knight tour problem for a board of size n. Raises\nValueError if the tour cannot be performed for the given size.\n\n>>> open_knight_tour(1)\n[[1]]\n\n>>> open_knight_tour(2)\nTraceback (most recent call last):\n    ...\nValueError: Open Knight Tour cannot be performed on a board of size 2"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\knight_tour.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\match_word_pattern.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_match_word_pattern_86852513.py",
+      "functions": [
+        {
+          "name": "match_word_pattern",
+          "args": [
+            "pattern",
+            "input_string"
+          ],
+          "lineno": 1,
+          "doc": "Determine if a given pattern matches a string using backtracking.\n\npattern: The pattern to match.\ninput_string: The string to match against the pattern.\nreturn: True if the pattern matches the string, False otherwise.\n\n>>> match_word_pattern(\"aba\", \"GraphTreesGraph\")\nTrue\n\n>>> match_word_pattern(\"xyx\", \"PythonRubyPython\")\nTrue\n\n>>> match_word_pattern(\"GG\", \"PythonJavaPython\")\nFalse"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\match_word_pattern.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\minimax.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_minimax_b1a4eed4.py",
+      "functions": [
+        {
+          "name": "minimax",
+          "args": [
+            "depth",
+            "node_index",
+            "is_max",
+            "scores",
+            "height"
+          ],
+          "lineno": 16,
+          "doc": "This function implements the minimax algorithm, which helps achieve the optimal\nscore for a player in a two-player game by checking all possible moves.\nIf the player is the maximizer, then the score is maximized.\nIf the player is the minimizer, then the score is minimized.\n\nParameters:\n- depth: Current depth in the game tree.\n- node_index: Index of the current node in the scores list.\n- is_max: A boolean indicating whether the current move\n          is for the maximizer (True) or minimizer (False).\n- scores: A list containing the scores of the leaves of the game tree.\n- height: The maximum height of the game tree.\n\nReturns:\n- An integer representing the optimal score for the current player.\n\n>>> import math\n>>> scores = [90, 23, 6, 33, 21, 65, 123, 34423]\n>>> height = math.log(len(scores), 2)\n>>> minimax(0, 0, True, scores, height)\n65\n>>> minimax(-1, 0, True, scores, height)\nTraceback (most recent call last):\n    ...\nValueError: Depth cannot be less than 0\n>>> minimax(0, 0, True, [], 2)\nTraceback (most recent call last):\n    ...\nValueError: Scores cannot be empty\n>>> scores = [3, 5, 2, 9, 12, 5, 23, 23]\n>>> height = math.log(len(scores), 2)\n>>> minimax(0, 0, True, scores, height)\n12"
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 81,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\minimax.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\n_queens.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_n_queens_9421f8b4.py",
+      "functions": [
+        {
+          "name": "is_safe",
+          "args": [
+            "board",
+            "row",
+            "column"
+          ],
+          "lineno": 16,
+          "doc": "This function returns a boolean value True if it is safe to place a queen there\nconsidering the current state of the board.\n\nParameters:\nboard (2D matrix): The chessboard\nrow, column: Coordinates of the cell on the board\n\nReturns:\nBoolean Value\n\n>>> is_safe([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 1, 1)\nTrue\n>>> is_safe([[0, 1, 0], [0, 0, 0], [0, 0, 0]], 1, 1)\nFalse\n>>> is_safe([[1, 0, 0], [0, 0, 0], [0, 0, 0]], 1, 1)\nFalse\n>>> is_safe([[0, 0, 1], [0, 0, 0], [0, 0, 0]], 1, 1)\nFalse"
+        },
+        {
+          "name": "solve",
+          "args": [
+            "board",
+            "row"
+          ],
+          "lineno": 55,
+          "doc": "This function creates a state space tree and calls the safe function until it\nreceives a False Boolean and terminates that branch and backtracks to the next\npossible solution branch."
+        },
+        {
+          "name": "printboard",
+          "args": [
+            "board"
+          ],
+          "lineno": 84,
+          "doc": "Prints the boards that have a successful combination."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\n_queens.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\n_queens_math.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_n_queens_math_bc655687.py",
+      "functions": [
+        {
+          "name": "depth_first_search",
+          "args": [
+            "possible_board",
+            "diagonal_right_collisions",
+            "diagonal_left_collisions",
+            "boards",
+            "n"
+          ],
+          "lineno": 82,
+          "doc": ">>> boards = []\n>>> depth_first_search([], [], [], boards, 4)\n>>> for board in boards:\n...     print(board)\n['. Q . . ', '. . . Q ', 'Q . . . ', '. . Q . ']\n['. . Q . ', 'Q . . . ', '. . . Q ', '. Q . . ']"
+        },
+        {
+          "name": "n_queens_solution",
+          "args": [
+            "n"
+          ],
+          "lineno": 141,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\n_queens_math.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\power_sum.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_power_sum_ded2a397.py",
+      "functions": [
+        {
+          "name": "backtrack",
+          "args": [
+            "needed_sum",
+            "power",
+            "current_number",
+            "current_sum",
+            "solutions_count"
+          ],
+          "lineno": 10,
+          "doc": ">>> backtrack(13, 2, 1, 0, 0)\n(0, 1)\n>>> backtrack(10, 2, 1, 0, 0)\n(0, 1)\n>>> backtrack(10, 3, 1, 0, 0)\n(0, 0)\n>>> backtrack(20, 2, 1, 0, 0)\n(0, 1)\n>>> backtrack(15, 10, 1, 0, 0)\n(0, 0)\n>>> backtrack(16, 2, 1, 0, 0)\n(0, 1)\n>>> backtrack(20, 1, 1, 0, 0)\n(0, 64)"
+        },
+        {
+          "name": "solve",
+          "args": [
+            "needed_sum",
+            "power"
+          ],
+          "lineno": 54,
+          "doc": ">>> solve(13, 2)\n1\n>>> solve(10, 2)\n1\n>>> solve(10, 3)\n0\n>>> solve(20, 2)\n1\n>>> solve(15, 10)\n0\n>>> solve(16, 2)\n1\n>>> solve(20, 1)\nTraceback (most recent call last):\n    ...\nValueError: Invalid input\nneeded_sum must be between 1 and 1000, power between 2 and 10.\n>>> solve(-10, 5)\nTraceback (most recent call last):\n    ...\nValueError: Invalid input\nneeded_sum must be between 1 and 1000, power between 2 and 10."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\power_sum.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\rat_in_maze.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_rat_in_maze_8eaf85b3.py",
+      "functions": [
+        {
+          "name": "solve_maze",
+          "args": [
+            "maze",
+            "source_row",
+            "source_column",
+            "destination_row",
+            "destination_column"
+          ],
+          "lineno": 4,
+          "doc": "This method solves the \"rat in maze\" problem.\nParameters :\n    - maze: A two dimensional matrix of zeros and ones.\n    - source_row: The row index of the starting point.\n    - source_column: The column index of the starting point.\n    - destination_row: The row index of the destination point.\n    - destination_column: The column index of the destination point.\nReturns:\n    - solution: A 2D matrix representing the solution path if it exists.\nRaises:\n    - ValueError: If no solution exists or if the source or\n        destination coordinates are invalid.\nDescription:\n    This method navigates through a maze represented as an n by n matrix,\n    starting from a specified source cell and\n    aiming to reach a destination cell.\n    The maze consists of walls (1s) and open paths (0s).\n    By providing custom row and column values, the source and destination\n    cells can be adjusted.\n>>> maze = [[0, 1, 0, 1, 1],\n...         [0, 0, 0, 0, 0],\n...         [1, 0, 1, 0, 1],\n...         [0, 0, 1, 0, 0],\n...         [1, 0, 0, 1, 0]]\n>>> solve_maze(maze,0,0,len(maze)-1,len(maze)-1)    # doctest: +NORMALIZE_WHITESPACE\n[[0, 1, 1, 1, 1],\n[0, 0, 0, 0, 1],\n[1, 1, 1, 0, 1],\n[1, 1, 1, 0, 0],\n[1, 1, 1, 1, 0]]\n\nNote:\n    In the output maze, the zeros (0s) represent one of the possible\n    paths from the source to the destination.\n\n>>> maze = [[0, 1, 0, 1, 1],\n...         [0, 0, 0, 0, 0],\n...         [0, 0, 0, 0, 1],\n...         [0, 0, 0, 0, 0],\n...         [0, 0, 0, 0, 0]]\n>>> solve_maze(maze,0,0,len(maze)-1,len(maze)-1)    # doctest: +NORMALIZE_WHITESPACE\n[[0, 1, 1, 1, 1],\n[0, 1, 1, 1, 1],\n[0, 1, 1, 1, 1],\n[0, 1, 1, 1, 1],\n[0, 0, 0, 0, 0]]\n\n>>> maze = [[0, 0, 0],\n...         [0, 1, 0],\n...         [1, 0, 0]]\n>>> solve_maze(maze,0,0,len(maze)-1,len(maze)-1)    # doctest: +NORMALIZE_WHITESPACE\n[[0, 0, 0],\n[1, 1, 0],\n[1, 1, 0]]\n\n>>> maze = [[1, 0, 0],\n...         [0, 1, 0],\n...         [1, 0, 0]]\n>>> solve_maze(maze,0,1,len(maze)-1,len(maze)-1)    # doctest: +NORMALIZE_WHITESPACE\n[[1, 0, 0],\n[1, 1, 0],\n[1, 1, 0]]\n\n>>> maze = [[1, 1, 0, 0, 1, 0, 0, 1],\n...         [1, 0, 1, 0, 0, 1, 1, 1],\n...         [0, 1, 0, 1, 0, 0, 1, 0],\n...         [1, 1, 1, 0, 0, 1, 0, 1],\n...         [0, 1, 0, 0, 1, 0, 1, 1],\n...         [0, 0, 0, 1, 1, 1, 0, 1],\n...         [0, 1, 0, 1, 0, 1, 1, 1],\n...         [1, 1, 0, 0, 0, 0, 0, 1]]\n>>> solve_maze(maze,0,2,len(maze)-1,2)  # doctest: +NORMALIZE_WHITESPACE\n[[1, 1, 0, 0, 1, 1, 1, 1],\n[1, 1, 1, 0, 0, 1, 1, 1],\n[1, 1, 1, 1, 0, 1, 1, 1],\n[1, 1, 1, 0, 0, 1, 1, 1],\n[1, 1, 0, 0, 1, 1, 1, 1],\n[1, 1, 0, 1, 1, 1, 1, 1],\n[1, 1, 0, 1, 1, 1, 1, 1],\n[1, 1, 0, 1, 1, 1, 1, 1]]\n>>> maze = [[1, 0, 0],\n...         [0, 1, 1],\n...         [1, 0, 1]]\n>>> solve_maze(maze,0,1,len(maze)-1,len(maze)-1)\nTraceback (most recent call last):\n    ...\nValueError: No solution exists!\n\n>>> maze = [[0, 0],\n...         [1, 1]]\n>>> solve_maze(maze,0,0,len(maze)-1,len(maze)-1)\nTraceback (most recent call last):\n    ...\nValueError: No solution exists!\n\n>>> maze = [[0, 1],\n...         [1, 0]]\n>>> solve_maze(maze,2,0,len(maze)-1,len(maze)-1)\nTraceback (most recent call last):\n    ...\nValueError: Invalid source or destination coordinates\n\n>>> maze = [[1, 0, 0],\n...         [0, 1, 0],\n...         [1, 0, 0]]\n>>> solve_maze(maze,0,1,len(maze),len(maze)-1)\nTraceback (most recent call last):\n    ...\nValueError: Invalid source or destination coordinates"
+        },
+        {
+          "name": "run_maze",
+          "args": [
+            "maze",
+            "i",
+            "j",
+            "destination_row",
+            "destination_column",
+            "solutions"
+          ],
+          "lineno": 139,
+          "doc": "This method is recursive starting from (i, j) and going in one of four directions:\nup, down, left, right.\nIf a path is found to destination it returns True otherwise it returns False.\nParameters\n    maze: A two dimensional matrix of zeros and ones.\n    i, j : coordinates of matrix\n    solutions: A two dimensional matrix of solutions.\nReturns:\n    Boolean if path is found True, Otherwise False."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\rat_in_maze.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\sudoku.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_sudoku_e18ba177.py",
+      "functions": [
+        {
+          "name": "is_safe",
+          "args": [
+            "grid",
+            "row",
+            "column",
+            "n"
+          ],
+          "lineno": 44,
+          "doc": "This function checks the grid to see if each row,\ncolumn, and the 3x3 subgrids contain the digit 'n'.\nIt returns False if it is not 'safe' (a duplicate digit\nis found) else returns True if it is 'safe'"
+        },
+        {
+          "name": "find_empty_location",
+          "args": [
+            "grid"
+          ],
+          "lineno": 63,
+          "doc": "This function finds an empty location so that we can assign a number\nfor that particular row and column."
+        },
+        {
+          "name": "sudoku",
+          "args": [
+            "grid"
+          ],
+          "lineno": 75,
+          "doc": "Takes a partially filled-in grid and attempts to assign values to\nall unassigned locations in such a way to meet the requirements\nfor Sudoku solution (non-duplication across rows, columns, and boxes)\n\n>>> sudoku(initial_grid)  # doctest: +NORMALIZE_WHITESPACE\n[[3, 1, 6, 5, 7, 8, 4, 9, 2],\n [5, 2, 9, 1, 3, 4, 7, 6, 8],\n [4, 8, 7, 6, 2, 9, 5, 3, 1],\n [2, 6, 3, 4, 1, 5, 9, 8, 7],\n [9, 7, 4, 8, 6, 3, 1, 2, 5],\n [8, 5, 1, 7, 9, 2, 6, 4, 3],\n [1, 3, 8, 9, 4, 7, 2, 5, 6],\n [6, 9, 2, 3, 5, 1, 8, 7, 4],\n [7, 4, 5, 2, 8, 6, 3, 1, 9]]\n >>> sudoku(no_solution) is None\n True"
+        },
+        {
+          "name": "print_solution",
+          "args": [
+            "grid"
+          ],
+          "lineno": 112,
+          "doc": "A function to print the solution in the form\nof a 9x9 grid"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\sudoku.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\sum_of_subsets.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_sum_of_subsets_9f2a508f.py",
+      "functions": [
+        {
+          "name": "generate_sum_of_subsets_solutions",
+          "args": [
+            "nums",
+            "max_sum"
+          ],
+          "lineno": 11,
+          "doc": "The main function. For list of numbers 'nums' find the subsets with sum\nequal to 'max_sum'\n\n>>> generate_sum_of_subsets_solutions(nums=[3, 34, 4, 12, 5, 2], max_sum=9)\n[[3, 4, 2], [4, 5]]\n>>> generate_sum_of_subsets_solutions(nums=[3, 34, 4, 12, 5, 2], max_sum=3)\n[[3]]\n>>> generate_sum_of_subsets_solutions(nums=[3, 34, 4, 12, 5, 2], max_sum=1)\n[]"
+        },
+        {
+          "name": "create_state_space_tree",
+          "args": [
+            "nums",
+            "max_sum",
+            "num_index",
+            "path",
+            "result",
+            "remaining_nums_sum"
+          ],
+          "lineno": 32,
+          "doc": "Creates a state space tree to iterate through each branch using DFS.\nIt terminates the branching of a node when any of the two conditions\ngiven below satisfy.\nThis algorithm follows depth-fist-search and backtracks when the node is not\nbranchable.\n\n>>> path = []\n>>> result = []\n>>> create_state_space_tree(\n...     nums=[1],\n...     max_sum=1,\n...     num_index=0,\n...     path=path,\n...     result=result,\n...     remaining_nums_sum=1)\n>>> path\n[]\n>>> result\n[[1]]"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\sum_of_subsets.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\word_break.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_word_break_cca6a019.py",
+      "functions": [
+        {
+          "name": "backtrack",
+          "args": [
+            "input_string",
+            "word_dict",
+            "start"
+          ],
+          "lineno": 10,
+          "doc": "Helper function that uses backtracking to determine if a valid\nword segmentation is possible starting from index 'start'.\n\nParameters:\ninput_string (str): The input string to be segmented.\nword_dict (set[str]): A set of valid dictionary words.\nstart (int): The starting index of the substring to be checked.\n\nReturns:\nbool: True if a valid segmentation is possible, otherwise False.\n\nExample:\n>>> backtrack(\"leetcode\", {\"leet\", \"code\"}, 0)\nTrue\n\n>>> backtrack(\"applepenapple\", {\"apple\", \"pen\"}, 0)\nTrue\n\n>>> backtrack(\"catsandog\", {\"cats\", \"dog\", \"sand\", \"and\", \"cat\"}, 0)\nFalse"
+        },
+        {
+          "name": "word_break",
+          "args": [
+            "input_string",
+            "word_dict"
+          ],
+          "lineno": 48,
+          "doc": "Determines if the input string can be segmented into a sequence of\nvalid dictionary words using backtracking.\n\nParameters:\ninput_string (str): The input string to segment.\nword_dict (set[str]): The set of valid words.\n\nReturns:\nbool: True if the string can be segmented into valid words, otherwise False.\n\nExample:\n>>> word_break(\"leetcode\", {\"leet\", \"code\"})\nTrue\n\n>>> word_break(\"applepenapple\", {\"apple\", \"pen\"})\nTrue\n\n>>> word_break(\"catsandog\", {\"cats\", \"dog\", \"sand\", \"and\", \"cat\"})\nFalse"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\word_break.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\word_ladder.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_word_ladder_37f9e376.py",
+      "functions": [
+        {
+          "name": "backtrack",
+          "args": [
+            "current_word",
+            "path",
+            "end_word",
+            "word_set"
+          ],
+          "lineno": 15,
+          "doc": "Helper function to perform backtracking to find the transformation\nfrom the current_word to the end_word.\n\nParameters:\ncurrent_word (str): The current word in the transformation sequence.\npath (list[str]): The list of transformations from begin_word to current_word.\nend_word (str): The target word for transformation.\nword_set (set[str]): The set of valid words for transformation.\n\nReturns:\nlist[str]: The list of transformations from begin_word to end_word.\n           Returns an empty list if there is no valid\n            transformation from current_word to end_word.\n\nExample:\n>>> backtrack(\"hit\", [\"hit\"], \"cog\", {\"hot\", \"dot\", \"dog\", \"lot\", \"log\", \"cog\"})\n['hit', 'hot', 'dot', 'lot', 'log', 'cog']\n\n>>> backtrack(\"hit\", [\"hit\"], \"cog\", {\"hot\", \"dot\", \"dog\", \"lot\", \"log\"})\n[]\n\n>>> backtrack(\"lead\", [\"lead\"], \"gold\", {\"load\", \"goad\", \"gold\", \"lead\", \"lord\"})\n['lead', 'lead', 'load', 'goad', 'gold']\n\n>>> backtrack(\"game\", [\"game\"], \"code\", {\"came\", \"cage\", \"code\", \"cade\", \"gave\"})\n['game', 'came', 'cade', 'code']"
+        },
+        {
+          "name": "word_ladder",
+          "args": [
+            "begin_word",
+            "end_word",
+            "word_set"
+          ],
+          "lineno": 68,
+          "doc": "Solve the Word Ladder problem using Backtracking and return\nthe list of transformations from begin_word to end_word.\n\nParameters:\nbegin_word (str): The word from which the transformation starts.\nend_word (str): The target word for transformation.\nword_list (list[str]): The list of valid words for transformation.\n\nReturns:\nlist[str]: The list of transformations from begin_word to end_word.\n           Returns an empty list if there is no valid transformation.\n\nExample:\n>>> word_ladder(\"hit\", \"cog\", [\"hot\", \"dot\", \"dog\", \"lot\", \"log\", \"cog\"])\n['hit', 'hot', 'dot', 'lot', 'log', 'cog']\n\n>>> word_ladder(\"hit\", \"cog\", [\"hot\", \"dot\", \"dog\", \"lot\", \"log\"])\n[]\n\n>>> word_ladder(\"lead\", \"gold\", [\"load\", \"goad\", \"gold\", \"lead\", \"lord\"])\n['lead', 'lead', 'load', 'goad', 'gold']\n\n>>> word_ladder(\"game\", \"code\", [\"came\", \"cage\", \"code\", \"cade\", \"gave\"])\n['game', 'came', 'cade', 'code']"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\word_ladder.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\word_search.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_backtracking_word_search_6a1f7c03.py",
+      "functions": [
+        {
+          "name": "get_point_key",
+          "args": [
+            "len_board",
+            "len_board_column",
+            "row",
+            "column"
+          ],
+          "lineno": 36,
+          "doc": "Returns the hash key of matrix indexes.\n\n>>> get_point_key(10, 20, 1, 0)\n200"
+        },
+        {
+          "name": "exits_word",
+          "args": [
+            "board",
+            "word",
+            "row",
+            "column",
+            "word_index",
+            "visited_points_set"
+          ],
+          "lineno": 47,
+          "doc": "Return True if it's possible to search the word suffix\nstarting from the word_index.\n\n>>> exits_word([[\"A\"]], \"B\", 0, 0, 0, set())\nFalse"
+        },
+        {
+          "name": "word_exists",
+          "args": [
+            "board",
+            "word"
+          ],
+          "lineno": 91,
+          "doc": ">>> word_exists([[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], \"ABCCED\")\nTrue\n>>> word_exists([[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], \"SEE\")\nTrue\n>>> word_exists([[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]], \"ABCB\")\nFalse\n>>> word_exists([[\"A\"]], \"A\")\nTrue\n>>> word_exists([[\"B\", \"A\", \"A\"], [\"A\", \"A\", \"A\"], [\"A\", \"B\", \"A\"]], \"ABB\")\nFalse\n>>> word_exists([[\"A\"]], 123)\nTraceback (most recent call last):\n    ...\nValueError: The word parameter should be a string of length greater than 0.\n>>> word_exists([[\"A\"]], \"\")\nTraceback (most recent call last):\n    ...\nValueError: The word parameter should be a string of length greater than 0.\n>>> word_exists([[]], \"AB\")\nTraceback (most recent call last):\n    ...\nValueError: The board should be a non empty matrix of single chars strings.\n>>> word_exists([], \"AB\")\nTraceback (most recent call last):\n    ...\nValueError: The board should be a non empty matrix of single chars strings.\n>>> word_exists([[\"A\"], [21]], \"AB\")\nTraceback (most recent call last):\n    ...\nValueError: The board should be a non empty matrix of single chars strings."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking\\word_search.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_and_operator.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_and_operator_172b1ab2.py",
+      "functions": [
+        {
+          "name": "binary_and",
+          "args": [
+            "a",
+            "b"
+          ],
+          "lineno": 4,
+          "doc": "Take in 2 integers, convert them to binary,\nreturn a binary number that is the\nresult of a binary and operation on the integers provided.\n\n>>> binary_and(25, 32)\n'0b000000'\n>>> binary_and(37, 50)\n'0b100000'\n>>> binary_and(21, 30)\n'0b10100'\n>>> binary_and(58, 73)\n'0b0001000'\n>>> binary_and(0, 255)\n'0b00000000'\n>>> binary_and(256, 256)\n'0b100000000'\n>>> binary_and(0, -1)\nTraceback (most recent call last):\n    ...\nValueError: the value of both inputs must be positive\n>>> binary_and(0, 1.1)\nTraceback (most recent call last):\n    ...\nValueError: Unknown format code 'b' for object of type 'float'\n>>> binary_and(\"0\", \"1\")\nTraceback (most recent call last):\n    ...\nTypeError: '<' not supported between instances of 'str' and 'int'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_and_operator.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_coded_decimal.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_coded_decimal_0fd33954.py",
+      "functions": [
+        {
+          "name": "binary_coded_decimal",
+          "args": [
+            "number"
+          ],
+          "lineno": 1,
+          "doc": "Find binary coded decimal (bcd) of integer base 10.\nEach digit of the number is represented by a 4-bit binary.\nExample:\n>>> binary_coded_decimal(-2)\n'0b0000'\n>>> binary_coded_decimal(-1)\n'0b0000'\n>>> binary_coded_decimal(0)\n'0b0000'\n>>> binary_coded_decimal(3)\n'0b0011'\n>>> binary_coded_decimal(2)\n'0b0010'\n>>> binary_coded_decimal(12)\n'0b00010010'\n>>> binary_coded_decimal(987)\n'0b100110000111'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_coded_decimal.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_count_setbits.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_count_setbits_4d99258b.py",
+      "functions": [
+        {
+          "name": "binary_count_setbits",
+          "args": [
+            "a"
+          ],
+          "lineno": 1,
+          "doc": "Take in 1 integer, return a number that is\nthe number of 1's in binary representation of that number.\n\n>>> binary_count_setbits(25)\n3\n>>> binary_count_setbits(36)\n2\n>>> binary_count_setbits(16)\n1\n>>> binary_count_setbits(58)\n4\n>>> binary_count_setbits(4294967295)\n32\n>>> binary_count_setbits(0)\n0\n>>> binary_count_setbits(-10)\nTraceback (most recent call last):\n    ...\nValueError: Input value must be a positive integer\n>>> binary_count_setbits(0.8)\nTraceback (most recent call last):\n    ...\nTypeError: Input value must be a 'int' type\n>>> binary_count_setbits(\"0\")\nTraceback (most recent call last):\n    ...\nTypeError: '<' not supported between instances of 'str' and 'int'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_count_setbits.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_count_trailing_zeros.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_count_trailing_zeros_97b74381.py",
+      "functions": [
+        {
+          "name": "binary_count_trailing_zeros",
+          "args": [
+            "a"
+          ],
+          "lineno": 4,
+          "doc": "Take in 1 integer, return a number that is\nthe number of trailing zeros in binary representation of that number.\n\n>>> binary_count_trailing_zeros(25)\n0\n>>> binary_count_trailing_zeros(36)\n2\n>>> binary_count_trailing_zeros(16)\n4\n>>> binary_count_trailing_zeros(58)\n1\n>>> binary_count_trailing_zeros(4294967296)\n32\n>>> binary_count_trailing_zeros(0)\n0\n>>> binary_count_trailing_zeros(-10)\nTraceback (most recent call last):\n    ...\nValueError: Input value must be a positive integer\n>>> binary_count_trailing_zeros(0.8)\nTraceback (most recent call last):\n    ...\nTypeError: Input value must be a 'int' type\n>>> binary_count_trailing_zeros(\"0\")\nTraceback (most recent call last):\n    ...\nTypeError: '<' not supported between instances of 'str' and 'int'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_count_trailing_zeros.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_or_operator.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_or_operator_9e0b3bfb.py",
+      "functions": [
+        {
+          "name": "binary_or",
+          "args": [
+            "a",
+            "b"
+          ],
+          "lineno": 4,
+          "doc": "Take in 2 integers, convert them to binary, and return a binary number that is the\nresult of a binary or operation on the integers provided.\n\n>>> binary_or(25, 32)\n'0b111001'\n>>> binary_or(37, 50)\n'0b110111'\n>>> binary_or(21, 30)\n'0b11111'\n>>> binary_or(58, 73)\n'0b1111011'\n>>> binary_or(0, 255)\n'0b11111111'\n>>> binary_or(0, 256)\n'0b100000000'\n>>> binary_or(0, -1)\nTraceback (most recent call last):\n    ...\nValueError: the value of both inputs must be positive\n>>> binary_or(0, 1.1)\nTraceback (most recent call last):\n    ...\nTypeError: 'float' object cannot be interpreted as an integer\n>>> binary_or(\"0\", \"1\")\nTraceback (most recent call last):\n    ...\nTypeError: '<' not supported between instances of 'str' and 'int'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_or_operator.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_shifts.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_shifts_6c884032.py",
+      "functions": [
+        {
+          "name": "logical_left_shift",
+          "args": [
+            "number",
+            "shift_amount"
+          ],
+          "lineno": 6,
+          "doc": "Take in 2 positive integers.\n'number' is the integer to be logically left shifted 'shift_amount' times.\ni.e. (number << shift_amount)\nReturn the shifted binary representation.\n\n>>> logical_left_shift(0, 1)\n'0b00'\n>>> logical_left_shift(1, 1)\n'0b10'\n>>> logical_left_shift(1, 5)\n'0b100000'\n>>> logical_left_shift(17, 2)\n'0b1000100'\n>>> logical_left_shift(1983, 4)\n'0b111101111110000'\n>>> logical_left_shift(1, -1)\nTraceback (most recent call last):\n    ...\nValueError: both inputs must be positive integers"
+        },
+        {
+          "name": "logical_right_shift",
+          "args": [
+            "number",
+            "shift_amount"
+          ],
+          "lineno": 36,
+          "doc": "Take in positive 2 integers.\n'number' is the integer to be logically right shifted 'shift_amount' times.\ni.e. (number >>> shift_amount)\nReturn the shifted binary representation.\n\n>>> logical_right_shift(0, 1)\n'0b0'\n>>> logical_right_shift(1, 1)\n'0b0'\n>>> logical_right_shift(1, 5)\n'0b0'\n>>> logical_right_shift(17, 2)\n'0b100'\n>>> logical_right_shift(1983, 4)\n'0b1111011'\n>>> logical_right_shift(1, -1)\nTraceback (most recent call last):\n    ...\nValueError: both inputs must be positive integers"
+        },
+        {
+          "name": "arithmetic_right_shift",
+          "args": [
+            "number",
+            "shift_amount"
+          ],
+          "lineno": 68,
+          "doc": "Take in 2 integers.\n'number' is the integer to be arithmetically right shifted 'shift_amount' times.\ni.e. (number >> shift_amount)\nReturn the shifted binary representation.\n\n>>> arithmetic_right_shift(0, 1)\n'0b00'\n>>> arithmetic_right_shift(1, 1)\n'0b00'\n>>> arithmetic_right_shift(-1, 1)\n'0b11'\n>>> arithmetic_right_shift(17, 2)\n'0b000100'\n>>> arithmetic_right_shift(-17, 2)\n'0b111011'\n>>> arithmetic_right_shift(-1983, 4)\n'0b111110000100'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_shifts.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_twos_complement.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_twos_complement_a55077ea.py",
+      "functions": [
+        {
+          "name": "twos_complement",
+          "args": [
+            "number"
+          ],
+          "lineno": 4,
+          "doc": "Take in a negative integer 'number'.\nReturn the two's complement representation of 'number'.\n\n>>> twos_complement(0)\n'0b0'\n>>> twos_complement(-1)\n'0b11'\n>>> twos_complement(-5)\n'0b1011'\n>>> twos_complement(-17)\n'0b101111'\n>>> twos_complement(-207)\n'0b100110001'\n>>> twos_complement(1)\nTraceback (most recent call last):\n    ...\nValueError: input must be a negative integer"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_twos_complement.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_xor_operator.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_binary_xor_operator_c4453cad.py",
+      "functions": [
+        {
+          "name": "binary_xor",
+          "args": [
+            "a",
+            "b"
+          ],
+          "lineno": 4,
+          "doc": "Take in 2 integers, convert them to binary,\nreturn a binary number that is the\nresult of a binary xor operation on the integers provided.\n\n>>> binary_xor(25, 32)\n'0b111001'\n>>> binary_xor(37, 50)\n'0b010111'\n>>> binary_xor(21, 30)\n'0b01011'\n>>> binary_xor(58, 73)\n'0b1110011'\n>>> binary_xor(0, 255)\n'0b11111111'\n>>> binary_xor(256, 256)\n'0b000000000'\n>>> binary_xor(0, -1)\nTraceback (most recent call last):\n    ...\nValueError: the value of both inputs must be positive\n>>> binary_xor(0, 1.1)\nTraceback (most recent call last):\n    ...\nTypeError: 'float' object cannot be interpreted as an integer\n>>> binary_xor(\"0\", \"1\")\nTraceback (most recent call last):\n    ...\nTypeError: '<' not supported between instances of 'str' and 'int'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\binary_xor_operator.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\bitwise_addition_recursive.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_bitwise_addition_recursive_87ab8b6f.py",
+      "functions": [
+        {
+          "name": "bitwise_addition_recursive",
+          "args": [
+            "number",
+            "other_number"
+          ],
+          "lineno": 7,
+          "doc": ">>> bitwise_addition_recursive(4, 5)\n9\n>>> bitwise_addition_recursive(8, 9)\n17\n>>> bitwise_addition_recursive(0, 4)\n4\n>>> bitwise_addition_recursive(4.5, 9)\nTraceback (most recent call last):\n    ...\nTypeError: Both arguments MUST be integers!\n>>> bitwise_addition_recursive('4', 9)\nTraceback (most recent call last):\n    ...\nTypeError: Both arguments MUST be integers!\n>>> bitwise_addition_recursive('4.5', 9)\nTraceback (most recent call last):\n    ...\nTypeError: Both arguments MUST be integers!\n>>> bitwise_addition_recursive(-1, 9)\nTraceback (most recent call last):\n    ...\nValueError: Both arguments MUST be non-negative!\n>>> bitwise_addition_recursive(1, -9)\nTraceback (most recent call last):\n    ...\nValueError: Both arguments MUST be non-negative!"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\bitwise_addition_recursive.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\count_1s_brian_kernighan_method.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_count_1s_brian_kernighan_method_82473fcd.py",
+      "functions": [
+        {
+          "name": "get_1s_count",
+          "args": [
+            "number"
+          ],
+          "lineno": 1,
+          "doc": "Count the number of set bits in a 32 bit integer using Brian Kernighan's way.\nRef - https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan\n>>> get_1s_count(25)\n3\n>>> get_1s_count(37)\n3\n>>> get_1s_count(21)\n3\n>>> get_1s_count(58)\n4\n>>> get_1s_count(0)\n0\n>>> get_1s_count(256)\n1\n>>> get_1s_count(-1)\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer\n>>> get_1s_count(0.8)\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer\n>>> get_1s_count(\"25\")\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\count_1s_brian_kernighan_method.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\count_number_of_one_bits.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_count_number_of_one_bits_9cee087b.py",
+      "functions": [
+        {
+          "name": "get_set_bits_count_using_brian_kernighans_algorithm",
+          "args": [
+            "number"
+          ],
+          "lineno": 4,
+          "doc": "Count the number of set bits in a 32 bit integer\n>>> get_set_bits_count_using_brian_kernighans_algorithm(25)\n3\n>>> get_set_bits_count_using_brian_kernighans_algorithm(37)\n3\n>>> get_set_bits_count_using_brian_kernighans_algorithm(21)\n3\n>>> get_set_bits_count_using_brian_kernighans_algorithm(58)\n4\n>>> get_set_bits_count_using_brian_kernighans_algorithm(0)\n0\n>>> get_set_bits_count_using_brian_kernighans_algorithm(256)\n1\n>>> get_set_bits_count_using_brian_kernighans_algorithm(-1)\nTraceback (most recent call last):\n    ...\nValueError: the value of input must not be negative"
+        },
+        {
+          "name": "get_set_bits_count_using_modulo_operator",
+          "args": [
+            "number"
+          ],
+          "lineno": 33,
+          "doc": "Count the number of set bits in a 32 bit integer\n>>> get_set_bits_count_using_modulo_operator(25)\n3\n>>> get_set_bits_count_using_modulo_operator(37)\n3\n>>> get_set_bits_count_using_modulo_operator(21)\n3\n>>> get_set_bits_count_using_modulo_operator(58)\n4\n>>> get_set_bits_count_using_modulo_operator(0)\n0\n>>> get_set_bits_count_using_modulo_operator(256)\n1\n>>> get_set_bits_count_using_modulo_operator(-1)\nTraceback (most recent call last):\n    ...\nValueError: the value of input must not be negative"
+        },
+        {
+          "name": "benchmark",
+          "args": [],
+          "lineno": 63,
+          "doc": "Benchmark code for comparing 2 functions, with different length int values.\nBrian Kernighan's algorithm is consistently faster than using modulo_operator."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\count_number_of_one_bits.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\excess_3_code.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_excess_3_code_bde60fe5.py",
+      "functions": [
+        {
+          "name": "excess_3_code",
+          "args": [
+            "number"
+          ],
+          "lineno": 1,
+          "doc": "Find excess-3 code of integer base 10.\nAdd 3 to all digits in a decimal number then convert to a binary-coded decimal.\nhttps://en.wikipedia.org/wiki/Excess-3\n\n>>> excess_3_code(0)\n'0b0011'\n>>> excess_3_code(3)\n'0b0110'\n>>> excess_3_code(2)\n'0b0101'\n>>> excess_3_code(20)\n'0b01010011'\n>>> excess_3_code(120)\n'0b010001010011'"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\excess_3_code.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\find_previous_power_of_two.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_find_previous_power_of_two_1267c64d.py",
+      "functions": [
+        {
+          "name": "find_previous_power_of_two",
+          "args": [
+            "number"
+          ],
+          "lineno": 1,
+          "doc": "Find the largest power of two that is less than or equal to a given integer.\nhttps://stackoverflow.com/questions/1322510\n\n>>> [find_previous_power_of_two(i) for i in range(18)]\n[0, 1, 2, 2, 4, 4, 4, 4, 8, 8, 8, 8, 8, 8, 8, 8, 16, 16]\n>>> find_previous_power_of_two(-5)\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer\n>>> find_previous_power_of_two(10.5)\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\find_previous_power_of_two.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\find_unique_number.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_find_unique_number_c4fda6ac.py",
+      "functions": [
+        {
+          "name": "find_unique_number",
+          "args": [
+            "arr"
+          ],
+          "lineno": 1,
+          "doc": "Given a list of integers where every element appears twice except for one,\nthis function returns the element that appears only once using bitwise XOR.\n\n>>> find_unique_number([1, 1, 2, 2, 3])\n3\n>>> find_unique_number([4, 5, 4, 6, 6])\n5\n>>> find_unique_number([7])\n7\n>>> find_unique_number([10, 20, 10])\n20\n>>> find_unique_number([])\nTraceback (most recent call last):\n    ...\nValueError: input list must not be empty\n>>> find_unique_number([1, 'a', 1])\nTraceback (most recent call last):\n    ...\nTypeError: all elements must be integers"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\find_unique_number.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\gray_code_sequence.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_gray_code_sequence_3d170606.py",
+      "functions": [
+        {
+          "name": "gray_code",
+          "args": [
+            "bit_count"
+          ],
+          "lineno": 1,
+          "doc": "Takes in an integer n and returns a n-bit\ngray code sequence\nAn n-bit gray code sequence is a sequence of 2^n\nintegers where:\n\na) Every integer is between [0,2^n -1] inclusive\nb) The sequence begins with 0\nc) An integer appears at most one times in the sequence\nd)The binary representation of every pair of integers differ\n   by exactly one bit\ne) The binary representation of first and last bit also\n   differ by exactly one bit\n\n>>> gray_code(2)\n[0, 1, 3, 2]\n\n>>> gray_code(1)\n[0, 1]\n\n>>> gray_code(3)\n[0, 1, 3, 2, 6, 7, 5, 4]\n\n>>> gray_code(-1)\nTraceback (most recent call last):\n    ...\nValueError: The given input must be positive\n\n>>> gray_code(10.6)\nTraceback (most recent call last):\n    ...\nTypeError: unsupported operand type(s) for <<: 'int' and 'float'"
+        },
+        {
+          "name": "gray_code_sequence_string",
+          "args": [
+            "bit_count"
+          ],
+          "lineno": 50,
+          "doc": "Will output the n-bit grey sequence as a\nstring of bits\n\n>>> gray_code_sequence_string(2)\n['00', '01', '11', '10']\n\n>>> gray_code_sequence_string(1)\n['0', '1']"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\gray_code_sequence.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\highest_set_bit.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_highest_set_bit_883cb9f2.py",
+      "functions": [
+        {
+          "name": "get_highest_set_bit_position",
+          "args": [
+            "number"
+          ],
+          "lineno": 1,
+          "doc": "Returns position of the highest set bit of a number.\nRef - https://graphics.stanford.edu/~seander/bithacks.html#IntegerLogObvious\n>>> get_highest_set_bit_position(25)\n5\n>>> get_highest_set_bit_position(37)\n6\n>>> get_highest_set_bit_position(1)\n1\n>>> get_highest_set_bit_position(4)\n3\n>>> get_highest_set_bit_position(0)\n0\n>>> get_highest_set_bit_position(0.8)\nTraceback (most recent call last):\n    ...\nTypeError: Input value must be an 'int' type"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\highest_set_bit.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\index_of_rightmost_set_bit.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_index_of_rightmost_set_bit_e92b3b7f.py",
+      "functions": [
+        {
+          "name": "get_index_of_rightmost_set_bit",
+          "args": [
+            "number"
+          ],
+          "lineno": 4,
+          "doc": "Take in a positive integer 'number'.\nReturns the zero-based index of first set bit in that 'number' from right.\nReturns -1, If no set bit found.\n\n>>> get_index_of_rightmost_set_bit(0)\n-1\n>>> get_index_of_rightmost_set_bit(5)\n0\n>>> get_index_of_rightmost_set_bit(36)\n2\n>>> get_index_of_rightmost_set_bit(8)\n3\n>>> get_index_of_rightmost_set_bit(-18)\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer\n>>> get_index_of_rightmost_set_bit('test')\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer\n>>> get_index_of_rightmost_set_bit(1.25)\nTraceback (most recent call last):\n    ...\nValueError: Input must be a non-negative integer"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\index_of_rightmost_set_bit.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\is_even.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_is_even_ac2ddc94.py",
+      "functions": [
+        {
+          "name": "is_even",
+          "args": [
+            "number"
+          ],
+          "lineno": 1,
+          "doc": "return true if the input integer is even\nExplanation: Lets take a look at the following decimal to binary conversions\n2 => 10\n14 => 1110\n100 => 1100100\n3 => 11\n13 => 1101\n101 => 1100101\nfrom the above examples we can observe that\nfor all the odd integers there is always 1 set bit at the end\nalso, 1 in binary can be represented as 001, 00001, or 0000001\nso for any odd integer n => n&1 is always equals 1 else the integer is even\n\n>>> is_even(1)\nFalse\n>>> is_even(4)\nTrue\n>>> is_even(9)\nFalse\n>>> is_even(15)\nFalse\n>>> is_even(40)\nTrue\n>>> is_even(100)\nTrue\n>>> is_even(101)\nFalse"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\is_even.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\is_power_of_two.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_is_power_of_two_e9737d7d.py",
+      "functions": [
+        {
+          "name": "is_power_of_two",
+          "args": [
+            "number"
+          ],
+          "lineno": 18,
+          "doc": "Return True if this number is power of 2 or False otherwise.\n\n>>> is_power_of_two(0)\nTrue\n>>> is_power_of_two(1)\nTrue\n>>> is_power_of_two(2)\nTrue\n>>> is_power_of_two(4)\nTrue\n>>> is_power_of_two(6)\nFalse\n>>> is_power_of_two(8)\nTrue\n>>> is_power_of_two(17)\nFalse\n>>> is_power_of_two(-1)\nTraceback (most recent call last):\n    ...\nValueError: number must not be negative\n>>> is_power_of_two(1.2)\nTraceback (most recent call last):\n    ...\nTypeError: unsupported operand type(s) for &: 'float' and 'float'\n\n# Test all powers of 2 from 0 to 10,000\n>>> all(is_power_of_two(int(2 ** i)) for i in range(10000))\nTrue"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\is_power_of_two.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\largest_pow_of_two_le_num.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_largest_pow_of_two_le_num_5a6e2077.py",
+      "functions": [
+        {
+          "name": "largest_pow_of_two_le_num",
+          "args": [
+            "number"
+          ],
+          "lineno": 22,
+          "doc": "Return the largest power of two less than or equal to a number.\n\n>>> largest_pow_of_two_le_num(0)\n0\n>>> largest_pow_of_two_le_num(1)\n1\n>>> largest_pow_of_two_le_num(-1)\n0\n>>> largest_pow_of_two_le_num(3)\n2\n>>> largest_pow_of_two_le_num(15)\n8\n>>> largest_pow_of_two_le_num(99)\n64\n>>> largest_pow_of_two_le_num(178)\n128\n>>> largest_pow_of_two_le_num(999999)\n524288\n>>> largest_pow_of_two_le_num(99.9)\nTraceback (most recent call last):\n    ...\nTypeError: Input value must be a 'int' type"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\largest_pow_of_two_le_num.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\missing_number.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_missing_number_b5229448.py",
+      "functions": [
+        {
+          "name": "find_missing_number",
+          "args": [
+            "nums"
+          ],
+          "lineno": 1,
+          "doc": "Finds the missing number in a list of consecutive integers.\n\nArgs:\n    nums: A list of integers.\n\nReturns:\n    The missing number.\n\nExample:\n    >>> find_missing_number([0, 1, 3, 4])\n    2\n    >>> find_missing_number([4, 3, 1, 0])\n    2\n    >>> find_missing_number([-4, -3, -1, 0])\n    -2\n    >>> find_missing_number([-2, 2, 1, 3, 0])\n    -1\n    >>> find_missing_number([1, 3, 4, 5, 6])\n    2\n    >>> find_missing_number([6, 5, 4, 2, 1])\n    3\n    >>> find_missing_number([6, 1, 5, 3, 4])\n    2"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\missing_number.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\numbers_different_signs.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_numbers_different_signs_b24039f1.py",
+      "functions": [
+        {
+          "name": "different_signs",
+          "args": [
+            "num1",
+            "num2"
+          ],
+          "lineno": 14,
+          "doc": "Return True if numbers have opposite signs False otherwise.\n\n>>> different_signs(1, -1)\nTrue\n>>> different_signs(1, 1)\nFalse\n>>> different_signs(1000000000000000000000000000, -1000000000000000000000000000)\nTrue\n>>> different_signs(-1000000000000000000000000000, 1000000000000000000000000000)\nTrue\n>>> different_signs(50, 278)\nFalse\n>>> different_signs(0, 2)\nFalse\n>>> different_signs(2, 0)\nFalse"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\numbers_different_signs.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\power_of_4.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_power_of_4_476066e5.py",
+      "functions": [
+        {
+          "name": "power_of_4",
+          "args": [
+            "number"
+          ],
+          "lineno": 18,
+          "doc": "Return True if this number is power of 4 or False otherwise.\n\n>>> power_of_4(0)\nTraceback (most recent call last):\n    ...\nValueError: number must be positive\n>>> power_of_4(1)\nTrue\n>>> power_of_4(2)\nFalse\n>>> power_of_4(4)\nTrue\n>>> power_of_4(6)\nFalse\n>>> power_of_4(8)\nFalse\n>>> power_of_4(17)\nFalse\n>>> power_of_4(64)\nTrue\n>>> power_of_4(-1)\nTraceback (most recent call last):\n    ...\nValueError: number must be positive\n>>> power_of_4(1.2)\nTraceback (most recent call last):\n    ...\nTypeError: number must be an integer"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\power_of_4.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\reverse_bits.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_reverse_bits_ab95d6f9.py",
+      "functions": [
+        {
+          "name": "get_reverse_bit_string",
+          "args": [
+            "number"
+          ],
+          "lineno": 1,
+          "doc": "Return the reverse bit string of a 32 bit integer\n\n>>> get_reverse_bit_string(9)\n'10010000000000000000000000000000'\n>>> get_reverse_bit_string(43)\n'11010100000000000000000000000000'\n>>> get_reverse_bit_string(2873)\n'10011100110100000000000000000000'\n>>> get_reverse_bit_string(2550136832)\n'00000000000000000000000000011001'\n>>> get_reverse_bit_string(\"this is not a number\")\nTraceback (most recent call last):\n    ...\nTypeError: operation can not be conducted on an object of type str"
+        },
+        {
+          "name": "reverse_bit",
+          "args": [
+            "number"
+          ],
+          "lineno": 31,
+          "doc": "Take in a 32 bit integer, reverse its bits, return a 32 bit integer result\n\n>>> reverse_bit(25)\n2550136832\n>>> reverse_bit(37)\n2751463424\n>>> reverse_bit(21)\n2818572288\n>>> reverse_bit(58)\n1543503872\n>>> reverse_bit(0)\n0\n>>> reverse_bit(256)\n8388608\n>>> reverse_bit(2550136832)\n25\n>>> reverse_bit(-1)\nTraceback (most recent call last):\n    ...\nValueError: The value of input must be non-negative\n\n>>> reverse_bit(1.1)\nTraceback (most recent call last):\n    ...\nTypeError: Input value must be an 'int' type\n\n>>> reverse_bit(\"0\")\nTraceback (most recent call last):\n    ...\nTypeError: Input value must be an 'int' type"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\reverse_bits.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\single_bit_manipulation_operations.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_single_bit_manipulation_operations_250dcfb5.py",
+      "functions": [
+        {
+          "name": "set_bit",
+          "args": [
+            "number",
+            "position"
+          ],
+          "lineno": 6,
+          "doc": "Set the bit at position to 1.\n\nDetails: perform bitwise or for given number and X.\nWhere X is a number with all the bits - zeroes and bit on given\nposition - one.\n\n>>> set_bit(0b1101, 1) # 0b1111\n15\n>>> set_bit(0b0, 5) # 0b100000\n32\n>>> set_bit(0b1111, 1) # 0b1111\n15"
+        },
+        {
+          "name": "clear_bit",
+          "args": [
+            "number",
+            "position"
+          ],
+          "lineno": 24,
+          "doc": "Set the bit at position to 0.\n\nDetails: perform bitwise and for given number and X.\nWhere X is a number with all the bits - ones and bit on given\nposition - zero.\n\n>>> clear_bit(0b10010, 1) # 0b10000\n16\n>>> clear_bit(0b0, 5) # 0b0\n0"
+        },
+        {
+          "name": "flip_bit",
+          "args": [
+            "number",
+            "position"
+          ],
+          "lineno": 40,
+          "doc": "Flip the bit at position.\n\nDetails: perform bitwise xor for given number and X.\nWhere X is a number with all the bits - zeroes and bit on given\nposition - one.\n\n>>> flip_bit(0b101, 1) # 0b111\n7\n>>> flip_bit(0b101, 0) # 0b100\n4"
+        },
+        {
+          "name": "is_bit_set",
+          "args": [
+            "number",
+            "position"
+          ],
+          "lineno": 56,
+          "doc": "Is the bit at position set?\n\nDetails: Shift the bit at position to be the first (smallest) bit.\nThen check if the first bit is set by anding the shifted number with 1.\n\n>>> is_bit_set(0b1010, 0)\nFalse\n>>> is_bit_set(0b1010, 1)\nTrue\n>>> is_bit_set(0b1010, 2)\nFalse\n>>> is_bit_set(0b1010, 3)\nTrue\n>>> is_bit_set(0b0, 17)\nFalse"
+        },
+        {
+          "name": "get_bit",
+          "args": [
+            "number",
+            "position"
+          ],
+          "lineno": 77,
+          "doc": "Get the bit at the given position\n\nDetails: perform bitwise and for the given number and X,\nWhere X is a number with all the bits - zeroes and bit on given position - one.\nIf the result is not equal to 0, then the bit on the given position is 1, else 0.\n\n>>> get_bit(0b1010, 0)\n0\n>>> get_bit(0b1010, 1)\n1\n>>> get_bit(0b1010, 2)\n0\n>>> get_bit(0b1010, 3)\n1"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\single_bit_manipulation_operations.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\swap_all_odd_and_even_bits.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_bit_manipulation_swap_all_odd_and_even_bits_beb07375.py",
+      "functions": [
+        {
+          "name": "show_bits",
+          "args": [
+            "before",
+            "after"
+          ],
+          "lineno": 1,
+          "doc": ">>> print(show_bits(0, 0xFFFF))\n    0: 00000000\n65535: 1111111111111111"
+        },
+        {
+          "name": "swap_odd_even_bits",
+          "args": [
+            "num"
+          ],
+          "lineno": 10,
+          "doc": "1. We use bitwise AND operations to separate the even bits (0, 2, 4, 6, etc.) and\n   odd bits (1, 3, 5, 7, etc.) in the input number.\n2. We then right-shift the even bits by 1 position and left-shift the odd bits by\n   1 position to swap them.\n3. Finally, we combine the swapped even and odd bits using a bitwise OR operation\n   to obtain the final result.\n>>> print(show_bits(0, swap_odd_even_bits(0)))\n    0: 00000000\n    0: 00000000\n>>> print(show_bits(1, swap_odd_even_bits(1)))\n    1: 00000001\n    2: 00000010\n>>> print(show_bits(2, swap_odd_even_bits(2)))\n    2: 00000010\n    1: 00000001\n>>> print(show_bits(3, swap_odd_even_bits(3)))\n    3: 00000011\n    3: 00000011\n>>> print(show_bits(4, swap_odd_even_bits(4)))\n    4: 00000100\n    8: 00001000\n>>> print(show_bits(5, swap_odd_even_bits(5)))\n    5: 00000101\n   10: 00001010\n>>> print(show_bits(6, swap_odd_even_bits(6)))\n    6: 00000110\n    9: 00001001\n>>> print(show_bits(23, swap_odd_even_bits(23)))\n   23: 00010111\n   43: 00101011"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation\\swap_all_odd_and_even_bits.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\blockchain\\diophantine_equation.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\\test_blockchain_diophantine_equation_f9fc6643.py",
+      "functions": [
+        {
+          "name": "diophantine",
+          "args": [
+            "a",
+            "b",
+            "c"
+          ],
+          "lineno": 6,
+          "doc": "Diophantine Equation : Given integers a,b,c ( at least one of a and b != 0), the\ndiophantine equation a*x + b*y = c has a solution (where x and y are integers)\niff greatest_common_divisor(a,b) divides c.\n\nGCD ( Greatest Common Divisor ) or HCF ( Highest Common Factor )\n\n>>> diophantine(10,6,14)\n(-7.0, 14.0)\n\n>>> diophantine(391,299,-69)\n(9.0, -12.0)\n\nBut above equation has one more solution i.e., x = -4, y = 5.\nThat's why we need diophantine all solution function."
+        },
+        {
+          "name": "diophantine_all_soln",
+          "args": [
+            "a",
+            "b",
+            "c",
+            "n"
+          ],
+          "lineno": 33,
+          "doc": "Lemma : if n|ab and gcd(a,n) = 1, then n|b.\n\nFinding All solutions of Diophantine Equations:\n\nTheorem : Let gcd(a,b) = d, a = d*p, b = d*q. If (x0,y0) is a solution of\nDiophantine Equation a*x + b*y = c.  a*x0 + b*y0 = c, then all the\nsolutions have the form a(x0 + t*q) + b(y0 - t*p) = c,\nwhere t is an arbitrary integer.\n\nn is the number of solution you want, n = 2 by default\n\n>>> diophantine_all_soln(10, 6, 14)\n-7.0 14.0\n-4.0 9.0\n\n>>> diophantine_all_soln(10, 6, 14, 4)\n-7.0 14.0\n-4.0 9.0\n-1.0 4.0\n2.0 -1.0\n\n>>> diophantine_all_soln(391, 299, -69, n = 4)\n9.0 -12.0\n22.0 -29.0\n35.0 -46.0\n48.0 -63.0"
+        },
+        {
+          "name": "extended_gcd",
+          "args": [
+            "a",
+            "b"
+          ],
+          "lineno": 74,
+          "doc": "Extended Euclid's Algorithm : If d divides a and b and d = a*x + b*y for integers\nx and y, then d = gcd(a,b)\n\n>>> extended_gcd(10, 6)\n(2, -1, 2)\n\n>>> extended_gcd(7, 5)\n(1, -2, 3)"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\blockchain\\diophantine_equation.py"
+    }
+  ],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --source --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\blockchain --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\boolean_algebra --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\cellular_automata --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\ciphers --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\computer_vision --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\conversions --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\data_compression --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\data_structures --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\digital_image_processing --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\divide_and_conquer --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\docs --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\dynamic_programming --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\electronics --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\file_transfer --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\financial --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\fractals --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\fuzzy_logic --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\genetic_algorithm --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\geodesy --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\geometry --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\graphics --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\graphs --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\greedy_methods --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\hashes --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\knapsack --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\linear_algebra --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\linear_programming --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\machine_learning --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\maths --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\matrix --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\networking_flow --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\neural_network --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\other --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\physics --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\project_euler --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\quantum --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\scheduling --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\scripts --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\searches --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\sorts --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\strings --source D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\web_programming --omit D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests/** --omit D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests/* D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests\n  inifile: D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\pyproject.toml\n  rootdir: D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\n\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\audio_filters",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\backtracking",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\bit_manipulation",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\blockchain",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\boolean_algebra",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\cellular_automata",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\ciphers",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\computer_vision",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\conversions",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\data_compression",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\data_structures",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\digital_image_processing",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\divide_and_conquer",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\docs",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\dynamic_programming",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\electronics",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\file_transfer",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\financial",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\fractals",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\fuzzy_logic",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\genetic_algorithm",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\geodesy",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\geometry",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\graphics",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\graphs",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\greedy_methods",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\hashes",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\knapsack",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\linear_algebra",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\linear_programming",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\machine_learning",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\maths",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\matrix",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\networking_flow",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\neural_network",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\other",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\physics",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\project_euler",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\quantum",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\scheduling",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\scripts",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\searches",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\sorts",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\strings",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\web_programming",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests/*",
+        "D:\\code_assistant\\Git_repo\\TheAlgorithms__Python\\reports\\TheAlgorithms__Python\\generated_tests"
+      ]
+    },
+    "report": {
+      "stdout": "No data to report.\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}

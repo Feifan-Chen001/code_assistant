@@ -1,0 +1,311 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[11pt,a4paper]{article}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{booktabs}
+\newcolumntype{T}[1]{>{\ttfamily\raggedright\arraybackslash}p{#1}}
+\newcommand{\codepath}[1]{\path{#1}}
+
+% ===== 中文与字体（支持UTF-8和中文路径） =====
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\setmonofont{Consolas}
+\setCJKmonofont{SimSun}
+\usepackage{fontspec}
+
+% ===== 页面与排版 =====
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{microtype}
+
+% ===== 数学/符号 =====
+\usepackage{amsmath,amssymb}
+
+% ===== 链接 =====
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+% ===== 表格 =====
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% ===== 代码块 =====
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  frame=single,
+  framerule=0.3pt,
+  rulecolor=\color{black!25},
+  xleftmargin=1.2em,
+  xrightmargin=0.6em,
+  aboveskip=0.8em,
+  belowskip=0.8em
+}
+
+% ===== 标题格式 =====
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CodeAssistant 报告}}\\[4pt]
+{\normalsize （由自动审查与测试生成系统输出）}
+\end{center}
+
+\vspace{0.5em}
+\tableofcontents
+\vspace{0.8em}
+\hrule
+\vspace{1.2em}
+
+\section{代码审查（Review）}
+
+\subsection{概览}
+\begin{itemize}
+  \item 问题总数：195
+  \item 高/中/低：13 / 117 / 65
+  \item 工具数：4
+  \item DS 规则命中总数：114
+\end{itemize}
+
+\subsection{严重性分布}
+\begin{itemize}
+  \item medium：117
+  \item low：65
+  \item high：13
+\end{itemize}
+
+\subsection{工具分布}
+\begin{itemize}
+  \item ds-rule：114
+  \item rule-plugin：74
+  \item bandit：6
+  \item ast-rule：1
+\end{itemize}
+
+\subsection{DS 规则分布}
+\begin{itemize}
+  \item DS\_HYPERPARAMS\_HARDCODED：92
+  \item DS\_PIPELINE\_SUGGEST：10
+  \item DS\_RANDOM\_SEED：8
+  \item DS\_SKLEARN\_RANDOM\_STATE：3
+  \item DS\_PANDAS\_SETTINGWITHCOPY：1
+\end{itemize}
+
+\subsection{Top 20 问题}
+\begin{enumerate}
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{01\_the\_machine\_learning\_landscape.ipynb\#cell-52:3} \\
+  说明：Model 'model' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-17:5} \\
+  说明：Randomness detected without an explicit seed.
+
+  \item \textbf{[medium] ds-rule DS\_PIPELINE\_SUGGEST} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-81:2} \\
+  说明：ordinal\_encoder used without Pipeline; consider sklearn.pipeline.Pipeline.
+
+  \item \textbf{[medium] ds-rule DS\_PIPELINE\_SUGGEST} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-84:8} \\
+  说明：cat\_encoder used without Pipeline; consider sklearn.pipeline.Pipeline.
+
+  \item \textbf{[medium] ds-rule DS\_PIPELINE\_SUGGEST} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-88:2} \\
+  说明：cat\_encoder used without Pipeline; consider sklearn.pipeline.Pipeline.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-120:3} \\
+  说明：Model 'tree\_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-127:3} \\
+  说明：Model 'forest\_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-131:3} \\
+  说明：Model 'svm\_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-132:10} \\
+  说明：Model 'forest\_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{02\_end\_to\_end\_machine\_learning\_project.ipynb\#cell-139:9} \\
+  说明：Model 'forest\_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[high] ds-rule DS\_RANDOM\_SEED} \\
+  位置：\codepath{03\_classification.ipynb\#cell-20:3} \\
+  说明：Randomness detected without an explicit seed.
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{03\_classification.ipynb\#cell-27:16} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{03\_classification.ipynb\#cell-60:2} \\
+  说明：Model 'forest\_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ds-rule DS\_PIPELINE\_SUGGEST} \\
+  位置：\codepath{03\_classification.ipynb\#cell-77:3} \\
+  说明：scaler used without Pipeline; consider sklearn.pipeline.Pipeline.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{03\_classification.ipynb\#cell-98:2} \\
+  说明：Model 'knn\_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{03\_classification.ipynb\#cell-169:3} \\
+  说明：Model 'svm\_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{03\_classification.ipynb\#cell-176:3} \\
+  说明：Model 'forest\_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+  \item \textbf{[medium] ast-rule BARE\_EXCEPT} \\
+  位置：\codepath{03\_classification.ipynb\#cell-216:9} \\
+  说明：Avoid bare except; catch explicit exception types.
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{03\_classification.ipynb\#cell-223:22} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[medium] ds-rule DS\_HYPERPARAMS\_HARDCODED} \\
+  位置：\codepath{03\_classification.ipynb\#cell-235:4} \\
+  说明：Model 'log\_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.
+
+\end{enumerate}
+
+\subsection{复杂度摘要}
+\begin{itemize}
+  \item 来源：Radon Cyclomatic Complexity（CC）
+  \item 说明：等级通常为 A（简单）到 F（复杂），括号内为复杂度分数
+\end{itemize}
+
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{6.6cm} L{1.1cm} T{5.2cm} L{0.9cm} r}
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endfirsthead
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.\_legacy\_fit\_transform & C & 15 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_get\_column\_indices & C & 14 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.\_handle\_deprecations & C & 14 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & \_BaseEncoder.\_fit & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & C & \_BaseEncoder & C & 11 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_get\_column & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.inverse\_transform & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.fit\_transform & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.\_legacy\_transform & B & 9 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_iter & B & 9 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_transform\_selected & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_check\_key\_type & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_validate\_transformers & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_validate\_remainder & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & \_BaseEncoder.\_transform & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.get\_feature\_names & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_update\_fitted\_transformers & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_handle\_zeros\_in\_scale & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & C & OneHotEncoder & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.\_transform\_new & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & C & ColumnTransformer & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_fit\_transform & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_get\_transformer\_list & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.\_\_init\_\_ & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OrdinalEncoder.inverse\_transform & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_validate\_output & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_hstack & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_fit\_transform\_one & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.fit & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.fit\_transform & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & C & OrdinalEncoder & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_transform\_one & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & make\_column\_transformer & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.transform & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_transformers & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_transformers & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.named\_transformers\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.transform & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_fit\_one\_transformer & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & F & \_argmax & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.n\_values & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.n\_values & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.categorical\_features & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.categorical\_features & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.active\_features\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.feature\_indices\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OneHotEncoder.n\_values\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OrdinalEncoder.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OrdinalEncoder.fit & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & OrdinalEncoder.transform & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.get\_params & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.set\_params & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/future\_encoders.py} & M & ColumnTransformer.fit & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/jupyter\_notebook\_config.py} & F & export\_script\_and\_view & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/nbclean\_checkpoints} & M & NotebookAnalyser.clean\_checkpoints & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/nbclean\_checkpoints} & C & NotebookAnalyser & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/nbclean\_checkpoints} & M & NotebookAnalyser.\_\_init\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/nbclean\_checkpoints} & M & NotebookAnalyser.clean\_checkpoints\_recursively & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/nbclean\_checkpoints} & F & main & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/nbclean\_checkpoints} & M & NotebookAnalyser.get\_hash & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/nbclean\_checkpoints} & M & NotebookAnalyser.log & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/rm\_empty\_subdirs} & F & remove\_empty\_directories & C & 15 \\
+\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/docker/bin/rm\_empty\_subdirs} & F & main & A & 2 \\
+\end{longtable}
+\normalsize
+
+\section{测试生成（TestGen）}
+
+\subsection{指标}
+\begin{itemize}
+  \item 写入测试文件数：16
+  \item 覆盖函数数：138
+  \item 输出目录：\codepath{D:/code\_assistant/Git\_repo/ageron\_\_handson-ml/reports/ageron\_\_handson-ml/generated\_tests}
+\end{itemize}
+
+\subsection{覆盖率报告}
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{7.2cm} r r r T{5.2cm}}
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endfirsthead
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{N/A} & 0 & 0 & 0\% &  \\
+\end{longtable}
+\normalsize
+
+\end{document}

@@ -22,6 +22,13 @@
 - 可选：TeX Live / MiKTeX（提供 `xelatex`），或 `tectonic`
 
 ### 安装依赖
+
+建议使用虚拟环境
+```bash
+python -m venv .venv  
+.venv\Scripts\activate 
+```   
+安装依赖                                                     
 ```bash
 pip install -r requirements.txt
 ```

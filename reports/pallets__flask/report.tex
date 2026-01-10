@@ -1,0 +1,1189 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[11pt,a4paper]{article}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{booktabs}
+\newcolumntype{T}[1]{>{\ttfamily\raggedright\arraybackslash}p{#1}}
+\newcommand{\codepath}[1]{\path{#1}}
+
+% ===== 中文与字体（支持UTF-8和中文路径） =====
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\setmonofont{Consolas}
+\setCJKmonofont{SimSun}
+\usepackage{fontspec}
+
+% ===== 页面与排版 =====
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{microtype}
+
+% ===== 数学/符号 =====
+\usepackage{amsmath,amssymb}
+
+% ===== 链接 =====
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+% ===== 表格 =====
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% ===== 代码块 =====
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  frame=single,
+  framerule=0.3pt,
+  rulecolor=\color{black!25},
+  xleftmargin=1.2em,
+  xrightmargin=0.6em,
+  aboveskip=0.8em,
+  belowskip=0.8em
+}
+
+% ===== 标题格式 =====
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CodeAssistant 报告}}\\[4pt]
+{\normalsize （由自动审查与测试生成系统输出）}
+\end{center}
+
+\vspace{0.5em}
+\tableofcontents
+\vspace{0.8em}
+\hrule
+\vspace{1.2em}
+
+\section{代码审查（Review）}
+
+\subsection{概览}
+\begin{itemize}
+  \item 问题总数：22
+  \item 高/中/低：10 / 4 / 8
+  \item 工具数：4
+  \item DS 规则命中总数：1
+\end{itemize}
+
+\subsection{严重性分布}
+\begin{itemize}
+  \item high：10
+  \item low：8
+  \item medium：4
+\end{itemize}
+
+\subsection{工具分布}
+\begin{itemize}
+  \item bandit：10
+  \item rule-plugin：8
+  \item ast-rule：3
+  \item ds-rule：1
+\end{itemize}
+
+\subsection{DS 规则分布}
+\begin{itemize}
+  \item DS\_PANDAS\_SETTINGWITHCOPY：1
+\end{itemize}
+
+\subsection{Top 20 问题}
+\begin{enumerate}
+  \item \textbf{[medium] ast-rule BARE\_EXCEPT} \\
+  位置：\codepath{src/flask/app.py:1571} \\
+  说明：避免裸 except:，应捕获明确异常类型。
+
+  \item \textbf{[high] rule-plugin PY\_RESOURCE\_LEAK} \\
+  位置：\codepath{src/flask/app.py:444} \\
+  说明：open() 调用应在 with 语句中使用以确保正确关闭
+
+  \item \textbf{[high] rule-plugin PY\_RESOURCE\_LEAK} \\
+  位置：\codepath{src/flask/app.py:466} \\
+  说明：open() 调用应在 with 语句中使用以确保正确关闭
+
+  \item \textbf{[high] rule-plugin PY\_RESOURCE\_LEAK} \\
+  位置：\codepath{src/flask/app.py:442} \\
+  说明：open() 调用应在 with 语句中使用以确保正确关闭
+
+  \item \textbf{[high] rule-plugin PY\_RESOURCE\_LEAK} \\
+  位置：\codepath{src/flask/app.py:464} \\
+  说明：open() 调用应在 with 语句中使用以确保正确关闭
+
+  \item \textbf{[high] rule-plugin PY\_RESOURCE\_LEAK} \\
+  位置：\codepath{src/flask/blueprints.py:128} \\
+  说明：open() 调用应在 with 语句中使用以确保正确关闭
+
+  \item \textbf{[high] rule-plugin PY\_RESOURCE\_LEAK} \\
+  位置：\codepath{src/flask/blueprints.py:126} \\
+  说明：open() 调用应在 with 语句中使用以确保正确关闭
+
+  \item \textbf{[high] ast-rule BANNED\_CALL} \\
+  位置：\codepath{src/flask/cli.py:1023} \\
+  说明：禁止使用 eval（项目/领域规则），建议安全替代或白名单。
+
+  \item \textbf{[high] ast-rule BANNED\_CALL} \\
+  位置：\codepath{src/flask/config.py:209} \\
+  说明：禁止使用 exec（项目/领域规则），建议安全替代或白名单。
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{src/flask/config.py:358} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[low] rule-plugin PY\_GLOBAL\_VARIABLE} \\
+  位置：\codepath{src/flask/testing.py:101} \\
+  说明：检测到全局变量 '\_werkzeug\_version' 的使用; 考虑使用参数传递代替
+
+  \item \textbf{[high] ds-rule DS\_PANDAS\_SETTINGWITHCOPY} \\
+  位置：\codepath{src/flask/sansio/scaffold.py:654} \\
+  说明：Chained indexing may trigger SettingWithCopy; use .loc/.iloc.
+
+  \item \textbf{[low] bandit B106} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/\_\_init\_\_.py:9} \\
+  说明：Possible hardcoded password: 'dev'
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py:351} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[medium] bandit B307} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py:1023} \\
+  说明：Use of possibly insecure function - consider using safer ast.literal\_eval.
+
+  \item \textbf{[low] bandit B110} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py:163} \\
+  说明：Try, Except, Pass detected.
+
+  \item \textbf{[medium] bandit B102} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py:209} \\
+  说明：Use of exec detected.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py:59} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[medium] bandit B704} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py:188} \\
+  说明：Potential XSS with ``markupsafe.Markup`` detected. Do not use ``Markup`` on untrusted data.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py:705} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+\end{enumerate}
+
+\subsection{复杂度摘要}
+\begin{itemize}
+  \item 来源：Radon Cyclomatic Complexity（CC）
+  \item 说明：等级通常为 A（简单）到 F（复杂），括号内为复杂度分数
+\end{itemize}
+
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{6.6cm} L{1.1cm} T{5.2cm} L{0.9cm} r}
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endfirsthead
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/docs/conf.py} & F & github\_link & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/docs/conf.py} & F & setup & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/tasks.py} & F & process & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/tasks.py} & F & add & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/tasks.py} & F & block & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/views.py} & F & result & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/views.py} & F & add & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/views.py} & F & block & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/views.py} & F & process & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/\_\_init\_\_.py} & F & create\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/celery/src/task\_app/\_\_init\_\_.py} & F & celery\_init\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/javascript/js\_example/views.py} & F & index & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/javascript/js\_example/views.py} & F & add & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/javascript/tests/conftest.py} & F & fixture\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/javascript/tests/conftest.py} & F & client & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/javascript/tests/test\_js\_example.py} & F & test\_add & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/javascript/tests/test\_js\_example.py} & F & test\_index & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/auth.py} & F & register & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/auth.py} & F & login & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/auth.py} & F & load\_logged\_in\_user & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/auth.py} & F & login\_required & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/auth.py} & F & logout & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/blog.py} & F & get\_post & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/blog.py} & F & create & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/blog.py} & F & update & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/blog.py} & F & index & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/blog.py} & F & delete & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/db.py} & F & get\_db & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/db.py} & F & close\_db & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/db.py} & F & init\_db & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/db.py} & F & init\_db\_command & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/db.py} & F & init\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/flaskr/\_\_init\_\_.py} & F & create\_app & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & C & AuthActions & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & F & app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & F & client & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & F & runner & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & F & auth & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & M & AuthActions.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & M & AuthActions.login & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/conftest.py} & M & AuthActions.logout & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_auth.py} & F & test\_login & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_auth.py} & F & test\_register & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_auth.py} & F & test\_register\_validate\_input & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_auth.py} & F & test\_login\_validate\_input & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_auth.py} & F & test\_logout & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_index & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_author\_required & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_create & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_update & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_delete & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_login\_required & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_exists\_required & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_blog.py} & F & test\_create\_update\_validate & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_db.py} & F & test\_get\_close\_db & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_db.py} & F & test\_init\_db\_command & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_factory.py} & F & test\_config & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/examples/tutorial/tests/test\_factory.py} & F & test\_hello & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.make\_response & C & 16 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.url\_for & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.run & C & 12 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.\_\_init\_subclass\_\_ & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.preprocess\_request & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.create\_url\_adapter & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.handle\_user\_exception & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.handle\_exception & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.process\_response & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.wsgi\_app & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & C & Flask & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.raise\_routing\_exception & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.update\_template\_context & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.create\_jinja\_environment & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.handle\_http\_exception & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.dispatch\_request & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.do\_teardown\_request & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & F & \_make\_timedelta & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.\_\_init\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.get\_send\_file\_max\_age & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.open\_resource & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.full\_dispatch\_request & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.finalize\_request & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.send\_static\_file & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.open\_instance\_resource & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.make\_shell\_context & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.test\_client & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.test\_cli\_runner & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.ensure\_sync & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.async\_to\_sync & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.do\_teardown\_appcontext & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & F & remove\_ctx & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & F & add\_ctx & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.log\_exception & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.make\_default\_options\_response & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.app\_context & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.request\_context & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.test\_request\_context & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/app.py} & M & Flask.\_\_call\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/blueprints.py} & C & Blueprint & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/blueprints.py} & M & Blueprint.get\_send\_file\_max\_age & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/blueprints.py} & M & Blueprint.open\_resource & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/blueprints.py} & M & Blueprint.send\_static\_file & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/blueprints.py} & M & Blueprint.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & routes\_command & C & 18 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & find\_app\_by\_string & C & 14 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & load\_dotenv & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & find\_best\_app & C & 12 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & \_validate\_key & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & ScriptInfo.load\_app & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & prepare\_import & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & shell\_command & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & C & ScriptInfo & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & CertParamType.convert & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & locate\_app & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & \_env\_file\_callback & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & show\_server\_banner & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & run\_command & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & C & FlaskGroup & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & FlaskGroup.\_\_init\_\_ & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & FlaskGroup.get\_command & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & FlaskGroup.parse\_args & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & C & CertParamType & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & \_set\_debug & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & \_called\_with\_wrong\_args & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & get\_version & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & FlaskGroup.\_load\_plugin\_commands & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & FlaskGroup.list\_commands & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & FlaskGroup.make\_context & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & C & SeparatedPathType & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & \_set\_app & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & C & AppGroup & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & SeparatedPathType.convert & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & locate\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & locate\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & with\_appcontext & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & \_path\_is\_ancestor & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & F & main & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & C & NoAppException & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & ScriptInfo.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & AppGroup.command & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & AppGroup.group & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/cli.py} & M & CertParamType.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.from\_prefixed\_env & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & C & Config & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.from\_file & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.get\_namespace & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.from\_pyfile & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.from\_object & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.from\_mapping & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & ConfigAttribute.\_\_get\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.from\_envvar & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & C & ConfigAttribute & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & ConfigAttribute.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & ConfigAttribute.\_\_get\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & ConfigAttribute.\_\_get\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & ConfigAttribute.\_\_set\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/config.py} & M & Config.\_\_repr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.pop & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.session & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.push & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & F & after\_this\_request & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & C & AppContext & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.\_\_init\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.match\_request & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & F & copy\_current\_request\_context & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & F & has\_request\_context & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & F & \_\_getattr\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & C & \_AppCtxGlobals & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.\_\_getattr\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.\_\_delattr\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.pop & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.\_\_repr\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.request & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.\_\_repr\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & F & has\_app\_context & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.\_\_setattr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.setdefault & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.\_\_contains\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & \_AppCtxGlobals.\_\_iter\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.from\_environ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.has\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.copy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.\_\_enter\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/ctx.py} & M & AppContext.\_\_exit\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & F & explain\_template\_loading\_attempts & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & F & \_dump\_loader\_info & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & C & FormDataRoutingRedirect & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & C & DebugFilesKeyError & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & M & DebugFilesKeyError.\_\_init\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & M & FormDataRoutingRedirect.\_\_init\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & F & attach\_enctype\_error\_multidict & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & C & UnexpectedUnicodeError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/debughelpers.py} & M & DebugFilesKeyError.\_\_str\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & F & \_\_getattr\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & C & ProxyMixin & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & M & ProxyMixin.\_get\_current\_object & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & C & FlaskProxy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & C & AppContextProxy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & C & \_AppCtxGlobalsProxy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & C & RequestProxy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/globals.py} & C & SessionMixinProxy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & get\_root\_path & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & get\_flashed\_messages & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & make\_response & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & get\_debug\_flag & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & get\_load\_dotenv & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & stream\_with\_context & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & redirect & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & abort & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & \_prepare\_send\_file\_kwargs & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & \_split\_blueprint\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & stream\_with\_context & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & stream\_with\_context & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & url\_for & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & get\_template\_attribute & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & flash & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & send\_file & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/helpers.py} & F & send\_from\_directory & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/logging.py} & F & has\_level\_handler & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/logging.py} & F & create\_logger & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/logging.py} & F & wsgi\_errors\_stream & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & C & SecureCookieSessionInterface & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SecureCookieSessionInterface.save\_session & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SecureCookieSessionInterface.open\_session & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.should\_set\_cookie & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SecureCookieSessionInterface.get\_signing\_serializer & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & C & SessionMixin & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & C & SecureCookieSession & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & C & NullSession & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & C & SessionInterface & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_cookie\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_expiration\_time & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & F & \_lazy\_sha1 & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionMixin.permanent & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionMixin.permanent & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SecureCookieSession.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SecureCookieSession.\_\_getitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SecureCookieSession.get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SecureCookieSession.setdefault & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & NullSession.\_fail & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.make\_null\_session & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.is\_null\_session & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_cookie\_name & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_cookie\_domain & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_cookie\_httponly & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_cookie\_secure & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_cookie\_samesite & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.get\_cookie\_partitioned & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.open\_session & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sessions.py} & M & SessionInterface.save\_session & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & M & DispatchingJinjaLoader.\_get\_source\_explained & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & M & DispatchingJinjaLoader.list\_templates & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & C & DispatchingJinjaLoader & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & M & DispatchingJinjaLoader.\_iter\_loaders & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & C & Environment & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & M & DispatchingJinjaLoader.\_get\_source\_fast & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & F & \_default\_template\_ctx\_processor & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & M & Environment.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & M & DispatchingJinjaLoader.get\_source & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & F & \_render & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & F & render\_template & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & F & render\_template\_string & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & F & \_stream & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & F & stream\_template & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & F & stream\_template\_string & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/templating.py} & M & DispatchingJinjaLoader.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & EnvironBuilder.\_\_init\_\_ & B & 9 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskClient.open & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & C & EnvironBuilder & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskClient.session\_transaction & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & C & FlaskClient & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & C & FlaskCliRunner & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskCliRunner.invoke & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & F & \_get\_werkzeug\_version & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskClient.\_copy\_environ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskClient.\_\_enter\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & EnvironBuilder.json\_dumps & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskClient.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskClient.\_request\_from\_builder\_args & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskClient.\_\_exit\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/testing.py} & M & FlaskCliRunner.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/views.py} & C & MethodView & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/views.py} & M & MethodView.\_\_init\_subclass\_\_ & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/views.py} & C & View & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/views.py} & M & View.as\_view & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/views.py} & M & MethodView.dispatch\_request & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/views.py} & M & View.dispatch\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.\_load\_form\_data & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.on\_json\_loading\_failed & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & C & Request & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.max\_content\_length & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.max\_form\_memory\_size & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.max\_form\_parts & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.blueprint & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & C & Response & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.endpoint & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.blueprints & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Response.max\_cookie\_size & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.max\_content\_length & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.max\_form\_memory\_size & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/wrappers.py} & M & Request.max\_form\_parts & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & JSONProvider.\_prepare\_response\_obj & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & F & \_default & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & DefaultJSONProvider.response & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & C & JSONProvider & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & C & DefaultJSONProvider & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & JSONProvider.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & JSONProvider.dumps & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & JSONProvider.dump & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & JSONProvider.loads & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & JSONProvider.load & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & JSONProvider.response & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & DefaultJSONProvider.dumps & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/provider.py} & M & DefaultJSONProvider.loads & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TaggedJSONSerializer.register & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TaggedJSONSerializer.\_untag\_scan & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & TaggedJSONSerializer & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & TagDict & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagDict.check & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & PassDict & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & PassList & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TaggedJSONSerializer.tag & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TaggedJSONSerializer.untag & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & JSONTag & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & PassDict.to\_json & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & TagTuple & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagTuple.to\_json & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & PassList.to\_json & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & TagBytes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & TagMarkup & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & TagUUID & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & C & TagDateTime & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TaggedJSONSerializer.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & JSONTag.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & JSONTag.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & JSONTag.to\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & JSONTag.to\_python & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & JSONTag.tag & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagDict.to\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagDict.to\_python & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & PassDict.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagTuple.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagTuple.to\_python & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & PassList.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagBytes.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagBytes.to\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagBytes.to\_python & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagMarkup.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagMarkup.to\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagMarkup.to\_python & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagUUID.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagUUID.to\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagUUID.to\_python & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagDateTime.check & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagDateTime.to\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TagDateTime.to\_python & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TaggedJSONSerializer.dumps & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/tag.py} & M & TaggedJSONSerializer.loads & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/\_\_init\_\_.py} & F & dumps & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/\_\_init\_\_.py} & F & dump & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/\_\_init\_\_.py} & F & loads & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/\_\_init\_\_.py} & F & load & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/json/\_\_init\_\_.py} & F & jsonify & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.add\_url\_rule & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.\_find\_error\_handler & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.trap\_http\_exception & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.handle\_url\_build\_error & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.inject\_url\_defaults & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & F & \_make\_timedelta & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & C & App & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.\_\_init\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.name & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.\_check\_setup\_finished & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.make\_config & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.auto\_find\_instance\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.select\_jinja\_autoescape & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.debug & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_filter & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.add\_template\_filter & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_test & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.add\_template\_test & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_global & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.add\_template\_global & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.logger & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.jinja\_env & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.create\_jinja\_environment & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.make\_aborter & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.create\_global\_jinja\_loader & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.debug & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.register\_blueprint & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.iter\_blueprints & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_filter & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_filter & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_test & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_test & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_global & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.template\_global & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.teardown\_appcontext & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.shell\_context\_processor & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.should\_ignore\_error & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/app.py} & M & App.redirect & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.register & D & 23 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.\_merge\_blueprint\_funcs & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.add\_url\_rule & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & C & BlueprintSetupState & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & BlueprintSetupState.add\_url\_rule & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.\_\_init\_\_ & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & BlueprintSetupState.\_\_init\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & C & Blueprint & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.\_check\_setup\_finished & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.register\_blueprint & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_filter & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_test & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_global & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.record & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.record\_once & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.make\_setup\_state & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_filter & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_filter & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.add\_app\_template\_filter & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_test & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_test & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.add\_app\_template\_test & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_global & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_template\_global & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.add\_app\_template\_global & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.before\_app\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.after\_app\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.teardown\_app\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_context\_processor & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_errorhandler & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_url\_value\_preprocessor & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/blueprints.py} & M & Blueprint.app\_url\_defaults & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & F & \_find\_package\_path & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.\_get\_exc\_class\_and\_code & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & F & find\_package & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.static\_url\_path & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & F & \_endpoint\_from\_view\_func & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & C & Scaffold & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.static\_folder & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.static\_folder & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.static\_url\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.jinja\_loader & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.\_method\_route & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & F & setupmethod & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.\_\_repr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.\_check\_setup\_finished & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.has\_static\_folder & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.post & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.put & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.delete & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.patch & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.route & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.add\_url\_rule & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.endpoint & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.before\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.after\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.teardown\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.context\_processor & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.url\_value\_preprocessor & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.url\_defaults & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.errorhandler & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/src/flask/sansio/scaffold.py} & M & Scaffold.register\_error\_handler & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & \_standard\_os\_environ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & leak\_detector & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & test\_apps & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & \_reset\_os\_environ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & app\_ctx & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & req\_ctx & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & client & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & modules\_tmp\_path & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & modules\_tmp\_path\_prefix & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & site\_packages & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/conftest.py} & F & purge\_module & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_app\_ctx\_globals\_methods & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_app\_tearing\_down\_with\_unhandled\_exception & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_context\_refcounts & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_request\_context\_means\_app\_context & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_app\_context\_provides\_current\_app & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_app\_tearing\_down\_with\_previous\_exception & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_app\_tearing\_down\_with\_handled\_exception\_by\_except\_block & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_clean\_pop & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_basic\_url\_generation & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_app\_tearing\_down & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_app\_tearing\_down\_with\_handled\_exception\_by\_app\_handler & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_custom\_app\_ctx\_globals\_class & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_url\_generation\_requires\_server\_name & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_appctx.py} & F & test\_url\_generation\_without\_context\_fails & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & F & test\_async\_before\_after\_request & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & F & test\_async\_route & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & F & test\_async\_error\_handler & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & C & AsyncView & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & C & AsyncMethodView & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & F & \_async\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & C & AppError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & C & BlueprintError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & M & AsyncView.dispatch\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & M & AsyncMethodView.get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_async.py} & M & AsyncMethodView.post & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_response\_types & D & 27 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_make\_response & C & 14 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_using\_session\_settings & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_provide\_automatic\_options\_kwarg & C & 12 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_url\_mapping & C & 12 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_special\_types & C & 11 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_request\_dispatching & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_make\_response\_with\_response\_instance & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_server\_name\_subdomain & B & 9 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_expiration & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_trap\_bad\_request\_key\_error & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_error\_handling & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_route\_decorator\_custom\_endpoint & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_server\_name\_matching & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_max\_cookie\_size & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_response\_type\_errors & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_get\_method\_on\_g & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_using\_samesite\_attribute & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_secret\_key\_fallbacks & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_flashes & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_request\_processing & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_teardown\_request\_handler & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_teardown\_request\_handler\_debug\_mode & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_teardown\_request\_handler\_error & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_http\_error\_subclass\_handling & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_error\_handler\_after\_processor\_error & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_build\_error\_handler & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_files & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_url\_processors & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_g\_iteration\_protocol & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_app\_freed\_on\_zero\_refcount & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_options\_work & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_provide\_automatic\_options\_attr & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_werkzeug\_routing & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_endpoint\_decorator & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_stored\_last & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_refresh\_vary & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_request\_preprocessing\_early\_return & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_after\_request\_processing & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_before\_after\_request\_order & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_error\_handling\_processing & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_before\_request\_and\_routing\_errors & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_errorhandler\_precedence & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_enctype\_debug\_helper & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_jsonify\_no\_prettyprint & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_url\_generation & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_url\_path & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_url\_path\_with\_ending\_slash & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_route\_with\_host\_matching & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_request\_locals & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_exception\_propagation & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_inject\_blueprint\_url\_defaults & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_no\_setup\_after\_first\_request & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_routing\_redirect\_debugging & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_subdomain\_basic\_support & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_subdomain\_matching\_other\_name & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_multi\_route\_rules & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_multi\_route\_class\_views & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_options\_on\_multiple\_rules & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_method\_route & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_using\_application\_root & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_missing\_session & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_user\_error\_handling & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_jsonify\_mimetype & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_json\_dump\_dataclass & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_jsonify\_args\_and\_kwargs\_check & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_url\_empty\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_url\_empty\_path\_default & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_folder\_with\_pathlib\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_static\_folder\_with\_ending\_slash & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_nonascii\_pathinfo & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_subdomain\_matching & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_subdomain\_matching\_with\_ports & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_run\_defaults & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_run\_server\_port & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_method\_route\_no\_methods & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_disallow\_string\_for\_allowed\_methods & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_cookie\_setting & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_session\_vary\_cookie & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_extended\_flashing & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_baseexception\_error\_handling & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_trapping\_of\_all\_http\_exceptions & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_build\_error\_handler\_reraise & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_url\_for\_passes\_special\_values\_to\_build\_error\_handler & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_werkzeug\_passthrough\_errors & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_basic.py} & F & test\_run\_from\_config & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_global & C & 18 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_filter & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_test & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_templates\_and\_static & C & 11 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_nested\_blueprint & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_blueprint\_renaming & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_route\_decorator\_custom\_endpoint & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_app\_request\_processing & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_blueprint\_url\_defaults & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_context\_processing & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_blueprint\_specific\_error\_handling & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_filter & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_filter\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_filter\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_test & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_test\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_test\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_request\_processing & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_blueprint\_specific\_user\_error\_handling & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_blueprint\_app\_error\_handling & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_blueprint\_url\_processors & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_default\_static\_max\_age & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_empty\_url\_defaults & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_endpoint\_decorator & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_app\_url\_processors & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_nested\_callback\_order & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_child\_and\_parent\_subdomain & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_blueprint\_prefix\_slash & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_templates\_list & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_dotted\_names\_from\_app & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_filter\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_filter\_after\_route\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_filter\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_filter\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_filter\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_test\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_test\_after\_route\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_test\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_template\_test\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_add\_template\_test\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_nesting\_url\_prefixes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_nesting\_subdomains & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_dotted\_name\_not\_allowed & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_empty\_name\_not\_allowed & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_route\_decorator\_custom\_endpoint\_with\_dots & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_unique\_blueprint\_names & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_blueprints.py} & F & test\_self\_registration & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_find\_best\_app & C & 12 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_scriptinfo & C & 11 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_load\_dotenv & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_appgroup\_app\_context & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_no\_command\_echo\_loading\_error & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_help\_echo\_loading\_error & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_help\_echo\_exception & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_cli\_blueprints & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_get\_version & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_dotenv\_path & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_prepare\_import & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_with\_appcontext & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_flaskgroup\_app\_context & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_flaskgroup\_debug & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_run\_cert\_path & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & C & TestRoutes & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.expect\_order & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.test\_sort & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.test\_all\_methods & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.test\_no\_routes & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.test\_subdomain & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.test\_host & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_cli\_name & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_locate\_app & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_locate\_app\_suppress\_raise & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_app\_cli\_has\_app\_context & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_flaskgroup\_nested & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & dotenv\_not\_available & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_dotenv\_optional & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_disable\_dotenv\_from\_env & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_run\_cert\_adhoc & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_run\_cert\_import & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_cli\_empty & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_run\_exclude\_patterns & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.test\_simple & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & runner & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_locate\_app\_raises & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & F & test\_run\_cert\_no\_ssl & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_cli.py} & M & TestRoutes.invoke & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_get\_namespace & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_from\_prefixed\_env & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_from\_prefixed\_env\_nested & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & common\_object\_test & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_envvar & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_envvar\_missing & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_missing & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_missing\_file & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_from\_prefixed\_env\_custom\_prefix & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_custom\_config\_class & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_session\_lifetime & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_from\_pyfile\_weird\_encoding & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_pyfile & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_object & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_file\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_file\_toml & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_mapping & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_config.py} & F & test\_config\_from\_class & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_converters.py} & F & test\_custom\_converters & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_converters.py} & F & test\_context\_available & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestSendfile.test\_static\_file & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & C & TestSendfile & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestHelpers.test\_make\_response & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & C & TestHelpers & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestSendfile.test\_send\_file & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestUrlFor.test\_url\_for\_with\_alternating\_schemes & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestUrlFor.test\_url\_with\_method & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_redirect\_no\_app & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & C & TestUrlFor & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & C & TestNoImports & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & C & TestStreaming & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestStreaming.test\_streaming\_with\_context\_and\_custom\_close & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestStreaming.test\_async\_view & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_app\_aborter\_class & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_open\_resource & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_open\_resource\_with\_encoding & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & C & FakePath & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & C & PyBytesIO & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestSendfile.test\_send\_from\_directory & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestUrlFor.test\_url\_for\_with\_anchor & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestUrlFor.test\_url\_for\_with\_scheme & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestUrlFor.test\_url\_for\_with\_scheme\_not\_external & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestUrlFor.test\_url\_for\_with\_self & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestNoImports.test\_name\_with\_import\_error & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestStreaming.test\_streaming\_with\_context & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestStreaming.test\_streaming\_with\_context\_as\_decorator & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestStreaming.test\_stream\_keeps\_session & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & TestHelpers.test\_get\_debug\_flag & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_redirect\_with\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_abort\_no\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_abort\_with\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & F & test\_open\_resource\_exceptions & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & FakePath.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & FakePath.\_\_fspath\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & PyBytesIO.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_helpers.py} & M & PyBytesIO.\_\_getattr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_instance\_config.py} & F & test\_explicit\_instance\_paths & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_instance\_config.py} & F & test\_uninstalled\_module\_paths & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_instance\_config.py} & F & test\_uninstalled\_package\_paths & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_instance\_config.py} & F & test\_uninstalled\_namespace\_paths & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_instance\_config.py} & F & test\_installed\_module\_paths & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_instance\_config.py} & F & test\_installed\_package\_paths & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_instance\_config.py} & F & test\_prefix\_package\_paths & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_key\_sorting & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_jsonify\_dicts & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_jsonify\_arrays & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_bad\_request\_debug\_message & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_jsonify\_basic\_types & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_jsonify\_uuid\_types & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_bad\_requests & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_custom\_mimetypes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_as\_unicode & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_dump\_to\_file & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_jsonify\_datetime & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_jsonify\_aware\_datetimes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_decimal & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_attr & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_tojson\_filter & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_json\_customization & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & \_has\_encoding & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & F & test\_html\_method & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & C & FixedOffset & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & M & FixedOffset.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & M & FixedOffset.utcoffset & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & M & FixedOffset.tzname & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json.py} & M & FixedOffset.dst & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json\_tag.py} & F & test\_duplicate\_tag & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json\_tag.py} & F & test\_tag\_order & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json\_tag.py} & F & test\_dump\_load\_unchanged & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json\_tag.py} & F & test\_custom\_tag & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_json\_tag.py} & F & test\_tag\_interface & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_logging.py} & F & test\_has\_level\_handler & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_logging.py} & F & test\_log\_view\_exception & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_logging.py} & F & test\_logger & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_logging.py} & F & test\_wsgi\_errors\_stream & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_logging.py} & F & test\_logger\_debug & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_logging.py} & F & test\_existing\_handler & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_logging.py} & F & reset\_logging & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_regression.py} & F & test\_aborting & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_context\_test & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_session\_dynamic\_cookie\_name & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_teardown\_with\_previous\_exception & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_teardown\_with\_handled\_exception & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_context\_binding & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_session\_error\_pops\_context & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & C & TestGreenletContextCopying & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_teardown\_on\_pop & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_proper\_test\_request\_context & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & M & TestGreenletContextCopying.test\_greenlet\_context\_copying & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & M & TestGreenletContextCopying.test\_greenlet\_context\_copying\_api & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_manual\_context\_binding & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_bad\_environ\_raises\_bad\_request & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_environ\_for\_valid\_idna\_completes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_reqctx.py} & F & test\_normal\_environ\_completes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_request.py} & F & test\_limit\_config & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_request.py} & F & test\_trusted\_hosts\_config & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_request.py} & F & test\_max\_content\_length & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_session\_interface.py} & F & test\_open\_session\_with\_endpoint & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_signals.py} & F & test\_before\_render\_template & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_signals.py} & F & test\_template\_rendered & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_signals.py} & F & test\_request\_exception\_signal & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_signals.py} & F & test\_flash\_signal & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_signals.py} & F & test\_appcontext\_tearing\_down\_signal & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_signals.py} & F & test\_request\_signals & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_signals.py} & F & test\_appcontext\_signals & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_subclassing.py} & F & test\_suppressed\_exception\_logging & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_global & C & 17 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_filter & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_test & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_templates\_auto\_reload & C & 12 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_filter & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_filter\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_filter\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_test & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_test\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_test\_with\_name & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_escaping\_without\_template\_filename & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_templates\_auto\_reload\_debug\_run & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_loader\_debugging & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_context\_processing & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_original\_win & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_simple\_stream & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_request\_less\_rendering & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_standard\_context & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_escaping & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_no\_escaping & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_macros & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_filter\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_filter\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_filter\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_filter\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_test\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_test\_with\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_template\_test\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_add\_template\_test\_with\_name\_and\_template & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_custom\_template\_loader & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_iterable\_loader & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_templating.py} & F & test\_custom\_jinja\_env & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_test\_client\_context\_binding & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_session\_transactions & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_json\_request\_and\_response & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_path\_is\_url & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_blueprint\_with\_subdomain & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_full\_url\_request & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_environ\_defaults\_from\_config & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_environ\_defaults & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_environ\_base\_default & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_environ\_base\_modified & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_client\_open\_environ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_specify\_url\_scheme & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_redirect\_session & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_session\_transactions\_keep\_context & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_reuse\_client & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_client\_json\_no\_app\_context & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_subdomain & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_nosubdomain & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_cli\_runner\_class & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_cli\_invoke & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_environbuilder\_json\_dumps & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_session\_transactions\_no\_null\_sessions & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_cli\_custom\_obj & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_client\_pop\_all\_preserved & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_testing.py} & F & test\_session\_transaction\_needs\_cookies & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & F & test\_error\_handler\_no\_match & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & F & test\_default\_error\_handler & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & M & TestGenericHandlers.test\_handle\_class\_or\_code & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & M & TestGenericHandlers.test\_handle\_generic & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & F & test\_error\_handler\_subclass & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & F & test\_error\_handler\_http\_subclass & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & C & TestGenericHandlers & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & M & TestGenericHandlers.test\_handle\_generic\_http & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & F & test\_error\_handler\_blueprint & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & M & TestGenericHandlers.report\_error & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_user\_error\_handler.py} & M & TestGenericHandlers.app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & common\_test & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_implicit\_head & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_view\_provide\_automatic\_options\_attr & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_explicit\_head & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_methods\_var\_inheritance & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_multiple\_inheritance & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_remove\_method\_from\_parent & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_view\_decorators & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_init\_once & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_view\_inheritance & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_basic\_view & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_method\_based\_view & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_view\_patching & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_views.py} & F & test\_endpoint\_override & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/blueprintapp/apps/admin/\_\_init\_\_.py} & F & index & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/blueprintapp/apps/admin/\_\_init\_\_.py} & F & index2 & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/blueprintapp/apps/frontend/\_\_init\_\_.py} & F & index & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/blueprintapp/apps/frontend/\_\_init\_\_.py} & F & missing\_template & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/cliapp/factory.py} & F & create\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/cliapp/factory.py} & F & create\_app2 & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/cliapp/factory.py} & F & no\_app & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/test\_apps/helloworld/hello.py} & F & hello & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_app\_decorators.py} & F & after\_sync & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_app\_decorators.py} & F & after\_async & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_app\_decorators.py} & F & before\_sync & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_app\_decorators.py} & F & before\_async & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_app\_decorators.py} & F & teardown\_sync & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_app\_decorators.py} & F & teardown\_async & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_error\_handler.py} & F & handle\_400 & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_error\_handler.py} & F & handle\_custom & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_error\_handler.py} & F & handle\_accept\_base & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_error\_handler.py} & F & handle\_multiple & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_generator\_expression & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_iterator & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & C & RenderTemplateView & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_str & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_bytes & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_json & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_json\_dict & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_json\_list & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & typed\_dict & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & hello\_generator & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & tuple\_status & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & tuple\_status\_enum & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & tuple\_headers & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & return\_template & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & return\_template\_stream & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & F & async\_route & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & C & StatusJSON & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & M & RenderTemplateView.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/tests/type\_check/typing\_route.py} & M & RenderTemplateView.dispatch\_request & A & 1 \\
+\end{longtable}
+\normalsize
+
+\section{测试生成（TestGen）}
+
+\subsection{指标}
+\begin{itemize}
+  \item 写入测试文件数：18
+  \item 覆盖函数数：80
+  \item 输出目录：\codepath{D:/code\_assistant/Git\_repo/pallets\_\_flask/reports/pallets\_\_flask/generated\_tests}
+\end{itemize}
+
+\subsection{覆盖率报告}
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{7.2cm} r r r T{5.2cm}}
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endfirsthead
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{tests/conftest.py} & 72 & 72 & 0\% & 1-129 \\
+\codepath{tests/test\_appctx.py} & 142 & 142 & 0\% & 1-210 \\
+\codepath{tests/test\_async.py} & 100 & 100 & 0\% & 1-145 \\
+\codepath{tests/test\_basic.py} & 1317 & 1317 & 0\% & 1-1944 \\
+\codepath{tests/test\_blueprints.py} & 750 & 750 & 0\% & 1-1127 \\
+\codepath{tests/test\_cli.py} & 429 & 429 & 0\% & 3-702 \\
+\codepath{tests/test\_config.py} & 166 & 166 & 0\% & 1-250 \\
+\codepath{tests/test\_converters.py} & 29 & 29 & 0\% & 1-42 \\
+\codepath{tests/test\_helpers.py} & 237 & 237 & 0\% & 1-383 \\
+\codepath{tests/test\_instance\_config.py} & 56 & 56 & 0\% & 1-109 \\
+\codepath{tests/test\_json.py} & 173 & 173 & 0\% & 1-346 \\
+\codepath{tests/test\_json\_tag.py} & 50 & 50 & 0\% & 1-86 \\
+\codepath{tests/test\_logging.py} & 69 & 69 & 0\% & 1-98 \\
+\codepath{tests/test\_regression.py} & 21 & 21 & 0\% & 1-30 \\
+\codepath{tests/test\_reqctx.py} & 216 & 216 & 0\% & 1-326 \\
+\codepath{tests/test\_request.py} & 50 & 50 & 0\% & 1-70 \\
+\codepath{tests/test\_session\_interface.py} & 17 & 17 & 0\% & 1-28 \\
+\codepath{tests/test\_signals.py} & 126 & 126 & 0\% & 1-181 \\
+\codepath{tests/test\_subclassing.py} & 15 & 15 & 0\% & 1-21 \\
+\codepath{tests/test\_templating.py} & 339 & 339 & 0\% & 1-532 \\
+\codepath{tests/test\_testing.py} & 266 & 266 & 0\% & 1-385 \\
+\codepath{tests/test\_user\_error\_handler.py} & 203 & 203 & 0\% & 1-295 \\
+\codepath{tests/test\_views.py} & 177 & 177 & 0\% & 1-260 \\
+\textbf{TOTAL} & 5020 & 5020 & 0\% &  \\
+\end{longtable}
+\normalsize
+
+\end{document}

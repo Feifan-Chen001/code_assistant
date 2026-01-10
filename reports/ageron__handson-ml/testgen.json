@@ -1,0 +1,1460 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\ageron__handson-ml",
+  "output_dir": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests",
+  "written_files": 16,
+  "function_count": 138,
+  "generated": [
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\01_the_machine_learning_landscape.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_01_the_machine_learning_landscape_da5f207e.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "prepare_country_stats",
+          "args": [
+            "oecd_bli",
+            "gdp_per_capita"
+          ],
+          "lineno": 33,
+          "doc": ""
+        },
+        {
+          "name": "prepare_country_stats",
+          "args": [
+            "oecd_bli",
+            "gdp_per_capita"
+          ],
+          "lineno": 211,
+          "doc": ""
+        },
+        {
+          "name": "prepare_country_stats",
+          "args": [
+            "oecd_bli",
+            "gdp_per_capita"
+          ],
+          "lineno": 348,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_01_the_machine_learning_landscape_da5f207e.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\02_end_to_end_machine_learning_project.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_02_end_to_end_machine_learning_project_40e60435.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "fetch_housing_data",
+          "args": [
+            "housing_url",
+            "housing_path"
+          ],
+          "lineno": 41,
+          "doc": ""
+        },
+        {
+          "name": "load_housing_data",
+          "args": [
+            "housing_path"
+          ],
+          "lineno": 55,
+          "doc": ""
+        },
+        {
+          "name": "split_train_test",
+          "args": [
+            "data",
+            "test_ratio"
+          ],
+          "lineno": 86,
+          "doc": ""
+        },
+        {
+          "name": "test_set_check",
+          "args": [
+            "identifier",
+            "test_ratio"
+          ],
+          "lineno": 100,
+          "doc": ""
+        },
+        {
+          "name": "split_train_test_by_id",
+          "args": [
+            "data",
+            "test_ratio",
+            "id_column"
+          ],
+          "lineno": 103,
+          "doc": ""
+        },
+        {
+          "name": "test_set_check",
+          "args": [
+            "identifier",
+            "test_ratio",
+            "hash"
+          ],
+          "lineno": 111,
+          "doc": ""
+        },
+        {
+          "name": "test_set_check",
+          "args": [
+            "identifier",
+            "test_ratio",
+            "hash"
+          ],
+          "lineno": 115,
+          "doc": ""
+        },
+        {
+          "name": "income_cat_proportions",
+          "args": [
+            "data"
+          ],
+          "lineno": 166,
+          "doc": ""
+        },
+        {
+          "name": "add_extra_features",
+          "args": [
+            "X",
+            "add_bedrooms_per_room"
+          ],
+          "lineno": 407,
+          "doc": ""
+        },
+        {
+          "name": "display_scores",
+          "args": [
+            "scores"
+          ],
+          "lineno": 563,
+          "doc": ""
+        },
+        {
+          "name": "indices_of_top_k",
+          "args": [
+            "arr",
+            "k"
+          ],
+          "lineno": 814,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_02_end_to_end_machine_learning_project_40e60435.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\03_classification.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_03_classification_e012843f.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "sort_by_target",
+          "args": [
+            "mnist"
+          ],
+          "lineno": 33,
+          "doc": ""
+        },
+        {
+          "name": "plot_digit",
+          "args": [
+            "data"
+          ],
+          "lineno": 76,
+          "doc": ""
+        },
+        {
+          "name": "plot_digits",
+          "args": [
+            "instances",
+            "images_per_row"
+          ],
+          "lineno": 84,
+          "doc": ""
+        },
+        {
+          "name": "plot_precision_recall_vs_threshold",
+          "args": [
+            "precisions",
+            "recalls",
+            "thresholds"
+          ],
+          "lineno": 236,
+          "doc": ""
+        },
+        {
+          "name": "plot_precision_vs_recall",
+          "args": [
+            "precisions",
+            "recalls"
+          ],
+          "lineno": 262,
+          "doc": ""
+        },
+        {
+          "name": "plot_roc_curve",
+          "args": [
+            "fpr",
+            "tpr",
+            "label"
+          ],
+          "lineno": 279,
+          "doc": ""
+        },
+        {
+          "name": "plot_confusion_matrix",
+          "args": [
+            "matrix"
+          ],
+          "lineno": 372,
+          "doc": "If you prefer color and a colorbar"
+        },
+        {
+          "name": "shift_digit",
+          "args": [
+            "digit_array",
+            "dx",
+            "dy",
+            "new"
+          ],
+          "lineno": 471,
+          "doc": ""
+        },
+        {
+          "name": "shift_image",
+          "args": [
+            "image",
+            "dx",
+            "dy"
+          ],
+          "lineno": 529,
+          "doc": ""
+        },
+        {
+          "name": "load_titanic_data",
+          "args": [
+            "filename",
+            "titanic_path"
+          ],
+          "lineno": 586,
+          "doc": ""
+        },
+        {
+          "name": "fetch_spam_data",
+          "args": [
+            "spam_url",
+            "spam_path"
+          ],
+          "lineno": 733,
+          "doc": ""
+        },
+        {
+          "name": "load_email",
+          "args": [
+            "is_spam",
+            "filename",
+            "spam_path"
+          ],
+          "lineno": 763,
+          "doc": ""
+        },
+        {
+          "name": "get_email_structure",
+          "args": [
+            "email"
+          ],
+          "lineno": 779,
+          "doc": ""
+        },
+        {
+          "name": "structures_counter",
+          "args": [
+            "emails"
+          ],
+          "lineno": 794,
+          "doc": ""
+        },
+        {
+          "name": "html_to_plain_text",
+          "args": [
+            "html"
+          ],
+          "lineno": 827,
+          "doc": ""
+        },
+        {
+          "name": "email_to_text",
+          "args": [
+            "email"
+          ],
+          "lineno": 844,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_03_classification_e012843f.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\04_training_linear_models.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_04_training_linear_models_24261c57.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "plot_gradient_descent",
+          "args": [
+            "theta",
+            "eta",
+            "theta_path"
+          ],
+          "lineno": 110,
+          "doc": ""
+        },
+        {
+          "name": "learning_schedule",
+          "args": [
+            "t"
+          ],
+          "lineno": 149,
+          "doc": ""
+        },
+        {
+          "name": "learning_schedule",
+          "args": [
+            "t"
+          ],
+          "lineno": 196,
+          "doc": ""
+        },
+        {
+          "name": "plot_learning_curves",
+          "args": [
+            "model",
+            "X",
+            "y"
+          ],
+          "lineno": 308,
+          "doc": ""
+        },
+        {
+          "name": "plot_model",
+          "args": [
+            "model_class",
+            "polynomial",
+            "alphas"
+          ],
+          "lineno": 353,
+          "doc": ""
+        },
+        {
+          "name": "bgd_path",
+          "args": [
+            "theta",
+            "X",
+            "y",
+            "l1",
+            "l2",
+            "core",
+            "eta",
+            "n_iterations"
+          ],
+          "lineno": 518,
+          "doc": ""
+        },
+        {
+          "name": "to_one_hot",
+          "args": [
+            "y"
+          ],
+          "lineno": 750,
+          "doc": ""
+        },
+        {
+          "name": "softmax",
+          "args": [
+            "logits"
+          ],
+          "lineno": 769,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_04_training_linear_models_24261c57.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\05_support_vector_machines.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_05_support_vector_machines_415914fc.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "plot_svc_decision_boundary",
+          "args": [
+            "svm_clf",
+            "xmin",
+            "xmax"
+          ],
+          "lineno": 55,
+          "doc": ""
+        },
+        {
+          "name": "plot_dataset",
+          "args": [
+            "X",
+            "y",
+            "axes"
+          ],
+          "lineno": 288,
+          "doc": ""
+        },
+        {
+          "name": "plot_predictions",
+          "args": [
+            "clf",
+            "axes"
+          ],
+          "lineno": 313,
+          "doc": ""
+        },
+        {
+          "name": "gaussian_rbf",
+          "args": [
+            "x",
+            "landmark",
+            "gamma"
+          ],
+          "lineno": 362,
+          "doc": ""
+        },
+        {
+          "name": "find_support_vectors",
+          "args": [
+            "svm_reg",
+            "X",
+            "y"
+          ],
+          "lineno": 480,
+          "doc": ""
+        },
+        {
+          "name": "plot_svm_regression",
+          "args": [
+            "svm_reg",
+            "X",
+            "y",
+            "axes"
+          ],
+          "lineno": 492,
+          "doc": ""
+        },
+        {
+          "name": "plot_3D_decision_function",
+          "args": [
+            "ax",
+            "w",
+            "b",
+            "x1_lim",
+            "x2_lim"
+          ],
+          "lineno": 562,
+          "doc": ""
+        },
+        {
+          "name": "plot_2D_decision_function",
+          "args": [
+            "w",
+            "b",
+            "ylabel",
+            "x1_lim"
+          ],
+          "lineno": 598,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_05_support_vector_machines_415914fc.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\06_decision_trees.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_06_decision_trees_536ed6fe.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "image_path",
+          "args": [
+            "fig_id"
+          ],
+          "lineno": 46,
+          "doc": ""
+        },
+        {
+          "name": "plot_decision_boundary",
+          "args": [
+            "clf",
+            "X",
+            "y",
+            "axes",
+            "iris",
+            "legend",
+            "plot_training"
+          ],
+          "lineno": 61,
+          "doc": ""
+        },
+        {
+          "name": "plot_regression_predictions",
+          "args": [
+            "tree_reg",
+            "X",
+            "y",
+            "axes",
+            "ylabel"
+          ],
+          "lineno": 205,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_06_decision_trees_536ed6fe.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\07_ensemble_learning_and_random_forests.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_07_ensemble_learning_and_random_forests_21661603.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "plot_decision_boundary",
+          "args": [
+            "clf",
+            "X",
+            "y",
+            "axes",
+            "alpha",
+            "contour"
+          ],
+          "lineno": 122,
+          "doc": ""
+        },
+        {
+          "name": "plot_digit",
+          "args": [
+            "data"
+          ],
+          "lineno": 221,
+          "doc": ""
+        },
+        {
+          "name": "plot_predictions",
+          "args": [
+            "regressors",
+            "X",
+            "y",
+            "axes",
+            "label",
+            "style",
+            "data_style",
+            "data_label"
+          ],
+          "lineno": 305,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_07_ensemble_learning_and_random_forests_21661603.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\08_dimensionality_reduction.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_08_dimensionality_reduction_6c339b1e.py",
+      "functions": [
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "plot_digits",
+          "args": [
+            "instances",
+            "images_per_row"
+          ],
+          "lineno": 415,
+          "doc": ""
+        },
+        {
+          "name": "learned_parameters",
+          "args": [
+            "model"
+          ],
+          "lineno": 722,
+          "doc": ""
+        },
+        {
+          "name": "plot_clusters",
+          "args": [
+            "X",
+            "y"
+          ],
+          "lineno": 794,
+          "doc": ""
+        },
+        {
+          "name": "plot_data",
+          "args": [
+            "X"
+          ],
+          "lineno": 830,
+          "doc": ""
+        },
+        {
+          "name": "plot_centroids",
+          "args": [
+            "centroids",
+            "weights",
+            "circle_color",
+            "cross_color"
+          ],
+          "lineno": 833,
+          "doc": ""
+        },
+        {
+          "name": "plot_decision_boundaries",
+          "args": [
+            "clusterer",
+            "X",
+            "resolution",
+            "show_centroids",
+            "show_xlabels",
+            "show_ylabels"
+          ],
+          "lineno": 843,
+          "doc": ""
+        },
+        {
+          "name": "plot_clusterer_comparison",
+          "args": [
+            "clusterer1",
+            "clusterer2",
+            "X",
+            "title1",
+            "title2"
+          ],
+          "lineno": 924,
+          "doc": ""
+        },
+        {
+          "name": "load_next_batch",
+          "args": [
+            "batch_size"
+          ],
+          "lineno": 1007,
+          "doc": ""
+        },
+        {
+          "name": "plot_dbscan",
+          "args": [
+            "dbscan",
+            "X",
+            "size",
+            "show_xlabels",
+            "show_ylabels"
+          ],
+          "lineno": 1422,
+          "doc": ""
+        },
+        {
+          "name": "plot_spectral_clustering",
+          "args": [
+            "sc",
+            "X",
+            "size",
+            "alpha",
+            "show_xlabels",
+            "show_ylabels"
+          ],
+          "lineno": 1505,
+          "doc": ""
+        },
+        {
+          "name": "plot_gaussian_mixture",
+          "args": [
+            "clusterer",
+            "X",
+            "resolution",
+            "show_ylabels"
+          ],
+          "lineno": 1603,
+          "doc": ""
+        },
+        {
+          "name": "compare_gaussian_mixtures",
+          "args": [
+            "gm1",
+            "gm2",
+            "X"
+          ],
+          "lineno": 1652,
+          "doc": ""
+        },
+        {
+          "name": "plot_digits",
+          "args": [
+            "X",
+            "y",
+            "min_distance",
+            "images",
+            "figsize"
+          ],
+          "lineno": 2018,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_08_dimensionality_reduction_6c339b1e.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\16_reinforcement_learning.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_16_reinforcement_learning_9e50ae37.py",
+      "functions": [
+        {
+          "name": "reset_graph",
+          "args": [
+            "seed"
+          ],
+          "lineno": 14,
+          "doc": ""
+        },
+        {
+          "name": "save_fig",
+          "args": [
+            "fig_id",
+            "tight_layout",
+            "fig_extension",
+            "resolution"
+          ],
+          "lineno": 36,
+          "doc": ""
+        },
+        {
+          "name": "plot_environment",
+          "args": [
+            "env",
+            "figsize"
+          ],
+          "lineno": 81,
+          "doc": ""
+        },
+        {
+          "name": "update_scene",
+          "args": [
+            "num",
+            "frames",
+            "patch"
+          ],
+          "lineno": 135,
+          "doc": ""
+        },
+        {
+          "name": "plot_animation",
+          "args": [
+            "frames",
+            "repeat",
+            "interval"
+          ],
+          "lineno": 139,
+          "doc": ""
+        },
+        {
+          "name": "render_policy_net",
+          "args": [
+            "model_path",
+            "action",
+            "X",
+            "n_max_steps"
+          ],
+          "lineno": 317,
+          "doc": ""
+        },
+        {
+          "name": "discount_rewards",
+          "args": [
+            "rewards",
+            "discount_rate"
+          ],
+          "lineno": 375,
+          "doc": ""
+        },
+        {
+          "name": "discount_and_normalize_rewards",
+          "args": [
+            "all_rewards",
+            "discount_rate"
+          ],
+          "lineno": 383,
+          "doc": ""
+        },
+        {
+          "name": "print_sequence",
+          "args": [
+            "start_state"
+          ],
+          "lineno": 453,
+          "doc": ""
+        },
+        {
+          "name": "policy_fire",
+          "args": [
+            "state"
+          ],
+          "lineno": 483,
+          "doc": ""
+        },
+        {
+          "name": "policy_random",
+          "args": [
+            "state"
+          ],
+          "lineno": 486,
+          "doc": ""
+        },
+        {
+          "name": "policy_safe",
+          "args": [
+            "state"
+          ],
+          "lineno": 489,
+          "doc": ""
+        },
+        {
+          "name": "run_episode",
+          "args": [
+            "policy",
+            "n_steps",
+            "start_state",
+            "display"
+          ],
+          "lineno": 506,
+          "doc": ""
+        },
+        {
+          "name": "optimal_policy",
+          "args": [
+            "state"
+          ],
+          "lineno": 553,
+          "doc": ""
+        },
+        {
+          "name": "preprocess_observation",
+          "args": [
+            "obs"
+          ],
+          "lineno": 577,
+          "doc": ""
+        },
+        {
+          "name": "q_network",
+          "args": [
+            "X_state",
+            "name"
+          ],
+          "lineno": 616,
+          "doc": ""
+        },
+        {
+          "name": "sample_memories",
+          "args": [
+            "batch_size"
+          ],
+          "lineno": 697,
+          "doc": ""
+        },
+        {
+          "name": "epsilon_greedy",
+          "args": [
+            "q_values",
+            "step"
+          ],
+          "lineno": 710,
+          "doc": ""
+        },
+        {
+          "name": "preprocess_observation",
+          "args": [
+            "obs"
+          ],
+          "lineno": 827,
+          "doc": ""
+        },
+        {
+          "name": "combine_observations_multichannel",
+          "args": [
+            "preprocessed_observations"
+          ],
+          "lineno": 854,
+          "doc": ""
+        },
+        {
+          "name": "combine_observations_singlechannel",
+          "args": [
+            "preprocessed_observations",
+            "dim_factor"
+          ],
+          "lineno": 857,
+          "doc": ""
+        },
+        {
+          "name": "run_bipedal_walker",
+          "args": [
+            "model_path",
+            "n_max_steps"
+          ],
+          "lineno": 963,
+          "doc": ""
+        },
+        {
+          "name": "run_episode",
+          "args": [
+            "policy",
+            "n_max_steps",
+            "frames_per_action"
+          ],
+          "lineno": 1048,
+          "doc": ""
+        },
+        {
+          "name": "preprocess_observation",
+          "args": [
+            "obs"
+          ],
+          "lineno": 1067,
+          "doc": ""
+        },
+        {
+          "name": "combine_observations",
+          "args": [
+            "preprocess_observations",
+            "dim_factor"
+          ],
+          "lineno": 1095,
+          "doc": ""
+        },
+        {
+          "name": "q_network",
+          "args": [
+            "X_state",
+            "name"
+          ],
+          "lineno": 1141,
+          "doc": ""
+        },
+        {
+          "name": "sample_memories",
+          "args": [
+            "batch_size"
+          ],
+          "lineno": 1218,
+          "doc": ""
+        },
+        {
+          "name": "epsilon_greedy",
+          "args": [
+            "q_values",
+            "step"
+          ],
+          "lineno": 1232,
+          "doc": ""
+        },
+        {
+          "name": "perform_action",
+          "args": [
+            "action"
+          ],
+          "lineno": 1261,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_16_reinforcement_learning_9e50ae37.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\extra_gradient_descent_comparison.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_extra_gradient_descent_comparison_a8f15d1a.py",
+      "functions": [
+        {
+          "name": "batch_gradient_descent",
+          "args": [],
+          "lineno": 15,
+          "doc": ""
+        },
+        {
+          "name": "stochastic_gradient_descent",
+          "args": [],
+          "lineno": 28,
+          "doc": ""
+        },
+        {
+          "name": "mini_batch_gradient_descent",
+          "args": [],
+          "lineno": 46,
+          "doc": ""
+        },
+        {
+          "name": "compute_mse",
+          "args": [
+            "theta"
+          ],
+          "lineno": 69,
+          "doc": ""
+        },
+        {
+          "name": "learning_schedule",
+          "args": [
+            "t",
+            "t0",
+            "t1"
+          ],
+          "lineno": 73,
+          "doc": ""
+        },
+        {
+          "name": "animate",
+          "args": [
+            "i"
+          ],
+          "lineno": 107,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_extra_gradient_descent_comparison_a8f15d1a.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\future_encoders.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_future_encoders_81fb0565.py",
+      "functions": [
+        {
+          "name": "make_column_transformer",
+          "args": [],
+          "lineno": 1548,
+          "doc": "Construct a ColumnTransformer from the given transformers.\n\nThis is a shorthand for the ColumnTransformer constructor; it does not\nrequire, and does not permit, naming the transformers. Instead, they will\nbe given names automatically based on their types. It also does not allow\nweighting.\n\nParameters\n----------\n*transformers : tuples of column selections and transformers\n\nremainder : {'drop', 'passthrough'} or estimator, default 'drop'\n    By default, only the specified columns in `transformers` are\n    transformed and combined in the output, and the non-specified\n    columns are dropped. (default of ``'drop'``).\n    By specifying ``remainder='passthrough'``, all remaining columns that\n    were not specified in `transformers` will be automatically passed\n    through. This subset of columns is concatenated with the output of\n    the transformers.\n    By setting ``remainder`` to be an estimator, the remaining\n    non-specified columns will use the ``remainder`` estimator. The\n    estimator must support `fit` and `transform`.\n\nn_jobs : int, optional\n    Number of jobs to run in parallel (default 1).\n\nReturns\n-------\nct : ColumnTransformer\n\nSee also\n--------\nsklearn.compose.ColumnTransformer : Class that allows combining the\n    outputs of multiple transformer objects used on column subsets\n    of the data into a single feature space.\n\nExamples\n--------\n>>> from sklearn.preprocessing import StandardScaler, OneHotEncoder\n>>> from sklearn.compose import make_column_transformer\n>>> make_column_transformer(\n...     (['numerical_column'], StandardScaler()),\n...     (['categorical_column'], OneHotEncoder()))\n...     # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS\nColumnTransformer(n_jobs=1, remainder='drop', sparse_threshold=0.3,\n         transformer_weights=None,\n         transformers=[('standardscaler',\n                        StandardScaler(...),\n                        ['numerical_column']),\n                       ('onehotencoder',\n                        OneHotEncoder(...),\n                        ['categorical_column'])])"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\future_encoders.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\math_differential_calculus.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_math_differential_calculus_8bd66484.py",
+      "functions": [
+        {
+          "name": "get_AB_line",
+          "args": [
+            "A_pos",
+            "B_pos",
+            "x_min",
+            "x_max"
+          ],
+          "lineno": 13,
+          "doc": ""
+        },
+        {
+          "name": "plot_AB_line",
+          "args": [
+            "A_pos",
+            "B_pos",
+            "A_name",
+            "B_name"
+          ],
+          "lineno": 20,
+          "doc": ""
+        },
+        {
+          "name": "plot_rise_over_run",
+          "args": [
+            "A_pos",
+            "B_pos"
+          ],
+          "lineno": 27,
+          "doc": ""
+        },
+        {
+          "name": "show",
+          "args": [
+            "axis",
+            "ax",
+            "title",
+            "xlabel",
+            "ylabel"
+          ],
+          "lineno": 33,
+          "doc": ""
+        },
+        {
+          "name": "animate_AB_line",
+          "args": [
+            "f",
+            "fp",
+            "f_str",
+            "x_A",
+            "axis"
+          ],
+          "lineno": 62,
+          "doc": ""
+        },
+        {
+          "name": "animate_tangent",
+          "args": [
+            "f",
+            "fp",
+            "f_str"
+          ],
+          "lineno": 132,
+          "doc": ""
+        },
+        {
+          "name": "f",
+          "args": [
+            "x"
+          ],
+          "lineno": 179,
+          "doc": ""
+        },
+        {
+          "name": "fp",
+          "args": [
+            "x"
+          ],
+          "lineno": 182,
+          "doc": ""
+        },
+        {
+          "name": "f",
+          "args": [
+            "x"
+          ],
+          "lineno": 193,
+          "doc": ""
+        },
+        {
+          "name": "f",
+          "args": [
+            "x"
+          ],
+          "lineno": 209,
+          "doc": ""
+        },
+        {
+          "name": "animate_gradient_descent",
+          "args": [
+            "f",
+            "fp",
+            "f_str",
+            "x_0"
+          ],
+          "lineno": 219,
+          "doc": ""
+        },
+        {
+          "name": "f",
+          "args": [
+            "x"
+          ],
+          "lineno": 274,
+          "doc": ""
+        },
+        {
+          "name": "fp",
+          "args": [
+            "x"
+          ],
+          "lineno": 277,
+          "doc": ""
+        },
+        {
+          "name": "plot_3d",
+          "args": [
+            "f",
+            "title"
+          ],
+          "lineno": 287,
+          "doc": ""
+        },
+        {
+          "name": "plot_tangents",
+          "args": [
+            "ax",
+            "x_A",
+            "y_A",
+            "f",
+            "df_dx",
+            "df_dy"
+          ],
+          "lineno": 306,
+          "doc": ""
+        },
+        {
+          "name": "f",
+          "args": [
+            "x",
+            "y"
+          ],
+          "lineno": 321,
+          "doc": ""
+        },
+        {
+          "name": "df_dx",
+          "args": [
+            "x",
+            "y"
+          ],
+          "lineno": 324,
+          "doc": ""
+        },
+        {
+          "name": "df_dy",
+          "args": [
+            "x",
+            "y"
+          ],
+          "lineno": 327,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_math_differential_calculus_8bd66484.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\math_linear_algebra.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_math_linear_algebra_c8881267.py",
+      "functions": [
+        {
+          "name": "plot_vector2d",
+          "args": [
+            "vector2d",
+            "origin"
+          ],
+          "lineno": 33,
+          "doc": ""
+        },
+        {
+          "name": "plot_vectors3d",
+          "args": [
+            "ax",
+            "vectors3d",
+            "z0"
+          ],
+          "lineno": 59,
+          "doc": ""
+        },
+        {
+          "name": "vector_norm",
+          "args": [
+            "vector"
+          ],
+          "lineno": 72,
+          "doc": ""
+        },
+        {
+          "name": "dot_product",
+          "args": [
+            "v1",
+            "v2"
+          ],
+          "lineno": 179,
+          "doc": ""
+        },
+        {
+          "name": "vector_angle",
+          "args": [
+            "u",
+            "v"
+          ],
+          "lineno": 198,
+          "doc": ""
+        },
+        {
+          "name": "plot_transformation",
+          "args": [
+            "P_before",
+            "P_after",
+            "text_before",
+            "text_after",
+            "axis",
+            "arrows"
+          ],
+          "lineno": 497,
+          "doc": ""
+        },
+        {
+          "name": "plot_projection",
+          "args": [
+            "U",
+            "P"
+          ],
+          "lineno": 520,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_math_linear_algebra_c8881267.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\tools_matplotlib.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_tools_matplotlib_c02d417d.py",
+      "functions": [
+        {
+          "name": "plot_line",
+          "args": [
+            "axis",
+            "slope",
+            "intercept"
+          ],
+          "lineno": 313,
+          "doc": ""
+        },
+        {
+          "name": "update_line",
+          "args": [
+            "num",
+            "data",
+            "line"
+          ],
+          "lineno": 411,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_tools_matplotlib_c02d417d.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\tools_numpy.ipynb",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_tools_numpy_83c6bd81.py",
+      "functions": [
+        {
+          "name": "my_function",
+          "args": [
+            "z",
+            "y",
+            "x"
+          ],
+          "lineno": 81,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\_notebooks\\nb_tools_numpy_83c6bd81.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\\test_docker_jupyter_notebook_config_a702025f.py",
+      "functions": [
+        {
+          "name": "export_script_and_view",
+          "args": [
+            "model",
+            "os_path",
+            "contents_manager"
+          ],
+          "lineno": 4,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py"
+    }
+  ],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --source --omit D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests/** --omit D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests/* D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests\n  inifile: None\n  rootdir: D:\\code_assistant\\Git_repo\\ageron__handson-ml\n\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\ageron__handson-ml",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests/*",
+        "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\reports\\ageron__handson-ml\\generated_tests"
+      ]
+    },
+    "report": {
+      "stdout": "No data to report.\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}

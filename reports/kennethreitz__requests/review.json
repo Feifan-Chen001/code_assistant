@@ -1,0 +1,332 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\kennethreitz__requests",
+  "findings": [
+    {
+      "tool": "ast-rule",
+      "rule": "BANNED_CALL",
+      "severity": "high",
+      "message": "禁止使用 exec（项目/领域规则），建议安全替代或白名单。",
+      "file": "setup.py",
+      "line": 79,
+      "col": 4,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "src/requests/models.py",
+      "line": 178,
+      "col": 19,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "src/requests/models.py",
+      "line": 180,
+      "col": 21,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "src/requests/sessions.py",
+      "line": 190,
+      "col": 15,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_GLOBAL_VARIABLE",
+      "severity": "low",
+      "message": "检测到全局变量 '__doc__' 的使用; 考虑使用参数传递代替",
+      "file": "src/requests/status_codes.py",
+      "line": 120,
+      "col": 4,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "src/requests/utils.py",
+      "line": 586,
+      "col": 16,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "src/requests/utils.py",
+      "line": 643,
+      "col": 22,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "src/requests/utils.py",
+      "line": 645,
+      "col": 11,
+      "extra": {}
+    },
+    {
+      "tool": "bandit",
+      "rule": "B605",
+      "severity": "low",
+      "message": "Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\setup.py",
+      "line": 57,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b605_start_process_with_a_shell.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B607",
+      "severity": "medium",
+      "message": "Starting a process with a partial executable path",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\setup.py",
+      "line": 57,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b607_start_process_with_partial_path.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B605",
+      "severity": "low",
+      "message": "Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\setup.py",
+      "line": 58,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b605_start_process_with_a_shell.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B607",
+      "severity": "medium",
+      "message": "Starting a process with a partial executable path",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\setup.py",
+      "line": 58,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b607_start_process_with_partial_path.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B102",
+      "severity": "medium",
+      "message": "Use of exec detected.",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\setup.py",
+      "line": 79,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b102_exec_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py",
+      "line": 60,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py",
+      "line": 70,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py",
+      "line": 72,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py",
+      "line": 79,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py",
+      "line": 84,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\_internal_utils.py",
+      "line": 45,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B324",
+      "severity": "high",
+      "message": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\auth.py",
+      "line": 148,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b324_hashlib.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B324",
+      "severity": "high",
+      "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\auth.py",
+      "line": 156,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b324_hashlib.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B324",
+      "severity": "high",
+      "message": "Use of weak SHA1 hash for security. Consider usedforsecurity=False",
+      "file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\auth.py",
+      "line": 205,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b324_hashlib.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-35195 When making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same origin will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool.  ### Remediation Any of these options can be used to remediate the current issue, we highly recommend upgrading as the preferred mitigation.  * Upgrade to `requests>=2.32.0`. * For `requests<2.32.0`, avoid setting `verify=False` for the first request to a host while using a Requests Session. * For `requests<2.32.0`, call `close()` on `Session` objects to clear existing connections if `verify=False` is used.  ### Related Links * https://github.com/psf/requests/pull/6655",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.32.0"
+        ],
+        "aliases": [
+          "GHSA-9wx4-h78v-vm56"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-47081 ### Impact  Due to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs.  ### Workarounds For older versions of Requests, use of the .netrc file can be disabled with `trust_env=False` on your Requests Session ([docs](https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env)).  ### References https://github.com/psf/requests/pull/6965 https://seclists.org/fulldisclosure/2025/Jun/2",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.32.4"
+        ],
+        "aliases": [
+          "GHSA-9hjg-9r4m-mvj7"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2022-42969 The py library through 1.11.0 for Python allows remote attackers to conduct a ReDoS (Regular expression Denial of Service) attack via a Subversion repository with crafted info data, because the InfoSvnCommand argument is mishandled.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [],
+        "aliases": [
+          "CVE-2022-42969",
+          "GHSA-w596-4wvx-j9j6"
+        ]
+      }
+    }
+  ],
+  "tool_raw": {
+    "complexity_radon": {
+      "ok": true,
+      "stdout": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\setup.py\n    C 31:0 PyTest - A (2)\n    M 34:4 PyTest.initialize_options - A (2)\n    M 43:4 PyTest.finalize_options - A (1)\n    M 48:4 PyTest.run_tests - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\docs\\_themes\\flask_theme_support.py\n    C 7:0 FlaskyStyle - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\adapters.py\n    M 502:4 HTTPAdapter.send - C (19)\n    M 274:4 HTTPAdapter.cert_verify - C (14)\n    F 75:0 _urllib3_request_context - B (6)\n    M 435:4 HTTPAdapter.request_url - B (6)\n    C 137:0 HTTPAdapter - A (5)\n    M 367:4 HTTPAdapter._get_connection - A (4)\n    M 236:4 HTTPAdapter.proxy_manager_for - A (3)\n    M 396:4 HTTPAdapter.get_connection - A (3)\n    C 107:0 BaseAdapter - A (2)\n    M 172:4 HTTPAdapter.__init__ - A (2)\n    M 194:4 HTTPAdapter.__getstate__ - A (2)\n    M 197:4 HTTPAdapter.__setstate__ - A (2)\n    M 330:4 HTTPAdapter.build_response - A (2)\n    M 425:4 HTTPAdapter.close - A (2)\n    M 481:4 HTTPAdapter.proxy_headers - A (2)\n    F 61:4 SOCKSProxyManager - A (1)\n    M 110:4 BaseAdapter.__init__ - A (1)\n    M 113:4 BaseAdapter.send - A (1)\n    M 132:4 BaseAdapter.close - A (1)\n    M 210:4 HTTPAdapter.init_poolmanager - A (1)\n    M 467:4 HTTPAdapter.add_headers - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\api.py\n    F 14:0 request - A (1)\n    F 62:0 get - A (1)\n    F 76:0 options - A (1)\n    F 88:0 head - A (1)\n    F 103:0 post - A (1)\n    F 118:0 put - A (1)\n    F 133:0 patch - A (1)\n    F 148:0 delete - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\auth.py\n    M 126:4 HTTPDigestAuth.build_digest_header - C (19)\n    F 25:0 _basic_auth_str - A (5)\n    C 107:0 HTTPDigestAuth - A (5)\n    M 241:4 HTTPDigestAuth.handle_401 - A (5)\n    M 285:4 HTTPDigestAuth.__call__ - A (3)\n    C 69:0 AuthBase - A (2)\n    C 76:0 HTTPBasicAuth - A (2)\n    C 99:0 HTTPProxyAuth - A (2)\n    M 116:4 HTTPDigestAuth.init_per_thread_state - A (2)\n    M 236:4 HTTPDigestAuth.handle_redirect - A (2)\n    M 72:4 AuthBase.__call__ - A (1)\n    M 79:4 HTTPBasicAuth.__init__ - A (1)\n    M 83:4 HTTPBasicAuth.__eq__ - A (1)\n    M 91:4 HTTPBasicAuth.__ne__ - A (1)\n    M 94:4 HTTPBasicAuth.__call__ - A (1)\n    M 102:4 HTTPProxyAuth.__call__ - A (1)\n    M 110:4 HTTPDigestAuth.__init__ - A (1)\n    M 305:4 HTTPDigestAuth.__eq__ - A (1)\n    M 313:4 HTTPDigestAuth.__ne__ - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\cookies.py\n    M 386:4 RequestsCookieJar._find_no_duplicates - B (9)\n    F 151:0 remove_cookie_by_name - B (8)\n    F 521:0 cookiejar_from_dict - B (7)\n    M 366:4 RequestsCookieJar._find - B (7)\n    F 542:0 merge_cookies - B (6)\n    M 306:4 RequestsCookieJar.get_dict - B (6)\n    F 492:0 morsel_to_cookie - A (5)\n    F 440:0 _copy_cookie_jar - A (4)\n    M 293:4 RequestsCookieJar.multiple_domains - A (4)\n    M 349:4 RequestsCookieJar.set_cookie - A (4)\n    F 124:0 extract_cookies_to_jar - A (3)\n    C 176:0 RequestsCookieJar - A (3)\n    M 206:4 RequestsCookieJar.set - A (3)\n    M 277:4 RequestsCookieJar.list_domains - A (3)\n    M 285:4 RequestsCookieJar.list_paths - A (3)\n    M 358:4 RequestsCookieJar.update - A (3)\n    F 455:0 create_cookie - A (2)\n    C 23:0 MockRequest - A (2)\n    M 49:4 MockRequest.get_full_url - A (2)\n    M 72:4 MockRequest.has_header - A (2)\n    C 103:0 MockResponse - A (2)\n    M 194:4 RequestsCookieJar.get - A (2)\n    M 225:4 RequestsCookieJar.iterkeys - A (2)\n    M 242:4 RequestsCookieJar.itervalues - A (2)\n    M 259:4 RequestsCookieJar.iteritems - A (2)\n    M 321:4 RequestsCookieJar.__contains__ - A (2)\n    M 422:4 RequestsCookieJar.__setstate__ - A (2)\n    F 140:0 get_cookie_header - A (1)\n    M 35:4 MockRequest.__init__ - A (1)\n    M 40:4 MockRequest.get_type - A (1)\n    M 43:4 MockRequest.get_host - A (1)\n    M 46:4 MockRequest.get_origin_req_host - A (1)\n    M 69:4 MockRequest.is_unverifiable - A (1)\n    M 75:4 MockRequest.get_header - A (1)\n    M 78:4 MockRequest.add_header - A (1)\n    M 84:4 MockRequest.add_unredirected_header - A (1)\n    M 87:4 MockRequest.get_new_headers - A (1)\n    M 91:4 MockRequest.unverifiable - A (1)\n    M 95:4 MockRequest.origin_req_host - A (1)\n    M 99:4 MockRequest.host - A (1)\n    M 110:4 MockResponse.__init__ - A (1)\n    M 117:4 MockResponse.info - A (1)\n    M 120:4 MockResponse.getheaders - A (1)\n    C 170:0 CookieConflictError - A (1)\n    M 234:4 RequestsCookieJar.keys - A (1)\n    M 251:4 RequestsCookieJar.values - A (1)\n    M 268:4 RequestsCookieJar.items - A (1)\n    M 327:4 RequestsCookieJar.__getitem__ - A (1)\n    M 336:4 RequestsCookieJar.__setitem__ - A (1)\n    M 343:4 RequestsCookieJar.__delitem__ - A (1)\n    M 415:4 RequestsCookieJar.__getstate__ - A (1)\n    M 428:4 RequestsCookieJar.copy - A (1)\n    M 435:4 RequestsCookieJar.get_policy - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\exceptions.py\n    C 12:0 RequestException - A (5)\n    M 17:4 RequestException.__init__ - A (4)\n    C 31:0 JSONDecodeError - A (2)\n    C 27:0 InvalidJSONError - A (1)\n    M 34:4 JSONDecodeError.__init__ - A (1)\n    M 44:4 JSONDecodeError.__reduce__ - A (1)\n    C 55:0 HTTPError - A (1)\n    C 59:0 ConnectionError - A (1)\n    C 63:0 ProxyError - A (1)\n    C 67:0 SSLError - A (1)\n    C 71:0 Timeout - A (1)\n    C 80:0 ConnectTimeout - A (1)\n    C 87:0 ReadTimeout - A (1)\n    C 91:0 URLRequired - A (1)\n    C 95:0 TooManyRedirects - A (1)\n    C 99:0 MissingSchema - A (1)\n    C 103:0 InvalidSchema - A (1)\n    C 107:0 InvalidURL - A (1)\n    C 111:0 InvalidHeader - A (1)\n    C 115:0 InvalidProxyURL - A (1)\n    C 119:0 ChunkedEncodingError - A (1)\n    C 123:0 ContentDecodingError - A (1)\n    C 127:0 StreamConsumedError - A (1)\n    C 131:0 RetryError - A (1)\n    C 135:0 UnrewindableBodyError - A (1)\n    C 142:0 RequestsWarning - A (1)\n    C 146:0 FileModeWarning - A (1)\n    C 150:0 RequestsDependencyWarning - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\help.py\n    F 34:0 _implementation - B (6)\n    F 69:0 info - B (6)\n    F 128:0 main - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\hooks.py\n    F 22:0 dispatch_hook - B (6)\n    F 15:0 default_hooks - A (2)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\models.py\n    M 137:4 RequestEncodingMixin._encode_files - D (21)\n    M 409:4 PreparedRequest.prepare_url - C (17)\n    M 494:4 PreparedRequest.prepare_body - C (17)\n    C 84:0 RequestEncodingMixin - C (13)\n    M 107:4 RequestEncodingMixin._encode_params - C (11)\n    M 852:4 Response.iter_lines - B (9)\n    M 942:4 Response.json - B (8)\n    M 258:4 Request.__init__ - B (7)\n    M 794:4 Response.iter_content - B (7)\n    M 207:4 RequestHooksMixin.register_hook - B (6)\n    M 588:4 PreparedRequest.prepare_auth - B (6)\n    M 886:4 Response.content - B (6)\n    M 992:4 Response.raise_for_status - B (6)\n    C 206:0 RequestHooksMixin - A (5)\n    C 313:0 PreparedRequest - A (5)\n    M 572:4 PreparedRequest.prepare_content_length - A (5)\n    C 230:0 Request - A (4)\n    C 640:0 Response - A (4)\n    M 905:4 Response.text - A (4)\n    M 976:4 Response.links - A (4)\n    M 86:4 RequestEncodingMixin.path_url - A (3)\n    M 483:4 PreparedRequest.prepare_headers - A (3)\n    M 610:4 PreparedRequest.prepare_cookies - A (3)\n    M 630:4 PreparedRequest.prepare_hooks - A (3)\n    M 711:4 Response.__getstate__ - A (3)\n    M 1021:4 Response.close - A (3)\n    M 218:4 RequestHooksMixin.deregister_hook - A (2)\n    M 382:4 PreparedRequest.copy - A (2)\n    M 393:4 PreparedRequest.prepare_method - A (2)\n    M 400:4 PreparedRequest._get_idna_encoded_host - A (2)\n    M 719:4 Response.__setstate__ - A (2)\n    M 755:4 Response.ok - A (2)\n    M 770:4 Response.is_redirect - A (2)\n    M 777:4 Response.is_permanent_redirect - A (2)\n    M 292:4 Request.__repr__ - A (1)\n    M 295:4 Request.prepare - A (1)\n    M 334:4 PreparedRequest.__init__ - A (1)\n    M 351:4 PreparedRequest.prepare - A (1)\n    M 379:4 PreparedRequest.__repr__ - A (1)\n    M 658:4 Response.__init__ - A (1)\n    M 705:4 Response.__enter__ - A (1)\n    M 708:4 Response.__exit__ - A (1)\n    M 727:4 Response.__repr__ - A (1)\n    M 730:4 Response.__bool__ - A (1)\n    M 740:4 Response.__nonzero__ - A (1)\n    M 750:4 Response.__iter__ - A (1)\n    M 785:4 Response.next - A (1)\n    M 790:4 Response.apparent_encoding - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\sessions.py\n    M 159:4 SessionRedirectMixin.resolve_redirects - C (15)\n    M 673:4 Session.send - C (11)\n    M 127:4 SessionRedirectMixin.should_strip_auth - B (10)\n    F 61:0 merge_setting - B (8)\n    C 106:0 SessionRedirectMixin - B (8)\n    M 750:4 Session.merge_environment_settings - B (8)\n    M 333:4 SessionRedirectMixin.rebuild_method - B (7)\n    M 302:4 SessionRedirectMixin.rebuild_proxies - B (6)\n    M 457:4 Session.prepare_request - B (6)\n    F 91:0 merge_hooks - A (5)\n    M 282:4 SessionRedirectMixin.rebuild_auth - A (5)\n    M 500:4 Session.request - A (4)\n    M 799:4 Session.mount - A (4)\n    C 356:0 Session - A (3)\n    M 781:4 Session.get_adapter - A (3)\n    M 107:4 SessionRedirectMixin.get_redirect_target - A (2)\n    M 794:4 Session.close - A (2)\n    M 810:4 Session.__getstate__ - A (2)\n    M 814:4 Session.__setstate__ - A (2)\n    F 819:0 session - A (1)\n    M 390:4 Session.__init__ - A (1)\n    M 451:4 Session.__enter__ - A (1)\n    M 454:4 Session.__exit__ - A (1)\n    M 593:4 Session.get - A (1)\n    M 604:4 Session.options - A (1)\n    M 615:4 Session.head - A (1)\n    M 626:4 Session.post - A (1)\n    M 639:4 Session.put - A (1)\n    M 651:4 Session.patch - A (1)\n    M 663:4 Session.delete - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\status_codes.py\n    F 109:0 _init - B (6)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\structures.py\n    C 13:0 CaseInsensitiveDict - A (2)\n    M 40:4 CaseInsensitiveDict.__init__ - A (2)\n    M 57:4 CaseInsensitiveDict.__iter__ - A (2)\n    M 63:4 CaseInsensitiveDict.lower_items - A (2)\n    M 67:4 CaseInsensitiveDict.__eq__ - A (2)\n    C 83:0 LookupDict - A (2)\n    M 46:4 CaseInsensitiveDict.__setitem__ - A (1)\n    M 51:4 CaseInsensitiveDict.__getitem__ - A (1)\n    M 54:4 CaseInsensitiveDict.__delitem__ - A (1)\n    M 60:4 CaseInsensitiveDict.__len__ - A (1)\n    M 76:4 CaseInsensitiveDict.copy - A (1)\n    M 79:4 CaseInsensitiveDict.__repr__ - A (1)\n    M 86:4 LookupDict.__init__ - A (1)\n    M 90:4 LookupDict.__repr__ - A (1)\n    M 93:4 LookupDict.__getitem__ - A (1)\n    M 98:4 LookupDict.get - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\utils.py\n    F 135:0 super_len - C (17)\n    F 765:0 should_bypass_proxies - C (17)\n    F 204:0 get_netrc_auth - C (13)\n    F 957:0 guess_json_utf - C (11)\n    F 76:4 proxy_bypass_registry - B (9)\n    F 268:0 extract_zipped_paths - B (8)\n    F 636:0 unquote_unreserved - B (6)\n    F 719:0 is_valid_cidr - B (6)\n    F 914:0 parse_header_links - B (6)\n    F 261:0 guess_filename - A (5)\n    F 442:0 unquote_header_value - A (5)\n    F 539:0 get_encoding_from_headers - A (5)\n    F 564:0 stream_decode_response_unicode - A (5)\n    F 838:0 select_proxy - A (5)\n    F 864:0 resolve_proxies - A (5)\n    F 989:0 prepend_scheme_if_needed - A (5)\n    F 1045:0 _validate_header_part - A (5)\n    F 345:0 to_key_val_list - A (4)\n    F 407:0 parse_dict_header - A (4)\n    F 514:0 _parse_content_type_header - A (4)\n    F 581:0 iter_slices - A (4)\n    F 591:0 get_unicode_from_response - A (4)\n    F 744:0 set_environ - A (4)\n    F 1081:0 rewind_body - A (4)\n    F 318:0 from_key_val_list - A (3)\n    F 375:0 parse_list_header - A (3)\n    F 114:4 proxy_bypass - A (2)\n    F 126:0 dict_to_sequence - A (2)\n    F 306:0 atomic_open - A (2)\n    F 467:0 dict_from_cookiejar - A (2)\n    F 660:0 requote_uri - A (2)\n    F 708:0 is_ipv4_address - A (2)\n    F 826:0 get_environ_proxies - A (2)\n    F 1018:0 get_auth_from_url - A (2)\n    F 1064:0 urldefragauth - A (2)\n    F 478:0 add_dict_to_cookiejar - A (1)\n    F 489:0 get_encodings_from_content - A (1)\n    F 682:0 address_in_network - A (1)\n    F 697:0 dotted_netmask - A (1)\n    F 891:0 default_user_agent - A (1)\n    F 900:0 default_headers - A (1)\n    F 1034:0 check_header_validity - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\_internal_utils.py\n    F 38:0 unicode_is_ascii - A (3)\n    F 25:0 to_native_string - A (2)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py\n    F 58:0 check_compatibility - B (10)\n    F 89:0 _check_cryptography - A (3)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\compat.py\n    F 14:0 u - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\conftest.py\n    F 15:0 prepare_url - A (1)\n    F 26:0 httpbin - A (1)\n    F 31:0 httpbin_secure - A (1)\n    F 36:0 nosan_server - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_adapters.py\n    F 4:0 test_request_url_trims_leading_path_separators - A (2)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_help.py\n    F 6:0 test_system_ssl - A (2)\n    F 16:0 test_idna_without_version_attribute - A (2)\n    F 24:0 test_idna_with_version_attribute - A (2)\n    C 11:0 VersionedPackage - A (2)\n    M 12:4 VersionedPackage.__init__ - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_hooks.py\n    F 17:0 test_hooks - A (2)\n    F 21:0 test_default_hooks - A (2)\n    F 6:0 hook - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_lowlevel.py\n    F 308:0 test_redirect_rfc1808_to_non_ascii_location - B (6)\n    F 342:0 test_fragment_not_sent_with_request - B (6)\n    F 364:0 test_fragment_update_on_redirect - B (6)\n    F 127:0 test_digestauth_401_count_reset_on_redirect - A (5)\n    F 407:0 test_json_decode_compatibility_for_alt_utf_encodings - A (4)\n    F 24:0 test_chunked_upload - A (3)\n    F 63:0 test_chunked_upload_uses_only_specified_host_header - A (3)\n    F 81:0 test_chunked_upload_doesnt_skip_host_header - A (3)\n    F 192:0 test_digestauth_401_only_sent_once - A (3)\n    F 238:0 test_digestauth_only_on_4xx - A (3)\n    F 290:0 test_use_proxy_from_environment - A (3)\n    F 12:0 echo_response_handler - A (1)\n    F 39:0 test_chunked_encoding_error - A (1)\n    F 99:0 test_conflicting_content_lengths - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_packages.py\n    F 4:0 test_can_access_urllib3_attribute - A (1)\n    F 8:0 test_can_access_idna_attribute - A (1)\n    F 12:0 test_can_access_chardet_attribute - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_requests.py\n    M 2191:4 TestRequests.test_custom_redirect_mixin - B (8)\n    M 438:4 TestRequests.test_cookielib_cookiejar_on_redirect - B (7)\n    M 492:4 TestRequests.test_headers_preserve_order - B (7)\n    M 994:4 TestRequests.test_https_warnings - B (7)\n    M 2818:4 TestPreparingURLs.test_status_code_425 - B (7)\n    F 2554:0 test_requests_are_updated_each_time - B (6)\n    M 239:4 TestRequests.test_HTTP_302_TOO_MANY_REDIRECTS - B (6)\n    M 250:4 TestRequests.test_HTTP_302_TOO_MANY_REDIRECTS_WITH_PARAMS - B (6)\n    M 325:4 TestRequests.test_transfer_enc_removal_on_redirect - B (6)\n    M 1232:4 TestRequests.test_cookie_parameters - B (6)\n    M 1522:4 TestRequests.test_prepared_request_with_hook_is_pickleable - B (6)\n    M 1581:4 TestRequests.test_transport_adapter_ordering - B (6)\n    M 1870:4 TestRequests.test_should_strip_auth_https_upgrade - B (6)\n    M 2284:4 TestCaseInsensitiveDict.test_contains - B (6)\n    M 216:4 TestRequests.test_HTTP_307_ALLOW_REDIRECT_POST - A (5)\n    M 227:4 TestRequests.test_HTTP_307_ALLOW_REDIRECT_POST_WITH_SEEKABLE - A (5)\n    M 265:4 TestRequests.test_http_301_changes_post_to_get - A (5)\n    M 272:4 TestRequests.test_http_301_doesnt_change_head_to_get - A (5)\n    M 280:4 TestRequests.test_http_302_changes_post_to_get - A (5)\n    M 287:4 TestRequests.test_http_302_doesnt_change_head_to_get - A (5)\n    M 294:4 TestRequests.test_http_303_changes_post_to_get - A (5)\n    M 301:4 TestRequests.test_http_303_doesnt_change_head_to_get - A (5)\n    M 671:4 TestRequests.test_basicauth_with_netrc - A (5)\n    M 706:4 TestRequests.test_DIGEST_HTTP_200_OK_GET - A (5)\n    M 752:4 TestRequests.test_DIGESTAUTH_WRONG_HTTP_401_GET - A (5)\n    M 799:4 TestRequests.test_POSTBIN_SEEKED_OBJECT_WITH_NO_ITER - A (5)\n    M 1250:4 TestRequests.test_cookie_as_dict_keeps_len - A (5)\n    M 1492:4 TestRequests.test_prepared_request_is_pickleable - A (5)\n    M 1506:4 TestRequests.test_prepared_request_with_file_is_pickleable - A (5)\n    M 1543:4 TestRequests.test_http_error - A (5)\n    M 1908:4 TestRequests.test_manual_redirect_with_partial_body_read - A (5)\n    M 1932:4 TestRequests.test_rewind_body - A (5)\n    M 1945:4 TestRequests.test_rewind_partially_read_body - A (5)\n    M 2293:4 TestCaseInsensitiveDict.test_get - A (5)\n    M 2302:4 TestCaseInsensitiveDict.test_update - A (5)\n    M 2323:4 TestCaseInsensitiveDict.test_equality - A (5)\n    F 2636:0 test_prepared_copy - A (4)\n    M 210:4 TestRequests.test_HTTP_302_ALLOW_REDIRECT_GET - A (4)\n    M 308:4 TestRequests.test_header_and_body_removal_on_redirect - A (4)\n    M 348:4 TestRequests.test_fragment_maintained_on_redirect - A (4)\n    M 470:4 TestRequests.test_requests_in_history_are_not_overridden - A (4)\n    M 476:4 TestRequests.test_history_is_always_a_list - A (4)\n    M 527:4 TestRequests.test_BASICAUTH_TUPLE_HTTP_200_OK_GET - A (4)\n    M 723:4 TestRequests.test_DIGEST_AUTH_RETURNS_COOKIE - A (4)\n    M 741:4 TestRequests.test_DIGEST_STREAM - A (4)\n    M 776:4 TestRequests.test_POSTBIN_GET_POST_FILES - A (4)\n    M 840:4 TestRequests.test_POSTBIN_GET_POST_FILES_WITH_DATA - A (4)\n    M 1092:4 TestRequests.test_unicode_method_name_with_request_object - A (4)\n    M 1270:4 TestRequests.test_cookie_as_dict_keeps_items - A (4)\n    M 1337:4 TestRequests.test_cookie_duplicate_names_different_domains - A (4)\n    M 1480:4 TestRequests.test_request_and_response_are_pickleable - A (4)\n    M 1563:4 TestRequests.test_fixes_1329 - A (4)\n    M 1619:4 TestRequests.test_session_get_adapter_prefix_matching - A (4)\n    M 1764:4 TestRequests.test_header_with_subclass_types - A (4)\n    M 2066:4 TestRequests.test_json_param_post_content_type_works - A (4)\n    M 2180:4 TestRequests.test_chunked_upload_does_not_set_content_length_header - A (4)\n    C 2236:0 TestCaseInsensitiveDict - A (4)\n    M 2245:4 TestCaseInsensitiveDict.test_init - A (4)\n    M 2266:4 TestCaseInsensitiveDict.test_fixes_649 - A (4)\n    M 2348:4 TestCaseInsensitiveDict.test_preserve_key_case - A (4)\n    M 2360:4 TestCaseInsensitiveDict.test_preserve_last_key_case - A (4)\n    M 2487:4 TestTimeout.test_connect_timeout - A (4)\n    M 2804:4 TestPreparingURLs.test_json_decode_compatibility - A (4)\n    M 2897:4 TestPreparingURLs.test_different_connection_pool_for_tls_settings_verify_bundle_unexpired_cert - A (4)\n    F 2584:0 test_proxy_env_vars_override_default - A (3)\n    F 2655:0 test_urllib3_pool_connection_closed - A (3)\n    C 80:0 TestRequests - A (3)\n    M 111:4 TestRequests.test_basic_building - A (3)\n    M 135:4 TestRequests.test_override_content_length - A (3)\n    M 356:4 TestRequests.test_HTTP_200_OK_GET_WITH_PARAMS - A (3)\n    M 384:4 TestRequests.test_cookie_removed_on_expire - A (3)\n    M 399:4 TestRequests.test_cookie_persists_via_api - A (3)\n    M 405:4 TestRequests.test_request_cookie_overrides_session_cookie - A (3)\n    M 419:4 TestRequests.test_generic_cookiejar_works - A (3)\n    M 733:4 TestRequests.test_DIGEST_AUTH_SETS_SESSION_COOKIES - A (3)\n    M 768:4 TestRequests.test_DIGESTAUTH_QUOTES_QOP_VALUE - A (3)\n    M 793:4 TestRequests.test_invalid_files_input - A (3)\n    M 937:4 TestRequests.test_invalid_ssl_certificate_files - A (3)\n    M 1028:4 TestRequests.test_urlencoded_get_query_multivalued_param - A (3)\n    M 1068:4 TestRequests.test_unicode_multipart_post_fieldnames - A (3)\n    M 1112:4 TestRequests.test_custom_content_type - A (3)\n    M 1134:4 TestRequests.test_session_hooks_are_used_with_no_request_hooks - A (3)\n    M 1145:4 TestRequests.test_session_hooks_are_overridden_by_request_hooks - A (3)\n    M 1173:4 TestRequests.test_prepared_from_session - A (3)\n    M 1289:4 TestRequests.test_cookie_as_dict_keys - A (3)\n    M 1305:4 TestRequests.test_cookie_as_dict_values - A (3)\n    M 1321:4 TestRequests.test_cookie_as_dict_items - A (3)\n    M 1402:4 TestRequests.test_response_decode_unicode - A (3)\n    M 1442:4 TestRequests.test_response_chunk_size_type - A (3)\n    M 1574:4 TestRequests.test_uppercase_scheme_redirect - A (3)\n    M 1687:4 TestRequests.test_header_keys_are_native - A (3)\n    M 1697:4 TestRequests.test_header_validation - A (3)\n    M 1830:4 TestRequests.test_nonhttp_schemes_dont_check_URLs - A (3)\n    M 1841:4 TestRequests.test_auth_is_stripped_on_http_downgrade - A (3)\n    M 1959:4 TestRequests.test_rewind_body_no_seek - A (3)\n    M 1979:4 TestRequests.test_rewind_body_failed_seek - A (3)\n    M 2002:4 TestRequests.test_rewind_body_failed_tell - A (3)\n    M 2053:4 TestRequests.test_basic_auth_str_is_always_native - A (3)\n    M 2058:4 TestRequests.test_requests_history_is_saved - A (3)\n    M 2082:4 TestRequests.test_response_iter_lines - A (3)\n    M 2090:4 TestRequests.test_response_context_manager - A (3)\n    M 2096:4 TestRequests.test_unconsumed_session_response_closes_connection - A (3)\n    M 2106:4 TestRequests.test_response_iter_lines_reentrant - A (3)\n    M 2146:4 TestRequests.test_response_without_release_conn - A (3)\n    M 2156:4 TestRequests.test_empty_stream_with_auth_does_not_set_content_length_header - A (3)\n    M 2168:4 TestRequests.test_stream_with_auth_does_not_set_transfer_encoding_header - A (3)\n    M 2250:4 TestCaseInsensitiveDict.test_docstring_example - A (3)\n    M 2261:4 TestCaseInsensitiveDict.test_getitem - A (3)\n    M 2277:4 TestCaseInsensitiveDict.test_delitem - A (3)\n    M 2332:4 TestCaseInsensitiveDict.test_setdefault - A (3)\n    M 2337:4 TestCaseInsensitiveDict.test_lower_items - A (3)\n    M 2374:4 TestCaseInsensitiveDict.test_copy - A (3)\n    C 2387:0 TestMorselToCookieExpires - A (3)\n    C 2421:0 TestMorselToCookieMaxAge - A (3)\n    C 2442:0 TestTimeout - A (3)\n    M 2443:4 TestTimeout.test_stream_timeout - A (3)\n    C 2665:0 TestPreparingURLs - A (3)\n    M 2833:4 TestPreparingURLs.test_different_connection_pool_for_tls_settings_verify_True - A (3)\n    M 2864:4 TestPreparingURLs.test_different_connection_pool_for_tls_settings_verify_bundle_expired_cert - A (3)\n    M 2929:4 TestPreparingURLs.test_different_connection_pool_for_mtls_settings - A (3)\n    F 2546:0 test_json_encodes_as_bytes - A (2)\n    F 2605:0 test_data_argument_accepts_tuples - A (2)\n    F 2969:0 test_json_decode_errors_are_serializable_deserializable - A (2)\n    M 121:4 TestRequests.test_no_content_length - A (2)\n    M 126:4 TestRequests.test_no_body_content_length - A (2)\n    M 131:4 TestRequests.test_empty_content_length - A (2)\n    M 141:4 TestRequests.test_path_is_not_double_encoded - A (2)\n    M 159:4 TestRequests.test_params_are_added_before_fragment - A (2)\n    M 163:4 TestRequests.test_params_original_order_is_preserved_by_default - A (2)\n    M 174:4 TestRequests.test_params_bytes_are_encoded - A (2)\n    M 180:4 TestRequests.test_binary_put - A (2)\n    M 186:4 TestRequests.test_whitespaces_are_removed_from_url - A (2)\n    M 192:4 TestRequests.test_mixed_case_scheme_acceptable - A (2)\n    M 201:4 TestRequests.test_HTTP_200_OK_GET_ALTERNATIVE - A (2)\n    M 364:4 TestRequests.test_HTTP_200_OK_GET_WITH_MIXED_PARAMS - A (2)\n    M 372:4 TestRequests.test_set_cookie_on_301 - A (2)\n    M 378:4 TestRequests.test_cookie_sent_on_redirect - A (2)\n    M 394:4 TestRequests.test_cookie_quote_wrapped - A (2)\n    M 413:4 TestRequests.test_request_cookies_not_persisted - A (2)\n    M 430:4 TestRequests.test_param_cookiejar_works - A (2)\n    M 484:4 TestRequests.test_headers_on_session_with_None_are_not_sent - A (2)\n    M 513:4 TestRequests.test_user_agent_transfers - A (2)\n    M 519:4 TestRequests.test_HTTP_200_OK_HEAD - A (2)\n    M 523:4 TestRequests.test_HTTP_200_OK_PUT - A (2)\n    M 551:4 TestRequests.test_set_basicauth - A (2)\n    M 560:4 TestRequests.test_basicauth_encodes_byte_strings - A (2)\n    M 641:4 TestRequests.test_proxy_authorization_preserved_on_request - A (2)\n    M 657:4 TestRequests.test_proxy_authorization_not_appended_to_https_request - A (2)\n    M 857:4 TestRequests.test_post_with_custom_mapping - A (2)\n    M 888:4 TestRequests.test_request_ok_set - A (2)\n    M 892:4 TestRequests.test_status_raising - A (2)\n    M 927:4 TestRequests.test_invalid_ca_certificate_path - A (2)\n    M 978:4 TestRequests.test_env_cert_bundles - A (2)\n    M 986:4 TestRequests.test_http_with_certificate - A (2)\n    M 1033:4 TestRequests.test_form_encoded_post_query_multivalued_element - A (2)\n    M 1040:4 TestRequests.test_different_encodings_dont_break_post - A (2)\n    M 1059:4 TestRequests.test_unicode_multipart_post - A (2)\n    M 1082:4 TestRequests.test_unicode_method_name - A (2)\n    M 1104:4 TestRequests.test_non_prepared_request_error - A (2)\n    M 1159:4 TestRequests.test_prepared_request_hook - A (2)\n    M 1190:4 TestRequests.test_prepare_request_with_bytestring_url - A (2)\n    M 1196:4 TestRequests.test_request_with_bytestring_host - A (2)\n    M 1206:4 TestRequests.test_links - A (2)\n    M 1369:4 TestRequests.test_cookie_policy_copy - A (2)\n    M 1377:4 TestRequests.test_time_elapsed_blank - A (2)\n    M 1385:4 TestRequests.test_empty_response_has_content_none - A (2)\n    M 1389:4 TestRequests.test_response_is_iterable - A (2)\n    M 1421:4 TestRequests.test_response_reason_unicode - A (2)\n    M 1430:4 TestRequests.test_response_reason_unicode_fallback - A (2)\n    M 1553:4 TestRequests.test_session_pickling - A (2)\n    M 1643:4 TestRequests.test_session_get_adapter_prefix_matching_mixed_case - A (2)\n    M 1653:4 TestRequests.test_session_get_adapter_prefix_matching_is_case_insensitive - A (2)\n    M 1665:4 TestRequests.test_header_remove_is_case_insensitive - A (2)\n    M 1672:4 TestRequests.test_params_are_merged_case_sensitive - A (2)\n    M 1678:4 TestRequests.test_long_authinfo_in_url - A (2)\n    M 1717:4 TestRequests.test_header_value_not_str - A (2)\n    M 1790:4 TestRequests.test_can_send_objects_with_files - A (2)\n    M 1797:4 TestRequests.test_can_send_file_object_with_non_string_filename - A (2)\n    M 1805:4 TestRequests.test_autoset_header_values_are_native - A (2)\n    M 1813:4 TestRequests.test_content_length_for_bytes_data - A (2)\n    M 1822:4 TestRequests.test_content_length_for_string_data_counts_bytes - A (2)\n    M 1853:4 TestRequests.test_auth_is_retained_for_redirect_on_host - A (2)\n    M 1860:4 TestRequests.test_should_strip_auth_host_change - A (2)\n    M 1866:4 TestRequests.test_should_strip_auth_http_downgrade - A (2)\n    M 1889:4 TestRequests.test_should_strip_auth_port_change - A (2)\n    M 1904:4 TestRequests.test_should_strip_auth_default_port - A (2)\n    M 1927:4 TestRequests.test_prepare_body_position_non_stream - A (2)\n    M 2072:4 TestRequests.test_json_param_post_should_not_override_data_param - A (2)\n    M 2125:4 TestRequests.test_proxy_auth - A (2)\n    M 2130:4 TestRequests.test_proxy_auth_empty_pass - A (2)\n    M 2135:4 TestRequests.test_response_json_when_content_is_None - A (2)\n    M 2256:4 TestCaseInsensitiveDict.test_len - A (2)\n    M 2313:4 TestCaseInsensitiveDict.test_update_retains_unchanged - A (2)\n    M 2318:4 TestCaseInsensitiveDict.test_iter - A (2)\n    M 2390:4 TestMorselToCookieExpires.test_expires_valid_str - A (2)\n    M 2412:4 TestMorselToCookieExpires.test_expires_none - A (2)\n    M 2425:4 TestMorselToCookieMaxAge.test_max_age_valid_int - A (2)\n    M 2456:4 TestTimeout.test_invalid_timeout - A (2)\n    M 2462:4 TestTimeout.test_none_timeout - A (2)\n    M 2477:4 TestTimeout.test_read_timeout - A (2)\n    M 2498:4 TestTimeout.test_total_timeout_connect - A (2)\n    M 2505:4 TestTimeout.test_encoded_methods - A (2)\n    C 2514:0 RedirectSession - A (2)\n    M 2526:4 RedirectSession.build_response - A (2)\n    M 2697:4 TestPreparingURLs.test_preparing_url - A (2)\n    M 2754:4 TestPreparingURLs.test_url_mutation - A (2)\n    M 2790:4 TestPreparingURLs.test_parameters_for_nonstandard_schemes - A (2)\n    M 2812:4 TestPreparingURLs.test_json_decode_persists_doc_attr - A (2)\n    F 2645:0 test_urllib3_retries - A (1)\n    M 83:4 TestRequests.test_entry_points - A (1)\n    M 107:4 TestRequests.test_invalid_url - A (1)\n    M 581:4 TestRequests.test_errors - A (1)\n    M 585:4 TestRequests.test_proxy_error - A (1)\n    M 592:4 TestRequests.test_proxy_error_on_bad_url - A (1)\n    M 605:4 TestRequests.test_respect_proxy_env_on_send_self_prepared_request - A (1)\n    M 612:4 TestRequests.test_respect_proxy_env_on_send_session_prepared_request - A (1)\n    M 620:4 TestRequests.test_respect_proxy_env_on_send_with_redirects - A (1)\n    M 629:4 TestRequests.test_respect_proxy_env_on_get - A (1)\n    M 635:4 TestRequests.test_respect_proxy_env_on_request - A (1)\n    M 882:4 TestRequests.test_conflicting_post_params - A (1)\n    M 900:4 TestRequests.test_decompress_gzip - A (1)\n    M 914:4 TestRequests.test_unicode_get - A (1)\n    M 917:4 TestRequests.test_unicode_header_name - A (1)\n    M 924:4 TestRequests.test_pyopenssl_redirect - A (1)\n    M 1019:4 TestRequests.test_certificate_failure - A (1)\n    M 1124:4 TestRequests.test_hook_receives_request_arguments - A (1)\n    M 1358:4 TestRequests.test_cookie_duplicate_names_raises_cookie_conflict_error - A (1)\n    M 1470:4 TestRequests.test_iter_content_wraps_exceptions - A (1)\n    M 1538:4 TestRequests.test_cannot_send_unprepared_requests - A (1)\n    M 1738:4 TestRequests.test_header_no_return_chars - A (1)\n    M 1757:4 TestRequests.test_header_no_leading_space - A (1)\n    M 2022:4 TestRequests._patch_adapter_gzipped_redirect - A (1)\n    M 2036:4 TestRequests.test_redirect_with_wrong_gzipped_header - A (1)\n    M 2114:4 TestRequests.test_session_close_proxy_clear - A (1)\n    M 2405:4 TestMorselToCookieExpires.test_expires_invalid_int - A (1)\n    M 2433:4 TestMorselToCookieMaxAge.test_max_age_invalid_str - A (1)\n    M 2515:4 RedirectSession.__init__ - A (1)\n    M 2522:4 RedirectSession.send - A (1)\n    M 2540:4 RedirectSession._build_raw - A (1)\n    M 2719:4 TestPreparingURLs.test_preparing_bad_url - A (1)\n    M 2725:4 TestPreparingURLs.test_redirecting_to_bad_url - A (1)\n    M 2799:4 TestPreparingURLs.test_post_json_nan - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_structures.py\n    C 6:0 TestCaseInsensitiveDict - A (3)\n    M 37:4 TestCaseInsensitiveDict.test_copy - A (3)\n    C 54:0 TestLookupDict - A (3)\n    M 13:4 TestCaseInsensitiveDict.test_list - A (2)\n    M 21:4 TestCaseInsensitiveDict.test_getitem - A (2)\n    M 25:4 TestCaseInsensitiveDict.test_delitem - A (2)\n    M 29:4 TestCaseInsensitiveDict.test_lower_items - A (2)\n    M 34:4 TestCaseInsensitiveDict.test_repr - A (2)\n    M 50:4 TestCaseInsensitiveDict.test_instance_equality - A (2)\n    M 61:4 TestLookupDict.test_repr - A (2)\n    M 73:4 TestLookupDict.test_getitem - A (2)\n    M 77:4 TestLookupDict.test_get - A (2)\n    M 8:4 TestCaseInsensitiveDict.setup - A (1)\n    M 56:4 TestLookupDict.setup - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_testserver.py\n    M 42:4 TestTestServer.test_text_response - A (4)\n    M 55:4 TestTestServer.test_basic_response - A (4)\n    C 11:0 TestTestServer - A (3)\n    M 78:4 TestTestServer.test_multiple_requests - A (3)\n    M 95:4 TestTestServer.test_request_recovery - A (3)\n    M 12:4 TestTestServer.test_basic - A (2)\n    M 117:4 TestTestServer.test_requests_after_timeout_are_not_received - A (2)\n    M 130:4 TestTestServer.test_request_recovery_with_bigger_timeout - A (2)\n    M 144:4 TestTestServer.test_server_finishes_on_error - A (2)\n    M 156:4 TestTestServer.test_server_finishes_when_no_connections - A (2)\n    M 30:4 TestTestServer.test_server_closes - A (1)\n    M 63:4 TestTestServer.test_basic_waiting_server - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\test_utils.py\n    F 637:0 test_iter_slices - B (6)\n    C 291:0 TestGuessFilename - A (4)\n    C 313:0 TestExtractZippedPaths - A (4)\n    M 326:4 TestExtractZippedPaths.test_zipped_paths_extracted - A (4)\n    F 771:0 test_add_dict_to_cookiejar - A (3)\n    F 831:0 test_should_bypass_proxies_win_registry - A (3)\n    F 910:0 test_set_environ - A (3)\n    C 49:0 TestSuperLen - A (3)\n    M 60:4 TestSuperLen.test_io_streams - A (3)\n    M 107:4 TestSuperLen.test_file - A (3)\n    M 138:4 TestSuperLen.test_super_len_with_tell - A (3)\n    C 155:0 TestToKeyValList - A (3)\n    C 173:0 TestUnquoteHeaderValue - A (3)\n    C 191:0 TestGetEnvironProxies - A (3)\n    C 256:0 TestIsIPv4Address - A (3)\n    C 265:0 TestIsValidCIDR - A (3)\n    C 283:0 TestAddressInNetwork - A (3)\n    M 306:4 TestGuessFilename.test_guess_filename_valid - A (3)\n    C 344:0 TestContentEncodingDetection - A (3)\n    M 362:4 TestContentEncodingDetection.test_pragmas - A (3)\n    C 376:0 TestGuessJSONUTF - A (3)\n    F 440:0 test_get_auth_from_url - A (2)\n    F 459:0 test_requote_uri_with_unquoted_percents - A (2)\n    F 479:0 test_unquote_unreserved - A (2)\n    F 491:0 test_dotted_netmask - A (2)\n    F 531:0 test_select_proxies - A (2)\n    F 543:0 test_parse_dict_header - A (2)\n    F 607:0 test__parse_content_type_header - A (2)\n    F 622:0 test_get_encoding_from_headers - A (2)\n    F 664:0 test_parse_header_links - A (2)\n    F 681:0 test_prepend_scheme_if_needed - A (2)\n    F 693:0 test_to_native_string - A (2)\n    F 708:0 test_urldefragauth - A (2)\n    F 727:0 test_should_bypass_proxies - A (2)\n    F 789:0 test_unicode_is_ascii - A (2)\n    F 806:0 test_should_bypass_proxies_no_proxy - A (2)\n    F 869:0 test_should_bypass_proxies_win_registry_bad_values - A (2)\n    F 919:0 test_set_environ_raises_exception - A (2)\n    F 930:0 test_should_bypass_proxies_win_registry_ProxyOverride_value - A (2)\n    M 65:4 TestSuperLen.test_super_len_correctly_calculates_len_of_partially_read_file - A (2)\n    M 72:4 TestSuperLen.test_super_len_handles_files_raising_weird_errors_in_tell - A (2)\n    M 85:4 TestSuperLen.test_super_len_tell_ioerror - A (2)\n    M 97:4 TestSuperLen.test_string - A (2)\n    M 114:4 TestSuperLen.test_tarfile_member - A (2)\n    M 126:4 TestSuperLen.test_super_len_with__len__ - A (2)\n    M 131:4 TestSuperLen.test_super_len_with_no__len__ - A (2)\n    M 144:4 TestSuperLen.test_super_len_with_fileno - A (2)\n    M 150:4 TestSuperLen.test_super_len_with_no_matches - A (2)\n    M 165:4 TestToKeyValList.test_valid - A (2)\n    M 184:4 TestUnquoteHeaderValue.test_valid - A (2)\n    M 187:4 TestUnquoteHeaderValue.test_is_filename - A (2)\n    M 212:4 TestGetEnvironProxies.test_bypass - A (2)\n    M 223:4 TestGetEnvironProxies.test_not_bypass - A (2)\n    M 234:4 TestGetEnvironProxies.test_bypass_no_proxy_keyword - A (2)\n    M 248:4 TestGetEnvironProxies.test_not_bypass_no_proxy_keyword - A (2)\n    M 257:4 TestIsIPv4Address.test_valid - A (2)\n    M 261:4 TestIsIPv4Address.test_invalid - A (2)\n    M 266:4 TestIsValidCIDR.test_valid - A (2)\n    M 279:4 TestIsValidCIDR.test_invalid - A (2)\n    M 284:4 TestAddressInNetwork.test_valid - A (2)\n    M 287:4 TestAddressInNetwork.test_invalid - A (2)\n    M 296:4 TestGuessFilename.test_guess_filename_invalid - A (2)\n    M 323:4 TestExtractZippedPaths.test_unzipped_paths_unchanged - A (2)\n    M 339:4 TestExtractZippedPaths.test_invalid_unc_path - A (2)\n    M 345:4 TestContentEncodingDetection.test_none - A (2)\n    M 367:4 TestContentEncodingDetection.test_precedence - A (2)\n    M 390:4 TestGuessJSONUTF.test_encoded - A (2)\n    M 394:4 TestGuessJSONUTF.test_bad_utf_like_encoding - A (2)\n    M 406:4 TestGuessJSONUTF.test_guess_by_bom - A (2)\n    F 755:0 test_should_bypass_proxies_pass_only_hostname - A (1)\n    M 168:4 TestToKeyValList.test_invalid - A (1)\n    M 197:4 TestGetEnvironProxies.no_proxy - A (1)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\utils.py\n    F 6:0 override_environ - A (3)\nD:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests\\testserver\\server.py\n    F 7:0 consume_socket_content - A (4)\n    C 25:0 Server - A (3)\n    M 94:4 Server._handle_requests - A (3)\n    M 105:4 Server._accept_connection - A (3)\n    M 123:4 Server.__exit__ - A (3)\n    C 138:0 TLSServer - A (3)\n    M 30:4 Server.__init__ - A (2)\n    M 67:4 Server.run - A (2)\n    M 88:4 Server._close_server_sock_ignore_errors - A (2)\n    M 117:4 Server.__enter__ - A (2)\n    M 139:4 TLSServer.__init__ - A (2)\n    M 52:4 Server.text_response_server - A (1)\n    M 62:4 Server.basic_response_server - A (1)\n    M 82:4 Server._create_socket_and_bind - A (1)\n    M 171:4 TLSServer._create_socket_and_bind - A (1)\n\n667 blocks (classes, functions, methods) analyzed.\nAverage complexity: A (2.8950524737631183)\n",
+      "stderr": ""
+    },
+    "mypy": {
+      "ok": false,
+      "stdout": "docs\\_themes\\flask_theme_support.py:2: error: Library stubs not installed for \"pygments.style\"  [import-untyped]\ndocs\\_themes\\flask_theme_support.py:2: note: Hint: \"python3 -m pip install types-Pygments\"\ndocs\\_themes\\flask_theme_support.py:2: note: (or run \"mypy --install-types\" to install all missing stub packages)\ndocs\\_themes\\flask_theme_support.py:2: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports\ndocs\\_themes\\flask_theme_support.py:3: error: Library stubs not installed for \"pygments.token\"  [import-untyped]\nsrc\\requests\\packages.py:4: error: Cannot find implementation or library stub for module named \"chardet\"  [import-not-found]\nsrc\\requests\\compat.py:11: error: Cannot find implementation or library stub for module named \"chardet\"  [import-not-found]\nsrc\\requests\\compat.py:33: error: Library stubs not installed for \"simplejson\"  [import-untyped]\nsrc\\requests\\compat.py:33: note: Hint: \"python3 -m pip install types-simplejson\"\nsrc\\requests\\compat.py:66: error: Module \"urllib.request\" has no attribute \"proxy_bypass_environment\"  [attr-defined]\nsrc\\requests\\cookies.py:20: error: Cannot find implementation or library stub for module named \"dummy_threading\"  [import-not-found]\nsrc\\requests\\cookies.py:20: error: Name \"threading\" already defined (by an import)  [no-redef]\nsrc\\requests\\utils.py:114: error: All conditional function variants must have identical signatures  [misc]\nsrc\\requests\\utils.py:114: note: Original:\nsrc\\requests\\utils.py:114: note:     def proxy_bypass(host: str) -> Any\nsrc\\requests\\utils.py:114: note: Redefinition:\nsrc\\requests\\utils.py:114: note:     def proxy_bypass(host: Any) -> Any\nsrc\\requests\\models.py:72: error: \"LookupDict\" has no attribute \"moved\"  [attr-defined]\nsrc\\requests\\models.py:73: error: \"LookupDict\" has no attribute \"found\"  [attr-defined]\nsrc\\requests\\models.py:74: error: \"LookupDict\" has no attribute \"other\"  [attr-defined]\nsrc\\requests\\models.py:75: error: \"LookupDict\" has no attribute \"temporary_redirect\"  [attr-defined]\nsrc\\requests\\models.py:76: error: \"LookupDict\" has no attribute \"permanent_redirect\"  [attr-defined]\nsrc\\requests\\adapters.py:61: error: Name \"SOCKSProxyManager\" already defined (possibly by an import)  [no-redef]\nsrc\\requests\\adapters.py:79: error: Invalid type comment or annotation  [valid-type]\nsrc\\requests\\__init__.py:50: error: Incompatible types in assignment (expression has type \"None\", variable has type \"str\")  [assignment]\nsrc\\requests\\__init__.py:124: error: Incompatible types in assignment (expression has type \"None\", variable has type Module)  [assignment]\nsetup.py:6: error: Library stubs not installed for \"setuptools\"  [import-untyped]\nsetup.py:7: error: Library stubs not installed for \"setuptools.command.test\"  [import-untyped]\nsetup.py:7: note: Hint: \"python3 -m pip install types-setuptools\"\nsetup.py:76: error: Need type annotation for \"about\" (hint: \"about: dict[<type>, <type>] = ...\")  [var-annotated]\nsrc\\requests\\help.py:16: error: Incompatible types in assignment (expression has type \"None\", variable has type Module)  [assignment]\nsrc\\requests\\help.py:26: error: Incompatible types in assignment (expression has type \"None\", variable has type Module)  [assignment]\nsrc\\requests\\help.py:30: error: Name \"cryptography\" already defined on line 28  [no-redef]\nsrc\\requests\\help.py:31: error: Name \"OpenSSL\" already defined on line 27  [no-redef]\ndocs\\conf.py:235: error: Need type annotation for \"latex_elements\" (hint: \"latex_elements: dict[<type>, <type>] = ...\")  [var-annotated]\n",
+      "stderr": ""
+    }
+  },
+  "stats": {
+    "total_findings": 25
+  }
+}

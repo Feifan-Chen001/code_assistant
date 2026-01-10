@@ -1,0 +1,905 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[11pt,a4paper]{article}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{booktabs}
+\newcolumntype{T}[1]{>{\ttfamily\raggedright\arraybackslash}p{#1}}
+\newcommand{\codepath}[1]{\path{#1}}
+
+% ===== 中文与字体（支持UTF-8和中文路径） =====
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\setmonofont{Consolas}
+\setCJKmonofont{SimSun}
+\usepackage{fontspec}
+
+% ===== 页面与排版 =====
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{microtype}
+
+% ===== 数学/符号 =====
+\usepackage{amsmath,amssymb}
+
+% ===== 链接 =====
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+% ===== 表格 =====
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% ===== 代码块 =====
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  frame=single,
+  framerule=0.3pt,
+  rulecolor=\color{black!25},
+  xleftmargin=1.2em,
+  xrightmargin=0.6em,
+  aboveskip=0.8em,
+  belowskip=0.8em
+}
+
+% ===== 标题格式 =====
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CodeAssistant 报告}}\\[4pt]
+{\normalsize （由自动审查与测试生成系统输出）}
+\end{center}
+
+\vspace{0.5em}
+\tableofcontents
+\vspace{0.8em}
+\hrule
+\vspace{1.2em}
+
+\section{代码审查（Review）}
+
+\subsection{概览}
+\begin{itemize}
+  \item 问题总数：25
+  \item 高/中/低：7 / 3 / 15
+  \item 工具数：4
+  \item DS 规则命中总数：0
+\end{itemize}
+
+\subsection{严重性分布}
+\begin{itemize}
+  \item low：15
+  \item high：7
+  \item medium：3
+\end{itemize}
+
+\subsection{工具分布}
+\begin{itemize}
+  \item bandit：14
+  \item rule-plugin：7
+  \item pip-audit：3
+  \item ast-rule：1
+\end{itemize}
+
+\subsection{Top 20 问题}
+\begin{enumerate}
+  \item \textbf{[high] ast-rule BANNED\_CALL} \\
+  位置：\codepath{setup.py:79} \\
+  说明：禁止使用 exec（项目/领域规则），建议安全替代或白名单。
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{src/requests/models.py:178} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{src/requests/models.py:180} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{src/requests/sessions.py:190} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[low] rule-plugin PY\_GLOBAL\_VARIABLE} \\
+  位置：\codepath{src/requests/status\_codes.py:120} \\
+  说明：检测到全局变量 '\_\_doc\_\_' 的使用; 考虑使用参数传递代替
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{src/requests/utils.py:586} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{src/requests/utils.py:643} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[low] rule-plugin PY\_LOOP\_INVARIANT} \\
+  位置：\codepath{src/requests/utils.py:645} \\
+  说明：考虑在循环外计算长度，避免每次迭代都重新计算
+
+  \item \textbf{[low] bandit B605} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py:57} \\
+  说明：Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell
+
+  \item \textbf{[medium] bandit B607} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py:57} \\
+  说明：Starting a process with a partial executable path
+
+  \item \textbf{[low] bandit B605} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py:58} \\
+  说明：Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell
+
+  \item \textbf{[medium] bandit B607} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py:58} \\
+  说明：Starting a process with a partial executable path
+
+  \item \textbf{[medium] bandit B102} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py:79} \\
+  说明：Use of exec detected.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_\_init\_\_.py:60} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_\_init\_\_.py:70} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_\_init\_\_.py:72} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_\_init\_\_.py:79} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_\_init\_\_.py:84} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[low] bandit B101} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_internal\_utils.py:45} \\
+  说明：Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+
+  \item \textbf{[high] bandit B324} \\
+  位置：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py:148} \\
+  说明：Use of weak MD5 hash for security. Consider usedforsecurity=False
+
+\end{enumerate}
+
+\subsection{复杂度摘要}
+\begin{itemize}
+  \item 来源：Radon Cyclomatic Complexity（CC）
+  \item 说明：等级通常为 A（简单）到 F（复杂），括号内为复杂度分数
+\end{itemize}
+
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{6.6cm} L{1.1cm} T{5.2cm} L{0.9cm} r}
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endfirsthead
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py} & C & PyTest & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py} & M & PyTest.initialize\_options & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py} & M & PyTest.finalize\_options & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/setup.py} & M & PyTest.run\_tests & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/docs/\_themes/flask\_theme\_support.py} & C & FlaskyStyle & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.send & C & 19 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.cert\_verify & C & 14 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & F & \_urllib3\_request\_context & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.request\_url & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & C & HTTPAdapter & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.\_get\_connection & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.proxy\_manager\_for & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.get\_connection & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & C & BaseAdapter & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.\_\_getstate\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.\_\_setstate\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.build\_response & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.close & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.proxy\_headers & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & F & SOCKSProxyManager & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & BaseAdapter.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & BaseAdapter.send & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & BaseAdapter.close & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.init\_poolmanager & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/adapters.py} & M & HTTPAdapter.add\_headers & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & options & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & head & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & post & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & put & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & patch & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/api.py} & F & delete & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.build\_digest\_header & C & 19 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & F & \_basic\_auth\_str & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & C & HTTPDigestAuth & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.handle\_401 & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.\_\_call\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & C & AuthBase & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & C & HTTPBasicAuth & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & C & HTTPProxyAuth & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.init\_per\_thread\_state & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.handle\_redirect & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & AuthBase.\_\_call\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPBasicAuth.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPBasicAuth.\_\_eq\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPBasicAuth.\_\_ne\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPBasicAuth.\_\_call\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPProxyAuth.\_\_call\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.\_\_eq\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/auth.py} & M & HTTPDigestAuth.\_\_ne\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_find\_no\_duplicates & B & 9 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & remove\_cookie\_by\_name & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & cookiejar\_from\_dict & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_find & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & merge\_cookies & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.get\_dict & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & morsel\_to\_cookie & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & \_copy\_cookie\_jar & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.multiple\_domains & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.set\_cookie & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & extract\_cookies\_to\_jar & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & C & RequestsCookieJar & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.set & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.list\_domains & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.list\_paths & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.update & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & create\_cookie & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & C & MockRequest & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.get\_full\_url & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.has\_header & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & C & MockResponse & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.get & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.iterkeys & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.itervalues & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.iteritems & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_\_contains\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_\_setstate\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & F & get\_cookie\_header & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.get\_type & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.get\_host & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.get\_origin\_req\_host & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.is\_unverifiable & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.get\_header & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.add\_header & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.add\_unredirected\_header & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.get\_new\_headers & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.unverifiable & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.origin\_req\_host & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockRequest.host & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockResponse.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockResponse.info & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & MockResponse.getheaders & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & C & CookieConflictError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.keys & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.values & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.items & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_\_getitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_\_setitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_\_delitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.\_\_getstate\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.copy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/cookies.py} & M & RequestsCookieJar.get\_policy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & RequestException & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & M & RequestException.\_\_init\_\_ & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & JSONDecodeError & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & InvalidJSONError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & M & JSONDecodeError.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & M & JSONDecodeError.\_\_reduce\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & HTTPError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & ConnectionError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & ProxyError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & SSLError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & Timeout & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & ConnectTimeout & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & ReadTimeout & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & URLRequired & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & TooManyRedirects & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & MissingSchema & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & InvalidSchema & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & InvalidURL & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & InvalidHeader & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & InvalidProxyURL & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & ChunkedEncodingError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & ContentDecodingError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & StreamConsumedError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & RetryError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & UnrewindableBodyError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & RequestsWarning & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & FileModeWarning & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/exceptions.py} & C & RequestsDependencyWarning & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/help.py} & F & \_implementation & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/help.py} & F & info & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/help.py} & F & main & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/hooks.py} & F & dispatch\_hook & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/hooks.py} & F & default\_hooks & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & RequestEncodingMixin.\_encode\_files & D & 21 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_url & C & 17 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_body & C & 17 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & C & RequestEncodingMixin & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & RequestEncodingMixin.\_encode\_params & C & 11 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.iter\_lines & B & 9 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.json & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Request.\_\_init\_\_ & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.iter\_content & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & RequestHooksMixin.register\_hook & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_auth & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.content & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.raise\_for\_status & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & C & RequestHooksMixin & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & C & PreparedRequest & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_content\_length & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & C & Request & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & C & Response & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.text & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.links & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & RequestEncodingMixin.path\_url & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_headers & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_cookies & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_hooks & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_getstate\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.close & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & RequestHooksMixin.deregister\_hook & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.copy & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare\_method & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.\_get\_idna\_encoded\_host & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_setstate\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.ok & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.is\_redirect & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.is\_permanent\_redirect & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Request.\_\_repr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Request.prepare & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.prepare & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & PreparedRequest.\_\_repr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_enter\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_exit\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_repr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_bool\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_nonzero\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.\_\_iter\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.next & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/models.py} & M & Response.apparent\_encoding & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & SessionRedirectMixin.resolve\_redirects & C & 15 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.send & C & 11 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & SessionRedirectMixin.should\_strip\_auth & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & F & merge\_setting & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & C & SessionRedirectMixin & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.merge\_environment\_settings & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & SessionRedirectMixin.rebuild\_method & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & SessionRedirectMixin.rebuild\_proxies & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.prepare\_request & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & F & merge\_hooks & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & SessionRedirectMixin.rebuild\_auth & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.request & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.mount & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & C & Session & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.get\_adapter & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & SessionRedirectMixin.get\_redirect\_target & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.close & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.\_\_getstate\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.\_\_setstate\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & F & session & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.\_\_enter\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.\_\_exit\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.options & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.head & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.post & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.put & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.patch & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/sessions.py} & M & Session.delete & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/status\_codes.py} & F & \_init & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & C & CaseInsensitiveDict & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_iter\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.lower\_items & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_eq\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & C & LookupDict & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_setitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_getitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_delitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_len\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.copy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & CaseInsensitiveDict.\_\_repr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & LookupDict.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & LookupDict.\_\_repr\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & LookupDict.\_\_getitem\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/structures.py} & M & LookupDict.get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & super\_len & C & 17 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & should\_bypass\_proxies & C & 17 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & get\_netrc\_auth & C & 13 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & guess\_json\_utf & C & 11 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & proxy\_bypass\_registry & B & 9 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & extract\_zipped\_paths & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & unquote\_unreserved & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & is\_valid\_cidr & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & parse\_header\_links & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & guess\_filename & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & unquote\_header\_value & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & get\_encoding\_from\_headers & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & stream\_decode\_response\_unicode & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & select\_proxy & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & resolve\_proxies & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & prepend\_scheme\_if\_needed & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & \_validate\_header\_part & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & to\_key\_val\_list & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & parse\_dict\_header & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & \_parse\_content\_type\_header & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & iter\_slices & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & get\_unicode\_from\_response & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & set\_environ & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & rewind\_body & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & from\_key\_val\_list & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & parse\_list\_header & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & proxy\_bypass & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & dict\_to\_sequence & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & atomic\_open & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & dict\_from\_cookiejar & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & requote\_uri & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & is\_ipv4\_address & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & get\_environ\_proxies & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & get\_auth\_from\_url & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & urldefragauth & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & add\_dict\_to\_cookiejar & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & get\_encodings\_from\_content & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & address\_in\_network & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & dotted\_netmask & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & default\_user\_agent & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & default\_headers & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/utils.py} & F & check\_header\_validity & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_internal\_utils.py} & F & unicode\_is\_ascii & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_internal\_utils.py} & F & to\_native\_string & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_\_init\_\_.py} & F & check\_compatibility & B & 10 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/src/requests/\_\_init\_\_.py} & F & \_check\_cryptography & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/compat.py} & F & u & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/conftest.py} & F & prepare\_url & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/conftest.py} & F & httpbin & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/conftest.py} & F & httpbin\_secure & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/conftest.py} & F & nosan\_server & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_adapters.py} & F & test\_request\_url\_trims\_leading\_path\_separators & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_help.py} & F & test\_system\_ssl & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_help.py} & F & test\_idna\_without\_version\_attribute & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_help.py} & F & test\_idna\_with\_version\_attribute & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_help.py} & C & VersionedPackage & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_help.py} & M & VersionedPackage.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_hooks.py} & F & test\_hooks & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_hooks.py} & F & test\_default\_hooks & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_hooks.py} & F & hook & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_redirect\_rfc1808\_to\_non\_ascii\_location & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_fragment\_not\_sent\_with\_request & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_fragment\_update\_on\_redirect & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_digestauth\_401\_count\_reset\_on\_redirect & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_json\_decode\_compatibility\_for\_alt\_utf\_encodings & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_chunked\_upload & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_chunked\_upload\_uses\_only\_specified\_host\_header & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_chunked\_upload\_doesnt\_skip\_host\_header & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_digestauth\_401\_only\_sent\_once & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_digestauth\_only\_on\_4xx & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_use\_proxy\_from\_environment & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & echo\_response\_handler & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_chunked\_encoding\_error & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_lowlevel.py} & F & test\_conflicting\_content\_lengths & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_packages.py} & F & test\_can\_access\_urllib3\_attribute & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_packages.py} & F & test\_can\_access\_idna\_attribute & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_packages.py} & F & test\_can\_access\_chardet\_attribute & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_custom\_redirect\_mixin & B & 8 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookielib\_cookiejar\_on\_redirect & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_headers\_preserve\_order & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_https\_warnings & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_status\_code\_425 & B & 7 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_requests\_are\_updated\_each\_time & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_302\_TOO\_MANY\_REDIRECTS & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_302\_TOO\_MANY\_REDIRECTS\_WITH\_PARAMS & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_transfer\_enc\_removal\_on\_redirect & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_parameters & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_prepared\_request\_with\_hook\_is\_pickleable & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_transport\_adapter\_ordering & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_should\_strip\_auth\_https\_upgrade & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_contains & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_307\_ALLOW\_REDIRECT\_POST & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_307\_ALLOW\_REDIRECT\_POST\_WITH\_SEEKABLE & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_301\_changes\_post\_to\_get & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_301\_doesnt\_change\_head\_to\_get & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_302\_changes\_post\_to\_get & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_302\_doesnt\_change\_head\_to\_get & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_303\_changes\_post\_to\_get & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_303\_doesnt\_change\_head\_to\_get & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_basicauth\_with\_netrc & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_DIGEST\_HTTP\_200\_OK\_GET & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_DIGESTAUTH\_WRONG\_HTTP\_401\_GET & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_POSTBIN\_SEEKED\_OBJECT\_WITH\_NO\_ITER & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_as\_dict\_keeps\_len & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_prepared\_request\_is\_pickleable & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_prepared\_request\_with\_file\_is\_pickleable & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_error & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_manual\_redirect\_with\_partial\_body\_read & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_rewind\_body & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_rewind\_partially\_read\_body & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_get & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_update & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_equality & A & 5 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_prepared\_copy & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_302\_ALLOW\_REDIRECT\_GET & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_and\_body\_removal\_on\_redirect & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_fragment\_maintained\_on\_redirect & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_requests\_in\_history\_are\_not\_overridden & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_history\_is\_always\_a\_list & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_BASICAUTH\_TUPLE\_HTTP\_200\_OK\_GET & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_DIGEST\_AUTH\_RETURNS\_COOKIE & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_DIGEST\_STREAM & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_POSTBIN\_GET\_POST\_FILES & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_POSTBIN\_GET\_POST\_FILES\_WITH\_DATA & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_unicode\_method\_name\_with\_request\_object & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_as\_dict\_keeps\_items & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_duplicate\_names\_different\_domains & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_request\_and\_response\_are\_pickleable & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_fixes\_1329 & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_session\_get\_adapter\_prefix\_matching & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_with\_subclass\_types & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_json\_param\_post\_content\_type\_works & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_chunked\_upload\_does\_not\_set\_content\_length\_header & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & C & TestCaseInsensitiveDict & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_init & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_fixes\_649 & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_preserve\_key\_case & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_preserve\_last\_key\_case & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestTimeout.test\_connect\_timeout & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_json\_decode\_compatibility & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_different\_connection\_pool\_for\_tls\_settings\_verify\_bundle\_unexpired\_cert & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_proxy\_env\_vars\_override\_default & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_urllib3\_pool\_connection\_closed & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & C & TestRequests & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_basic\_building & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_override\_content\_length & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_200\_OK\_GET\_WITH\_PARAMS & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_removed\_on\_expire & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_persists\_via\_api & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_request\_cookie\_overrides\_session\_cookie & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_generic\_cookiejar\_works & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_DIGEST\_AUTH\_SETS\_SESSION\_COOKIES & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_DIGESTAUTH\_QUOTES\_QOP\_VALUE & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_invalid\_files\_input & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_invalid\_ssl\_certificate\_files & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_urlencoded\_get\_query\_multivalued\_param & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_unicode\_multipart\_post\_fieldnames & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_custom\_content\_type & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_session\_hooks\_are\_used\_with\_no\_request\_hooks & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_session\_hooks\_are\_overridden\_by\_request\_hooks & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_prepared\_from\_session & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_as\_dict\_keys & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_as\_dict\_values & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_as\_dict\_items & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_decode\_unicode & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_chunk\_size\_type & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_uppercase\_scheme\_redirect & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_keys\_are\_native & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_validation & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_nonhttp\_schemes\_dont\_check\_URLs & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_auth\_is\_stripped\_on\_http\_downgrade & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_rewind\_body\_no\_seek & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_rewind\_body\_failed\_seek & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_rewind\_body\_failed\_tell & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_basic\_auth\_str\_is\_always\_native & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_requests\_history\_is\_saved & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_iter\_lines & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_context\_manager & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_unconsumed\_session\_response\_closes\_connection & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_iter\_lines\_reentrant & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_without\_release\_conn & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_empty\_stream\_with\_auth\_does\_not\_set\_content\_length\_header & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_stream\_with\_auth\_does\_not\_set\_transfer\_encoding\_header & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_docstring\_example & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_getitem & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_delitem & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_setdefault & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_lower\_items & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_copy & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & C & TestMorselToCookieExpires & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & C & TestMorselToCookieMaxAge & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & C & TestTimeout & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestTimeout.test\_stream\_timeout & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & C & TestPreparingURLs & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_different\_connection\_pool\_for\_tls\_settings\_verify\_True & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_different\_connection\_pool\_for\_tls\_settings\_verify\_bundle\_expired\_cert & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_different\_connection\_pool\_for\_mtls\_settings & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_json\_encodes\_as\_bytes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_data\_argument\_accepts\_tuples & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_json\_decode\_errors\_are\_serializable\_deserializable & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_no\_content\_length & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_no\_body\_content\_length & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_empty\_content\_length & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_path\_is\_not\_double\_encoded & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_params\_are\_added\_before\_fragment & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_params\_original\_order\_is\_preserved\_by\_default & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_params\_bytes\_are\_encoded & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_binary\_put & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_whitespaces\_are\_removed\_from\_url & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_mixed\_case\_scheme\_acceptable & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_200\_OK\_GET\_ALTERNATIVE & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_200\_OK\_GET\_WITH\_MIXED\_PARAMS & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_set\_cookie\_on\_301 & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_sent\_on\_redirect & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_quote\_wrapped & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_request\_cookies\_not\_persisted & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_param\_cookiejar\_works & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_headers\_on\_session\_with\_None\_are\_not\_sent & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_user\_agent\_transfers & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_200\_OK\_HEAD & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_HTTP\_200\_OK\_PUT & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_set\_basicauth & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_basicauth\_encodes\_byte\_strings & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_proxy\_authorization\_preserved\_on\_request & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_proxy\_authorization\_not\_appended\_to\_https\_request & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_post\_with\_custom\_mapping & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_request\_ok\_set & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_status\_raising & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_invalid\_ca\_certificate\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_env\_cert\_bundles & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_http\_with\_certificate & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_form\_encoded\_post\_query\_multivalued\_element & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_different\_encodings\_dont\_break\_post & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_unicode\_multipart\_post & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_unicode\_method\_name & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_non\_prepared\_request\_error & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_prepared\_request\_hook & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_prepare\_request\_with\_bytestring\_url & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_request\_with\_bytestring\_host & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_links & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_policy\_copy & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_time\_elapsed\_blank & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_empty\_response\_has\_content\_none & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_is\_iterable & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_reason\_unicode & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_reason\_unicode\_fallback & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_session\_pickling & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_session\_get\_adapter\_prefix\_matching\_mixed\_case & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_session\_get\_adapter\_prefix\_matching\_is\_case\_insensitive & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_remove\_is\_case\_insensitive & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_params\_are\_merged\_case\_sensitive & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_long\_authinfo\_in\_url & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_value\_not\_str & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_can\_send\_objects\_with\_files & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_can\_send\_file\_object\_with\_non\_string\_filename & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_autoset\_header\_values\_are\_native & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_content\_length\_for\_bytes\_data & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_content\_length\_for\_string\_data\_counts\_bytes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_auth\_is\_retained\_for\_redirect\_on\_host & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_should\_strip\_auth\_host\_change & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_should\_strip\_auth\_http\_downgrade & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_should\_strip\_auth\_port\_change & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_should\_strip\_auth\_default\_port & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_prepare\_body\_position\_non\_stream & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_json\_param\_post\_should\_not\_override\_data\_param & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_proxy\_auth & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_proxy\_auth\_empty\_pass & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_response\_json\_when\_content\_is\_None & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_len & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_update\_retains\_unchanged & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestCaseInsensitiveDict.test\_iter & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestMorselToCookieExpires.test\_expires\_valid\_str & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestMorselToCookieExpires.test\_expires\_none & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestMorselToCookieMaxAge.test\_max\_age\_valid\_int & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestTimeout.test\_invalid\_timeout & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestTimeout.test\_none\_timeout & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestTimeout.test\_read\_timeout & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestTimeout.test\_total\_timeout\_connect & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestTimeout.test\_encoded\_methods & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & C & RedirectSession & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & RedirectSession.build\_response & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_preparing\_url & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_url\_mutation & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_parameters\_for\_nonstandard\_schemes & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_json\_decode\_persists\_doc\_attr & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & F & test\_urllib3\_retries & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_entry\_points & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_invalid\_url & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_errors & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_proxy\_error & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_proxy\_error\_on\_bad\_url & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_respect\_proxy\_env\_on\_send\_self\_prepared\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_respect\_proxy\_env\_on\_send\_session\_prepared\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_respect\_proxy\_env\_on\_send\_with\_redirects & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_respect\_proxy\_env\_on\_get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_respect\_proxy\_env\_on\_request & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_conflicting\_post\_params & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_decompress\_gzip & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_unicode\_get & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_unicode\_header\_name & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_pyopenssl\_redirect & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_certificate\_failure & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_hook\_receives\_request\_arguments & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cookie\_duplicate\_names\_raises\_cookie\_conflict\_error & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_iter\_content\_wraps\_exceptions & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_cannot\_send\_unprepared\_requests & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_no\_return\_chars & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_header\_no\_leading\_space & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.\_patch\_adapter\_gzipped\_redirect & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_redirect\_with\_wrong\_gzipped\_header & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestRequests.test\_session\_close\_proxy\_clear & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestMorselToCookieExpires.test\_expires\_invalid\_int & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestMorselToCookieMaxAge.test\_max\_age\_invalid\_str & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & RedirectSession.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & RedirectSession.send & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & RedirectSession.\_build\_raw & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_preparing\_bad\_url & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_redirecting\_to\_bad\_url & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_requests.py} & M & TestPreparingURLs.test\_post\_json\_nan & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & C & TestCaseInsensitiveDict & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.test\_copy & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & C & TestLookupDict & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.test\_list & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.test\_getitem & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.test\_delitem & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.test\_lower\_items & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.test\_repr & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.test\_instance\_equality & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestLookupDict.test\_repr & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestLookupDict.test\_getitem & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestLookupDict.test\_get & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestCaseInsensitiveDict.setup & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_structures.py} & M & TestLookupDict.setup & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_text\_response & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_basic\_response & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & C & TestTestServer & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_multiple\_requests & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_request\_recovery & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_basic & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_requests\_after\_timeout\_are\_not\_received & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_request\_recovery\_with\_bigger\_timeout & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_server\_finishes\_on\_error & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_server\_finishes\_when\_no\_connections & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_server\_closes & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_testserver.py} & M & TestTestServer.test\_basic\_waiting\_server & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_iter\_slices & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestGuessFilename & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestExtractZippedPaths & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestExtractZippedPaths.test\_zipped\_paths\_extracted & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_add\_dict\_to\_cookiejar & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_should\_bypass\_proxies\_win\_registry & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_set\_environ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestSuperLen & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_io\_streams & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_file & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_with\_tell & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestToKeyValList & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestUnquoteHeaderValue & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestGetEnvironProxies & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestIsIPv4Address & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestIsValidCIDR & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestAddressInNetwork & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGuessFilename.test\_guess\_filename\_valid & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestContentEncodingDetection & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestContentEncodingDetection.test\_pragmas & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & C & TestGuessJSONUTF & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_get\_auth\_from\_url & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_requote\_uri\_with\_unquoted\_percents & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_unquote\_unreserved & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_dotted\_netmask & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_select\_proxies & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_parse\_dict\_header & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_\_parse\_content\_type\_header & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_get\_encoding\_from\_headers & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_parse\_header\_links & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_prepend\_scheme\_if\_needed & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_to\_native\_string & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_urldefragauth & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_should\_bypass\_proxies & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_unicode\_is\_ascii & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_should\_bypass\_proxies\_no\_proxy & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_should\_bypass\_proxies\_win\_registry\_bad\_values & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_set\_environ\_raises\_exception & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_should\_bypass\_proxies\_win\_registry\_ProxyOverride\_value & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_correctly\_calculates\_len\_of\_partially\_read\_file & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_handles\_files\_raising\_weird\_errors\_in\_tell & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_tell\_ioerror & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_string & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_tarfile\_member & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_with\_\_len\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_with\_no\_\_len\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_with\_fileno & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestSuperLen.test\_super\_len\_with\_no\_matches & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestToKeyValList.test\_valid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestUnquoteHeaderValue.test\_valid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestUnquoteHeaderValue.test\_is\_filename & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGetEnvironProxies.test\_bypass & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGetEnvironProxies.test\_not\_bypass & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGetEnvironProxies.test\_bypass\_no\_proxy\_keyword & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGetEnvironProxies.test\_not\_bypass\_no\_proxy\_keyword & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestIsIPv4Address.test\_valid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestIsIPv4Address.test\_invalid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestIsValidCIDR.test\_valid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestIsValidCIDR.test\_invalid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestAddressInNetwork.test\_valid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestAddressInNetwork.test\_invalid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGuessFilename.test\_guess\_filename\_invalid & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestExtractZippedPaths.test\_unzipped\_paths\_unchanged & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestExtractZippedPaths.test\_invalid\_unc\_path & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestContentEncodingDetection.test\_none & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestContentEncodingDetection.test\_precedence & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGuessJSONUTF.test\_encoded & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGuessJSONUTF.test\_bad\_utf\_like\_encoding & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGuessJSONUTF.test\_guess\_by\_bom & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & F & test\_should\_bypass\_proxies\_pass\_only\_hostname & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestToKeyValList.test\_invalid & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/test\_utils.py} & M & TestGetEnvironProxies.no\_proxy & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/utils.py} & F & override\_environ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & F & consume\_socket\_content & A & 4 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & C & Server & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.\_handle\_requests & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.\_accept\_connection & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.\_\_exit\_\_ & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & C & TLSServer & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.run & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.\_close\_server\_sock\_ignore\_errors & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.\_\_enter\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & TLSServer.\_\_init\_\_ & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.text\_response\_server & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.basic\_response\_server & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & Server.\_create\_socket\_and\_bind & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/tests/testserver/server.py} & M & TLSServer.\_create\_socket\_and\_bind & A & 1 \\
+\end{longtable}
+\normalsize
+
+\section{测试生成（TestGen）}
+
+\subsection{指标}
+\begin{itemize}
+  \item 写入测试文件数：8
+  \item 覆盖函数数：63
+  \item 输出目录：\codepath{D:/code\_assistant/Git\_repo/kennethreitz\_\_requests/reports/kennethreitz\_\_requests/generated\_tests}
+\end{itemize}
+
+\subsection{覆盖率报告}
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{7.2cm} r r r T{5.2cm}}
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endfirsthead
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{N/A} & 0 & 0 & 0\% &  \\
+\end{longtable}
+\normalsize
+
+\end{document}

@@ -1,0 +1,1603 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey",
+  "output_dir": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests",
+  "written_files": 55,
+  "function_count": 200,
+  "generated": [
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_manage_3156ad13.py",
+      "functions": [
+        {
+          "name": "drop_db",
+          "args": [],
+          "lineno": 63,
+          "doc": "Drops the database. "
+        },
+        {
+          "name": "run_change_reporter",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 69,
+          "doc": "Runs Reporter "
+        },
+        {
+          "name": "find_changes",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 82,
+          "doc": "Runs watchers "
+        },
+        {
+          "name": "audit_changes",
+          "args": [
+            "accounts",
+            "monitors",
+            "send_report",
+            "skip_batch"
+          ],
+          "lineno": 98,
+          "doc": "Runs auditors "
+        },
+        {
+          "name": "delete_unjustified_issues",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 112,
+          "doc": "Allows us to delete unjustified issues. "
+        },
+        {
+          "name": "export_environment_summary",
+          "args": [
+            "output_file"
+          ],
+          "lineno": 129,
+          "doc": "Save the Auditor.OBJECT_STORE as a JSON file. "
+        },
+        {
+          "name": "backup_config_to_json",
+          "args": [
+            "accounts",
+            "monitors",
+            "outputfolder"
+          ],
+          "lineno": 151,
+          "doc": "Saves the most current item revisions to a json file. "
+        },
+        {
+          "name": "sync_jira",
+          "args": [],
+          "lineno": 164,
+          "doc": "Syncs issues with Jira "
+        },
+        {
+          "name": "clear_expired_exceptions",
+          "args": [],
+          "lineno": 174,
+          "doc": "Clears out the exception logs table of all exception entries that have expired past the TTL.\n:return:"
+        },
+        {
+          "name": "amazon_accounts",
+          "args": [],
+          "lineno": 185,
+          "doc": "Pre-populates standard AWS owned accounts "
+        },
+        {
+          "name": "create_user",
+          "args": [
+            "email",
+            "role"
+          ],
+          "lineno": 230,
+          "doc": ""
+        },
+        {
+          "name": "toggle_active_user",
+          "args": [
+            "email",
+            "active"
+          ],
+          "lineno": 277,
+          "doc": "Enables/Disables a user.\n\nTo enable a user, provide the \"--active True\" flag value. To disable it, omit the --active flag. Do not use \"--active False\",\nor it will set the value to True."
+        },
+        {
+          "name": "disable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 326,
+          "doc": "Bulk disables one or more accounts "
+        },
+        {
+          "name": "enable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 338,
+          "doc": "Bulk enables one or more accounts "
+        },
+        {
+          "name": "add_override_score",
+          "args": [
+            "tech_name",
+            "method",
+            "auditor",
+            "score",
+            "disabled",
+            "pattern_scores"
+          ],
+          "lineno": 355,
+          "doc": "Adds an audit disable/override scores\n:param tech_name: technology index\n:param method: the neme of the auditor method to override\n:param auditor: The class name of the auditor containing the check method\n:param score: The default override score to assign to the check method issue\n:param disabled: Flag indicating whether the check method should be run\n:param pattern_scores: A comma separated list of account field values and scores.\n       This can be used to override the default score based on some field in the account\n       that the check method is running against. The format of each value/score is:\n       account_type.account_field.account_value=score"
+        },
+        {
+          "name": "add_override_scores",
+          "args": [
+            "file_name",
+            "field_mappings"
+          ],
+          "lineno": 436,
+          "doc": "Refreshes the audit disable/override scores from a csv file. Old scores not in\n the csv will be removed.\n:param file_name: path to the csv file\n:param field_mappings: Comma separated list of mappings of known types to csv file\n headers. Ex. 'tech=Tech Name,score=default score'"
+        },
+        {
+          "name": "delete_account",
+          "args": [
+            "name"
+          ],
+          "lineno": 596,
+          "doc": ""
+        },
+        {
+          "name": "add_watcher_config",
+          "args": [
+            "tech_name",
+            "disabled",
+            "interval"
+          ],
+          "lineno": 607,
+          "doc": ""
+        },
+        {
+          "name": "fetch_aws_canonical_ids",
+          "args": [
+            "override"
+          ],
+          "lineno": 631,
+          "doc": "Adds S3 canonical IDs in for all AWS accounts in SM."
+        },
+        {
+          "name": "clean_stale_issues",
+          "args": [],
+          "lineno": 647,
+          "doc": "Cleans up issues for auditors that have been removed"
+        },
+        {
+          "name": "sync_swag",
+          "args": [
+            "owner",
+            "bucket_name",
+            "bucket_prefix",
+            "bucket_region",
+            "account_type",
+            "spinnaker"
+          ],
+          "lineno": 710,
+          "doc": "Use the SWAG client to sync SWAG accounts to Security Monkey."
+        },
+        {
+          "name": "sync_networks",
+          "args": [
+            "bucket_name",
+            "input_filename",
+            "authoritative"
+          ],
+          "lineno": 781,
+          "doc": "Imports a JSON file of networks to the Security Monkey whitelist."
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 862,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage_api.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_manage_api_8e08d141.py",
+      "functions": [
+        {
+          "name": "drop_db",
+          "args": [],
+          "lineno": 63,
+          "doc": "Drops the database. "
+        },
+        {
+          "name": "run_change_reporter",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 69,
+          "doc": "Runs Reporter "
+        },
+        {
+          "name": "find_changes",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 82,
+          "doc": "Runs watchers "
+        },
+        {
+          "name": "audit_changes",
+          "args": [
+            "accounts",
+            "monitors",
+            "send_report",
+            "skip_batch"
+          ],
+          "lineno": 98,
+          "doc": "Runs auditors "
+        },
+        {
+          "name": "delete_unjustified_issues",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 112,
+          "doc": "Allows us to delete unjustified issues. "
+        },
+        {
+          "name": "export_environment_summary",
+          "args": [
+            "output_file"
+          ],
+          "lineno": 129,
+          "doc": "Save the Auditor.OBJECT_STORE as a JSON file. "
+        },
+        {
+          "name": "backup_config_to_json",
+          "args": [
+            "accounts",
+            "monitors",
+            "outputfolder"
+          ],
+          "lineno": 151,
+          "doc": "Saves the most current item revisions to a json file. "
+        },
+        {
+          "name": "sync_jira",
+          "args": [],
+          "lineno": 164,
+          "doc": "Syncs issues with Jira "
+        },
+        {
+          "name": "clear_expired_exceptions",
+          "args": [],
+          "lineno": 174,
+          "doc": "Clears out the exception logs table of all exception entries that have expired past the TTL.\n:return:"
+        },
+        {
+          "name": "amazon_accounts",
+          "args": [],
+          "lineno": 185,
+          "doc": "Pre-populates standard AWS owned accounts "
+        },
+        {
+          "name": "create_user",
+          "args": [
+            "email",
+            "role"
+          ],
+          "lineno": 230,
+          "doc": ""
+        },
+        {
+          "name": "toggle_active_user",
+          "args": [
+            "email",
+            "active"
+          ],
+          "lineno": 277,
+          "doc": "Enables/Disables a user.\n\nTo enable a user, provide the \"--active True\" flag value. To disable it, omit the --active flag. Do not use \"--active False\",\nor it will set the value to True."
+        },
+        {
+          "name": "disable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 326,
+          "doc": "Bulk disables one or more accounts "
+        },
+        {
+          "name": "enable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 338,
+          "doc": "Bulk enables one or more accounts "
+        },
+        {
+          "name": "add_override_score",
+          "args": [
+            "tech_name",
+            "method",
+            "auditor",
+            "score",
+            "disabled",
+            "pattern_scores"
+          ],
+          "lineno": 355,
+          "doc": "Adds an audit disable/override scores\n:param tech_name: technology index\n:param method: the neme of the auditor method to override\n:param auditor: The class name of the auditor containing the check method\n:param score: The default override score to assign to the check method issue\n:param disabled: Flag indicating whether the check method should be run\n:param pattern_scores: A comma separated list of account field values and scores.\n       This can be used to override the default score based on some field in the account\n       that the check method is running against. The format of each value/score is:\n       account_type.account_field.account_value=score"
+        },
+        {
+          "name": "add_override_scores",
+          "args": [
+            "file_name",
+            "field_mappings"
+          ],
+          "lineno": 436,
+          "doc": "Refreshes the audit disable/override scores from a csv file. Old scores not in\n the csv will be removed.\n:param file_name: path to the csv file\n:param field_mappings: Comma separated list of mappings of known types to csv file\n headers. Ex. 'tech=Tech Name,score=default score'"
+        },
+        {
+          "name": "delete_account",
+          "args": [
+            "name"
+          ],
+          "lineno": 596,
+          "doc": ""
+        },
+        {
+          "name": "add_watcher_config",
+          "args": [
+            "tech_name",
+            "disabled",
+            "interval"
+          ],
+          "lineno": 607,
+          "doc": ""
+        },
+        {
+          "name": "fetch_aws_canonical_ids",
+          "args": [
+            "override"
+          ],
+          "lineno": 631,
+          "doc": "Adds S3 canonical IDs in for all AWS accounts in SM."
+        },
+        {
+          "name": "clean_stale_issues",
+          "args": [],
+          "lineno": 647,
+          "doc": "Cleans up issues for auditors that have been removed"
+        },
+        {
+          "name": "sync_swag",
+          "args": [
+            "owner",
+            "bucket_name",
+            "bucket_prefix",
+            "bucket_region",
+            "account_type",
+            "spinnaker"
+          ],
+          "lineno": 710,
+          "doc": "Use the SWAG client to sync SWAG accounts to Security Monkey."
+        },
+        {
+          "name": "sync_networks",
+          "args": [
+            "bucket_name",
+            "input_filename",
+            "authoritative"
+          ],
+          "lineno": 781,
+          "doc": "Imports a JSON file of networks to the Security Monkey whitelist."
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 862,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage_api.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\env-config\\config-docker.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_env_config_config_docker_9fd98fb5.py",
+      "functions": [
+        {
+          "name": "env_to_bool",
+          "args": [
+            "input"
+          ],
+          "lineno": 20,
+          "doc": "Must change String from environment variable into Boolean\ndefaults to True"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\env-config\\config-docker.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\env.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_env_1d5e98f8.py",
+      "functions": [
+        {
+          "name": "run_migrations_offline",
+          "args": [],
+          "lineno": 27,
+          "doc": "Run migrations in 'offline' mode.\n\nThis configures the context with just a URL\nand not an Engine, though an Engine is acceptable\nhere as well.  By skipping the Engine creation\nwe don't even need a DBAPI to be available.\n\nCalls to context.execute() here emit the given string to the\nscript output."
+        },
+        {
+          "name": "run_migrations_online",
+          "args": [],
+          "lineno": 45,
+          "doc": "Run migrations in 'online' mode.\n\nIn this scenario we need to create an Engine\nand associate a connection with the context."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\env.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\00c1dabdbe85_lengthen_account_name.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_00c1dabdbe85_lengthen_account_name_671e5b13.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 24,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\00c1dabdbe85_lengthen_account_name.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\0ae4ef82b244_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_0ae4ef82b244_a10b7dcb.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\0ae4ef82b244_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\11f081cf54e2_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_11f081cf54e2_5b4c7111.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 57,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 102,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\11f081cf54e2_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1583a48cb978_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_1583a48cb978_e162f8ac.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 25,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1583a48cb978_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\15e39d43395f_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_15e39d43395f_8a803580.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": "This revision is going to expand the hash database fields from `varchar(32)` to `varchar(64)`. Due to the usage of DeepHash.\nNote: This is going to result in all change items getting re-updated as the hashes are going to be different."
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 25,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\15e39d43395f_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1727fb4309d8_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_1727fb4309d8_885b4442.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1727fb4309d8_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1a863bd1acb1_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_1a863bd1acb1_c6768a82.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 29,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 38,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1a863bd1acb1_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1c847ae1209a_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_1c847ae1209a_21e2cc98.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1c847ae1209a_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2705e6e13a8f_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_2705e6e13a8f_2fc89a34.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2705e6e13a8f_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ce75615b24d_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_2ce75615b24d_5d38f217.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ce75615b24d_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ea41f4610fd_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_2ea41f4610fd_a075904c.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ea41f4610fd_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\331ca47ce8ad_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_331ca47ce8ad_6549354a.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 21,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\331ca47ce8ad_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\4ac52090a637_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_4ac52090a637_98ad0211.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\4ac52090a637_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\51170afa2b48_custom_role_name.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_51170afa2b48_custom_role_name_6da73e3e.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\51170afa2b48_custom_role_name.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\538eeb160af6_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_538eeb160af6_cd27a488.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 35,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 49,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\538eeb160af6_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\55725cc4bf25_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_55725cc4bf25_9893f587.py",
+      "functions": [
+        {
+          "name": "update_custom_value",
+          "args": [
+            "name",
+            "value",
+            "session",
+            "account_id"
+          ],
+          "lineno": 46,
+          "doc": ""
+        },
+        {
+          "name": "update_from_custom_value",
+          "args": [
+            "name",
+            "session",
+            "account"
+          ],
+          "lineno": 63,
+          "doc": ""
+        },
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 76,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 95,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\55725cc4bf25_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\57f648d4b597_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_57f648d4b597_b08d508e.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 33,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\57f648d4b597_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\595e27f36454_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_595e27f36454_ec8a35d9.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 16,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 26,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\595e27f36454_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\5bd631a1b748_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_5bd631a1b748_fb1cdb8c.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 42,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\5bd631a1b748_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\61a6fd4b4500_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_61a6fd4b4500_83d4657a.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 27,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\61a6fd4b4500_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6245d75fa12_exceptions_table.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_6245d75fa12_exceptions_table_d2e57ad1.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 45,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6245d75fa12_exceptions_table.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\67ea2aac5ea0_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_67ea2aac5ea0_93aa9206.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 32,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\67ea2aac5ea0_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6b9d673d8e30_added_index_for_itemrevision_created.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_6b9d673d8e30_added_index_for_itemrevision_created_3205b1e9.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 21,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6b9d673d8e30_added_index_for_itemrevision_created.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6d2354fb841c_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_6d2354fb841c_d01d4144.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 32,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6d2354fb841c_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\7c54b06e227b_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_7c54b06e227b_10892e09.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 207,
+          "doc": "Need to detect duplicate items.\nThis needs to be done by looking for all items with the same: region, name, tech_id, account_id.\nWith these items, pick the one that has the bigger latest_revision_id and delete the others.\n:return:"
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 260,
+          "doc": "No downgrade necessary."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\7c54b06e227b_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\908b0085d28d_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_908b0085d28d_aa782afa.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 45,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 67,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\908b0085d28d_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\a9fe9c93ed75_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_a9fe9c93ed75_2bd4d6b0.py",
+      "functions": [
+        {
+          "name": "remove_duplicate_issue_items",
+          "args": [],
+          "lineno": 44,
+          "doc": ""
+        },
+        {
+          "name": "remove_duplicate_association",
+          "args": [],
+          "lineno": 66,
+          "doc": ""
+        },
+        {
+          "name": "remove_duplicate_role_users",
+          "args": [],
+          "lineno": 88,
+          "doc": ""
+        },
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 110,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 142,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\a9fe9c93ed75_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ad23a56abf25_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_ad23a56abf25_1265c1b3.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 28,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ad23a56abf25_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ae5c0a6aebb3_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_ae5c0a6aebb3_5e17abdd.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 24,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ae5c0a6aebb3_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\b8ccf5b8089b_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_b8ccf5b8089b_49b51b9a.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 21,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 28,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\b8ccf5b8089b_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\bfb550a500ab_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_bfb550a500ab_f0ecb80f.py",
+      "functions": [
+        {
+          "name": "sub_list",
+          "args": [
+            "l"
+          ],
+          "lineno": 64,
+          "doc": "Recursively walk a datastructrue sorting any lists along the way.\n\n:param l: list\n:return: sorted list, where any child lists are also sorted."
+        },
+        {
+          "name": "sub_dict",
+          "args": [
+            "d"
+          ],
+          "lineno": 86,
+          "doc": "Recursively walk a datastructure sorting any lists along the way.\n\n:param d: dict\n:return: dict where any lists, even those buried deep in the structure, have been sorted."
+        },
+        {
+          "name": "retrieve_arn",
+          "args": [
+            "config"
+          ],
+          "lineno": 106,
+          "doc": "See issue #374. SM does not currently store ARNs in a consistent place.\n\n:param config: itemrevision config dict\n:return: ARN, if we can find it"
+        },
+        {
+          "name": "hash_item",
+          "args": [
+            "item",
+            "ephemeral_paths"
+          ],
+          "lineno": 134,
+          "doc": "Finds the hash of a dict.\n\n:param item: dictionary, representing an item tracked in security_monkey\n:return: hash of the json dump of the item"
+        },
+        {
+          "name": "durable_hash",
+          "args": [
+            "item",
+            "ephemeral_paths"
+          ],
+          "lineno": 146,
+          "doc": "Remove all ephemeral paths from the item and return the hash of the new structure.\n\n:param item: dictionary, representing an item tracked in security_monkey\n:return: hash of the sorted json dump of the item with all ephemeral paths removed."
+        },
+        {
+          "name": "hash_config",
+          "args": [
+            "config"
+          ],
+          "lineno": 162,
+          "doc": ""
+        },
+        {
+          "name": "ephemeral_paths_for_item",
+          "args": [
+            "item"
+          ],
+          "lineno": 169,
+          "doc": ""
+        },
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 193,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 225,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\bfb550a500ab_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c01df2202a9_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_c01df2202a9_a1324f04.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 122,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c01df2202a9_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c93f246859f7_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_c93f246859f7_df31d9ed.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c93f246859f7_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c9dd06c919ac_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_c9dd06c919ac_a5b728c6.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 33,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c9dd06c919ac_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\d08d0b37788a_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_d08d0b37788a_5fb23dc2.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 38,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 76,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\d08d0b37788a_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\daee17da2abd_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_daee17da2abd_22632f14.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 39,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\daee17da2abd_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\e0a6af364a3f_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_e0a6af364a3f_974c0128.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 63,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\e0a6af364a3f_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ea2739ecd874_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_ea2739ecd874_e67e6596.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ea2739ecd874_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\fb592c81e71_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_migrations_versions_fb592c81e71_97cf68fe.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 29,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\fb592c81e71_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\scripts\\secmonkey_role_setup.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_scripts_secmonkey_role_setup_8944a789.py",
+      "functions": [
+        {
+          "name": "main",
+          "args": [
+            "profile"
+          ],
+          "lineno": 184,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\scripts\\secmonkey_role_setup.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\account_manager.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_security_monkey_account_manager_9f8cfb03.py",
+      "functions": [
+        {
+          "name": "load_all_account_types",
+          "args": [],
+          "lineno": 258,
+          "doc": "Verifies all account types are in the database "
+        },
+        {
+          "name": "get_account_by_id",
+          "args": [
+            "account_id"
+          ],
+          "lineno": 277,
+          "doc": "Retrieves an account plus any additional custom fields"
+        },
+        {
+          "name": "get_account_by_name",
+          "args": [
+            "account_name"
+          ],
+          "lineno": 288,
+          "doc": "Retrieves an account plus any additional custom fields"
+        },
+        {
+          "name": "delete_account_by_id",
+          "args": [
+            "account_id"
+          ],
+          "lineno": 299,
+          "doc": ""
+        },
+        {
+          "name": "delete_account_by_name",
+          "args": [
+            "name"
+          ],
+          "lineno": 365,
+          "doc": ""
+        },
+        {
+          "name": "bulk_disable_accounts",
+          "args": [
+            "account_names"
+          ],
+          "lineno": 372,
+          "doc": "Bulk disable accounts"
+        },
+        {
+          "name": "bulk_enable_accounts",
+          "args": [
+            "account_names"
+          ],
+          "lineno": 385,
+          "doc": "Bulk enable accounts"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\account_manager.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\alerter.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_security_monkey_alerter_9760a909.py",
+      "functions": [
+        {
+          "name": "get_subject",
+          "args": [
+            "has_issues",
+            "has_new_issue",
+            "has_unjustified_issue",
+            "account",
+            "watcher_str"
+          ],
+          "lineno": 30,
+          "doc": ""
+        },
+        {
+          "name": "report_content",
+          "args": [
+            "content"
+          ],
+          "lineno": 41,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\alerter.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\auditor.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_security_monkey_auditor_20f070e5.py",
+      "functions": [
+        {
+          "name": "add",
+          "args": [
+            "to",
+            "key",
+            "value"
+          ],
+          "lineno": 146,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\auditor.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\backup.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_security_monkey_backup_afb79fd2.py",
+      "functions": [
+        {
+          "name": "backup_config_to_json",
+          "args": [
+            "account_names",
+            "monitor_names",
+            "output_folder"
+          ],
+          "lineno": 28,
+          "doc": ""
+        },
+        {
+          "name": "standardize_name",
+          "args": [
+            "name"
+          ],
+          "lineno": 49,
+          "doc": "Some objects have a / in their names.  This allows the backup to proceed.\nFurther sanitization would be wise with untrusted input."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\backup.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_security_monkey_datastore_d6be5784.py",
+      "functions": [
+        {
+          "name": "durable_hash",
+          "args": [
+            "config",
+            "ephemeral_paths"
+          ],
+          "lineno": 51,
+          "doc": ""
+        },
+        {
+          "name": "hash_item",
+          "args": [
+            "config",
+            "ephemeral_paths"
+          ],
+          "lineno": 61,
+          "doc": "Finds the hash of a dict.\n\n:param ephemeral_paths:\n:param config:\n:param item: dictionary, typically representing an item tracked in SM\n             such as an IAM role\n:return: hash of the json dump of the item"
+        },
+        {
+          "name": "store_exception",
+          "args": [
+            "source",
+            "location",
+            "exception",
+            "ttl"
+          ],
+          "lineno": 732,
+          "doc": "Method to store exceptions in the database.\n:param source:\n:param location:\n:param exception:\n:param ttl:\n:return:"
+        },
+        {
+          "name": "clear_old_exceptions",
+          "args": [],
+          "lineno": 780,
+          "doc": ""
+        },
+        {
+          "name": "delete_item_revisions_by_date",
+          "args": [
+            "start_date",
+            "end_date"
+          ],
+          "lineno": 789,
+          "doc": "This will remove all item revisions per the following strategy:\n0. Iterate over every item.\n1. Get a list of all item revisions within the date range provided.\n2. If the revisions on the date selected refers to ALL revisions of a given item, then delete the item outright, and skip to the next item.\n3. Otherwise, get the latest revision for the item before the start date.\n4. Update the item's latest revision ID to that last good revision\n6. Delete the revisions in the date range."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore_utils.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\\test_security_monkey_datastore_utils_99fb06a6.py",
+      "functions": [
+        {
+          "name": "persist_item",
+          "args": [
+            "item",
+            "db_item",
+            "technology",
+            "account",
+            "complete_hash",
+            "durable_hash",
+            "durable"
+          ],
+          "lineno": 11,
+          "doc": ""
+        },
+        {
+          "name": "is_active",
+          "args": [
+            "config"
+          ],
+          "lineno": 64,
+          "doc": ""
+        },
+        {
+          "name": "create_revision",
+          "args": [
+            "config",
+            "db_item"
+          ],
+          "lineno": 74,
+          "doc": ""
+        },
+        {
+          "name": "create_item_aws",
+          "args": [
+            "item",
+            "technology",
+            "account"
+          ],
+          "lineno": 82,
+          "doc": ""
+        },
+        {
+          "name": "create_item",
+          "args": [
+            "item",
+            "technology",
+            "account"
+          ],
+          "lineno": 93,
+          "doc": ""
+        },
+        {
+          "name": "detect_change",
+          "args": [
+            "item",
+            "account",
+            "technology",
+            "complete_hash",
+            "durable_hash"
+          ],
+          "lineno": 103,
+          "doc": "Checks the database to see if the latest revision of the specified\nitem matches what Security Monkey has pulled from AWS.\n\nNote: this method makes no distinction between a changed item, a new item,\na deleted item, or one that only has changes in the ephemeral section.\n\n:param item: dict describing an item tracked by Security Monkey\n:param hash: hash of the item dict for quicker change detection\n:return: bool. True if the database differs from our copy of item"
+        },
+        {
+          "name": "result_from_item",
+          "args": [
+            "item",
+            "account",
+            "technology"
+          ],
+          "lineno": 143,
+          "doc": ""
+        },
+        {
+          "name": "inactivate_old_revisions",
+          "args": [
+            "watcher",
+            "arns",
+            "account",
+            "technology"
+          ],
+          "lineno": 149,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore_utils.py"
+    }
+  ],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --source --omit D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests/** --omit D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests/* D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests\n  inifile: None\n  rootdir: D:\\code_assistant\\Git_repo\\Netflix__security_monkey\n\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests/*",
+        "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\reports\\Netflix__security_monkey\\generated_tests"
+      ]
+    },
+    "report": {
+      "stdout": "No data to report.\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}

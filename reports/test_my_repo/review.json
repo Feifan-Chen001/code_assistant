@@ -1,0 +1,19 @@
+{
+  "repo": "D:\\code_assistant\\my_repo",
+  "findings": [],
+  "tool_raw": {
+    "complexity_radon": {
+      "ok": true,
+      "stdout": "D:\\code_assistant\\my_repo\\generated_tests\\test_03_Grouping_Occupation_Exercises_with_solutions_8a840057.py\n    F 28:0 test_gender_to_numeric__basic_smoke - A (3)\n    F 38:0 test_gender_to_numeric__edge_cases - A (2)\n    F 43:0 test_gender_to_numeric__property_based - A (2)\nD:\\code_assistant\\my_repo\\generated_tests\\test_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions_4a90df1f.py\n    F 28:0 test_majority__basic_smoke - A (3)\n    F 51:0 test_times10__basic_smoke - A (3)\n    F 38:0 test_majority__edge_cases - A (2)\n    F 43:0 test_majority__property_based - A (2)\n    F 61:0 test_times10__edge_cases - A (2)\n    F 66:0 test_times10__property_based - A (2)\nD:\\code_assistant\\my_repo\\generated_tests\\test_06_Stats_Wind_Stats_Exercises_with_solutions_52bd6270.py\n    F 28:0 test_fix_century__basic_smoke - A (3)\n    F 38:0 test_fix_century__edge_cases - A (2)\n    F 43:0 test_fix_century__property_based - A (2)\nD:\\code_assistant\\my_repo\\generated_tests\\_notebooks\\nb_03_Grouping_Occupation_Exercises_with_solutions_8a840057.py\n    F 14:0 gender_to_numeric - A (3)\nD:\\code_assistant\\my_repo\\generated_tests\\_notebooks\\nb_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions_4a90df1f.py\n    F 30:0 majority - A (2)\n    F 41:0 times10 - A (2)\nD:\\code_assistant\\my_repo\\generated_tests\\_notebooks\\nb_06_Stats_Wind_Stats_Exercises_with_solutions_52bd6270.py\n    F 23:0 fix_century - A (2)\nD:\\code_assistant\\my_repo\\reports\\my_repo\\generated_tests\\test_pandas_exercises_03_Grouping_Occupation_Exercises_with_solutions_4d2677a7.py\n    F 28:0 test_gender_to_numeric__basic_smoke - A (3)\n    F 38:0 test_gender_to_numeric__edge_cases - A (2)\n    F 43:0 test_gender_to_numeric__property_based - A (2)\nD:\\code_assistant\\my_repo\\reports\\my_repo\\generated_tests\\test_pandas_exercises_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions_54e24148.py\n    F 28:0 test_majority__basic_smoke - A (3)\n    F 51:0 test_times10__basic_smoke - A (3)\n    F 38:0 test_majority__edge_cases - A (2)\n    F 43:0 test_majority__property_based - A (2)\n    F 61:0 test_times10__edge_cases - A (2)\n    F 66:0 test_times10__property_based - A (2)\nD:\\code_assistant\\my_repo\\reports\\my_repo\\generated_tests\\test_pandas_exercises_06_Stats_Wind_Stats_Exercises_with_solutions_98f08c35.py\n    F 28:0 test_fix_century__basic_smoke - A (3)\n    F 38:0 test_fix_century__edge_cases - A (2)\n    F 43:0 test_fix_century__property_based - A (2)\nD:\\code_assistant\\my_repo\\reports\\my_repo\\generated_tests\\_notebooks\\nb_pandas_exercises_03_Grouping_Occupation_Exercises_with_solutions_4d2677a7.py\n    F 14:0 gender_to_numeric - A (3)\nD:\\code_assistant\\my_repo\\reports\\my_repo\\generated_tests\\_notebooks\\nb_pandas_exercises_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions_54e24148.py\n    F 30:0 majority - A (2)\n    F 41:0 times10 - A (2)\nD:\\code_assistant\\my_repo\\reports\\my_repo\\generated_tests\\_notebooks\\nb_pandas_exercises_06_Stats_Wind_Stats_Exercises_with_solutions_98f08c35.py\n    F 23:0 fix_century - A (2)\n\n32 blocks (classes, functions, methods) analyzed.\nAverage complexity: A (2.3125)\n",
+      "stderr": ""
+    },
+    "mypy": {
+      "ok": false,
+      "stdout": "",
+      "stderr": "There are no .py[i] files in directory 'D:\\code_assistant\\my_repo'\n"
+    }
+  },
+  "stats": {
+    "total_findings": 0
+  }
+}

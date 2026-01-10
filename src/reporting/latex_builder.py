@@ -115,8 +115,9 @@ def build_latex_report(review: Optional[Dict[str, Any]], testgen: Optional[Dict[
             lines.append("\\endlastfoot")
             for row in rows:
                 fpath, ftype, symbol, grade, score = row
+                # 文件路径用 latex_path 处理（已包含转义），符号和等级用 latex_escape
                 lines.append(
-                    f"{latex_path(fpath)} & {latex_escape(ftype)} & {latex_path(symbol)} & "
+                    f"{latex_path(fpath)} & {latex_escape(ftype)} & {latex_escape(symbol)} & "
                     f"{latex_escape(grade)} & {latex_escape(score)} \\\\"
                 )
             lines.append("\\end{longtable}")
@@ -164,7 +165,7 @@ def build_latex_report(review: Optional[Dict[str, Any]], testgen: Optional[Dict[
                     name_cell = "\\textbf{TOTAL}"
                 else:
                     name_cell = latex_path(name)
-                miss_cell = latex_path(missing) if missing else ""
+                miss_cell = latex_escape(missing) if missing else ""
                 lines.append(
                     f"{name_cell} & {latex_escape(stmts)} & {latex_escape(miss)} & "
                     f"{latex_escape(cover)} & {miss_cell} \\\\"
@@ -183,6 +184,7 @@ def build_latex_report(review: Optional[Dict[str, Any]], testgen: Optional[Dict[
 def _latex_preamble() -> List[str]:
     return [
         "% !TeX program = xelatex",
+        "% !TeX encoding = UTF-8",
         "\\documentclass[11pt,a4paper]{article}",
         "\\usepackage{array}",
         "\\newcolumntype{L}[1]{>{\\raggedright\\arraybackslash}p{#1}}",
@@ -192,7 +194,7 @@ def _latex_preamble() -> List[str]:
         "\\newcolumntype{T}[1]{>{\\ttfamily\\raggedright\\arraybackslash}p{#1}}",
         "\\newcommand{\\codepath}[1]{\\path{#1}}",
         "",
-        "% ===== 中文与字体 =====",
+        "% ===== 中文与字体（支持UTF-8和中文路径） =====",
         "\\usepackage{xeCJK}",
         "\\setCJKmainfont{SimSun}",
         "\\setmonofont{Consolas}",
@@ -264,8 +266,16 @@ def latex_escape(text: str) -> str:
 
 
 def latex_path(path: str) -> str:
+    """处理路径，支持中文字符
+    
+    注意：\\path{} 命令（通过 \\codepath 别名）会自动处理特殊字符，
+    包括下划线、井号等，因此不需要手动转义这些字符。
+    只需要移除可能破坏 LaTeX 语法的字符如花括号。
+    """
     safe = str(path or "").replace("\\", "/")
+    # 移除可能破坏 LaTeX 语法的字符
     safe = safe.replace("{", "").replace("}", "")
+    # 不需要调用 latex_escape，因为 \path{} 命令会自动处理特殊字符
     return f"\\codepath{{{safe}}}"
 
 

@@ -6,59 +6,282 @@
 
 | 指标 | 值 |
 | --- | --- |
-| 问题总数 | 60 |
-| 高/中/低 | 60/0/0 |
-| 工具数 | 1 |
-| DS 规则数 | 0 |
+| 问题总数 | 123 |
+| 高/中/低 | 28/17/78 |
+| 工具数 | 3 |
+| DS 规则数 | 19 |
 
 ### 严重性分布
 
 | 严重性 | 数量 |
 | --- | --- |
-| high | 60 |
+| low | 78 |
+| high | 28 |
+| medium | 17 |
 
 ### 工具分布
 
 | 工具 | 数量 |
 | --- | --- |
-| pip-audit | 60 |
+| rule-plugin | 99 |
+| ds-rule | 19 |
+| ast-rule | 5 |
+
+### DS 规则分布
+
+| 规则 | 数量 |
+| --- | --- |
+| DS_PANDAS_SETTINGWITHCOPY | 19 |
 
 ### Top 20 问题
 
 | 严重性 | 工具 | 规则 | 位置 | 说明 |
 | --- | --- | --- | --- | --- |
-| high | pip-audit | VULN |  | None None -> CVE-2024-27306 ### Summary  A XSS vulnerability exists on index pages for static file handling.  ### Details  When using `web.static(..., show_index=True)`, the resul… |
-| high | pip-audit | VULN |  | None None -> CVE-2024-30251 ### Summary An attacker can send a specially crafted POST (multipart/form-data) request. When the aiohttp server processes it, the server will enter an… |
-| high | pip-audit | VULN |  | None None -> CVE-2024-52304 ### Summary The Python parser parses newlines in chunk extensions incorrectly which can lead to request smuggling vulnerabilities under certain conditi… |
-| high | pip-audit | VULN |  | None None -> CVE-2025-53643 ### Summary The Python parser is vulnerable to a request smuggling vulnerability due to not parsing trailer sections of an HTTP request.  ### Impact If… |
-| high | pip-audit | VULN |  | None None -> CVE-2025-6176 Scrapy versions up to 2.13.3 are vulnerable to a denial of service (DoS) attack due to a flaw in its brotli decompression implementation. The protection… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-225 cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. Starting in version 38.0.0 and prior to version… |
-| high | pip-audit | VULN |  | None None -> GHSA-h4gh-qq45-vh27 pyca/cryptography's wheels include a statically linked copy of OpenSSL. The versions of OpenSSL included in cryptography 37.0.0-43.0.0 are vulnera… |
-| high | pip-audit | VULN |  | None None -> CVE-2024-12797 pyca/cryptography's wheels include a statically linked copy of OpenSSL. The versions of OpenSSL included in cryptography 42.0.0-44.0.0 are vulnerable t… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-58 An issue was discovered in Django 5.0 before 5.0.7 and 4.2 before 4.2.14. Derived classes of the django.core.files.storage.Storage base class, when they… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-57 An issue was discovered in Django 5.0 before 5.0.7 and 4.2 before 4.2.14. The django.contrib.auth.backends.ModelBackend.authenticate() method allows rem… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-56 An issue was discovered in Django 4.2 before 4.2.14 and 5.0 before 5.0.7. urlize and urlizetrunc were subject to a potential denial of service attack vi… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-59 An issue was discovered in Django 5.0 before 5.0.7 and 4.2 before 4.2.14. get_supported_language_variant() was subject to a potential denial-of-service … |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-69 An issue was discovered in Django 5.0 before 5.0.8 and 4.2 before 4.2.15. The urlize and urlizetrunc template filters, and the AdminURLFieldWidget widge… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-70 An issue was discovered in Django 5.0 before 5.0.8 and 4.2 before 4.2.15. QuerySet.values() and values_list() methods on models with a JSONField are sub… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-68 An issue was discovered in Django 5.0 before 5.0.8 and 4.2 before 4.2.15. The urlize() and urlizetrunc() template filters are subject to a potential den… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-67 An issue was discovered in Django 5.0 before 5.0.8 and 4.2 before 4.2.15. The floatformat template filter is subject to significant memory consumption w… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2025-13 An issue was discovered in Django 5.1 before 5.1.7, 5.0 before 5.0.13, and 4.2 before 4.2.20. The django.utils.text.wrap() method and wordwrap template … |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-102 An issue was discovered in Django 5.1 before 5.1.1, 5.0 before 5.0.9, and 4.2 before 4.2.16. The urlize() and urlizetrunc() template filters are subjec… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-157 An issue was discovered in Django 5.1 before 5.1.4, 5.0 before 5.0.10, and 4.2 before 4.2.17. Direct usage of the django.db.models.fields.json.HasKey l… |
-| high | pip-audit | VULN |  | None None -> PYSEC-2024-156 An issue was discovered in Django 5.1 before 5.1.4, 5.0 before 5.0.10, and 4.2 before 4.2.17. The strip_tags() method and striptags template filter are… |
+| high | ds-rule | DS_PANDAS_SETTINGWITHCOPY | manage.py:141 | Chained indexing may trigger SettingWithCopy; use .loc/.iloc. |
+| high | rule-plugin | PY_RESOURCE_LEAK | manage.py:448 | open() 调用应在 with 语句中使用以确保正确关闭 |
+| high | rule-plugin | PY_RESOURCE_LEAK | manage.py:190 | open() 调用应在 with 语句中使用以确保正确关闭 |
+| high | rule-plugin | PY_RESOURCE_LEAK | manage.py:792 | open() 调用应在 with 语句中使用以确保正确关闭 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage.py:532 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage.py:413 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage.py:418 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage.py:532 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| high | ds-rule | DS_PANDAS_SETTINGWITHCOPY | manage_api.py:141 | Chained indexing may trigger SettingWithCopy; use .loc/.iloc. |
+| high | rule-plugin | PY_RESOURCE_LEAK | manage_api.py:448 | open() 调用应在 with 语句中使用以确保正确关闭 |
+| high | rule-plugin | PY_RESOURCE_LEAK | manage_api.py:190 | open() 调用应在 with 语句中使用以确保正确关闭 |
+| high | rule-plugin | PY_RESOURCE_LEAK | manage_api.py:792 | open() 调用应在 with 语句中使用以确保正确关闭 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage_api.py:532 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage_api.py:413 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage_api.py:418 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| low | rule-plugin | PY_LOOP_INVARIANT | manage_api.py:532 | 考虑在循环外计算长度，避免每次迭代都重新计算 |
+| high | ds-rule | DS_PANDAS_SETTINGWITHCOPY | scripts/secmonkey_role_setup.py:211 | Chained indexing may trigger SettingWithCopy; use .loc/.iloc. |
+| high | ds-rule | DS_PANDAS_SETTINGWITHCOPY | security_monkey/auditor.py:422 | Chained indexing may trigger SettingWithCopy; use .loc/.iloc. |
+| high | ds-rule | DS_PANDAS_SETTINGWITHCOPY | security_monkey/auditor.py:423 | Chained indexing may trigger SettingWithCopy; use .loc/.iloc. |
+| high | ds-rule | DS_PANDAS_SETTINGWITHCOPY | security_monkey/auditor.py:424 | Chained indexing may trigger SettingWithCopy; use .loc/.iloc. |
+
+### 复杂度摘要（Radon）
+
+```
+D:\code_assistant\Git_repo\Netflix__security_monkey\manage.py
+    F 436:0 add_override_scores - D (27)
+    F 355:0 add_override_score - C (15)
+    F 710:0 sync_swag - C (13)
+    F 572:0 _parse_accounts - B (7)
+    F 781:0 sync_networks - B (7)
+    F 185:0 amazon_accounts - B (6)
+    F 230:0 create_user - A (5)
+    F 112:0 delete_unjustified_issues - A (3)
+    F 129:0 export_environment_summary - A (3)
+    F 607:0 add_watcher_config - A (3)
+    C 655:0 APIServer - A (3)
+    M 672:4 APIServer.__call__ - A (3)
+    C 820:0 AddAccount - A (3)
+    M 839:4 AddAccount.__call__ - A (3)
+    F 69:0 run_change_reporter - A (2)
+    F 82:0 find_changes - A (2)
+    F 98:0 audit_changes - A (2)
+    F 151:0 backup_config_to_json - A (2)
+    F 164:0 sync_jira - A (2)
+    F 277:0 toggle_active_user - A (2)
+    F 326:0 disable_accounts - A (2)
+    F 338:0 enable_accounts - A (2)
+    F 565:0 _parse_tech_names - A (2)
+    F 862:0 main - A (2)
+    M 826:4 AddAccount.get_options - A (2)
+    F 63:0 drop_db - A (1)
+    F 174:0 clear_expired_exceptions - A (1)
+    F 596:0 delete_account - A (1)
+    F 631:0 fetch_aws_canonical_ids - A (1)
+    F 647:0 clean_stale_issues - A (1)
+    M 656:4 APIServer.__init__ - A (1)
+    M 660:4 APIServer.get_options - A (1)
+    M 821:4 AddAccount.__init__ - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\manage_api.py
+    F 436:0 add_override_scores - D (27)
+    F 355:0 add_override_score - C (15)
+    F 710:0 sync_swag - C (13)
+    F 572:0 _parse_accounts - B (7)
+    F 781:0 sync_networks - B (7)
+    F 185:0 amazon_accounts - B (6)
+    F 230:0 create_user - A (5)
+    F 112:0 delete_unjustified_issues - A (3)
+    F 129:0 export_environment_summary - A (3)
+    F 607:0 add_watcher_config - A (3)
+    C 655:0 APIServer - A (3)
+    M 672:4 APIServer.handle - A (3)
+    C 820:0 AddAccount - A (3)
+    M 839:4 AddAccount.handle - A (3)
+    F 69:0 run_change_reporter - A (2)
+    F 82:0 find_changes - A (2)
+    F 98:0 audit_changes - A (2)
+    F 151:0 backup_config_to_json - A (2)
+    F 164:0 sync_jira - A (2)
+    F 277:0 toggle_active_user - A (2)
+    F 326:0 disable_accounts - A (2)
+    F 338:0 enable_accounts - A (2)
+    F 565:0 _parse_tech_names - A (2)
+    F 862:0 main - A (2)
+    M 826:4 AddAccount.get_options - A (2)
+    F 63:0 drop_db - A (1)
+    F 174:0 clear_expired_exceptions - A (1)
+    F 596:0 delete_account - A (1)
+    F 631:0 fetch_aws_canonical_ids - A (1)
+    F 647:0 clean_stale_issues - A (1)
+    M 656:4 APIServer.__init__ - A (1)
+    M 660:4 APIServer.get_options - A (1)
+    M 821:4 AddAccount.__init__ - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\env-config\config-docker.py
+    F 20:0 env_to_bool - A (3)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\env.py
+    F 27:0 run_migrations_offline - A (1)
+    F 45:0 run_migrations_online - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\00c1dabdbe85_lengthen_account_name.py
+    F 17:0 upgrade - A (1)
+    F 24:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\0ae4ef82b244_.py
+    F 17:0 upgrade - A (1)
+    F 23:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\11f081cf54e2_.py
+    F 57:0 upgrade - B (6)
+    F 102:0 downgrade - A (1)
+    C 23:0 AccountType - A (1)
+    C 32:0 Account - A (1)
+    C 46:0 AccountTypeCustomValues - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\1583a48cb978_.py
+    F 17:0 upgrade - A (1)
+    F 25:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\15e39d43395f_.py
+    F 17:0 upgrade - A (1)
+    F 25:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\1727fb4309d8_.py
+    F 17:0 upgrade - A (1)
+    F 23:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\1a863bd1acb1_.py
+    F 29:0 upgrade - A (2)
+    F 38:0 downgrade - A (2)
+    C 23:0 Technology - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\1c847ae1209a_.py
+    F 17:0 upgrade - A (1)
+    F 23:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\2705e6e13a8f_.py
+    F 17:0 upgrade - A (1)
+    F 30:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\2ce75615b24d_.py
+    F 17:0 upgrade - A (1)
+    F 30:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\2ea41f4610fd_.py
+    F 17:0 upgrade - A (1)
+    F 23:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\331ca47ce8ad_.py
+    F 17:0 upgrade - A (1)
+    F 21:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\4ac52090a637_.py
+    F 17:0 upgrade - A (1)
+    F 23:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\51170afa2b48_custom_role_name.py
+    F 17:0 upgrade - A (1)
+    F 23:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\538eeb160af6_.py
+    F 35:0 upgrade - A (3)
+    F 49:0 downgrade - A (1)
+    C 28:0 User - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\55725cc4bf25_.py
+    F 46:0 update_custom_value - A (3)
+    F 63:0 update_from_custom_value - A (2)
+    F 76:0 upgrade - A (2)
+    F 95:0 downgrade - A (2)
+    C 26:0 Account - A (1)
+    C 35:0 AccountTypeCustomValues - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\57f648d4b597_.py
+    F 17:0 upgrade - A (1)
+    F 33:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\595e27f36454_.py
+    F 16:0 upgrade - A (1)
+    F 26:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\5bd631a1b748_.py
+    F 30:0 upgrade - A (1)
+    F 42:0 downgrade - A (1)
+    C 24:0 ItemAudit - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\61a6fd4b4500_.py
+    F 17:0 upgrade - A (1)
+    F 27:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\6245d75fa12_exceptions_table.py
+    F 17:0 upgrade - A (1)
+    F 45:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\67ea2aac5ea0_.py
+    F 17:0 upgrade - A (1)
+    F 32:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\6b9d673d8e30_added_index_for_itemrevision_created.py
+    F 17:0 upgrade - A (1)
+    F 21:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\6d2354fb841c_.py
+    F 17:0 upgrade - A (1)
+    F 32:0 downgrade - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\7c54b06e227b_.py
+    F 207:0 upgrade - B (6)
+    F 260:0 downgrade - A (1)
+    C 27:0 AccountType - A (1)
+    C 36:0 Account - A (1)
+    C 50:0 AccountTypeCustomValues - A (1)
+    C 61:0 ExceptionLogs - A (1)
+    C 89:0 ItemAudit - A (1)
+    C 113:0 Item - A (1)
+    C 136:0 ItemComment - A (1)
+    C 148:0 ItemRevisionComment - A (1)
+    C 160:0 ItemRevision - A (1)
+    C 175:0 CloudTrailEntry - A (1)
+    C 198:0 Technology - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\908b0085d28d_.py
+    F 45:0 upgrade - A (4)
+    C 25:0 User - A (2)
+    F 67:0 downgrade - A (1)
+    M 41:4 User.__str__ - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\a9fe9c93ed75_.py
+    F 44:0 remove_duplicate_issue_items - A (3)
+    F 66:0 remove_duplicate_association - A (3)
+    F 88:0 remove_duplicate_role_users - A (3)
+    F 110:0 upgrade - A (1)
+    F 142:0 downgrade - A (1)
+    C 23:0 IssueItemAssociation - A (1)
+    C 30:0 AssociationTable - A (1)
+    C 37:0 RolesUsers - A (1)
+D:\code_assistant\Git_repo\Netflix__security_monkey\migrations\versions\ad23a56abf25_.py
+    F 17:0 upgrade - A (1)
+    F 28:0 downgrade - A (1)
+D:\
+```
 
 ## 2. 测试生成（TestGen）
 
 | 指标 | 值 |
 | --- | --- |
-| 写入测试文件数 | 3 |
-| 覆盖函数数 | 4 |
-| 输出目录 | D:\code\PythonWithPycharm\DataMining\code_assistant\generated_tests |
+| 写入测试文件数 | 55 |
+| 覆盖函数数 | 200 |
+| 输出目录 | D:\code_assistant\Git_repo\generated_tests |
 
 ### 覆盖率报告（coverage report -m）
 
 ```
-No data to report.
+Name                                          Stmts   Miss  Cover   Missing
+---------------------------------------------------------------------------
+security_monkey\__init__.py                     186    182     2%   30-369
+security_monkey\account_manager.py              200    199     1%   25-398
+security_monkey\alerter.py                       57     55     4%   25-103
+security_monkey\auditor.py                      615    613     1%   26-1056
+security_monkey\backup.py                        30     29     3%   23-69
+security_monkey\celeryconfig.py                  10     10     0%   10-45
+security_monkey\cloudaux_batched_watcher.py      60     60     0%   1-98
+security_monkey\cloudaux_watcher.py              86     86     0%   1-138
+security_monkey\constants.py                      1      1     0%   25
+security_monkey\datastore.py                    473    472     1%   24-858
+security_monkey\datastore_utils.py               84     81     4%   5-184
+security_monkey\decorators.py                   125    123     2%   13-190
+security_monkey\exceptions.py                    95     95     0%   23-203
+security_monkey\jirasync.py                     111    111     0%   10-168
+security_monkey\manage.py                       544    540     1%   20-893
+security_monkey\monitors.py                      78     77     1%   11-132
+security_monkey\reporter.py                      38     38     0%   25-84
+security_monkey\watcher.py                      360    359     1%   12-714
+---------------------------------------------------------------------------
+TOTAL                                          3153   3131     1%
 
 ```

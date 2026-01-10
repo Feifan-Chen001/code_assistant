@@ -1,0 +1,628 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\kennethreitz__requests",
+  "output_dir": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests",
+  "written_files": 8,
+  "function_count": 63,
+  "generated": [
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\api.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests_api_8d535495.py",
+      "functions": [
+        {
+          "name": "request",
+          "args": [
+            "method",
+            "url"
+          ],
+          "lineno": 14,
+          "doc": "Constructs and sends a :class:`Request <Request>`.\n\n:param method: method for the new :class:`Request` object: ``GET``, ``OPTIONS``, ``HEAD``, ``POST``, ``PUT``, ``PATCH``, or ``DELETE``.\n:param url: URL for the new :class:`Request` object.\n:param params: (optional) Dictionary, list of tuples or bytes to send\n    in the query string for the :class:`Request`.\n:param data: (optional) Dictionary, list of tuples, bytes, or file-like\n    object to send in the body of the :class:`Request`.\n:param json: (optional) A JSON serializable Python object to send in the body of the :class:`Request`.\n:param headers: (optional) Dictionary of HTTP Headers to send with the :class:`Request`.\n:param cookies: (optional) Dict or CookieJar object to send with the :class:`Request`.\n:param files: (optional) Dictionary of ``'name': file-like-objects`` (or ``{'name': file-tuple}``) for multipart encoding upload.\n    ``file-tuple`` can be a 2-tuple ``('filename', fileobj)``, 3-tuple ``('filename', fileobj, 'content_type')``\n    or a 4-tuple ``('filename', fileobj, 'content_type', custom_headers)``, where ``'content_type'`` is a string\n    defining the content type of the given file and ``custom_headers`` a dict-like object containing additional headers\n    to add for the file.\n:param auth: (optional) Auth tuple to enable Basic/Digest/Custom HTTP Auth.\n:param timeout: (optional) How many seconds to wait for the server to send data\n    before giving up, as a float, or a :ref:`(connect timeout, read\n    timeout) <timeouts>` tuple.\n:type timeout: float or tuple\n:param allow_redirects: (optional) Boolean. Enable/disable GET/OPTIONS/POST/PUT/PATCH/DELETE/HEAD redirection. Defaults to ``True``.\n:type allow_redirects: bool\n:param proxies: (optional) Dictionary mapping protocol to the URL of the proxy.\n:param verify: (optional) Either a boolean, in which case it controls whether we verify\n        the server's TLS certificate, or a string, in which case it must be a path\n        to a CA bundle to use. Defaults to ``True``.\n:param stream: (optional) if ``False``, the response content will be immediately downloaded.\n:param cert: (optional) if String, path to ssl client cert file (.pem). If Tuple, ('cert', 'key') pair.\n:return: :class:`Response <Response>` object\n:rtype: requests.Response\n\nUsage::\n\n  >>> import requests\n  >>> req = requests.request('GET', 'https://httpbin.org/get')\n  >>> req\n  <Response [200]>"
+        },
+        {
+          "name": "get",
+          "args": [
+            "url",
+            "params"
+          ],
+          "lineno": 62,
+          "doc": "Sends a GET request.\n\n:param url: URL for the new :class:`Request` object.\n:param params: (optional) Dictionary, list of tuples or bytes to send\n    in the query string for the :class:`Request`.\n:param \\*\\*kwargs: Optional arguments that ``request`` takes.\n:return: :class:`Response <Response>` object\n:rtype: requests.Response"
+        },
+        {
+          "name": "options",
+          "args": [
+            "url"
+          ],
+          "lineno": 76,
+          "doc": "Sends an OPTIONS request.\n\n:param url: URL for the new :class:`Request` object.\n:param \\*\\*kwargs: Optional arguments that ``request`` takes.\n:return: :class:`Response <Response>` object\n:rtype: requests.Response"
+        },
+        {
+          "name": "head",
+          "args": [
+            "url"
+          ],
+          "lineno": 88,
+          "doc": "Sends a HEAD request.\n\n:param url: URL for the new :class:`Request` object.\n:param \\*\\*kwargs: Optional arguments that ``request`` takes. If\n    `allow_redirects` is not provided, it will be set to `False` (as\n    opposed to the default :meth:`request` behavior).\n:return: :class:`Response <Response>` object\n:rtype: requests.Response"
+        },
+        {
+          "name": "post",
+          "args": [
+            "url",
+            "data",
+            "json"
+          ],
+          "lineno": 103,
+          "doc": "Sends a POST request.\n\n:param url: URL for the new :class:`Request` object.\n:param data: (optional) Dictionary, list of tuples, bytes, or file-like\n    object to send in the body of the :class:`Request`.\n:param json: (optional) A JSON serializable Python object to send in the body of the :class:`Request`.\n:param \\*\\*kwargs: Optional arguments that ``request`` takes.\n:return: :class:`Response <Response>` object\n:rtype: requests.Response"
+        },
+        {
+          "name": "put",
+          "args": [
+            "url",
+            "data"
+          ],
+          "lineno": 118,
+          "doc": "Sends a PUT request.\n\n:param url: URL for the new :class:`Request` object.\n:param data: (optional) Dictionary, list of tuples, bytes, or file-like\n    object to send in the body of the :class:`Request`.\n:param json: (optional) A JSON serializable Python object to send in the body of the :class:`Request`.\n:param \\*\\*kwargs: Optional arguments that ``request`` takes.\n:return: :class:`Response <Response>` object\n:rtype: requests.Response"
+        },
+        {
+          "name": "patch",
+          "args": [
+            "url",
+            "data"
+          ],
+          "lineno": 133,
+          "doc": "Sends a PATCH request.\n\n:param url: URL for the new :class:`Request` object.\n:param data: (optional) Dictionary, list of tuples, bytes, or file-like\n    object to send in the body of the :class:`Request`.\n:param json: (optional) A JSON serializable Python object to send in the body of the :class:`Request`.\n:param \\*\\*kwargs: Optional arguments that ``request`` takes.\n:return: :class:`Response <Response>` object\n:rtype: requests.Response"
+        },
+        {
+          "name": "delete",
+          "args": [
+            "url"
+          ],
+          "lineno": 148,
+          "doc": "Sends a DELETE request.\n\n:param url: URL for the new :class:`Request` object.\n:param \\*\\*kwargs: Optional arguments that ``request`` takes.\n:return: :class:`Response <Response>` object\n:rtype: requests.Response"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\api.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\cookies.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests_cookies_facf211c.py",
+      "functions": [
+        {
+          "name": "extract_cookies_to_jar",
+          "args": [
+            "jar",
+            "request",
+            "response"
+          ],
+          "lineno": 124,
+          "doc": "Extract the cookies from the response into a CookieJar.\n\n:param jar: http.cookiejar.CookieJar (not necessarily a RequestsCookieJar)\n:param request: our own requests.Request object\n:param response: urllib3.HTTPResponse object"
+        },
+        {
+          "name": "get_cookie_header",
+          "args": [
+            "jar",
+            "request"
+          ],
+          "lineno": 140,
+          "doc": "Produce an appropriate Cookie header string to be sent with `request`, or None.\n\n:rtype: str"
+        },
+        {
+          "name": "remove_cookie_by_name",
+          "args": [
+            "cookiejar",
+            "name",
+            "domain",
+            "path"
+          ],
+          "lineno": 151,
+          "doc": "Unsets a cookie by name, by default over all domains and paths.\n\nWraps CookieJar.clear(), is O(n)."
+        },
+        {
+          "name": "create_cookie",
+          "args": [
+            "name",
+            "value"
+          ],
+          "lineno": 455,
+          "doc": "Make a cookie from underspecified parameters.\n\nBy default, the pair of `name` and `value` will be set for the domain ''\nand sent on every request (this is sometimes called a \"supercookie\")."
+        },
+        {
+          "name": "morsel_to_cookie",
+          "args": [
+            "morsel"
+          ],
+          "lineno": 492,
+          "doc": "Convert a Morsel object into a Cookie containing the one k/v pair."
+        },
+        {
+          "name": "cookiejar_from_dict",
+          "args": [
+            "cookie_dict",
+            "cookiejar",
+            "overwrite"
+          ],
+          "lineno": 521,
+          "doc": "Returns a CookieJar from a key/value dictionary.\n\n:param cookie_dict: Dict of key/values to insert into CookieJar.\n:param cookiejar: (optional) A cookiejar to add the cookies to.\n:param overwrite: (optional) If False, will not replace cookies\n    already in the jar with new ones.\n:rtype: CookieJar"
+        },
+        {
+          "name": "merge_cookies",
+          "args": [
+            "cookiejar",
+            "cookies"
+          ],
+          "lineno": 542,
+          "doc": "Add cookies to cookiejar and returns a merged CookieJar.\n\n:param cookiejar: CookieJar object to add the cookies to.\n:param cookies: Dictionary or CookieJar object to be added.\n:rtype: CookieJar"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\cookies.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\help.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests_help_c3c96fdd.py",
+      "functions": [
+        {
+          "name": "info",
+          "args": [],
+          "lineno": 69,
+          "doc": "Generate information for a bug report."
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 128,
+          "doc": "Pretty-print the bug information as JSON."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\help.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\hooks.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests_hooks_8dd95f9a.py",
+      "functions": [
+        {
+          "name": "default_hooks",
+          "args": [],
+          "lineno": 15,
+          "doc": ""
+        },
+        {
+          "name": "dispatch_hook",
+          "args": [
+            "key",
+            "hooks",
+            "hook_data"
+          ],
+          "lineno": 22,
+          "doc": "Dispatches a hook dictionary on a given piece of data."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\hooks.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\sessions.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests_sessions_9e5d8496.py",
+      "functions": [
+        {
+          "name": "merge_setting",
+          "args": [
+            "request_setting",
+            "session_setting",
+            "dict_class"
+          ],
+          "lineno": 61,
+          "doc": "Determines appropriate setting for a given request, taking into account\nthe explicit setting on that request, and the setting in the session. If a\nsetting is a dictionary, they will be merged together using `dict_class`"
+        },
+        {
+          "name": "merge_hooks",
+          "args": [
+            "request_hooks",
+            "session_hooks",
+            "dict_class"
+          ],
+          "lineno": 91,
+          "doc": "Properly merges both requests and session hooks.\n\nThis is necessary because when request_hooks == {'response': []}, the\nmerge breaks Session hooks entirely."
+        },
+        {
+          "name": "session",
+          "args": [],
+          "lineno": 819,
+          "doc": "Returns a :class:`Session` for context-management.\n\n.. deprecated:: 1.0.0\n\n    This method has been deprecated since version 1.0.0 and is only kept for\n    backwards compatibility. New code should use :class:`~requests.sessions.Session`\n    to create a session. This may be removed at a future date.\n\n:rtype: Session"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\sessions.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\utils.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests_utils_160415f0.py",
+      "functions": [
+        {
+          "name": "dict_to_sequence",
+          "args": [
+            "d"
+          ],
+          "lineno": 126,
+          "doc": "Returns an internal sequence dictionary update."
+        },
+        {
+          "name": "super_len",
+          "args": [
+            "o"
+          ],
+          "lineno": 135,
+          "doc": ""
+        },
+        {
+          "name": "get_netrc_auth",
+          "args": [
+            "url",
+            "raise_errors"
+          ],
+          "lineno": 204,
+          "doc": "Returns the Requests tuple auth for a given url from netrc."
+        },
+        {
+          "name": "guess_filename",
+          "args": [
+            "obj"
+          ],
+          "lineno": 261,
+          "doc": "Tries to guess the filename of the given object."
+        },
+        {
+          "name": "extract_zipped_paths",
+          "args": [
+            "path"
+          ],
+          "lineno": 268,
+          "doc": "Replace nonexistent paths that look like they refer to a member of a zip\narchive with the location of an extracted copy of the target, or else\njust return the provided path unchanged."
+        },
+        {
+          "name": "atomic_open",
+          "args": [
+            "filename"
+          ],
+          "lineno": 306,
+          "doc": "Write a file to the disk in an atomic fashion"
+        },
+        {
+          "name": "from_key_val_list",
+          "args": [
+            "value"
+          ],
+          "lineno": 318,
+          "doc": "Take an object and test to see if it can be represented as a\ndictionary. Unless it can not be represented as such, return an\nOrderedDict, e.g.,\n\n::\n\n    >>> from_key_val_list([('key', 'val')])\n    OrderedDict([('key', 'val')])\n    >>> from_key_val_list('string')\n    Traceback (most recent call last):\n    ...\n    ValueError: cannot encode objects that are not 2-tuples\n    >>> from_key_val_list({'key': 'val'})\n    OrderedDict([('key', 'val')])\n\n:rtype: OrderedDict"
+        },
+        {
+          "name": "to_key_val_list",
+          "args": [
+            "value"
+          ],
+          "lineno": 345,
+          "doc": "Take an object and test to see if it can be represented as a\ndictionary. If it can be, return a list of tuples, e.g.,\n\n::\n\n    >>> to_key_val_list([('key', 'val')])\n    [('key', 'val')]\n    >>> to_key_val_list({'key': 'val'})\n    [('key', 'val')]\n    >>> to_key_val_list('string')\n    Traceback (most recent call last):\n    ...\n    ValueError: cannot encode objects that are not 2-tuples\n\n:rtype: list"
+        },
+        {
+          "name": "parse_list_header",
+          "args": [
+            "value"
+          ],
+          "lineno": 375,
+          "doc": "Parse lists as described by RFC 2068 Section 2.\n\nIn particular, parse comma-separated lists where the elements of\nthe list may include quoted-strings.  A quoted-string could\ncontain a comma.  A non-quoted string could have quotes in the\nmiddle.  Quotes are removed automatically after parsing.\n\nIt basically works like :func:`parse_set_header` just that items\nmay appear multiple times and case sensitivity is preserved.\n\nThe return value is a standard :class:`list`:\n\n>>> parse_list_header('token, \"quoted value\"')\n['token', 'quoted value']\n\nTo create a header from the :class:`list` again, use the\n:func:`dump_header` function.\n\n:param value: a string with a list header.\n:return: :class:`list`\n:rtype: list"
+        },
+        {
+          "name": "parse_dict_header",
+          "args": [
+            "value"
+          ],
+          "lineno": 407,
+          "doc": "Parse lists of key, value pairs as described by RFC 2068 Section 2 and\nconvert them into a python dict:\n\n>>> d = parse_dict_header('foo=\"is a fish\", bar=\"as well\"')\n>>> type(d) is dict\nTrue\n>>> sorted(d.items())\n[('bar', 'as well'), ('foo', 'is a fish')]\n\nIf there is no value for a key it will be `None`:\n\n>>> parse_dict_header('key_without_value')\n{'key_without_value': None}\n\nTo create a header from the :class:`dict` again, use the\n:func:`dump_header` function.\n\n:param value: a string with a dict header.\n:return: :class:`dict`\n:rtype: dict"
+        },
+        {
+          "name": "unquote_header_value",
+          "args": [
+            "value",
+            "is_filename"
+          ],
+          "lineno": 442,
+          "doc": "Unquotes a header value.  (Reversal of :func:`quote_header_value`).\nThis does not use the real unquoting but what browsers are actually\nusing for quoting.\n\n:param value: the header value to unquote.\n:rtype: str"
+        },
+        {
+          "name": "dict_from_cookiejar",
+          "args": [
+            "cj"
+          ],
+          "lineno": 467,
+          "doc": "Returns a key/value dictionary from a CookieJar.\n\n:param cj: CookieJar object to extract cookies from.\n:rtype: dict"
+        },
+        {
+          "name": "add_dict_to_cookiejar",
+          "args": [
+            "cj",
+            "cookie_dict"
+          ],
+          "lineno": 478,
+          "doc": "Returns a CookieJar from a key/value dictionary.\n\n:param cj: CookieJar to insert cookies into.\n:param cookie_dict: Dict of key/values to insert into CookieJar.\n:rtype: CookieJar"
+        },
+        {
+          "name": "get_encodings_from_content",
+          "args": [
+            "content"
+          ],
+          "lineno": 489,
+          "doc": "Returns encodings from given content string.\n\n:param content: bytestring to extract encodings from."
+        },
+        {
+          "name": "get_encoding_from_headers",
+          "args": [
+            "headers"
+          ],
+          "lineno": 539,
+          "doc": "Returns encodings from given HTTP Header Dict.\n\n:param headers: dictionary to extract encoding from.\n:rtype: str"
+        },
+        {
+          "name": "stream_decode_response_unicode",
+          "args": [
+            "iterator",
+            "r"
+          ],
+          "lineno": 564,
+          "doc": "Stream decodes an iterator."
+        },
+        {
+          "name": "iter_slices",
+          "args": [
+            "string",
+            "slice_length"
+          ],
+          "lineno": 581,
+          "doc": "Iterate over slices of a string."
+        },
+        {
+          "name": "get_unicode_from_response",
+          "args": [
+            "r"
+          ],
+          "lineno": 591,
+          "doc": "Returns the requested content back in unicode.\n\n:param r: Response object to get unicode content from.\n\nTried:\n\n1. charset from content-type\n2. fall back and replace all unicode characters\n\n:rtype: str"
+        },
+        {
+          "name": "unquote_unreserved",
+          "args": [
+            "uri"
+          ],
+          "lineno": 636,
+          "doc": "Un-escape any percent-escape sequences in a URI that are unreserved\ncharacters. This leaves all reserved, illegal and non-ASCII bytes encoded.\n\n:rtype: str"
+        },
+        {
+          "name": "requote_uri",
+          "args": [
+            "uri"
+          ],
+          "lineno": 660,
+          "doc": "Re-quote the given URI.\n\nThis function passes the given URI through an unquote/quote cycle to\nensure that it is fully and consistently quoted.\n\n:rtype: str"
+        },
+        {
+          "name": "address_in_network",
+          "args": [
+            "ip",
+            "net"
+          ],
+          "lineno": 682,
+          "doc": "This function allows you to check if an IP belongs to a network subnet\n\nExample: returns True if ip = 192.168.1.1 and net = 192.168.1.0/24\n         returns False if ip = 192.168.1.1 and net = 192.168.100.0/24\n\n:rtype: bool"
+        },
+        {
+          "name": "dotted_netmask",
+          "args": [
+            "mask"
+          ],
+          "lineno": 697,
+          "doc": "Converts mask from /xx format to xxx.xxx.xxx.xxx\n\nExample: if mask is 24 function returns 255.255.255.0\n\n:rtype: str"
+        },
+        {
+          "name": "is_ipv4_address",
+          "args": [
+            "string_ip"
+          ],
+          "lineno": 708,
+          "doc": ":rtype: bool"
+        },
+        {
+          "name": "is_valid_cidr",
+          "args": [
+            "string_network"
+          ],
+          "lineno": 719,
+          "doc": "Very simple check of the cidr format in no_proxy variable.\n\n:rtype: bool"
+        },
+        {
+          "name": "set_environ",
+          "args": [
+            "env_name",
+            "value"
+          ],
+          "lineno": 744,
+          "doc": "Set the environment variable 'env_name' to 'value'\n\nSave previous value, yield, and then restore the previous value stored in\nthe environment variable 'env_name'.\n\nIf 'value' is None, do nothing"
+        },
+        {
+          "name": "should_bypass_proxies",
+          "args": [
+            "url",
+            "no_proxy"
+          ],
+          "lineno": 765,
+          "doc": "Returns whether we should bypass proxies or not.\n\n:rtype: bool"
+        },
+        {
+          "name": "get_environ_proxies",
+          "args": [
+            "url",
+            "no_proxy"
+          ],
+          "lineno": 826,
+          "doc": "Return a dict of environment proxies.\n\n:rtype: dict"
+        },
+        {
+          "name": "select_proxy",
+          "args": [
+            "url",
+            "proxies"
+          ],
+          "lineno": 838,
+          "doc": "Select a proxy for the url, if applicable.\n\n:param url: The url being for the request\n:param proxies: A dictionary of schemes or schemes and hosts to proxy URLs"
+        },
+        {
+          "name": "resolve_proxies",
+          "args": [
+            "request",
+            "proxies",
+            "trust_env"
+          ],
+          "lineno": 864,
+          "doc": "This method takes proxy information from a request and configuration\ninput to resolve a mapping of target proxies. This will consider settings\nsuch as NO_PROXY to strip proxy configurations.\n\n:param request: Request or PreparedRequest\n:param proxies: A dictionary of schemes or schemes and hosts to proxy URLs\n:param trust_env: Boolean declaring whether to trust environment configs\n\n:rtype: dict"
+        },
+        {
+          "name": "default_user_agent",
+          "args": [
+            "name"
+          ],
+          "lineno": 891,
+          "doc": "Return a string representing the default user agent.\n\n:rtype: str"
+        },
+        {
+          "name": "default_headers",
+          "args": [],
+          "lineno": 900,
+          "doc": ":rtype: requests.structures.CaseInsensitiveDict"
+        },
+        {
+          "name": "parse_header_links",
+          "args": [
+            "value"
+          ],
+          "lineno": 914,
+          "doc": "Return a list of parsed link headers proxies.\n\ni.e. Link: <http:/.../front.jpeg>; rel=front; type=\"image/jpeg\",<http://.../back.jpeg>; rel=back;type=\"image/jpeg\"\n\n:rtype: list"
+        },
+        {
+          "name": "guess_json_utf",
+          "args": [
+            "data"
+          ],
+          "lineno": 957,
+          "doc": ":rtype: str"
+        },
+        {
+          "name": "prepend_scheme_if_needed",
+          "args": [
+            "url",
+            "new_scheme"
+          ],
+          "lineno": 989,
+          "doc": "Given a URL that may or may not have a scheme, prepend the given scheme.\nDoes not replace a present scheme with the one provided as an argument.\n\n:rtype: str"
+        },
+        {
+          "name": "get_auth_from_url",
+          "args": [
+            "url"
+          ],
+          "lineno": 1018,
+          "doc": "Given a url with authentication components, extract them into a tuple of\nusername,password.\n\n:rtype: (str,str)"
+        },
+        {
+          "name": "check_header_validity",
+          "args": [
+            "header"
+          ],
+          "lineno": 1034,
+          "doc": "Verifies that header parts don't contain leading whitespace\nreserved characters, or return characters.\n\n:param header: tuple, in the format (name, value)."
+        },
+        {
+          "name": "urldefragauth",
+          "args": [
+            "url"
+          ],
+          "lineno": 1064,
+          "doc": "Given a url remove the fragment and the authentication part.\n\n:rtype: str"
+        },
+        {
+          "name": "rewind_body",
+          "args": [
+            "prepared_request"
+          ],
+          "lineno": 1081,
+          "doc": "Move file pointer back to its recorded starting position\nso it can be read again on redirect."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\utils.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\_internal_utils.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests__internal_utils_86097123.py",
+      "functions": [
+        {
+          "name": "to_native_string",
+          "args": [
+            "string",
+            "encoding"
+          ],
+          "lineno": 25,
+          "doc": "Given a string object, regardless of type, returns a representation of\nthat string in the native string type, encoding and decoding where\nnecessary. This assumes ASCII unless told otherwise."
+        },
+        {
+          "name": "unicode_is_ascii",
+          "args": [
+            "u_string"
+          ],
+          "lineno": 38,
+          "doc": "Determine if unicode string only contains ASCII characters.\n\n:param str u_string: unicode string to check. Must be unicode\n    and not Python 2 `str`.\n:rtype: bool"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\_internal_utils.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\\test_src_requests___init_804344e7.py",
+      "functions": [
+        {
+          "name": "check_compatibility",
+          "args": [
+            "urllib3_version",
+            "chardet_version",
+            "charset_normalizer_version"
+          ],
+          "lineno": 58,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src\\requests\\__init__.py"
+    }
+  ],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --source --omit D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests/** --omit D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests/* --omit D:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests/** D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests\n  inifile: D:\\code_assistant\\Git_repo\\kennethreitz__requests\\pyproject.toml\n  rootdir: D:\\code_assistant\\Git_repo\\kennethreitz__requests\n\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\src",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests/*",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\tests/**",
+        "D:\\code_assistant\\Git_repo\\kennethreitz__requests\\reports\\kennethreitz__requests\\generated_tests"
+      ]
+    },
+    "report": {
+      "stdout": "No data to report.\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}

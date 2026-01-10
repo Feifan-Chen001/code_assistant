@@ -1,0 +1,91 @@
+{
+  "repo": "D:\\code_assistant\\my_repo",
+  "output_dir": "D:\\code_assistant\\generated_tests",
+  "written_files": 3,
+  "function_count": 4,
+  "generated": [
+    {
+      "source": "D:\\code_assistant\\my_repo\\pandas_exercises\\03_Grouping\\Occupation\\Exercises_with_solutions.ipynb",
+      "test_file": "D:\\code_assistant\\generated_tests\\test_pandas_exercises_03_Grouping_Occupation_Exercises_with_solutions_4d2677a7.py",
+      "functions": [
+        {
+          "name": "gender_to_numeric",
+          "args": [
+            "x"
+          ],
+          "lineno": 14,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\generated_tests\\_notebooks\\nb_pandas_exercises_03_Grouping_Occupation_Exercises_with_solutions_4d2677a7.py"
+    },
+    {
+      "source": "D:\\code_assistant\\my_repo\\pandas_exercises\\04_Apply\\Students_Alcohol_Consumption\\Exercises_with_solutions.ipynb",
+      "test_file": "D:\\code_assistant\\generated_tests\\test_pandas_exercises_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions_54e24148.py",
+      "functions": [
+        {
+          "name": "majority",
+          "args": [
+            "x"
+          ],
+          "lineno": 30,
+          "doc": ""
+        },
+        {
+          "name": "times10",
+          "args": [
+            "x"
+          ],
+          "lineno": 41,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\generated_tests\\_notebooks\\nb_pandas_exercises_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions_54e24148.py"
+    },
+    {
+      "source": "D:\\code_assistant\\my_repo\\pandas_exercises\\06_Stats\\Wind_Stats\\Exercises_with_solutions.ipynb",
+      "test_file": "D:\\code_assistant\\generated_tests\\test_pandas_exercises_06_Stats_Wind_Stats_Exercises_with_solutions_98f08c35.py",
+      "functions": [
+        {
+          "name": "fix_century",
+          "args": [
+            "x"
+          ],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\generated_tests\\_notebooks\\nb_pandas_exercises_06_Stats_Wind_Stats_Exercises_with_solutions_98f08c35.py"
+    }
+  ],
+  "coverage": {
+    "ok": false,
+    "pytest": {
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --source --omit D:\\code_assistant\\generated_tests/** --omit D:\\code_assistant\\generated_tests/* D:\\code_assistant\\generated_tests\n  inifile: D:\\code_assistant\\my_repo\\pyproject.toml\n  rootdir: D:\\code_assistant\\my_repo\n\nD:\\code_assistant\\.venv\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "cmd": [
+        "coverage",
+        "run",
+        "-m",
+        "pytest",
+        "-q",
+        "--source",
+        "D:\\code_assistant\\my_repo",
+        "--omit",
+        "D:\\code_assistant\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\generated_tests/*",
+        "D:\\code_assistant\\generated_tests"
+      ]
+    },
+    "report": {
+      "stdout": "No data to report.\n",
+      "stderr": "",
+      "cmd": [
+        "coverage",
+        "report",
+        "-m"
+      ]
+    }
+  }
+}

@@ -1,0 +1,151 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[11pt,a4paper]{article}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{booktabs}
+\newcolumntype{T}[1]{>{\ttfamily\raggedright\arraybackslash}p{#1}}
+\newcommand{\codepath}[1]{\path{#1}}
+
+% ===== 中文与字体（支持UTF-8和中文路径） =====
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\setmonofont{Consolas}
+\setCJKmonofont{SimSun}
+\usepackage{fontspec}
+
+% ===== 页面与排版 =====
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{microtype}
+
+% ===== 数学/符号 =====
+\usepackage{amsmath,amssymb}
+
+% ===== 链接 =====
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+% ===== 表格 =====
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% ===== 代码块 =====
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  frame=single,
+  framerule=0.3pt,
+  rulecolor=\color{black!25},
+  xleftmargin=1.2em,
+  xrightmargin=0.6em,
+  aboveskip=0.8em,
+  belowskip=0.8em
+}
+
+% ===== 标题格式 =====
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CodeAssistant 报告}}\\[4pt]
+{\normalsize （由自动审查与测试生成系统输出）}
+\end{center}
+
+\vspace{0.5em}
+\tableofcontents
+\vspace{0.8em}
+\hrule
+\vspace{1.2em}
+
+\section{代码审查（Review）}
+
+\subsection{概览}
+\begin{itemize}
+  \item 问题总数：0
+  \item 高/中/低：0 / 0 / 0
+  \item 工具数：0
+  \item DS 规则命中总数：0
+\end{itemize}
+
+\subsection{复杂度摘要}
+\begin{itemize}
+  \item 来源：Radon Cyclomatic Complexity（CC）
+  \item 说明：等级通常为 A（简单）到 F（复杂），括号内为复杂度分数
+\end{itemize}
+
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{6.6cm} L{1.1cm} T{5.2cm} L{0.9cm} r}
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endfirsthead
+\toprule
+文件 & 类型 & 符号（函数/方法） & 等级 & 分数 \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & M & ReadmeItem.runtest & B & 6 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & C & ReadmeFile & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & C & ReadmeItem & A & 3 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & F & pytest\_collect\_file & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & M & ReadmeFile.collect & A & 2 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & F & fake\_print & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & F & \_with\_patched\_sleep & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & C & MyPyValidationError & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & M & ReadmeItem.\_\_init\_\_ & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & M & ReadmeItem.repr\_failure & A & 1 \\
+\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/conftest.py} & M & ReadmeItem.reportinfo & A & 1 \\
+\end{longtable}
+\normalsize
+
+\section{测试生成（TestGen）}
+
+\subsection{指标}
+\begin{itemize}
+  \item 写入测试文件数：0
+  \item 覆盖函数数：0
+  \item 输出目录：\codepath{D:/code\_assistant/Git\_repo/zedr\_\_clean-code-python/reports/zedr\_\_clean-code-python/generated\_tests}
+\end{itemize}
+
+\subsection{覆盖率报告}
+\small
+\setlength{\emergencystretch}{2em}
+\begin{longtable}{T{7.2cm} r r r T{5.2cm}}
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endfirsthead
+\toprule
+Name & Stmts & Miss & Cover & Missing \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{（续下页）}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\codepath{conftest.py} & 46 & 26 & 43\% & 19, 24-25, 33-35, 42-47, 60-61, 65-78, 82, 89 \\
+\textbf{TOTAL} & 46 & 26 & 43\% &  \\
+\end{longtable}
+\normalsize
+
+\end{document}

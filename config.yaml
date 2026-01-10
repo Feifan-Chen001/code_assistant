@@ -13,6 +13,17 @@
     - "**/.mypy_cache/**"
     - "**/.pytest_cache/**"
     - "**/.coverage"
+    - "**/generated_tests/**"
+    - "**/reports/**"
+    - "tests/**"
+    - "test/**"
+    - "**/tests/**"
+    - "**/test/**"
+    - "**/test_*.py"
+    - "**/*_test.py"
+    - "**/conftest.py"
+    - "generated_tests/**"
+    - "reports/**"
 review:
   enable_ruff: true
   enable_mypy: true
@@ -26,8 +37,13 @@ review:
   mypy_args: ["--show-error-codes", "--no-error-summary"]
   bandit_args: ["-r", "-f", "json"]
   pip_audit_args: ["-f", "json"]
+  tool_excludes:
+    - "generated_tests"
+    - "reports"
+    - "tests"
+    - "test"
 testgen:
-  output_dir: "generated_tests"
+  output_dir: "../generated_tests"
   use_hypothesis: true
   max_functions: 200
 coverage:
@@ -42,4 +58,3 @@ llm:
   max_tokens: 1200
   timeout: 60
   allow_empty_key: false
-

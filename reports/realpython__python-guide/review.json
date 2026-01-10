@@ -1,0 +1,518 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\realpython__python-guide",
+  "findings": [
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2021-421 Babel.Locale in Babel before 2.9.1 allows attackers to load arbitrary locale .dat files (containing serialized Python objects) via directory traversal, leading to code execution.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.9.1"
+        ],
+        "aliases": [
+          "GHSA-h4m5-qpfp-3mpv",
+          "CVE-2021-42771"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2022-42986 Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi 2022.12.07 removes root certificates from \"TrustCor\" from the root store. These are in the process of being removed from Mozilla's trust store. TrustCor's root certificates are being removed pursuant to an investigation prompted by media reporting that TrustCor's ownership also operated a business that produced spyware. Conclusions of Mozilla's investigation can be found in the linked google group discussion.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2022.12.7"
+        ],
+        "aliases": [
+          "GHSA-43fp-rhv2-5gv8",
+          "CVE-2022-23491"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2023-135 Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store. These are in the process of being removed from Mozilla's trust store. e-Tugra's root certificates are being removed pursuant to an investigation prompted by reporting of security issues in their systems.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2023.7.22"
+        ],
+        "aliases": [
+          "CVE-2023-37920",
+          "GHSA-xqr8-7jwr-rhp7"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2024-60 A vulnerability was identified in the kjd/idna library, specifically within the `idna.encode()` function, affecting version 3.6. The issue arises from the function's handling of crafted input strings, which can lead to quadratic complexity and consequently, a denial of service condition. This vulnerability is triggered by a crafted input that causes the `idna.encode()` function to process the input with considerable computational load, significantly increasing the processing time in a quadratic manner relative to the input size.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "3.7"
+        ],
+        "aliases": [
+          "CVE-2024-3651",
+          "GHSA-jjg7-2v4v-x38h"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2021-66 This affects the package jinja2 from 0.0.0 and before 2.11.3. The ReDoS vulnerability is mainly due to the `_punctuation_re regex` operator and its use of multiple wildcards. The last wildcard is the most exploitable as it searches for trailing punctuation. This issue can be mitigated by Markdown to format user content instead of the urlize filter, or by implementing request timeouts and limiting process memory.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.11.3"
+        ],
+        "aliases": [
+          "CVE-2020-28493",
+          "GHSA-g3rq-g295-4j3m",
+          "SNYK-PYTHON-JINJA2-1012994"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2019-217 In Pallets Jinja before 2.10.1, str.format_map allows a sandbox escape.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.10.1"
+        ],
+        "aliases": [
+          "GHSA-462w-v97r-4m45",
+          "CVE-2019-10906"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-22195 The `xmlattr` filter in affected versions of Jinja accepts keys containing spaces. XML/HTML attributes cannot contain spaces, as each would then be interpreted as a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. Note that accepting keys as user input is not common or a particularly intended use case of the `xmlattr` filter, and an application doing so should already be verifying what keys are provided regardless of this fix.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "3.1.3"
+        ],
+        "aliases": [
+          "GHSA-h5c8-rqwp-cp95"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-34064 The `xmlattr` filter in affected versions of Jinja accepts keys containing non-attribute characters. XML/HTML attributes cannot contain spaces, `/`, `>`, or `=`, as each would then be interpreted as starting a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. The fix for the previous GHSA-h5c8-rqwp-cp95 CVE-2024-22195 only addressed spaces but not other characters.  Accepting keys as user input is now explicitly considered an unintended use case of the `xmlattr` filter, and code that does so without otherwise validating the input should be flagged as insecure, regardless of Jinja version. Accepting _values_ as user input continues to be safe.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "3.1.4"
+        ],
+        "aliases": [
+          "GHSA-h75v-3vvj-5mfj"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-56326 An oversight in how the Jinja sandboxed environment detects calls to `str.format` allows an attacker that controls the content of a template to execute arbitrary Python code.  To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.  Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to store a reference to a malicious string's `format` method, then pass that to a filter that calls it. No such filters are built-in to Jinja, but could be present through custom filters in an application. After the fix, such indirect calls are also handled by the sandbox.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "3.1.5"
+        ],
+        "aliases": [
+          "GHSA-q2x7-8rv6-6q7h"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2025-27516 An oversight in how the Jinja sandboxed environment interacts with the `|attr` filter allows an attacker that controls the content of a template to execute arbitrary Python code.  To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.  Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to use the `|attr` filter to get a reference to a string's plain format method, bypassing the sandbox. After the fix, the `|attr` filter no longer bypasses the environment's attribute lookup.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "3.1.6"
+        ],
+        "aliases": [
+          "GHSA-cpwx-vrp4-4pq7"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2021-140 An infinite loop in SMLLexer in Pygments versions 1.5 to 2.7.3 may lead to denial of service when performing syntax highlighting of a Standard ML (SML) source file, as demonstrated by input that only contains the \"exception\" keyword.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.7.4"
+        ],
+        "aliases": [
+          "GHSA-9w8r-397f-prfh",
+          "CVE-2021-20270"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2021-141 In pygments 1.1+, fixed in 2.7.4, the lexers used to parse programming languages rely heavily on regular expressions. Some of the regular expressions have exponential or cubic worst-case complexity and are vulnerable to ReDoS. By crafting malicious input, an attacker can cause a denial of service.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.7.4"
+        ],
+        "aliases": [
+          "GHSA-pq64-v7f5-gqh8",
+          "CVE-2021-27291"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2023-117 A ReDoS issue was discovered in pygments/lexers/smithy.py in pygments through 2.15.0 via SmithyLexer.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.15.1"
+        ],
+        "aliases": [
+          "GHSA-mrwq-x4v8-fh7p",
+          "CVE-2022-40896"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2018-28 The Requests package before 2.20.0 for Python sends an HTTP Authorization header to an http URI upon receiving a same-hostname https-to-http redirect, which makes it easier for remote attackers to discover credentials by sniffing the network.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.20.0"
+        ],
+        "aliases": [
+          "CVE-2018-18074",
+          "GHSA-x84v-xcm2-53pg"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2023-74 Requests is a HTTP library. Since Requests 2.3.0, Requests has been leaking Proxy-Authorization headers to destination servers when redirected to an HTTPS endpoint. This is a product of how we use `rebuild_proxies` to reattach the `Proxy-Authorization` header to requests. For HTTP connections sent through the tunnel, the proxy will identify the header in the request itself and remove it prior to forwarding to the destination server. However when sent over HTTPS, the `Proxy-Authorization` header must be sent in the CONNECT request as the proxy has no visibility into the tunneled request. This results in Requests forwarding proxy credentials to the destination server unintentionally, allowing a malicious actor to potentially exfiltrate sensitive information. This issue has been patched in version 2.31.0.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.31.0"
+        ],
+        "aliases": [
+          "CVE-2023-32681",
+          "GHSA-j8r2-6x86-q33q"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-35195 When making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same origin will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool.  ### Remediation Any of these options can be used to remediate the current issue, we highly recommend upgrading as the preferred mitigation.  * Upgrade to `requests>=2.32.0`. * For `requests<2.32.0`, avoid setting `verify=False` for the first request to a host while using a Requests Session. * For `requests<2.32.0`, call `close()` on `Session` objects to clear existing connections if `verify=False` is used.  ### Related Links * https://github.com/psf/requests/pull/6655",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.32.0"
+        ],
+        "aliases": [
+          "GHSA-9wx4-h78v-vm56"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-47081 ### Impact  Due to a URL parsing issue, Requests releases prior to 2.32.4 may leak .netrc credentials to third parties for specific maliciously-crafted URLs.  ### Workarounds For older versions of Requests, use of the .netrc file can be disabled with `trust_env=False` on your Requests Session ([docs](https://requests.readthedocs.io/en/latest/api/#requests.Session.trust_env)).  ### References https://github.com/psf/requests/pull/6965 https://seclists.org/fulldisclosure/2025/Jun/2",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.32.4"
+        ],
+        "aliases": [
+          "GHSA-9hjg-9r4m-mvj7"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2021-108 An issue was discovered in urllib3 before 1.26.5. When provided with a URL containing many @ characters in the authority component, the authority regular expression exhibits catastrophic backtracking, causing a denial of service if a URL were passed as a parameter or redirected to via an HTTP redirect.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.26.5"
+        ],
+        "aliases": [
+          "CVE-2021-33503",
+          "GHSA-q2q7-5pp4-w6pg"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2019-133 The urllib3 library before 1.24.2 for Python mishandles certain cases where the desired set of CA certificates is different from the OS store of CA certificates, which results in SSL connections succeeding in situations where a verification failure is the correct outcome. This is related to use of the ssl_context, ca_certs, or ca_certs_dir argument.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.24.2"
+        ],
+        "aliases": [
+          "CVE-2019-11324",
+          "GHSA-mh33-7rrq-662w"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2019-132 In the urllib3 library through 1.24.1 for Python, CRLF injection is possible if the attacker controls the request parameter.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.24.3"
+        ],
+        "aliases": [
+          "GHSA-r64q-w8jr-g9qp",
+          "CVE-2019-11236"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2020-148 urllib3 before 1.25.9 allows CRLF injection if the attacker controls the HTTP request method, as demonstrated by inserting CR and LF control characters in the first argument of putrequest(). NOTE: this is similar to CVE-2020-26116.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.25.9"
+        ],
+        "aliases": [
+          "CVE-2020-26137",
+          "GHSA-wqvq-5m8c-6g24"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2023-192 urllib3 is a user-friendly HTTP client library for Python. urllib3 doesn't treat the `Cookie` HTTP header special or provide any helpers for managing cookies over HTTP, that is the responsibility of the user. However, it is possible for a user to specify a `Cookie` header and unknowingly leak information via HTTP redirects to a different origin if that user doesn't disable redirects explicitly. This issue has been patched in urllib3 version 1.26.17 or 2.0.5.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.26.17",
+          "2.0.6"
+        ],
+        "aliases": [
+          "GHSA-v845-jxx5-vc9f",
+          "CVE-2023-43804"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2023-207 urllib3 before 1.24.2 does not remove the authorization HTTP header when following a cross-origin redirect (i.e., a redirect that differs in host, port, or scheme). This can allow for credentials in the authorization header to be exposed to unintended hosts or transmitted in cleartext. NOTE: this issue exists because of an incomplete fix for CVE-2018-20060 (which was case-sensitive).",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.24.2"
+        ],
+        "aliases": [
+          "CVE-2018-25091",
+          "GHSA-gwvm-45gx-3cf8"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> PYSEC-2023-212 urllib3 is a user-friendly HTTP client library for Python. urllib3 previously wouldn't remove the HTTP request body when an HTTP redirect response using status 301, 302, or 303 after the request had its method changed from one that could accept a request body (like `POST`) to `GET` as is required by HTTP RFCs. Although this behavior is not specified in the section for redirects, it can be inferred by piecing together information from different sections and we have observed the behavior in other major HTTP client implementations like curl and web browsers. Because the vulnerability requires a previously trusted service to become compromised in order to have an impact on confidentiality we believe the exploitability of this vulnerability is low. Additionally, many users aren't putting sensitive data in HTTP request bodies, if this is the case then this vulnerability isn't exploitable. Both of the following conditions must be true to be affected by this vulnerability: 1. Using urllib3 and submitting sensitive information in the HTTP request body (such as form data or JSON) and 2. The origin service is compromised and starts redirecting using 301, 302, or 303 to a malicious peer or the redirected-to service becomes compromised. This issue has been addressed in versions 1.26.18 and 2.0.7 and users are advised to update to resolve this issue. Users unable to update should disable redirects for services that aren't expecting to respond with redirects with `redirects=False` and disable automatic redirects with `redirects=False` and handle 301, 302, and 303 redirects manually by stripping the HTTP request body.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.26.18",
+          "2.0.7"
+        ],
+        "aliases": [
+          "GHSA-g4mx-q9vg-27p4",
+          "CVE-2023-45803"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2024-37891 When using urllib3's proxy support with `ProxyManager`, the `Proxy-Authorization` header is only sent to the configured proxy, as expected.  However, when sending HTTP requests *without* using urllib3's proxy support, it's possible to accidentally configure the `Proxy-Authorization` header even though it won't have any effect as the request is not using a forwarding proxy or a tunneling proxy. In those cases, urllib3 doesn't treat the `Proxy-Authorization` HTTP header as one carrying authentication material and thus doesn't strip the header on cross-origin redirects.  Because this is a highly unlikely scenario, we believe the severity of this vulnerability is low for almost all users. Out of an abundance of caution urllib3 will automatically strip the `Proxy-Authorization` header during cross-origin redirects to avoid the small chance that users are doing this on accident.  Users should use urllib3's proxy support or disable automatic redirects to achieve safe processing of the `Proxy-Authorization` header, but we still decided to strip the header by default in order to further protect users who aren't using the correct approach.  ## Affected usages  We believe the number of usages affected by this advisory is low. It requires all of the following to be true to be exploited:  * Setting the `Proxy-Authorization` header without using urllib3's built-in proxy support. * Not disabling HTTP redirects. * Either not using an HTTPS origin server or for the proxy or target origin to redirect to a malicious origin.  ## Remediation  * Using the `Proxy-Authorization` header with urllib3's `ProxyManager`. * Disabling HTTP redirects using `redirects=False` when sending requests. * Not using the `Proxy-Authorization` header.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "1.26.19",
+          "2.2.2"
+        ],
+        "aliases": [
+          "GHSA-34jh-p97f-mpxf"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2025-50181 urllib3 handles redirects and retries using the same mechanism, which is controlled by the `Retry` object. The most common way to disable redirects is at the request level, as follows:  ```python resp = urllib3.request(\"GET\", \"https://httpbin.org/redirect/1\", redirect=False) print(resp.status) # 302 ```  However, it is also possible to disable redirects, for all requests, by instantiating a `PoolManager` and specifying `retries` in a way that disable redirects:  ```python import urllib3  http = urllib3.PoolManager(retries=0)  # should raise MaxRetryError on redirect http = urllib3.PoolManager(retries=urllib3.Retry(redirect=0))  # equivalent to the above http = urllib3.PoolManager(retries=False)  # should return the first response  resp = http.request(\"GET\", \"https://httpbin.org/redirect/1\") ```  However, the `retries` parameter is currently ignored, which means all the above examples don't disable redirects.  ## Affected usages  Passing `retries` on `PoolManager` instantiation to disable redirects or restrict their number.  By default, requests and botocore users are not affected.  ## Impact  Redirects are often used to exploit SSRF vulnerabilities. An application attempting to mitigate SSRF or open redirect vulnerabilities by disabling redirects at the PoolManager level will remain vulnerable.  ## Remediation  You can remediate this vulnerability with the following steps:   * Upgrade to a patched version of urllib3. If your organization would benefit from the continued support of urllib3 1.x, please contact [sethmichaellarson@gmail.com](mailto:sethmichaellarson@gmail.com) to discuss sponsorship or contribution opportunities.  * Disable redirects at the `request()` level instead of the `PoolManager()` level.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.5.0"
+        ],
+        "aliases": [
+          "GHSA-pq67-6m6q-mj2v"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2025-66471 ### Impact  urllib3's [streaming API](https://urllib3.readthedocs.io/en/2.5.0/advanced-usage.html#streaming-and-i-o) is designed for the efficient handling of large HTTP responses by reading the content in chunks, rather than loading the entire response body into memory at once.  When streaming a compressed response, urllib3 can perform decoding or decompression based on the HTTP `Content-Encoding` header (e.g., `gzip`, `deflate`, `br`, or `zstd`). The library must read compressed data from the network and decompress it until the requested chunk size is met. Any resulting decompressed data that exceeds the requested amount is held in an internal buffer for the next read operation.  The decompression logic could cause urllib3 to fully decode a small amount of highly compressed data in a single operation. This can result in excessive resource consumption (high CPU usage and massive memory allocation for the decompressed data; CWE-409) on the client side, even if the application only requested a small chunk of data.   ### Affected usages  Applications and libraries using urllib3 version 2.5.0 and earlier to stream large compressed responses or content from untrusted sources.  `stream()`, `read(amt=256)`, `read1(amt=256)`, `read_chunked(amt=256)`, `readinto(b)` are examples of `urllib3.HTTPResponse` method calls using the affected logic unless decoding is disabled explicitly.   ### Remediation  Upgrade to at least urllib3 v2.6.0 in which the library avoids decompressing data that exceeds the requested amount.  If your environment contains a package facilitating the Brotli encoding, upgrade to at least Brotli 1.2.0 or brotlicffi 1.2.0.0 too. These versions are enforced by the `urllib3[brotli]` extra in the patched versions of urllib3.   ### Credits  The issue was reported by @Cycloctane. Supplemental information was provided by @stamparm during a security audit performed by [7ASecurity](https://7asecurity.com/) and facilitated by [OSTIF](https://ostif.org/).",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.6.0"
+        ],
+        "aliases": [
+          "GHSA-2xpw-w6gg-jr37"
+        ]
+      }
+    },
+    {
+      "tool": "pip-audit",
+      "rule": "VULN",
+      "severity": "high",
+      "message": "None None -> CVE-2026-21441 ### Impact  urllib3's [streaming API](https://urllib3.readthedocs.io/en/2.6.2/advanced-usage.html#streaming-and-i-o) is designed for the efficient handling of large HTTP responses by reading the content in chunks, rather than loading the entire response body into memory at once.  urllib3 can perform decoding or decompression based on the HTTP `Content-Encoding` header (e.g., `gzip`, `deflate`, `br`, or `zstd`). When using the streaming API, the library decompresses only the necessary bytes, enabling partial content consumption.  However, for HTTP redirect responses, the library would read the entire response body to drain the connection and decompress the content unnecessarily. This decompression occurred even before any read methods were called, and configured read limits did not restrict the amount of decompressed data. As a result, there was no safeguard against decompression bombs. A malicious server could exploit this to trigger excessive resource consumption on the client (high CPU usage and large memory allocations for decompressed data; CWE-409).  ### Affected usages  Applications and libraries using urllib3 version 2.6.2 and earlier to stream content from untrusted sources by setting `preload_content=False` when they do not disable redirects.   ### Remediation  Upgrade to at least urllib3 v2.6.3 in which the library does not decode content of redirect responses when `preload_content=False`.  If upgrading is not immediately possible, disable [redirects](https://urllib3.readthedocs.io/en/2.6.2/user-guide.html#retrying-requests) by setting `redirect=False` for requests to untrusted source.",
+      "file": null,
+      "line": null,
+      "col": null,
+      "extra": {
+        "fix_versions": [
+          "2.6.3"
+        ],
+        "aliases": [
+          "GHSA-38jv-5279-wg99"
+        ]
+      }
+    }
+  ],
+  "tool_raw": {
+    "complexity_radon": {
+      "ok": true,
+      "stdout": "D:\\code_assistant\\Git_repo\\realpython__python-guide\\test_issues.py\n    F 37:0 process_list - A (3)\n    F 4:0 append_to_list - A (1)\n    F 9:0 add_to_dict - A (1)\n    F 17:0 increment_counter - A (1)\n    F 24:0 read_file_bad - A (1)\n    F 31:0 read_file_good - A (1)\nD:\\code_assistant\\Git_repo\\realpython__python-guide\\docs\\_themes\\flask_theme_support.py\n    C 7:0 FlaskyStyle - A (1)\n\n7 blocks (classes, functions, methods) analyzed.\nAverage complexity: A (1.2857142857142858)\n",
+      "stderr": ""
+    },
+    "mypy": {
+      "ok": false,
+      "stdout": "docs\\_themes\\flask_theme_support.py:2: error: Library stubs not installed for \"pygments.style\"  [import-untyped]\ndocs\\_themes\\flask_theme_support.py:2: note: Hint: \"python3 -m pip install types-Pygments\"\ndocs\\_themes\\flask_theme_support.py:2: note: (or run \"mypy --install-types\" to install all missing stub packages)\ndocs\\_themes\\flask_theme_support.py:2: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports\ndocs\\_themes\\flask_theme_support.py:3: error: Library stubs not installed for \"pygments.token\"  [import-untyped]\n",
+      "stderr": ""
+    }
+  },
+  "stats": {
+    "total_findings": 28
+  }
+}

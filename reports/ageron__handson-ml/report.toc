@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}代码审查（Review）}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}概览}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}严重性分布}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}工具分布}{1}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}DS 规则分布}{2}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Top 20 问题}{2}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}复杂度摘要}{4}{subsection.1.6}%
+\contentsline {section}{\numberline {2}测试生成（TestGen）}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}指标}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}覆盖率报告}{8}{subsection.2.2}%

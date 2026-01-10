@@ -1,78 +1,1597 @@
 {
-  "repo": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo",
-  "output_dir": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests",
-  "written_files": 3,
-  "function_count": 4,
+  "repo": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey",
+  "output_dir": "D:\\code_assistant\\Git_repo\\generated_tests",
+  "written_files": 55,
+  "function_count": 200,
   "generated": [
     {
-      "source": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\pandas_exercises\\03_Grouping\\Occupation\\Exercises_with_solutions.ipynb",
-      "test_file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\test_pandas_exercises_03_Grouping_Occupation_Exercises_with_solutions.py",
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_manage_3156ad13.py",
       "functions": [
         {
-          "name": "gender_to_numeric",
+          "name": "drop_db",
+          "args": [],
+          "lineno": 63,
+          "doc": "Drops the database. "
+        },
+        {
+          "name": "run_change_reporter",
           "args": [
-            "x"
+            "accounts"
           ],
-          "lineno": 14,
+          "lineno": 69,
+          "doc": "Runs Reporter "
+        },
+        {
+          "name": "find_changes",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 82,
+          "doc": "Runs watchers "
+        },
+        {
+          "name": "audit_changes",
+          "args": [
+            "accounts",
+            "monitors",
+            "send_report",
+            "skip_batch"
+          ],
+          "lineno": 98,
+          "doc": "Runs auditors "
+        },
+        {
+          "name": "delete_unjustified_issues",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 112,
+          "doc": "Allows us to delete unjustified issues. "
+        },
+        {
+          "name": "export_environment_summary",
+          "args": [
+            "output_file"
+          ],
+          "lineno": 129,
+          "doc": "Save the Auditor.OBJECT_STORE as a JSON file. "
+        },
+        {
+          "name": "backup_config_to_json",
+          "args": [
+            "accounts",
+            "monitors",
+            "outputfolder"
+          ],
+          "lineno": 151,
+          "doc": "Saves the most current item revisions to a json file. "
+        },
+        {
+          "name": "sync_jira",
+          "args": [],
+          "lineno": 164,
+          "doc": "Syncs issues with Jira "
+        },
+        {
+          "name": "clear_expired_exceptions",
+          "args": [],
+          "lineno": 174,
+          "doc": "Clears out the exception logs table of all exception entries that have expired past the TTL.\n:return:"
+        },
+        {
+          "name": "amazon_accounts",
+          "args": [],
+          "lineno": 185,
+          "doc": "Pre-populates standard AWS owned accounts "
+        },
+        {
+          "name": "create_user",
+          "args": [
+            "email",
+            "role"
+          ],
+          "lineno": 230,
+          "doc": ""
+        },
+        {
+          "name": "toggle_active_user",
+          "args": [
+            "email",
+            "active"
+          ],
+          "lineno": 277,
+          "doc": "Enables/Disables a user.\n\nTo enable a user, provide the \"--active True\" flag value. To disable it, omit the --active flag. Do not use \"--active False\",\nor it will set the value to True."
+        },
+        {
+          "name": "disable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 326,
+          "doc": "Bulk disables one or more accounts "
+        },
+        {
+          "name": "enable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 338,
+          "doc": "Bulk enables one or more accounts "
+        },
+        {
+          "name": "add_override_score",
+          "args": [
+            "tech_name",
+            "method",
+            "auditor",
+            "score",
+            "disabled",
+            "pattern_scores"
+          ],
+          "lineno": 355,
+          "doc": "Adds an audit disable/override scores\n:param tech_name: technology index\n:param method: the neme of the auditor method to override\n:param auditor: The class name of the auditor containing the check method\n:param score: The default override score to assign to the check method issue\n:param disabled: Flag indicating whether the check method should be run\n:param pattern_scores: A comma separated list of account field values and scores.\n       This can be used to override the default score based on some field in the account\n       that the check method is running against. The format of each value/score is:\n       account_type.account_field.account_value=score"
+        },
+        {
+          "name": "add_override_scores",
+          "args": [
+            "file_name",
+            "field_mappings"
+          ],
+          "lineno": 436,
+          "doc": "Refreshes the audit disable/override scores from a csv file. Old scores not in\n the csv will be removed.\n:param file_name: path to the csv file\n:param field_mappings: Comma separated list of mappings of known types to csv file\n headers. Ex. 'tech=Tech Name,score=default score'"
+        },
+        {
+          "name": "delete_account",
+          "args": [
+            "name"
+          ],
+          "lineno": 596,
+          "doc": ""
+        },
+        {
+          "name": "add_watcher_config",
+          "args": [
+            "tech_name",
+            "disabled",
+            "interval"
+          ],
+          "lineno": 607,
+          "doc": ""
+        },
+        {
+          "name": "fetch_aws_canonical_ids",
+          "args": [
+            "override"
+          ],
+          "lineno": 631,
+          "doc": "Adds S3 canonical IDs in for all AWS accounts in SM."
+        },
+        {
+          "name": "clean_stale_issues",
+          "args": [],
+          "lineno": 647,
+          "doc": "Cleans up issues for auditors that have been removed"
+        },
+        {
+          "name": "sync_swag",
+          "args": [
+            "owner",
+            "bucket_name",
+            "bucket_prefix",
+            "bucket_region",
+            "account_type",
+            "spinnaker"
+          ],
+          "lineno": 710,
+          "doc": "Use the SWAG client to sync SWAG accounts to Security Monkey."
+        },
+        {
+          "name": "sync_networks",
+          "args": [
+            "bucket_name",
+            "input_filename",
+            "authoritative"
+          ],
+          "lineno": 781,
+          "doc": "Imports a JSON file of networks to the Security Monkey whitelist."
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 862,
           "doc": ""
         }
       ],
-      "notebook_module": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\_notebooks\\nb_pandas_exercises_03_Grouping_Occupation_Exercises_with_solutions.py"
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage.py"
     },
     {
-      "source": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\pandas_exercises\\04_Apply\\Students_Alcohol_Consumption\\Exercises_with_solutions.ipynb",
-      "test_file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\test_pandas_exercises_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions.py",
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage_api.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_manage_api_8e08d141.py",
       "functions": [
         {
-          "name": "majority",
+          "name": "drop_db",
+          "args": [],
+          "lineno": 63,
+          "doc": "Drops the database. "
+        },
+        {
+          "name": "run_change_reporter",
           "args": [
-            "x"
+            "accounts"
+          ],
+          "lineno": 69,
+          "doc": "Runs Reporter "
+        },
+        {
+          "name": "find_changes",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 82,
+          "doc": "Runs watchers "
+        },
+        {
+          "name": "audit_changes",
+          "args": [
+            "accounts",
+            "monitors",
+            "send_report",
+            "skip_batch"
+          ],
+          "lineno": 98,
+          "doc": "Runs auditors "
+        },
+        {
+          "name": "delete_unjustified_issues",
+          "args": [
+            "accounts",
+            "monitors"
+          ],
+          "lineno": 112,
+          "doc": "Allows us to delete unjustified issues. "
+        },
+        {
+          "name": "export_environment_summary",
+          "args": [
+            "output_file"
+          ],
+          "lineno": 129,
+          "doc": "Save the Auditor.OBJECT_STORE as a JSON file. "
+        },
+        {
+          "name": "backup_config_to_json",
+          "args": [
+            "accounts",
+            "monitors",
+            "outputfolder"
+          ],
+          "lineno": 151,
+          "doc": "Saves the most current item revisions to a json file. "
+        },
+        {
+          "name": "sync_jira",
+          "args": [],
+          "lineno": 164,
+          "doc": "Syncs issues with Jira "
+        },
+        {
+          "name": "clear_expired_exceptions",
+          "args": [],
+          "lineno": 174,
+          "doc": "Clears out the exception logs table of all exception entries that have expired past the TTL.\n:return:"
+        },
+        {
+          "name": "amazon_accounts",
+          "args": [],
+          "lineno": 185,
+          "doc": "Pre-populates standard AWS owned accounts "
+        },
+        {
+          "name": "create_user",
+          "args": [
+            "email",
+            "role"
+          ],
+          "lineno": 230,
+          "doc": ""
+        },
+        {
+          "name": "toggle_active_user",
+          "args": [
+            "email",
+            "active"
+          ],
+          "lineno": 277,
+          "doc": "Enables/Disables a user.\n\nTo enable a user, provide the \"--active True\" flag value. To disable it, omit the --active flag. Do not use \"--active False\",\nor it will set the value to True."
+        },
+        {
+          "name": "disable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 326,
+          "doc": "Bulk disables one or more accounts "
+        },
+        {
+          "name": "enable_accounts",
+          "args": [
+            "accounts"
+          ],
+          "lineno": 338,
+          "doc": "Bulk enables one or more accounts "
+        },
+        {
+          "name": "add_override_score",
+          "args": [
+            "tech_name",
+            "method",
+            "auditor",
+            "score",
+            "disabled",
+            "pattern_scores"
+          ],
+          "lineno": 355,
+          "doc": "Adds an audit disable/override scores\n:param tech_name: technology index\n:param method: the neme of the auditor method to override\n:param auditor: The class name of the auditor containing the check method\n:param score: The default override score to assign to the check method issue\n:param disabled: Flag indicating whether the check method should be run\n:param pattern_scores: A comma separated list of account field values and scores.\n       This can be used to override the default score based on some field in the account\n       that the check method is running against. The format of each value/score is:\n       account_type.account_field.account_value=score"
+        },
+        {
+          "name": "add_override_scores",
+          "args": [
+            "file_name",
+            "field_mappings"
+          ],
+          "lineno": 436,
+          "doc": "Refreshes the audit disable/override scores from a csv file. Old scores not in\n the csv will be removed.\n:param file_name: path to the csv file\n:param field_mappings: Comma separated list of mappings of known types to csv file\n headers. Ex. 'tech=Tech Name,score=default score'"
+        },
+        {
+          "name": "delete_account",
+          "args": [
+            "name"
+          ],
+          "lineno": 596,
+          "doc": ""
+        },
+        {
+          "name": "add_watcher_config",
+          "args": [
+            "tech_name",
+            "disabled",
+            "interval"
+          ],
+          "lineno": 607,
+          "doc": ""
+        },
+        {
+          "name": "fetch_aws_canonical_ids",
+          "args": [
+            "override"
+          ],
+          "lineno": 631,
+          "doc": "Adds S3 canonical IDs in for all AWS accounts in SM."
+        },
+        {
+          "name": "clean_stale_issues",
+          "args": [],
+          "lineno": 647,
+          "doc": "Cleans up issues for auditors that have been removed"
+        },
+        {
+          "name": "sync_swag",
+          "args": [
+            "owner",
+            "bucket_name",
+            "bucket_prefix",
+            "bucket_region",
+            "account_type",
+            "spinnaker"
+          ],
+          "lineno": 710,
+          "doc": "Use the SWAG client to sync SWAG accounts to Security Monkey."
+        },
+        {
+          "name": "sync_networks",
+          "args": [
+            "bucket_name",
+            "input_filename",
+            "authoritative"
+          ],
+          "lineno": 781,
+          "doc": "Imports a JSON file of networks to the Security Monkey whitelist."
+        },
+        {
+          "name": "main",
+          "args": [],
+          "lineno": 862,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\manage_api.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\env-config\\config-docker.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_env_config_config_docker_9fd98fb5.py",
+      "functions": [
+        {
+          "name": "env_to_bool",
+          "args": [
+            "input"
+          ],
+          "lineno": 20,
+          "doc": "Must change String from environment variable into Boolean\ndefaults to True"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\env-config\\config-docker.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\env.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_env_1d5e98f8.py",
+      "functions": [
+        {
+          "name": "run_migrations_offline",
+          "args": [],
+          "lineno": 27,
+          "doc": "Run migrations in 'offline' mode.\n\nThis configures the context with just a URL\nand not an Engine, though an Engine is acceptable\nhere as well.  By skipping the Engine creation\nwe don't even need a DBAPI to be available.\n\nCalls to context.execute() here emit the given string to the\nscript output."
+        },
+        {
+          "name": "run_migrations_online",
+          "args": [],
+          "lineno": 45,
+          "doc": "Run migrations in 'online' mode.\n\nIn this scenario we need to create an Engine\nand associate a connection with the context."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\env.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\00c1dabdbe85_lengthen_account_name.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_00c1dabdbe85_lengthen_account_name_671e5b13.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 24,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\00c1dabdbe85_lengthen_account_name.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\0ae4ef82b244_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_0ae4ef82b244_a10b7dcb.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\0ae4ef82b244_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\11f081cf54e2_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_11f081cf54e2_5b4c7111.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 57,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 102,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\11f081cf54e2_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1583a48cb978_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1583a48cb978_e162f8ac.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 25,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1583a48cb978_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\15e39d43395f_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_15e39d43395f_8a803580.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": "This revision is going to expand the hash database fields from `varchar(32)` to `varchar(64)`. Due to the usage of DeepHash.\nNote: This is going to result in all change items getting re-updated as the hashes are going to be different."
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 25,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\15e39d43395f_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1727fb4309d8_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1727fb4309d8_885b4442.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1727fb4309d8_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1a863bd1acb1_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1a863bd1acb1_c6768a82.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 29,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 38,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1a863bd1acb1_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1c847ae1209a_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1c847ae1209a_21e2cc98.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\1c847ae1209a_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2705e6e13a8f_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_2705e6e13a8f_2fc89a34.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2705e6e13a8f_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ce75615b24d_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_2ce75615b24d_5d38f217.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ce75615b24d_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ea41f4610fd_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_2ea41f4610fd_a075904c.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\2ea41f4610fd_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\331ca47ce8ad_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_331ca47ce8ad_6549354a.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 21,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\331ca47ce8ad_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\4ac52090a637_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_4ac52090a637_98ad0211.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\4ac52090a637_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\51170afa2b48_custom_role_name.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_51170afa2b48_custom_role_name_6da73e3e.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\51170afa2b48_custom_role_name.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\538eeb160af6_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_538eeb160af6_cd27a488.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 35,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 49,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\538eeb160af6_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\55725cc4bf25_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_55725cc4bf25_9893f587.py",
+      "functions": [
+        {
+          "name": "update_custom_value",
+          "args": [
+            "name",
+            "value",
+            "session",
+            "account_id"
+          ],
+          "lineno": 46,
+          "doc": ""
+        },
+        {
+          "name": "update_from_custom_value",
+          "args": [
+            "name",
+            "session",
+            "account"
+          ],
+          "lineno": 63,
+          "doc": ""
+        },
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 76,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 95,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\55725cc4bf25_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\57f648d4b597_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_57f648d4b597_b08d508e.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 33,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\57f648d4b597_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\595e27f36454_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_595e27f36454_ec8a35d9.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 16,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 26,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\595e27f36454_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\5bd631a1b748_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_5bd631a1b748_fb1cdb8c.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 42,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\5bd631a1b748_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\61a6fd4b4500_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_61a6fd4b4500_83d4657a.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 27,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\61a6fd4b4500_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6245d75fa12_exceptions_table.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_6245d75fa12_exceptions_table_d2e57ad1.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 45,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6245d75fa12_exceptions_table.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\67ea2aac5ea0_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_67ea2aac5ea0_93aa9206.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 32,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\67ea2aac5ea0_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6b9d673d8e30_added_index_for_itemrevision_created.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_6b9d673d8e30_added_index_for_itemrevision_created_3205b1e9.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 21,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6b9d673d8e30_added_index_for_itemrevision_created.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6d2354fb841c_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_6d2354fb841c_d01d4144.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 32,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\6d2354fb841c_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\7c54b06e227b_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_7c54b06e227b_10892e09.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 207,
+          "doc": "Need to detect duplicate items.\nThis needs to be done by looking for all items with the same: region, name, tech_id, account_id.\nWith these items, pick the one that has the bigger latest_revision_id and delete the others.\n:return:"
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 260,
+          "doc": "No downgrade necessary."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\7c54b06e227b_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\908b0085d28d_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_908b0085d28d_aa782afa.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 45,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 67,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\908b0085d28d_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\a9fe9c93ed75_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_a9fe9c93ed75_2bd4d6b0.py",
+      "functions": [
+        {
+          "name": "remove_duplicate_issue_items",
+          "args": [],
+          "lineno": 44,
+          "doc": ""
+        },
+        {
+          "name": "remove_duplicate_association",
+          "args": [],
+          "lineno": 66,
+          "doc": ""
+        },
+        {
+          "name": "remove_duplicate_role_users",
+          "args": [],
+          "lineno": 88,
+          "doc": ""
+        },
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 110,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 142,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\a9fe9c93ed75_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ad23a56abf25_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_ad23a56abf25_1265c1b3.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 28,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ad23a56abf25_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ae5c0a6aebb3_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_ae5c0a6aebb3_5e17abdd.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 24,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ae5c0a6aebb3_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\b8ccf5b8089b_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_b8ccf5b8089b_49b51b9a.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 21,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 28,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\b8ccf5b8089b_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\bfb550a500ab_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_bfb550a500ab_f0ecb80f.py",
+      "functions": [
+        {
+          "name": "sub_list",
+          "args": [
+            "l"
+          ],
+          "lineno": 64,
+          "doc": "Recursively walk a datastructrue sorting any lists along the way.\n\n:param l: list\n:return: sorted list, where any child lists are also sorted."
+        },
+        {
+          "name": "sub_dict",
+          "args": [
+            "d"
+          ],
+          "lineno": 86,
+          "doc": "Recursively walk a datastructure sorting any lists along the way.\n\n:param d: dict\n:return: dict where any lists, even those buried deep in the structure, have been sorted."
+        },
+        {
+          "name": "retrieve_arn",
+          "args": [
+            "config"
+          ],
+          "lineno": 106,
+          "doc": "See issue #374. SM does not currently store ARNs in a consistent place.\n\n:param config: itemrevision config dict\n:return: ARN, if we can find it"
+        },
+        {
+          "name": "hash_item",
+          "args": [
+            "item",
+            "ephemeral_paths"
+          ],
+          "lineno": 134,
+          "doc": "Finds the hash of a dict.\n\n:param item: dictionary, representing an item tracked in security_monkey\n:return: hash of the json dump of the item"
+        },
+        {
+          "name": "durable_hash",
+          "args": [
+            "item",
+            "ephemeral_paths"
+          ],
+          "lineno": 146,
+          "doc": "Remove all ephemeral paths from the item and return the hash of the new structure.\n\n:param item: dictionary, representing an item tracked in security_monkey\n:return: hash of the sorted json dump of the item with all ephemeral paths removed."
+        },
+        {
+          "name": "hash_config",
+          "args": [
+            "config"
+          ],
+          "lineno": 162,
+          "doc": ""
+        },
+        {
+          "name": "ephemeral_paths_for_item",
+          "args": [
+            "item"
+          ],
+          "lineno": 169,
+          "doc": ""
+        },
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 193,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 225,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\bfb550a500ab_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c01df2202a9_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_c01df2202a9_a1324f04.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 122,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c01df2202a9_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c93f246859f7_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_c93f246859f7_df31d9ed.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c93f246859f7_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c9dd06c919ac_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_c9dd06c919ac_a5b728c6.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 25,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 33,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\c9dd06c919ac_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\d08d0b37788a_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_d08d0b37788a_5fb23dc2.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 38,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 76,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\d08d0b37788a_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\daee17da2abd_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_daee17da2abd_22632f14.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 30,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 39,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\daee17da2abd_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\e0a6af364a3f_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_e0a6af364a3f_974c0128.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 63,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\e0a6af364a3f_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ea2739ecd874_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_ea2739ecd874_e67e6596.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 23,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\ea2739ecd874_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\fb592c81e71_.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_fb592c81e71_97cf68fe.py",
+      "functions": [
+        {
+          "name": "upgrade",
+          "args": [],
+          "lineno": 17,
+          "doc": ""
+        },
+        {
+          "name": "downgrade",
+          "args": [],
+          "lineno": 29,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\migrations\\versions\\fb592c81e71_.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\scripts\\secmonkey_role_setup.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_scripts_secmonkey_role_setup_8944a789.py",
+      "functions": [
+        {
+          "name": "main",
+          "args": [
+            "profile"
+          ],
+          "lineno": 184,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\scripts\\secmonkey_role_setup.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\account_manager.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_account_manager_9f8cfb03.py",
+      "functions": [
+        {
+          "name": "load_all_account_types",
+          "args": [],
+          "lineno": 258,
+          "doc": "Verifies all account types are in the database "
+        },
+        {
+          "name": "get_account_by_id",
+          "args": [
+            "account_id"
+          ],
+          "lineno": 277,
+          "doc": "Retrieves an account plus any additional custom fields"
+        },
+        {
+          "name": "get_account_by_name",
+          "args": [
+            "account_name"
+          ],
+          "lineno": 288,
+          "doc": "Retrieves an account plus any additional custom fields"
+        },
+        {
+          "name": "delete_account_by_id",
+          "args": [
+            "account_id"
+          ],
+          "lineno": 299,
+          "doc": ""
+        },
+        {
+          "name": "delete_account_by_name",
+          "args": [
+            "name"
+          ],
+          "lineno": 365,
+          "doc": ""
+        },
+        {
+          "name": "bulk_disable_accounts",
+          "args": [
+            "account_names"
+          ],
+          "lineno": 372,
+          "doc": "Bulk disable accounts"
+        },
+        {
+          "name": "bulk_enable_accounts",
+          "args": [
+            "account_names"
+          ],
+          "lineno": 385,
+          "doc": "Bulk enable accounts"
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\account_manager.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\alerter.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_alerter_9760a909.py",
+      "functions": [
+        {
+          "name": "get_subject",
+          "args": [
+            "has_issues",
+            "has_new_issue",
+            "has_unjustified_issue",
+            "account",
+            "watcher_str"
           ],
           "lineno": 30,
           "doc": ""
         },
         {
-          "name": "times10",
+          "name": "report_content",
           "args": [
-            "x"
+            "content"
           ],
           "lineno": 41,
           "doc": ""
         }
       ],
-      "notebook_module": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\_notebooks\\nb_pandas_exercises_04_Apply_Students_Alcohol_Consumption_Exercises_with_solutions.py"
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\alerter.py"
     },
     {
-      "source": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\my_repo\\pandas_exercises\\06_Stats\\Wind_Stats\\Exercises_with_solutions.ipynb",
-      "test_file": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\test_pandas_exercises_06_Stats_Wind_Stats_Exercises_with_solutions.py",
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\auditor.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_auditor_20f070e5.py",
       "functions": [
         {
-          "name": "fix_century",
+          "name": "add",
           "args": [
-            "x"
+            "to",
+            "key",
+            "value"
           ],
-          "lineno": 23,
+          "lineno": 146,
           "doc": ""
         }
       ],
-      "notebook_module": "D:\\code\\PythonWithPycharm\\DataMining\\code_assistant\\generated_tests\\_notebooks\\nb_pandas_exercises_06_Stats_Wind_Stats_Exercises_with_solutions.py"
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\auditor.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\backup.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_backup_afb79fd2.py",
+      "functions": [
+        {
+          "name": "backup_config_to_json",
+          "args": [
+            "account_names",
+            "monitor_names",
+            "output_folder"
+          ],
+          "lineno": 28,
+          "doc": ""
+        },
+        {
+          "name": "standardize_name",
+          "args": [
+            "name"
+          ],
+          "lineno": 49,
+          "doc": "Some objects have a / in their names.  This allows the backup to proceed.\nFurther sanitization would be wise with untrusted input."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\backup.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_datastore_d6be5784.py",
+      "functions": [
+        {
+          "name": "durable_hash",
+          "args": [
+            "config",
+            "ephemeral_paths"
+          ],
+          "lineno": 51,
+          "doc": ""
+        },
+        {
+          "name": "hash_item",
+          "args": [
+            "config",
+            "ephemeral_paths"
+          ],
+          "lineno": 61,
+          "doc": "Finds the hash of a dict.\n\n:param ephemeral_paths:\n:param config:\n:param item: dictionary, typically representing an item tracked in SM\n             such as an IAM role\n:return: hash of the json dump of the item"
+        },
+        {
+          "name": "store_exception",
+          "args": [
+            "source",
+            "location",
+            "exception",
+            "ttl"
+          ],
+          "lineno": 732,
+          "doc": "Method to store exceptions in the database.\n:param source:\n:param location:\n:param exception:\n:param ttl:\n:return:"
+        },
+        {
+          "name": "clear_old_exceptions",
+          "args": [],
+          "lineno": 780,
+          "doc": ""
+        },
+        {
+          "name": "delete_item_revisions_by_date",
+          "args": [
+            "start_date",
+            "end_date"
+          ],
+          "lineno": 789,
+          "doc": "This will remove all item revisions per the following strategy:\n0. Iterate over every item.\n1. Get a list of all item revisions within the date range provided.\n2. If the revisions on the date selected refers to ALL revisions of a given item, then delete the item outright, and skip to the next item.\n3. Otherwise, get the latest revision for the item before the start date.\n4. Update the item's latest revision ID to that last good revision\n6. Delete the revisions in the date range."
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore.py"
+    },
+    {
+      "source": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore_utils.py",
+      "test_file": "D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_datastore_utils_99fb06a6.py",
+      "functions": [
+        {
+          "name": "persist_item",
+          "args": [
+            "item",
+            "db_item",
+            "technology",
+            "account",
+            "complete_hash",
+            "durable_hash",
+            "durable"
+          ],
+          "lineno": 11,
+          "doc": ""
+        },
+        {
+          "name": "is_active",
+          "args": [
+            "config"
+          ],
+          "lineno": 64,
+          "doc": ""
+        },
+        {
+          "name": "create_revision",
+          "args": [
+            "config",
+            "db_item"
+          ],
+          "lineno": 74,
+          "doc": ""
+        },
+        {
+          "name": "create_item_aws",
+          "args": [
+            "item",
+            "technology",
+            "account"
+          ],
+          "lineno": 82,
+          "doc": ""
+        },
+        {
+          "name": "create_item",
+          "args": [
+            "item",
+            "technology",
+            "account"
+          ],
+          "lineno": 93,
+          "doc": ""
+        },
+        {
+          "name": "detect_change",
+          "args": [
+            "item",
+            "account",
+            "technology",
+            "complete_hash",
+            "durable_hash"
+          ],
+          "lineno": 103,
+          "doc": "Checks the database to see if the latest revision of the specified\nitem matches what Security Monkey has pulled from AWS.\n\nNote: this method makes no distinction between a changed item, a new item,\na deleted item, or one that only has changes in the ephemeral section.\n\n:param item: dict describing an item tracked by Security Monkey\n:param hash: hash of the item dict for quicker change detection\n:return: bool. True if the database differs from our copy of item"
+        },
+        {
+          "name": "result_from_item",
+          "args": [
+            "item",
+            "account",
+            "technology"
+          ],
+          "lineno": 143,
+          "doc": ""
+        },
+        {
+          "name": "inactivate_old_revisions",
+          "args": [
+            "watcher",
+            "arns",
+            "account",
+            "technology"
+          ],
+          "lineno": 149,
+          "doc": ""
+        }
+      ],
+      "notebook_module": "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey\\datastore_utils.py"
     }
   ],
   "coverage": {
     "ok": false,
     "pytest": {
-      "stdout": "\nno tests ran in 0.49s\n",
-      "stderr": "D:\\Anaconda\\Lib\\site-packages\\coverage\\control.py:958: CoverageWarning: No data was collected. (no-data-collected); see https://coverage.readthedocs.io/en/7.13.1/messages.html#warning-no-data-collected\n  self._warn(\"No data was collected.\", slug=\"no-data-collected\")\n",
+      "stdout": "\n=================================== ERRORS ====================================\n_ ERROR collecting generated_tests/test_01_the_machine_learning_landscape_da5f207e.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_01_the_machine_learning_landscape_da5f207e.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_01_the_machine_learning_landscape_da5f207e.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_01_the_machine_learning_landscape_da5f207e.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_ ERROR collecting generated_tests/test_02_end_to_end_machine_learning_project_40e60435.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_02_end_to_end_machine_learning_project_40e60435.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_02_end_to_end_machine_learning_project_40e60435.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_02_end_to_end_machine_learning_project_40e60435.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_____ ERROR collecting generated_tests/test_03_classification_e012843f.py _____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_03_classification_e012843f.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_03_classification_e012843f.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_03_classification_e012843f.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_ ERROR collecting generated_tests/test_04_training_linear_models_24261c57.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_04_training_linear_models_24261c57.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_04_training_linear_models_24261c57.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_04_training_linear_models_24261c57.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_ ERROR collecting generated_tests/test_05_support_vector_machines_415914fc.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_05_support_vector_machines_415914fc.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_05_support_vector_machines_415914fc.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_05_support_vector_machines_415914fc.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_____ ERROR collecting generated_tests/test_06_decision_trees_536ed6fe.py _____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_06_decision_trees_536ed6fe.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_06_decision_trees_536ed6fe.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_06_decision_trees_536ed6fe.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_ ERROR collecting generated_tests/test_07_ensemble_learning_and_random_forests_21661603.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_07_ensemble_learning_and_random_forests_21661603.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_07_ensemble_learning_and_random_forests_21661603.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_07_ensemble_learning_and_random_forests_21661603.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_ ERROR collecting generated_tests/test_08_dimensionality_reduction_6c339b1e.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_08_dimensionality_reduction_6c339b1e.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_08_dimensionality_reduction_6c339b1e.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_08_dimensionality_reduction_6c339b1e.py:13: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n_ ERROR collecting generated_tests/test_16_reinforcement_learning_9e50ae37.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_16_reinforcement_learning_9e50ae37.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_16_reinforcement_learning_9e50ae37.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_16_reinforcement_learning_9e50ae37.py:4: in <module>\n    import sklearn\nE   ModuleNotFoundError: No module named 'sklearn'\n_ ERROR collecting generated_tests/test_audio_filters_show_response_66ec0e8d.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_audio_filters_show_response_66ec0e8d.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_audio_filters_show_response_66ec0e8d.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\TheAlgorithms__Python\\audio_filters\\show_response.py:7: in <module>\n    import matplotlib.pyplot as plt\nE   ModuleNotFoundError: No module named 'matplotlib'\n_ ERROR collecting generated_tests/test_cellular_automata_game_of_life_a9023db1.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_cellular_automata_game_of_life_a9023db1.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_cellular_automata_game_of_life_a9023db1.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\TheAlgorithms__Python\\cellular_automata\\game_of_life.py:35: in <module>\n    from matplotlib import pyplot as plt\nE   ModuleNotFoundError: No module named 'matplotlib'\n___ ERROR collecting generated_tests/test_ciphers_affine_cipher_da61e0be.py ___\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_ciphers_affine_cipher_da61e0be.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_ciphers_affine_cipher_da61e0be.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\TheAlgorithms__Python\\ciphers\\affine_cipher.py:6: in <module>\n    from . import cryptomath_module as cryptomath\nE   ImportError: attempted relative import with no known parent package\n_ ERROR collecting generated_tests/test_ciphers_elgamal_key_generator_e2eab36a.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_ciphers_elgamal_key_generator_e2eab36a.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_ciphers_elgamal_key_generator_e2eab36a.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\TheAlgorithms__Python\\ciphers\\elgamal_key_generator.py:5: in <module>\n    from . import cryptomath_module as cryptomath\nE   ImportError: attempted relative import with no known parent package\n_ ERROR collecting generated_tests/test_docker_jupyter_notebook_config_a702025f.py _\n..\\generated_tests\\test_docker_jupyter_notebook_config_a702025f.py:24: in <module>\n    spec.loader.exec_module(MOD)\n<frozen importlib._bootstrap_external>:940: in exec_module\n    ???\n<frozen importlib._bootstrap>:241: in _call_with_frames_removed\n    ???\n..\\ageron__handson-ml\\docker\\jupyter_notebook_config.py:15: in <module>\n    c.FileContentsManager.post_save_hook = export_script_and_view\n    ^\nE   NameError: name 'c' is not defined\n_________ ERROR collecting generated_tests/test_docs_conf_254a2da7.py _________\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_docs_conf_254a2da7.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_docs_conf_254a2da7.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\docs\\conf.py:2: in <module>\n    from pallets_sphinx_themes import get_version\nE   ModuleNotFoundError: No module named 'pallets_sphinx_themes'\n_ ERROR collecting generated_tests/test_examples_celery_src_task_app___init_528d6bb3.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_celery_src_task_app___init_528d6bb3.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_celery_src_task_app___init_528d6bb3.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\celery\\src\\task_app\\__init__.py:1: in <module>\n    from celery import Celery\nE   ModuleNotFoundError: No module named 'celery'\n_ ERROR collecting generated_tests/test_examples_celery_src_task_app_tasks_83221c59.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_celery_src_task_app_tasks_83221c59.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_celery_src_task_app_tasks_83221c59.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\celery\\src\\task_app\\tasks.py:3: in <module>\n    from celery import shared_task\nE   ModuleNotFoundError: No module named 'celery'\n_ ERROR collecting generated_tests/test_examples_celery_src_task_app_views_3bedbdfe.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_celery_src_task_app_views_3bedbdfe.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_celery_src_task_app_views_3bedbdfe.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\celery\\src\\task_app\\views.py:1: in <module>\n    from celery.result import AsyncResult\nE   ModuleNotFoundError: No module named 'celery'\n_ ERROR collecting generated_tests/test_examples_javascript_js_example_views_eb3a8d7d.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_javascript_js_example_views_eb3a8d7d.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_javascript_js_example_views_eb3a8d7d.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\javascript\\js_example\\views.py:1: in <module>\n    from flask import jsonify\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_examples_tutorial_flaskr___init_fff75601.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_tutorial_flaskr___init_fff75601.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_tutorial_flaskr___init_fff75601.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\tutorial\\flaskr\\__init__.py:3: in <module>\n    from flask import Flask\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_examples_tutorial_flaskr_auth_77fe82c0.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_tutorial_flaskr_auth_77fe82c0.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_tutorial_flaskr_auth_77fe82c0.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\tutorial\\flaskr\\auth.py:3: in <module>\n    from flask import Blueprint\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_examples_tutorial_flaskr_blog_eac5c75f.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_tutorial_flaskr_blog_eac5c75f.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_tutorial_flaskr_blog_eac5c75f.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\tutorial\\flaskr\\blog.py:1: in <module>\n    from flask import Blueprint\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_examples_tutorial_flaskr_db_282e88ee.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_examples_tutorial_flaskr_db_282e88ee.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_examples_tutorial_flaskr_db_282e88ee.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\examples\\tutorial\\flaskr\\db.py:5: in <module>\n    from flask import current_app\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_extra_gradient_descent_comparison_a8f15d1a.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_extra_gradient_descent_comparison_a8f15d1a.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_extra_gradient_descent_comparison_a8f15d1a.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_extra_gradient_descent_comparison_a8f15d1a.py:5: in <module>\n    import matplotlib.pyplot as plt\nE   ModuleNotFoundError: No module named 'matplotlib'\n______ ERROR collecting generated_tests/test_future_encoders_81fb0565.py ______\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_future_encoders_81fb0565.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_future_encoders_81fb0565.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\ageron__handson-ml\\future_encoders.py:25: in <module>\n    from scipy import sparse\nE   ModuleNotFoundError: No module named 'scipy'\n__________ ERROR collecting generated_tests/test_manage_3156ad13.py ___________\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_manage_3156ad13.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_manage_3156ad13.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmanage.py:18: in <module>\n    from flask_script import Manager, Command, Option, prompt_pass\nE   ModuleNotFoundError: No module named 'flask_script'\n________ ERROR collecting generated_tests/test_manage_api_8e08d141.py _________\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_manage_api_8e08d141.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_manage_api_8e08d141.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmanage_api.py:18: in <module>\n    from flask_script import Manager, Command, Option, prompt_pass\nE   ModuleNotFoundError: No module named 'flask_script'\n_ ERROR collecting generated_tests/test_math_differential_calculus_8bd66484.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_math_differential_calculus_8bd66484.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_math_differential_calculus_8bd66484.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_math_differential_calculus_8bd66484.py:3: in <module>\n    import matplotlib as mpl\nE   ModuleNotFoundError: No module named 'matplotlib'\n____ ERROR collecting generated_tests/test_math_linear_algebra_c8881267.py ____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_math_linear_algebra_c8881267.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_math_linear_algebra_c8881267.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_math_linear_algebra_c8881267.py:19: in <module>\n    import matplotlib.pyplot as plt\nE   ModuleNotFoundError: No module named 'matplotlib'\n______ ERROR collecting generated_tests/test_migrations_env_1d5e98f8.py _______\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_env_1d5e98f8.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_env_1d5e98f8.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\env.py:2: in <module>\n    from alembic import context\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_00c1dabdbe85_lengthen_account_name_671e5b13.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_00c1dabdbe85_lengthen_account_name_671e5b13.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_00c1dabdbe85_lengthen_account_name_671e5b13.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\00c1dabdbe85_lengthen_account_name.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_0ae4ef82b244_a10b7dcb.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_0ae4ef82b244_a10b7dcb.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_0ae4ef82b244_a10b7dcb.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\0ae4ef82b244_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_11f081cf54e2_5b4c7111.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_11f081cf54e2_5b4c7111.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_11f081cf54e2_5b4c7111.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\11f081cf54e2_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_1583a48cb978_e162f8ac.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1583a48cb978_e162f8ac.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_1583a48cb978_e162f8ac.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\1583a48cb978_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_15e39d43395f_8a803580.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_15e39d43395f_8a803580.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_15e39d43395f_8a803580.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\15e39d43395f_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_1727fb4309d8_885b4442.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1727fb4309d8_885b4442.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_1727fb4309d8_885b4442.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\1727fb4309d8_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_1a863bd1acb1_c6768a82.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1a863bd1acb1_c6768a82.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_1a863bd1acb1_c6768a82.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\1a863bd1acb1_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_1c847ae1209a_21e2cc98.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_1c847ae1209a_21e2cc98.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_1c847ae1209a_21e2cc98.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\1c847ae1209a_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_2705e6e13a8f_2fc89a34.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_2705e6e13a8f_2fc89a34.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_2705e6e13a8f_2fc89a34.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\2705e6e13a8f_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_2ce75615b24d_5d38f217.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_2ce75615b24d_5d38f217.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_2ce75615b24d_5d38f217.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\2ce75615b24d_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_2ea41f4610fd_a075904c.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_2ea41f4610fd_a075904c.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_2ea41f4610fd_a075904c.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\2ea41f4610fd_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_331ca47ce8ad_6549354a.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_331ca47ce8ad_6549354a.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_331ca47ce8ad_6549354a.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\331ca47ce8ad_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_4ac52090a637_98ad0211.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_4ac52090a637_98ad0211.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_4ac52090a637_98ad0211.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\4ac52090a637_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_51170afa2b48_custom_role_name_6da73e3e.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_51170afa2b48_custom_role_name_6da73e3e.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_51170afa2b48_custom_role_name_6da73e3e.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\51170afa2b48_custom_role_name.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_538eeb160af6_cd27a488.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_538eeb160af6_cd27a488.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_538eeb160af6_cd27a488.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\538eeb160af6_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_55725cc4bf25_9893f587.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_55725cc4bf25_9893f587.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_55725cc4bf25_9893f587.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\55725cc4bf25_.py:15: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_57f648d4b597_b08d508e.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_57f648d4b597_b08d508e.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_57f648d4b597_b08d508e.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\57f648d4b597_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_595e27f36454_ec8a35d9.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_595e27f36454_ec8a35d9.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_595e27f36454_ec8a35d9.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\595e27f36454_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_5bd631a1b748_fb1cdb8c.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_5bd631a1b748_fb1cdb8c.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_5bd631a1b748_fb1cdb8c.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\5bd631a1b748_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_61a6fd4b4500_83d4657a.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_61a6fd4b4500_83d4657a.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_61a6fd4b4500_83d4657a.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\61a6fd4b4500_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_6245d75fa12_exceptions_table_d2e57ad1.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_6245d75fa12_exceptions_table_d2e57ad1.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_6245d75fa12_exceptions_table_d2e57ad1.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\6245d75fa12_exceptions_table.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_67ea2aac5ea0_93aa9206.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_67ea2aac5ea0_93aa9206.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_67ea2aac5ea0_93aa9206.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\67ea2aac5ea0_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_6b9d673d8e30_added_index_for_itemrevision_created_3205b1e9.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_6b9d673d8e30_added_index_for_itemrevision_created_3205b1e9.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_6b9d673d8e30_added_index_for_itemrevision_created_3205b1e9.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\6b9d673d8e30_added_index_for_itemrevision_created.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_6d2354fb841c_d01d4144.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_6d2354fb841c_d01d4144.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_6d2354fb841c_d01d4144.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\6d2354fb841c_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_7c54b06e227b_10892e09.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_7c54b06e227b_10892e09.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_7c54b06e227b_10892e09.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\7c54b06e227b_.py:15: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_908b0085d28d_aa782afa.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_908b0085d28d_aa782afa.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_908b0085d28d_aa782afa.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\908b0085d28d_.py:10: in <module>\n    import sqlalchemy as sa\nE   ModuleNotFoundError: No module named 'sqlalchemy'\n_ ERROR collecting generated_tests/test_migrations_versions_a9fe9c93ed75_2bd4d6b0.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_a9fe9c93ed75_2bd4d6b0.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_a9fe9c93ed75_2bd4d6b0.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\a9fe9c93ed75_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_ad23a56abf25_1265c1b3.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_ad23a56abf25_1265c1b3.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_ad23a56abf25_1265c1b3.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\ad23a56abf25_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_ae5c0a6aebb3_5e17abdd.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_ae5c0a6aebb3_5e17abdd.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_ae5c0a6aebb3_5e17abdd.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\ae5c0a6aebb3_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_b8ccf5b8089b_49b51b9a.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_b8ccf5b8089b_49b51b9a.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_b8ccf5b8089b_49b51b9a.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\b8ccf5b8089b_.py:11: in <module>\n    import sqlalchemy as sa\nE   ModuleNotFoundError: No module named 'sqlalchemy'\n_ ERROR collecting generated_tests/test_migrations_versions_bfb550a500ab_f0ecb80f.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_bfb550a500ab_f0ecb80f.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_bfb550a500ab_f0ecb80f.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\bfb550a500ab_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_c01df2202a9_a1324f04.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_c01df2202a9_a1324f04.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_c01df2202a9_a1324f04.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\c01df2202a9_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_c93f246859f7_df31d9ed.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_c93f246859f7_df31d9ed.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_c93f246859f7_df31d9ed.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\c93f246859f7_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_c9dd06c919ac_a5b728c6.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_c9dd06c919ac_a5b728c6.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_c9dd06c919ac_a5b728c6.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\c9dd06c919ac_.py:21: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_d08d0b37788a_5fb23dc2.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_d08d0b37788a_5fb23dc2.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_d08d0b37788a_5fb23dc2.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\d08d0b37788a_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_daee17da2abd_22632f14.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_daee17da2abd_22632f14.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_daee17da2abd_22632f14.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\daee17da2abd_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_e0a6af364a3f_974c0128.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_e0a6af364a3f_974c0128.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_e0a6af364a3f_974c0128.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\e0a6af364a3f_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_ea2739ecd874_e67e6596.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_ea2739ecd874_e67e6596.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_ea2739ecd874_e67e6596.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\ea2739ecd874_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_migrations_versions_fb592c81e71_97cf68fe.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_migrations_versions_fb592c81e71_97cf68fe.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_migrations_versions_fb592c81e71_97cf68fe.py:24: in <module>\n    spec.loader.exec_module(MOD)\nmigrations\\versions\\fb592c81e71_.py:13: in <module>\n    from alembic import op\nE   ModuleNotFoundError: No module named 'alembic'\n_ ERROR collecting generated_tests/test_scripts_secmonkey_role_setup_8944a789.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_scripts_secmonkey_role_setup_8944a789.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_scripts_secmonkey_role_setup_8944a789.py:24: in <module>\n    spec.loader.exec_module(MOD)\nscripts\\secmonkey_role_setup.py:26: in <module>\n    import boto\nE   ModuleNotFoundError: No module named 'boto'\n__ ERROR collecting generated_tests/test_security_monkey___init_951bd33e.py ___\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey___init_951bd33e.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey___init_951bd33e.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\__init__.py:29: in <module>\n    from flask import Flask\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_security_monkey_account_manager_9f8cfb03.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_account_manager_9f8cfb03.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_account_manager_9f8cfb03.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\account_manager.py:24: in <module>\n    from .datastore import Account, AccountType, AccountTypeCustomValues, User\nE   ImportError: attempted relative import with no known parent package\n__ ERROR collecting generated_tests/test_security_monkey_alerter_9760a909.py __\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_alerter_9760a909.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_alerter_9760a909.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\alerter.py:24: in <module>\n    from security_monkey import app\nsecurity_monkey\\__init__.py:29: in <module>\n    from flask import Flask\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n__ ERROR collecting generated_tests/test_security_monkey_auditor_20f070e5.py __\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_auditor_20f070e5.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_auditor_20f070e5.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\auditor.py:25: in <module>\n    from security_monkey import app, datastore, db\nsecurity_monkey\\__init__.py:29: in <module>\n    from flask import Flask\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n__ ERROR collecting generated_tests/test_security_monkey_backup_afb79fd2.py ___\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_backup_afb79fd2.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_backup_afb79fd2.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\backup.py:22: in <module>\n    from security_monkey.monitors import get_monitors\nsecurity_monkey\\__init__.py:29: in <module>\n    from flask import Flask\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_security_monkey_datastore_d6be5784.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_datastore_d6be5784.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_datastore_d6be5784.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\datastore.py:23: in <module>\n    from deepdiff import DeepHash\nE   ModuleNotFoundError: No module named 'deepdiff'\n_ ERROR collecting generated_tests/test_security_monkey_datastore_utils_99fb06a6.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_datastore_utils_99fb06a6.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_datastore_utils_99fb06a6.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\datastore_utils.py:4: in <module>\n    from security_monkey import datastore, app\nsecurity_monkey\\__init__.py:29: in <module>\n    from flask import Flask\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_security_monkey_decorators_b73beade.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_decorators_b73beade.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_decorators_b73beade.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\decorators.py:12: in <module>\n    from flask import make_response, request, current_app\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n__ ERROR collecting generated_tests/test_security_monkey_manage_0639855e.py ___\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_manage_0639855e.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_manage_0639855e.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\manage.py:18: in <module>\n    from flask_script import Manager, Command, Option, prompt_pass\nE   ModuleNotFoundError: No module named 'flask_script'\n_ ERROR collecting generated_tests/test_security_monkey_monitors_186dc504.py __\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_monitors_186dc504.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_monitors_186dc504.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\monitors.py:10: in <module>\n    from security_monkey.auditor import auditor_registry\nsecurity_monkey\\__init__.py:29: in <module>\n    from flask import Flask\n..\\pallets__flask\\src\\flask\\__init__.py:1: in <module>\n    from . import json as json\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\n..\\pallets__flask\\src\\flask\\globals.py:6: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n__ ERROR collecting generated_tests/test_security_monkey_watcher_cb239254.py __\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_security_monkey_watcher_cb239254.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_security_monkey_watcher_cb239254.py:24: in <module>\n    spec.loader.exec_module(MOD)\nsecurity_monkey\\watcher.py:11: in <module>\n    from botocore.exceptions import ClientError\nE   ModuleNotFoundError: No module named 'botocore'\n_______ ERROR collecting generated_tests/test_src_flask_app_a0402e78.py _______\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_app_a0402e78.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_app_a0402e78.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\app.py:17: in <module>\n    from werkzeug.datastructures import Headers\nE   ModuleNotFoundError: No module named 'werkzeug'\n_______ ERROR collecting generated_tests/test_src_flask_cli_8f64bc05.py _______\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_cli_8f64bc05.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_cli_8f64bc05.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\cli.py:19: in <module>\n    from werkzeug import run_simple\nE   ModuleNotFoundError: No module named 'werkzeug'\n_______ ERROR collecting generated_tests/test_src_flask_ctx_187dbac4.py _______\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_ctx_187dbac4.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_ctx_187dbac4.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\ctx.py:8: in <module>\n    from werkzeug.exceptions import HTTPException\nE   ModuleNotFoundError: No module named 'werkzeug'\n__ ERROR collecting generated_tests/test_src_flask_debughelpers_edcb58ff.py ___\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_debughelpers_edcb58ff.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_debughelpers_edcb58ff.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\debughelpers.py:6: in <module>\n    from werkzeug.routing import RequestRedirect\nE   ModuleNotFoundError: No module named 'werkzeug'\n_____ ERROR collecting generated_tests/test_src_flask_helpers_91186963.py _____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_helpers_91186963.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_helpers_91186963.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\helpers.py:11: in <module>\n    import werkzeug.utils\nE   ModuleNotFoundError: No module named 'werkzeug'\n___ ERROR collecting generated_tests/test_src_flask_json___init_6405bca7.py ___\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_json___init_6405bca7.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_json___init_6405bca7.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\json\\__init__.py:6: in <module>\n    from ..globals import current_app\nE   ImportError: attempted relative import beyond top-level package\n_____ ERROR collecting generated_tests/test_src_flask_logging_4c066685.py _____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_logging_4c066685.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_logging_4c066685.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\logging.py:7: in <module>\n    from werkzeug.local import LocalProxy\nE   ModuleNotFoundError: No module named 'werkzeug'\n_ ERROR collecting generated_tests/test_src_flask_sansio_scaffold_7b2b4347.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_sansio_scaffold_7b2b4347.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_sansio_scaffold_7b2b4347.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\sansio\\scaffold.py:13: in <module>\n    from werkzeug.exceptions import default_exceptions\nE   ModuleNotFoundError: No module named 'werkzeug'\n___ ERROR collecting generated_tests/test_src_flask_templating_61f1eb03.py ____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_flask_templating_61f1eb03.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_flask_templating_61f1eb03.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\pallets__flask\\src\\flask\\templating.py:10: in <module>\n    from .ctx import AppContext\nE   ImportError: attempted relative import with no known parent package\n____ ERROR collecting generated_tests/test_src_requests___init_804344e7.py ____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_requests___init_804344e7.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_requests___init_804344e7.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\kennethreitz__requests\\src\\requests\\__init__.py:45: in <module>\n    from .exceptions import RequestsDependencyWarning\nE   ModuleNotFoundError: No module named 'mod_src_requests___init_804344e7'\n_ ERROR collecting generated_tests/test_src_requests__internal_utils_86097123.py _\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_requests__internal_utils_86097123.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_requests__internal_utils_86097123.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\kennethreitz__requests\\src\\requests\\_internal_utils.py:10: in <module>\n    from .compat import builtin_str\nE   ImportError: attempted relative import with no known parent package\n_____ ERROR collecting generated_tests/test_src_requests_api_8d535495.py ______\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_requests_api_8d535495.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_requests_api_8d535495.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\kennethreitz__requests\\src\\requests\\api.py:11: in <module>\n    from . import sessions\nE   ImportError: attempted relative import with no known parent package\n___ ERROR collecting generated_tests/test_src_requests_cookies_facf211c.py ____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_requests_cookies_facf211c.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_requests_cookies_facf211c.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\kennethreitz__requests\\src\\requests\\cookies.py:14: in <module>\n    from ._internal_utils import to_native_string\nE   ImportError: attempted relative import with no known parent package\n_____ ERROR collecting generated_tests/test_src_requests_help_c3c96fdd.py _____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_requests_help_c3c96fdd.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_requests_help_c3c96fdd.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\kennethreitz__requests\\src\\requests\\help.py:11: in <module>\n    from . import __version__ as requests_version\nE   ImportError: attempted relative import with no known parent package\n___ ERROR collecting generated_tests/test_src_requests_sessions_9e5d8496.py ___\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_requests_sessions_9e5d8496.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_requests_sessions_9e5d8496.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\kennethreitz__requests\\src\\requests\\sessions.py:14: in <module>\n    from ._internal_utils import to_native_string\nE   ImportError: attempted relative import with no known parent package\n____ ERROR collecting generated_tests/test_src_requests_utils_160415f0.py _____\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_src_requests_utils_160415f0.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_src_requests_utils_160415f0.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\kennethreitz__requests\\src\\requests\\utils.py:24: in <module>\n    from . import certs\nE   ImportError: attempted relative import with no known parent package\n_____ ERROR collecting generated_tests/test_tools_matplotlib_c02d417d.py ______\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_tools_matplotlib_c02d417d.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_tools_matplotlib_c02d417d.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_tools_matplotlib_c02d417d.py:5: in <module>\n    import matplotlib\nE   ModuleNotFoundError: No module named 'matplotlib'\n________ ERROR collecting generated_tests/test_tools_numpy_83c6bd81.py ________\nImportError while importing test module 'D:\\code_assistant\\Git_repo\\generated_tests\\test_tools_numpy_83c6bd81.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nC:\\anaconda\\Lib\\importlib\\__init__.py:126: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\generated_tests\\test_tools_numpy_83c6bd81.py:24: in <module>\n    spec.loader.exec_module(MOD)\n..\\generated_tests\\_notebooks\\nb_tools_numpy_83c6bd81.py:68: in <module>\n    import matplotlib.pyplot as plt\nE   ModuleNotFoundError: No module named 'matplotlib'\n------------------------------- Captured stdout -------------------------------\n[0.         0.33333333 0.66666667 1.         1.33333333 1.66666667]\n[0.         0.33333333 0.66666667 1.         1.33333333 1.66666667]\n[0.         0.33333333 0.66666667 1.         1.33333334]\n[0.         0.33333333 0.66666667 1.         1.33333333 1.66666667]\n============================== warnings summary ===============================\nmigrations\\versions\\908b0085d28d_.py:57\n  D:\\code_assistant\\Git_repo\\generated_tests\\..\\Netflix__security_monkey\\migrations\\versions\\908b0085d28d_.py:57: DeprecationWarning: invalid escape sequence '\\$'\n    if not re.match(\"^\\$2[ayb]\\$.{56}$\", user.password):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ===========================\nERROR ..\\generated_tests\\test_01_the_machine_learning_landscape_da5f207e.py\nERROR ..\\generated_tests\\test_02_end_to_end_machine_learning_project_40e60435.py\nERROR ..\\generated_tests\\test_03_classification_e012843f.py\nERROR ..\\generated_tests\\test_04_training_linear_models_24261c57.py\nERROR ..\\generated_tests\\test_05_support_vector_machines_415914fc.py\nERROR ..\\generated_tests\\test_06_decision_trees_536ed6fe.py\nERROR ..\\generated_tests\\test_07_ensemble_learning_and_random_forests_21661603.py\nERROR ..\\generated_tests\\test_08_dimensionality_reduction_6c339b1e.py\nERROR ..\\generated_tests\\test_16_reinforcement_learning_9e50ae37.py\nERROR ..\\generated_tests\\test_audio_filters_show_response_66ec0e8d.py\nERROR ..\\generated_tests\\test_cellular_automata_game_of_life_a9023db1.py\nERROR ..\\generated_tests\\test_ciphers_affine_cipher_da61e0be.py\nERROR ..\\generated_tests\\test_ciphers_elgamal_key_generator_e2eab36a.py\nERROR ..\\generated_tests\\test_docker_jupyter_notebook_config_a702025f.py - Na...\nERROR ..\\generated_tests\\test_docs_conf_254a2da7.py\nERROR ..\\generated_tests\\test_examples_celery_src_task_app___init_528d6bb3.py\nERROR ..\\generated_tests\\test_examples_celery_src_task_app_tasks_83221c59.py\nERROR ..\\generated_tests\\test_examples_celery_src_task_app_views_3bedbdfe.py\nERROR ..\\generated_tests\\test_examples_javascript_js_example_views_eb3a8d7d.py\nERROR ..\\generated_tests\\test_examples_tutorial_flaskr___init_fff75601.py\nERROR ..\\generated_tests\\test_examples_tutorial_flaskr_auth_77fe82c0.py\nERROR ..\\generated_tests\\test_examples_tutorial_flaskr_blog_eac5c75f.py\nERROR ..\\generated_tests\\test_examples_tutorial_flaskr_db_282e88ee.py\nERROR ..\\generated_tests\\test_extra_gradient_descent_comparison_a8f15d1a.py\nERROR ..\\generated_tests\\test_future_encoders_81fb0565.py\nERROR ..\\generated_tests\\test_manage_3156ad13.py\nERROR ..\\generated_tests\\test_manage_api_8e08d141.py\nERROR ..\\generated_tests\\test_math_differential_calculus_8bd66484.py\nERROR ..\\generated_tests\\test_math_linear_algebra_c8881267.py\nERROR ..\\generated_tests\\test_migrations_env_1d5e98f8.py\nERROR ..\\generated_tests\\test_migrations_versions_00c1dabdbe85_lengthen_account_name_671e5b13.py\nERROR ..\\generated_tests\\test_migrations_versions_0ae4ef82b244_a10b7dcb.py\nERROR ..\\generated_tests\\test_migrations_versions_11f081cf54e2_5b4c7111.py\nERROR ..\\generated_tests\\test_migrations_versions_1583a48cb978_e162f8ac.py\nERROR ..\\generated_tests\\test_migrations_versions_15e39d43395f_8a803580.py\nERROR ..\\generated_tests\\test_migrations_versions_1727fb4309d8_885b4442.py\nERROR ..\\generated_tests\\test_migrations_versions_1a863bd1acb1_c6768a82.py\nERROR ..\\generated_tests\\test_migrations_versions_1c847ae1209a_21e2cc98.py\nERROR ..\\generated_tests\\test_migrations_versions_2705e6e13a8f_2fc89a34.py\nERROR ..\\generated_tests\\test_migrations_versions_2ce75615b24d_5d38f217.py\nERROR ..\\generated_tests\\test_migrations_versions_2ea41f4610fd_a075904c.py\nERROR ..\\generated_tests\\test_migrations_versions_331ca47ce8ad_6549354a.py\nERROR ..\\generated_tests\\test_migrations_versions_4ac52090a637_98ad0211.py\nERROR ..\\generated_tests\\test_migrations_versions_51170afa2b48_custom_role_name_6da73e3e.py\nERROR ..\\generated_tests\\test_migrations_versions_538eeb160af6_cd27a488.py\nERROR ..\\generated_tests\\test_migrations_versions_55725cc4bf25_9893f587.py\nERROR ..\\generated_tests\\test_migrations_versions_57f648d4b597_b08d508e.py\nERROR ..\\generated_tests\\test_migrations_versions_595e27f36454_ec8a35d9.py\nERROR ..\\generated_tests\\test_migrations_versions_5bd631a1b748_fb1cdb8c.py\nERROR ..\\generated_tests\\test_migrations_versions_61a6fd4b4500_83d4657a.py\nERROR ..\\generated_tests\\test_migrations_versions_6245d75fa12_exceptions_table_d2e57ad1.py\nERROR ..\\generated_tests\\test_migrations_versions_67ea2aac5ea0_93aa9206.py\nERROR ..\\generated_tests\\test_migrations_versions_6b9d673d8e30_added_index_for_itemrevision_created_3205b1e9.py\nERROR ..\\generated_tests\\test_migrations_versions_6d2354fb841c_d01d4144.py\nERROR ..\\generated_tests\\test_migrations_versions_7c54b06e227b_10892e09.py\nERROR ..\\generated_tests\\test_migrations_versions_908b0085d28d_aa782afa.py\nERROR ..\\generated_tests\\test_migrations_versions_a9fe9c93ed75_2bd4d6b0.py\nERROR ..\\generated_tests\\test_migrations_versions_ad23a56abf25_1265c1b3.py\nERROR ..\\generated_tests\\test_migrations_versions_ae5c0a6aebb3_5e17abdd.py\nERROR ..\\generated_tests\\test_migrations_versions_b8ccf5b8089b_49b51b9a.py\nERROR ..\\generated_tests\\test_migrations_versions_bfb550a500ab_f0ecb80f.py\nERROR ..\\generated_tests\\test_migrations_versions_c01df2202a9_a1324f04.py\nERROR ..\\generated_tests\\test_migrations_versions_c93f246859f7_df31d9ed.py\nERROR ..\\generated_tests\\test_migrations_versions_c9dd06c919ac_a5b728c6.py\nERROR ..\\generated_tests\\test_migrations_versions_d08d0b37788a_5fb23dc2.py\nERROR ..\\generated_tests\\test_migrations_versions_daee17da2abd_22632f14.py\nERROR ..\\generated_tests\\test_migrations_versions_e0a6af364a3f_974c0128.py\nERROR ..\\generated_tests\\test_migrations_versions_ea2739ecd874_e67e6596.py\nERROR ..\\generated_tests\\test_migrations_versions_fb592c81e71_97cf68fe.py\nERROR ..\\generated_tests\\test_scripts_secmonkey_role_setup_8944a789.py\nERROR ..\\generated_tests\\test_security_monkey___init_951bd33e.py\nERROR ..\\generated_tests\\test_security_monkey_account_manager_9f8cfb03.py\nERROR ..\\generated_tests\\test_security_monkey_alerter_9760a909.py\nERROR ..\\generated_tests\\test_security_monkey_auditor_20f070e5.py\nERROR ..\\generated_tests\\test_security_monkey_backup_afb79fd2.py\nERROR ..\\generated_tests\\test_security_monkey_datastore_d6be5784.py\nERROR ..\\generated_tests\\test_security_monkey_datastore_utils_99fb06a6.py\nERROR ..\\generated_tests\\test_security_monkey_decorators_b73beade.py\nERROR ..\\generated_tests\\test_security_monkey_manage_0639855e.py\nERROR ..\\generated_tests\\test_security_monkey_monitors_186dc504.py\nERROR ..\\generated_tests\\test_security_monkey_watcher_cb239254.py\nERROR ..\\generated_tests\\test_src_flask_app_a0402e78.py\nERROR ..\\generated_tests\\test_src_flask_cli_8f64bc05.py\nERROR ..\\generated_tests\\test_src_flask_ctx_187dbac4.py\nERROR ..\\generated_tests\\test_src_flask_debughelpers_edcb58ff.py\nERROR ..\\generated_tests\\test_src_flask_helpers_91186963.py\nERROR ..\\generated_tests\\test_src_flask_json___init_6405bca7.py\nERROR ..\\generated_tests\\test_src_flask_logging_4c066685.py\nERROR ..\\generated_tests\\test_src_flask_sansio_scaffold_7b2b4347.py\nERROR ..\\generated_tests\\test_src_flask_templating_61f1eb03.py\nERROR ..\\generated_tests\\test_src_requests___init_804344e7.py\nERROR ..\\generated_tests\\test_src_requests__internal_utils_86097123.py\nERROR ..\\generated_tests\\test_src_requests_api_8d535495.py\nERROR ..\\generated_tests\\test_src_requests_cookies_facf211c.py\nERROR ..\\generated_tests\\test_src_requests_help_c3c96fdd.py\nERROR ..\\generated_tests\\test_src_requests_sessions_9e5d8496.py\nERROR ..\\generated_tests\\test_src_requests_utils_160415f0.py\nERROR ..\\generated_tests\\test_tools_matplotlib_c02d417d.py\nERROR ..\\generated_tests\\test_tools_numpy_83c6bd81.py\n!!!!!!!!!!!!!!!!!! Interrupted: 99 errors during collection !!!!!!!!!!!!!!!!!!!\n1 warning, 99 errors in 11.39s\n",
+      "stderr": "",
       "cmd": [
         "coverage",
         "run",
+        "--source",
+        "D:\\code_assistant\\Git_repo\\Netflix__security_monkey\\security_monkey",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\generated_tests/**",
+        "--omit",
+        "D:\\code_assistant\\Git_repo\\generated_tests/*",
         "-m",
         "pytest",
-        "-q"
+        "-q",
+        "D:\\code_assistant\\Git_repo\\generated_tests"
       ]
     },
     "report": {
-      "stdout": "No data to report.\n",
+      "stdout": "Name                                          Stmts   Miss  Cover   Missing\n---------------------------------------------------------------------------\nsecurity_monkey\\__init__.py                     186    182     2%   30-369\nsecurity_monkey\\account_manager.py              200    199     1%   25-398\nsecurity_monkey\\alerter.py                       57     55     4%   25-103\nsecurity_monkey\\auditor.py                      615    613     1%   26-1056\nsecurity_monkey\\backup.py                        30     29     3%   23-69\nsecurity_monkey\\celeryconfig.py                  10     10     0%   10-45\nsecurity_monkey\\cloudaux_batched_watcher.py      60     60     0%   1-98\nsecurity_monkey\\cloudaux_watcher.py              86     86     0%   1-138\nsecurity_monkey\\constants.py                      1      1     0%   25\nsecurity_monkey\\datastore.py                    473    472     1%   24-858\nsecurity_monkey\\datastore_utils.py               84     81     4%   5-184\nsecurity_monkey\\decorators.py                   125    123     2%   13-190\nsecurity_monkey\\exceptions.py                    95     95     0%   23-203\nsecurity_monkey\\jirasync.py                     111    111     0%   10-168\nsecurity_monkey\\manage.py                       544    540     1%   20-893\nsecurity_monkey\\monitors.py                      78     77     1%   11-132\nsecurity_monkey\\reporter.py                      38     38     0%   25-84\nsecurity_monkey\\watcher.py                      360    359     1%   12-714\n---------------------------------------------------------------------------\nTOTAL                                          3153   3131     1%\n",
       "stderr": "",
       "cmd": [
         "coverage",

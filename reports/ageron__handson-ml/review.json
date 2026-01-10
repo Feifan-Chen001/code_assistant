@@ -1,0 +1,1988 @@
+{
+  "repo": "D:\\code_assistant\\Git_repo\\ageron__handson-ml",
+  "findings": [
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'model' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "01_the_machine_learning_landscape.ipynb#cell-52",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-17",
+      "line": 5,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "ordinal_encoder used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-81",
+      "line": 2,
+      "col": 22,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "cat_encoder used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-84",
+      "line": 8,
+      "col": 19,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "cat_encoder used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-88",
+      "line": 2,
+      "col": 19,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-120",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'forest_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-127",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-131",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'forest_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-132",
+      "line": 10,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'forest_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "02_end_to_end_machine_learning_project.ipynb#cell-139",
+      "line": 9,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "03_classification.ipynb#cell-20",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "03_classification.ipynb#cell-27",
+      "line": 16,
+      "col": 22,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'forest_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "03_classification.ipynb#cell-60",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "scaler used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "03_classification.ipynb#cell-77",
+      "line": 3,
+      "col": 17,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'knn_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "03_classification.ipynb#cell-98",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "03_classification.ipynb#cell-169",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'forest_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "03_classification.ipynb#cell-176",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ast-rule",
+      "rule": "BARE_EXCEPT",
+      "severity": "medium",
+      "message": "Avoid bare except; catch explicit exception types.",
+      "file": "03_classification.ipynb#cell-216",
+      "line": 9,
+      "col": 8,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "03_classification.ipynb#cell-223",
+      "line": 22,
+      "col": 42,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "03_classification.ipynb#cell-235",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "03_classification.ipynb#cell-237",
+      "line": 5,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "04_training_linear_models.ipynb#cell-8",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "04_training_linear_models.ipynb#cell-49",
+      "line": 7,
+      "col": 22,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'ridge_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "04_training_linear_models.ipynb#cell-54",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'ridge_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "04_training_linear_models.ipynb#cell-56",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'lasso_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "04_training_linear_models.ipynb#cell-58",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'elastic_net' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "04_training_linear_models.ipynb#cell-59",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "04_training_linear_models.ipynb#cell-64",
+      "line": 4,
+      "col": 29,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "04_training_linear_models.ipynb#cell-70",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "04_training_linear_models.ipynb#cell-76",
+      "line": 6,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'softmax_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "04_training_linear_models.ipynb#cell-77",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-8",
+      "line": 13,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "scaler used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "05_support_vector_machines.ipynb#cell-11",
+      "line": 18,
+      "col": 11,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-11",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-13",
+      "line": 8,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_poly_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-41",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_poly_reg1' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-42",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_poly_reg2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-42",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_3D_decision_function' 使用了可变默认参数; 使用 None 代替",
+      "file": "05_support_vector_machines.ipynb#cell-46",
+      "line": 3,
+      "col": 47,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_3D_decision_function' 使用了可变默认参数; 使用 None 代替",
+      "file": "05_support_vector_machines.ipynb#cell-46",
+      "line": 3,
+      "col": 62,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_2D_decision_function' 使用了可变默认参数; 使用 None 代替",
+      "file": "05_support_vector_machines.ipynb#cell-48",
+      "line": 1,
+      "col": 56,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-49",
+      "line": 8,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-55",
+      "line": 7,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-61",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "scaler used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "05_support_vector_machines.ipynb#cell-71",
+      "line": 14,
+      "col": 11,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-71",
+      "line": 9,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "scaler used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "05_support_vector_machines.ipynb#cell-86",
+      "line": 2,
+      "col": 17,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "05_support_vector_machines.ipynb#cell-90",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "scaler used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "05_support_vector_machines.ipynb#cell-109",
+      "line": 4,
+      "col": 17,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-8",
+      "line": 8,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_decision_boundary' 使用了可变默认参数; 使用 None 代替",
+      "file": "06_decision_trees.ipynb#cell-10",
+      "line": 3,
+      "col": 43,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_clf_tweaked' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-16",
+      "line": 5,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'deep_tree_clf1' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-18",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'deep_tree_clf2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-18",
+      "line": 5,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_clf_r' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-19",
+      "line": 5,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_clf_s' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-20",
+      "line": 9,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_clf_sr' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-20",
+      "line": 11,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-23",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg1' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-24",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-24",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_regression_predictions' 使用了可变默认参数; 使用 None 代替",
+      "file": "06_decision_trees.ipynb#cell-24",
+      "line": 8,
+      "col": 53,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg1' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-26",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "06_decision_trees.ipynb#cell-26",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-12",
+      "line": 6,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-12",
+      "line": 7,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-12",
+      "line": 8,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-15",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-15",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-15",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-20",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_decision_boundary' 使用了可变默认参数; 使用 None 代替",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-21",
+      "line": 3,
+      "col": 43,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-26",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-28",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-30",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-30",
+      "line": 5,
+      "col": 52,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-30",
+      "line": 5,
+      "col": 66,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-37",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'ada_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-41",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'svm_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-43",
+      "line": 8,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg1' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-47",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-48",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'tree_reg3' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-49",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'gbrt' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-54",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'gbrt_slow' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-55",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'gbrt' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-58",
+      "line": 7,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'gbrt_best' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-58",
+      "line": 14,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'gbrt' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-61",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'xgb_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-66",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'random_forest_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-80",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_forest_blender' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "07_ensemble_learning_and_random_forests.ipynb#cell-113",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_SKLEARN_RANDOM_STATE",
+      "severity": "high",
+      "message": "Stochastic sklearn component without random_state may be non-reproducible.",
+      "file": "08_dimensionality_reduction.ipynb#cell-61",
+      "line": 6,
+      "col": 35,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-138",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_iter1' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-162",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_iter2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-162",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_iter3' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-162",
+      "line": 5,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_rnd_init1' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-168",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_rnd_init2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-168",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_rnd_10_inits' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-182",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_SKLEARN_RANDOM_STATE",
+      "severity": "high",
+      "message": "Stochastic sklearn component without random_state may be non-reproducible.",
+      "file": "08_dimensionality_reduction.ipynb#cell-189",
+      "line": 1,
+      "col": 0,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-190",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_SKLEARN_RANDOM_STATE",
+      "severity": "high",
+      "message": "Stochastic sklearn component without random_state may be non-reproducible.",
+      "file": "08_dimensionality_reduction.ipynb#cell-208",
+      "line": 11,
+      "col": 23,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-215",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_k3' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-219",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_k8' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-219",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "08_dimensionality_reduction.ipynb#cell-236",
+      "line": 12,
+      "col": 14,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "08_dimensionality_reduction.ipynb#cell-236",
+      "line": 23,
+      "col": 15,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "08_dimensionality_reduction.ipynb#cell-236",
+      "line": 20,
+      "col": 47,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "08_dimensionality_reduction.ipynb#cell-236",
+      "line": 22,
+      "col": 27,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "08_dimensionality_reduction.ipynb#cell-236",
+      "line": 23,
+      "col": 15,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "08_dimensionality_reduction.ipynb#cell-236",
+      "line": 20,
+      "col": 47,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "08_dimensionality_reduction.ipynb#cell-236",
+      "line": 22,
+      "col": 27,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_good' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-240",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans_bad' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-240",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-257",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-274",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'kmeans' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-277",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-282",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-286",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_reg' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-291",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'dbscan' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-301",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'dbscan2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-307",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'knn' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-312",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-411",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'rnd_clf2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-418",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_clf' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-424",
+      "line": 3,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_HYPERPARAMS_HARDCODED",
+      "severity": "medium",
+      "message": "Model 'log_clf2' has hardcoded hyperparameters; consider using GridSearchCV or extracting to config.",
+      "file": "08_dimensionality_reduction.ipynb#cell-428",
+      "line": 1,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "scaler used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "09_up_and_running_with_tensorflow.ipynb#cell-36",
+      "line": 3,
+      "col": 22,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "11_deep_learning.ipynb#cell-140",
+      "line": 13,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-140",
+      "line": 13,
+      "col": 45,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-218",
+      "line": 12,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-218",
+      "line": 13,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-218",
+      "line": 13,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-223",
+      "line": 128,
+      "col": 48,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-223",
+      "line": 129,
+      "col": 59,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-223",
+      "line": 129,
+      "col": 59,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-282",
+      "line": 16,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-282",
+      "line": 17,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-282",
+      "line": 17,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-289",
+      "line": 19,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-289",
+      "line": 20,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-289",
+      "line": 20,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-297",
+      "line": 13,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-297",
+      "line": 14,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-297",
+      "line": 14,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-302",
+      "line": 13,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-302",
+      "line": 14,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-302",
+      "line": 14,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-305",
+      "line": 13,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-305",
+      "line": 14,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-305",
+      "line": 14,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-343",
+      "line": 8,
+      "col": 10,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-343",
+      "line": 9,
+      "col": 50,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-343",
+      "line": 13,
+      "col": 10,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-343",
+      "line": 14,
+      "col": 50,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-357",
+      "line": 7,
+      "col": 31,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-357",
+      "line": 7,
+      "col": 31,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-363",
+      "line": 9,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-363",
+      "line": 10,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-363",
+      "line": 10,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-366",
+      "line": 8,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-366",
+      "line": 9,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "11_deep_learning.ipynb#cell-366",
+      "line": 9,
+      "col": 51,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_RESOURCE_LEAK",
+      "severity": "high",
+      "message": "open() 调用应在 with 语句中使用以确保正确关闭",
+      "file": "12_distributed_tensorflow.ipynb#cell-21",
+      "line": 3,
+      "col": 11,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "13_convolutional_neural_networks.ipynb#cell-133",
+      "line": 4,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-93",
+      "line": 5,
+      "col": 27,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-93",
+      "line": 11,
+      "col": 27,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_GLOBAL_VARIABLE",
+      "severity": "low",
+      "message": "检测到全局变量 'data_index' 的使用; 考虑使用参数传递代替",
+      "file": "14_recurrent_neural_networks.ipynb#cell-142",
+      "line": 4,
+      "col": 4,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-142",
+      "line": 13,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-142",
+      "line": 24,
+      "col": 40,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-169",
+      "line": 25,
+      "col": 34,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-194",
+      "line": 7,
+      "col": 44,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-194",
+      "line": 8,
+      "col": 44,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "14_recurrent_neural_networks.ipynb#cell-194",
+      "line": 9,
+      "col": 44,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_image' 使用了可变默认参数; 使用 None 代替",
+      "file": "15_autoencoders.ipynb#cell-8",
+      "line": 1,
+      "col": 28,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PIPELINE_SUGGEST",
+      "severity": "medium",
+      "message": "scaler used without Pipeline; consider sklearn.pipeline.Pipeline.",
+      "file": "15_autoencoders.ipynb#cell-14",
+      "line": 3,
+      "col": 10,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "15_autoencoders.ipynb#cell-42",
+      "line": 38,
+      "col": 24,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "15_autoencoders.ipynb#cell-42",
+      "line": 42,
+      "col": 42,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "15_autoencoders.ipynb#cell-42",
+      "line": 42,
+      "col": 42,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_image' 使用了可变默认参数; 使用 None 代替",
+      "file": "15_autoencoders.ipynb#cell-57",
+      "line": 8,
+      "col": 28,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "15_autoencoders.ipynb#cell-99",
+      "line": 20,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "16_reinforcement_learning.ipynb#cell-97",
+      "line": 4,
+      "col": 31,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_PANDAS_SETTINGWITHCOPY",
+      "severity": "high",
+      "message": "Chained indexing may trigger SettingWithCopy; use .loc/.iloc.",
+      "file": "16_reinforcement_learning.ipynb#cell-109",
+      "line": 9,
+      "col": 4,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "extra_autodiff.ipynb#cell-21",
+      "line": 4,
+      "col": 21,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "future_encoders.py",
+      "line": 767,
+      "col": 27,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_vector2d' 使用了可变默认参数; 使用 None 代替",
+      "file": "math_linear_algebra.ipynb#cell-21",
+      "line": 1,
+      "col": 35,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_MUTABLE_DEFAULT_ARG",
+      "severity": "medium",
+      "message": "函数 'plot_transformation' 使用了可变默认参数; 使用 None 代替",
+      "file": "math_linear_algebra.ipynb#cell-183",
+      "line": 1,
+      "col": 75,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "tools_matplotlib.ipynb#cell-73",
+      "line": 2,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "ds-rule",
+      "rule": "DS_RANDOM_SEED",
+      "severity": "high",
+      "message": "Randomness detected without an explicit seed.",
+      "file": "tools_matplotlib.ipynb#cell-79",
+      "line": 7,
+      "col": null,
+      "extra": {}
+    },
+    {
+      "tool": "rule-plugin",
+      "rule": "PY_LOOP_INVARIANT",
+      "severity": "low",
+      "message": "考虑在循环外计算长度，避免每次迭代都重新计算",
+      "file": "tools_numpy.ipynb#cell-185",
+      "line": 1,
+      "col": 15,
+      "extra": {}
+    },
+    {
+      "tool": "bandit",
+      "rule": "B404",
+      "severity": "low",
+      "message": "Consider possible security implications associated with the subprocess module.",
+      "file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py",
+      "line": 2,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b404-import-subprocess",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B607",
+      "severity": "medium",
+      "message": "Starting a process with a partial executable path",
+      "file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py",
+      "line": 12,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b607_start_process_with_partial_path.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B603",
+      "severity": "medium",
+      "message": "subprocess call - check for execution of untrusted input.",
+      "file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py",
+      "line": 12,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b603_subprocess_without_shell_equals_true.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B607",
+      "severity": "medium",
+      "message": "Starting a process with a partial executable path",
+      "file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py",
+      "line": 13,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b607_start_process_with_partial_path.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B603",
+      "severity": "medium",
+      "message": "subprocess call - check for execution of untrusted input.",
+      "file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py",
+      "line": 13,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b603_subprocess_without_shell_equals_true.html",
+        "confidence": "HIGH"
+      }
+    },
+    {
+      "tool": "bandit",
+      "rule": "B101",
+      "severity": "low",
+      "message": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "file": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\future_encoders.py",
+      "line": 1243,
+      "col": null,
+      "extra": {
+        "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b101_assert_used.html",
+        "confidence": "HIGH"
+      }
+    }
+  ],
+  "tool_raw": {
+    "complexity_radon": {
+      "ok": true,
+      "stdout": "D:\\code_assistant\\Git_repo\\ageron__handson-ml\\future_encoders.py\n    M 553:4 OneHotEncoder._legacy_fit_transform - C (15)\n    F 1483:0 _get_column_indices - C (14)\n    M 455:4 OneHotEncoder._handle_deprecations - C (14)\n    M 162:4 _BaseEncoder._fit - C (13)\n    C 155:0 _BaseEncoder - C (11)\n    F 1427:0 _get_column - B (10)\n    M 726:4 OneHotEncoder.inverse_transform - B (10)\n    M 1301:4 ColumnTransformer.fit_transform - B (10)\n    M 635:4 OneHotEncoder._legacy_transform - B (9)\n    M 1114:4 ColumnTransformer._iter - B (9)\n    F 103:0 _transform_selected - B (8)\n    F 1396:0 _check_key_type - B (8)\n    M 1140:4 ColumnTransformer._validate_transformers - B (7)\n    M 1160:4 ColumnTransformer._validate_remainder - B (7)\n    M 200:4 _BaseEncoder._transform - B (6)\n    M 1196:4 ColumnTransformer.get_feature_names - B (6)\n    M 1221:4 ColumnTransformer._update_fitted_transformers - B (6)\n    F 85:0 _handle_zeros_in_scale - A (5)\n    C 242:0 OneHotEncoder - A (5)\n    M 676:4 OneHotEncoder._transform_new - A (5)\n    C 938:0 ColumnTransformer - A (5)\n    M 1258:4 ColumnTransformer._fit_transform - A (5)\n    F 1535:0 _get_transformer_list - A (4)\n    M 380:4 OneHotEncoder.__init__ - A (4)\n    M 896:4 OrdinalEncoder.inverse_transform - A (4)\n    M 1246:4 ColumnTransformer._validate_output - A (4)\n    M 1379:4 ColumnTransformer._hstack - A (4)\n    F 55:0 _fit_transform_one - A (3)\n    M 526:4 OneHotEncoder.fit - A (3)\n    M 610:4 OneHotEncoder.fit_transform - A (3)\n    C 794:0 OrdinalEncoder - A (3)\n    F 47:0 _transform_one - A (2)\n    F 1548:0 make_column_transformer - A (2)\n    M 706:4 OneHotEncoder.transform - A (2)\n    M 1071:4 ColumnTransformer._transformers - A (2)\n    M 1081:4 ColumnTransformer._transformers - A (2)\n    M 1184:4 ColumnTransformer.named_transformers_ - A (2)\n    M 1351:4 ColumnTransformer.transform - A (2)\n    F 43:0 _fit_one_transformer - A (1)\n    F 81:0 _argmax - A (1)\n    M 409:4 OneHotEncoder.n_values - A (1)\n    M 415:4 OneHotEncoder.n_values - A (1)\n    M 421:4 OneHotEncoder.categorical_features - A (1)\n    M 427:4 OneHotEncoder.categorical_features - A (1)\n    M 435:4 OneHotEncoder.active_features_ - A (1)\n    M 442:4 OneHotEncoder.feature_indices_ - A (1)\n    M 449:4 OneHotEncoder.n_values_ - A (1)\n    M 858:4 OrdinalEncoder.__init__ - A (1)\n    M 862:4 OrdinalEncoder.fit - A (1)\n    M 879:4 OrdinalEncoder.transform - A (1)\n    M 1062:4 ColumnTransformer.__init__ - A (1)\n    M 1086:4 ColumnTransformer.get_params - A (1)\n    M 1102:4 ColumnTransformer.set_params - A (1)\n    M 1278:4 ColumnTransformer.fit - A (1)\nD:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\jupyter_notebook_config.py\n    F 4:0 export_script_and_view - A (4)\nD:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\bin\\nbclean_checkpoints\n    M 52:4 NotebookAnalyser.clean_checkpoints - B (10)\n    C 10:0 NotebookAnalyser - A (5)\n    M 12:4 NotebookAnalyser.__init__ - A (3)\n    M 86:4 NotebookAnalyser.clean_checkpoints_recursively - A (3)\n    F 94:0 main - A (2)\n    M 31:4 NotebookAnalyser.get_hash - A (2)\n    M 47:4 NotebookAnalyser.log - A (1)\nD:\\code_assistant\\Git_repo\\ageron__handson-ml\\docker\\bin\\rm_empty_subdirs\n    F 5:0 remove_empty_directories - C (15)\n    F 40:0 main - A (2)\n\n64 blocks (classes, functions, methods) analyzed.\nAverage complexity: A (4.640625)\n",
+      "stderr": ""
+    },
+    "mypy": {
+      "ok": false,
+      "stdout": "docker\\jupyter_notebook_config.py:15: error: Name \"c\" is not defined  [name-defined]\nfuture_encoders.py:25: error: Library stubs not installed for \"scipy\"  [import-untyped]\nfuture_encoders.py:25: note: Hint: \"python3 -m pip install scipy-stubs\"\nfuture_encoders.py:25: note: (or run \"mypy --install-types\" to install all missing stub packages)\nfuture_encoders.py:27: error: Cannot find implementation or library stub for module named \"sklearn.base\"  [import-not-found]\nfuture_encoders.py:28: error: Cannot find implementation or library stub for module named \"sklearn.externals\"  [import-not-found]\nfuture_encoders.py:29: error: Cannot find implementation or library stub for module named \"sklearn.utils\"  [import-not-found]\nfuture_encoders.py:30: error: Cannot find implementation or library stub for module named \"sklearn.externals.joblib.parallel\"  [import-not-found]\nfuture_encoders.py:30: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports\nfuture_encoders.py:31: error: Cannot find implementation or library stub for module named \"sklearn.utils.metaestimators\"  [import-not-found]\nfuture_encoders.py:32: error: Cannot find implementation or library stub for module named \"sklearn.utils.validation\"  [import-not-found]\nfuture_encoders.py:33: error: Cannot find implementation or library stub for module named \"sklearn.pipeline\"  [import-not-found]\nfuture_encoders.py:34: error: Cannot find implementation or library stub for module named \"sklearn.preprocessing\"  [import-not-found]\nfuture_encoders.py:35: error: Cannot find implementation or library stub for module named \"sklearn.preprocessing.label\"  [import-not-found]\nfuture_encoders.py:488: error: Not all arguments converted during string formatting  [str-format]\n",
+      "stderr": ""
+    }
+  },
+  "stats": {
+    "total_findings": 195
+  }
+}
